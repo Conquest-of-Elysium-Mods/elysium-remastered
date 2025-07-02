@@ -1,3 +1,5 @@
+testing again
+
 icon "Smallbanner.tga"
 description "An overhaul mod. Flavor, balance and content." 
 modprio 1 # Will be overwritten by other mods in case of conflict.
