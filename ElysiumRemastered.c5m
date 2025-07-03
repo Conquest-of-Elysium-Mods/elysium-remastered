@@ -13600,7 +13600,7 @@ spr1 "Sprites/Livingmercury1.tga"
 spr2 "Sprites/Livingmercury2.tga"
 armor                          0 
 hp                            40 
-str                            7 
+str                           10 
 mor                           99 
 mr                             4 
 rank                           1 # Front rank.
@@ -13626,7 +13626,7 @@ spr1 "Sprites/Livingmercury1.tga"
 spr2 "Sprites/Livingmercury2.tga"
 armor                          0 
 hp                            40 
-str                            5 
+str                           10 
 mor                           99 
 mr                             4 
 rank                           1 # Front rank.
@@ -18218,7 +18218,7 @@ spr1 "Sprites/Foulsand1.tga"
 spr2 "Sprites/Foulsand2.tga"
 armor                          0 
 hp                            38 
-str                            7 
+str                           10 
 mor                           99 
 mr                             5 
 rank                           1 # Front rank.
@@ -18418,10 +18418,10 @@ lifeforce 20
 huge
 nonmaginvul
 inanimate
-fireres 100
-coldres 100
-poisonres 100
-acidres 100
+fireres 85
+coldres 85
+poisonres 85
+acidres 85
 diseaseres
 affres 100
 unaging
@@ -18650,7 +18650,7 @@ summoning                # The ritual will summon the monsters specified in a ra
 sum0chance 5
 sum1chance 20
 addstring "c*Scourge Ant Queen & 1d6*Black Soldier Ant"
-addstring "1d20*Ghoul"
+addstring "2d8*Ghoul"
 addstring "1*Desert Wraith"
 addstring "1d2*Dark Serpent"
 addstring "1*Scourge Worm"
