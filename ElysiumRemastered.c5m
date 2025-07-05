@@ -3788,39 +3788,8 @@ copystats "Androphag Archer"
 # No longer unkillable by some classes, but serves same function as before
 
 selectmonster "Creeping Doom"
-clearspec
-clearweapons
-armor 10
-hp 18 				#From 11
-mr 4 				#From 10
-mor 99
-str 1
-meleeweapon 5  51 	#extra attacks at lower damage
-meleeweapon 5  51
-meleeweapon 5  51
-meleeweapon 5  51
-meleeweapon 5  51
-meleeweapon 5  51
-meleeambush 1
-slashres
-pierceres
-bluntres
-swamp
-float
-swamp1
-jungle1
-wall
-diseaseres
-swallowres
 affres 100
-noslots
-size2x2
-animal
-fireres -50
-coldres -200
-poisonres 100
-extraeyes 100
-tiny
+
 
 selectmonster "Wyrm"
 spr1 "Sprites/Wyrm1.tga"
@@ -4894,39 +4863,50 @@ size1x1
 deployoutside 1
 descr "The Black Brambles of the witches' woods seems to move with their own intent. Be careful to keep a good distance, as their thorns are coated in a vile poison that can blind, or even kill outright."
 
+newweapon     "Bee Sting"                                                     #  51
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 6
+dmgtype              9 # Poison.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+sound                1 # spear.smp (Spear)
+next
+nextdmg 9999
+
+newweapon "Scatter"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 1
+onlyfriend
+dmgtype              8 # fear
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  2 # Area: two random squares
+an                     # Armor negating.
+sound                1 # spear.smp (Spear)
+affectanimal
+affecthuman
+	
 newmonster "Swarm of Bees"
+copystats "Creeping Doom"
 spr1 "Sprites/Beeswarm1.tga"
 spr2 "Sprites/Beeswarm2.tga"
-armor 5
 hp 2 
 mr 4 
-mor 99
+mor 15
 str 1
 rank 1 
 frontpos
-meleeambush 1
-slashres
-pierceres
-bluntres
-swamp
-float
-jungle1
-forest1
-wall
-diseaseres
-swallowres
-affres 100
-noslots
+clearweapons
+meleeweapon 2 "Bee Sting"
 size1x1
+drawsize -25
 animal
-fireres -50
-coldres -200
-poisonres 50
-extraeyes 100
-tiny
-meleeweapon 1  51 
-meleeweapon 1  51
-descr "An enraged swarm of bees can be quite a formidable foe for even the best armored warriors."
+human
+battlefast
+spread 2
+descr "An enraged swarm of bees can be quite a formidable foe for even the best armored warriors. Fortunately they tend to scatter after a while."
 
 newmonster "Worm Soul" 
 spr1 "Sprites/Wormsoul1.tga" 
