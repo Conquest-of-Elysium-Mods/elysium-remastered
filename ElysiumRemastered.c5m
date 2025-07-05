@@ -27495,3 +27495,106 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
+
+
+# ----------- Witch Wood Change draft --------------------# 
+
+witchwood ritual 
+addstring "3*Stick Figure"
+
+newmonster "Stick Figure" 
+spr1 "Stickfigure.tga"
+spr2 "Stickfigure.tga"
+hp 25
+poisonres 100
+fireres 100
+invisible
+stupid
+stationary
+immobile
+nocombat
+nozoc
+unimportant
+immortal
+reformloc 1000
+terraformto 2
+terraformfrom 36
+terraformch 100
+spiritsight
+spawn2d6mon 8
+fear 1 
+size1x1
+descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+
+newmonster "Bound Thing"
+copystats "Snake"
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Rat"
+clearweapons
+meleeweapon                1 753 # Foul Bite: d1 Slash damage.
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Bat"
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Wolf"
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Swarm of Bees"
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Dispossessed Spirit"
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Shade"
+invisible
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
