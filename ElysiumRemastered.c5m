@@ -4899,7 +4899,8 @@ str 1
 rank 1 
 frontpos
 clearweapons
-meleeweapon 2 "Bee Sting"
+meleeweapon 1 "Bee Sting"
+meleeweapon 1 "Bee Sting"
 size1x1
 drawsize -25
 animal
