@@ -3785,11 +3785,8 @@ copystats "Doppel Spawn"
 newmonster    "Androphag Archer" 1                                       
 copystats "Androphag Archer"
 
-# No longer unkillable by some classes, but serves same function as before
-
 selectmonster "Creeping Doom"
 affres 100
-
 
 selectmonster "Wyrm"
 spr1 "Sprites/Wyrm1.tga"
@@ -4875,7 +4872,7 @@ sound                1 # spear.smp (Spear)
 next
 nextdmg 9999
 
-newweapon "Scatter"
+newweapon "Scatter" # AOE 2 fear that only affects the bees, make them scatter at random intervals. They get a human-tag to make it work, which will make them targets for conversion (morale d10) and healing. For practical purposes of no consequence.
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
 init                 1
