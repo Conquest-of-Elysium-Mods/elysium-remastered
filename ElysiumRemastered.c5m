@@ -1,3 +1,4 @@
+
 icon "Smallbanner.tga"
 description "An overhaul mod. Flavor, balance and content." 
 modprio 1 # Will be overwritten by other mods in case of conflict.
@@ -2976,9 +2977,9 @@ str                            4
 mor                            4 
 mr                             6 
 rank                          -1 # Back rank.
-siegeweapon 12                "Fires of Inferno"
-rangedweapon50s 512 	      "Unholy Fervor"
-rangedweapon		      12   "Fires of Inferno"
+siegeweapon 8                "Fires of Inferno"
+rangedweapon50x 512 	      "Unholy Fervor"
+rangedweapon		      8  "Fires of Inferno"
 meleeweapon                0   "Dagger"
 meleeweapon                0   "Dagger"
 slow
@@ -3383,6 +3384,47 @@ addstring     "c*Succubus"
 rebatefx25             2 # Units with rebate 2 get 25% rebate on the cost of the ritual.
 descr "With this ritual the Demonologist will summon a high ranking demon and try to control it.  The more human sacrifices used, the greater the chance of successfully binding the demon.  The greater demons are second only to the demon lords in power, and most can command armies, cast spells and perform rituals to summon more demons."
 
+selectritual "Personal Gate"
+level 9
+nostart
+free
+
+selectritual "Returning"
+level 9
+nostart
+free
+
+newritual "Personal Gate"    # Now returns to a random land location instead of home citadel, as indicated by flavor text 
+ritpow                 3 # Demonology
+level                  1
+cost              4   10 # 10 Sacrifices
+# fx1034               4 # [notplanereq]: Inferno; cannot be cast on this plane.
+setplane               4 # Randomloc etc. will use this plane: Inferno.
+randomloc              1 # Sets target location to a random place on the map as follows: random land location.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+teleportloc            1 # Teleport caster alone to target location.
+centerloc                # Center screen on target location.
+closewin                 # Closes cast ritual window.
+airare                -1 # AI will never cast this ritual.
+rarestart                # Reduced chance of starting with this ritual.
+descr "Visiting Inferno is quite easy for a Demonologist.  With this ritual he negotiates a safe passage there for himself alone.  Unfortunately getting back from there is not quite as easy."
+
+newritual     "Returning"                                                 #  87
+ritpow                 3 # Demonology
+level                  2
+cost              4   10 # 10 Sacrifices
+planereq               4 # Can only be cast on this plane: Inferno.
+setplane 0
+randomloc              1 # Sets target location to a random place on the map as follows: any land location.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+teleportloc            1 # Teleport caster alone to target location.
+centerloc                # Center screen on target location.
+closewin                 # Closes cast ritual window.
+nodemon                  # Demons cannot learn this ritual.
+rarestart                # Reduced chance of starting with this ritual.
+afterprev
+descr "This ritual is a life saver if you should ever end up in Inferno for some reason.  The ritual will transport the Demonologist back to Elysium.  Not necessarily a safe location in Elysium, but it should be safer than staying in the Inferno at least."
+
 newritual "Mass Gate"
 ritpow                  3 # Demonologist
 level                   2
@@ -3390,7 +3432,7 @@ cost                    4 125 # 100 Sacrifices
 rarestart
 noplanereq               4 # [notplanereq]: Inferno; cannot be cast on this plane.
 setplane                4
-randomloc               1
+randomloc               1 # any land location
 soundfx                 57
 teleportloc             2
 centerloc
@@ -3403,13 +3445,13 @@ level                   3
 cost              	4 125 # 1250 Sacrifices
 planereq                4
 setplane                0
-randomloc               5
+randomloc               1 # Any land location 
 soundfx                 57
 teleportloc             2
 centerloc
 closewin
 afterprev
-descr "With the aid of a Goetic Master, an army can be returned to Elysium."
+descr "With the aid of a Goetic Master, an army can be returned to Elysium. Not necessarily a nice place in Elysium, but still usually better than staying in Inferno."
 
 newritual "Enter Soul Contract "
 copyritual "Enter Soul Contract"
@@ -3785,8 +3827,42 @@ copystats "Doppel Spawn"
 newmonster    "Androphag Archer" 1                                       
 copystats "Androphag Archer"
 
+# No longer unkillable by some classes, but serves same function as before
+
 selectmonster "Creeping Doom"
+clearspec
+clearweapons
+armor 10
+hp 18 				#From 11
+mr 4 				#From 10
+mor 99
+str 1
+meleeweapon 5  51 	#extra attacks at lower damage
+meleeweapon 5  51
+meleeweapon 5  51
+meleeweapon 5  51
+meleeweapon 5  51
+meleeweapon 5  51
+meleeambush 1
+slashres
+pierceres
+bluntres
+swamp
+float
+swamp1
+jungle1
+wall
+diseaseres
+swallowres
 affres 100
+noslots
+size2x2
+animal
+fireres -50
+coldres -200
+poisonres 100
+extraeyes 100
+tiny
 
 selectmonster "Wyrm"
 spr1 "Sprites/Wyrm1.tga"
@@ -4870,9 +4946,9 @@ aoe                  0 # Area: single target.
 an                     # Armor negating.
 sound                1 # spear.smp (Spear)
 next
-nextdmg 9999
+nextdmg 20
 
-newweapon "Scatter" # AOE 2 fear that only affects the bees, make them scatter at random intervals. They get a human-tag to make it work, which will make them targets for conversion (morale d10) and healing. For practical purposes of no consequence.
+newweapon "Scatter" # AOE 2 fear that only affects the bees, making them scatter at random intervals.  human-tag needed to make it work. For practical purposes of this is of no consequence.
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
 init                 1
@@ -4895,6 +4971,7 @@ mor 15
 str 1
 rank 1 
 frontpos
+flying
 clearweapons
 meleeweapon 1 "Bee Sting"
 meleeweapon 1 "Bee Sting"
@@ -8461,15 +8538,14 @@ affres 75
 diseaseres
 immortalap 12
 	
-selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back. 
+selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back.  Edit: in other news, he does not. The X-bonus mod commands are broken. 
 power 45 2 
 hadesres 100
 goldbonus                     50 	# 50% bonus to all gold income for the player that owns this unit while it exists. 
-tradebonus                    50 	# 50% bonus to all trade income for the player that owns this unit while it exists.
+tradebonus                   50  # 50% bonus to trade 
+gatherlifeforce
 	
 selectmonster "God Emperor of the Underworld"
-power 45   3
-power -2 3 				#Good res powers
 immortal
 reformloc -2
 hadesres 100
@@ -8478,7 +8554,6 @@ unaging
 affres 75
 diseaseres
 goldbonus                     50 	# 50% bonus to all gold income for the player that owns this unit while it exists.
-tradebonus                    50 	# 50% bonus to all trade income for the player that owns this unit while it exists.
 planeshift 1
 immortalap 12
 gatherlifeforce
@@ -8917,41 +8992,8 @@ selectritual "Apotheosis"
 aialways 999
 airestrig 1000
 
-newritpow #Dark Emperor Necromancy
+# ----------- Dark Emperor Powers ---------------------# 
 
-selectritual "Planar Swap" 1
-free
-level 9
-
-newritual "Undying Loyalty"
-ritpow                45 # Dark Emperor
-level 2
-free
-apcost -1
-cost 14 10
-cost 1 20
-summoning
-addstring "5*Longdead Triarius & 5*Longdead Principe" 
-addstring "10*Longdead Hastatus"
-addstring "4*Longdead Triarius & 6*Longdead Hastatus"
-addstring "3*Longdead Principe & 7*Longdead Hastatus"
-descr "When our current Emperor was coronated he decreed that all citizens would serve him in both life and death. The bones of the dead gladly rise to fight His enemies once more. ^This ritual raises a number of principe, hastati or triarii who are equipped with their respective armaments."
-
-newritual "Gates of Perdition"
-ritpow                45 # Dark Emperor
-level 3
-free
-cost 13 500
-terr -28 #Towns or cities
-planereq 0
-alterloc 87 #Haunted City 
-makeportal 1000 #gateway to hades
-planeloc 5 #Hades, same place
-soundfx 57
-makeportal 1000
-centerloc
-descr "The Emperor's ambitions extend beyond the limits of Elysium, and he wishes to rule both the realms of the living and the dead. This ritual opens a permanent gateway into Hades. The ritual demands the sacrifice of an entire city's populace to tear the boundary between the worlds. Restless spirits will cross over to populate the city, transforming it into a haunted ruin."
-	
 newritual     "Imperial Wedding"                                          
 ritpow                45 # Dark Emperor
 level                  2
@@ -8968,6 +9010,91 @@ addstring     "(-)Dark Empress"     # This string will only be used by nomon[...
 addstring     "(-)God Empress of the Underworld"     # This string will only be used by nomon[...] commands.
 descr "The Emperor is married to the Empress to be.  The Emperor's bride is a Renata carefully selected by her order to become the future Empress.  Both the Emperor and a Renata must be present in the capital to perform the wedding ceremony."
 
+newritual     "Appoint Governor"                                          # 503
+descr "The Emperor appoints a governor to rule and raise imperial statues in distant lands."
+ritpow                45 # Dark Emperor
+level                  2
+cost              0  100 # 100 Gold
+terr                 -28 # Required terrain: towns+.
+summoning                # The ritual will summon the monsters specified in a random string.
+start                    # Start with this ritual instead of the others.
+addstring     "c*Magistratus"
+
+		# ------- God Emperor of the Underworld Version 
+
+selectritual "Planar Swap" 1
+free
+level 9
+
+newritual     "Erect Statue"                                              # 311
+ritpow                46 # Dark Emperor
+level                  2
+cost              0  100 # 100 Gold
+terr                -115 # Required terrain: settlements and former settlements.
+apcost                 3 # Actual AP cost: 4.
+summoning                # The ritual will summon the monsters specified in a random string.
+nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
+free                     # Always start with this ritual in addition to the others.
+addstring     "(-)Statue of the Underworld"     # This string will only be used by nomon[...] commands.
+addstring     "Statue of the Underworld"
+gainbless 10
+descr "No major settlement is complete without its own gigantic statue of the Emperor.  The statue will guard the village from beasts and brigands and in return the villagers will be fully loyal to the Emperor and nothing will be withheld from the tax collection.  There can only be one statue of the Emperor in a single settlement.  After all, there is only one Emperor."
+
+newritual     "Appoint Governor"                                          # 503
+ritpow                46 # Dark Emperor
+level                  2
+cost              0  100 # 100 Gold
+terr                 -28 # Required terrain: towns+.
+summoning                # The ritual will summon the monsters specified in a random string.
+start                    # Start with this ritual instead of the others.
+addstring     "c*Magistratus"
+descr "The Emperor appoints a governor to rule and raise imperial statues in distant lands."
+
+newritual     "Imperial Wedding"                                          
+ritpow                46 # Dark Emperor
+level                  2
+cost              0  400 # 400 Gold
+terr                 -22 # Required terrain: a capital.
+promotion             -1 # Promote 1 unit to a commander and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+nomonworldreq          1 # Monsters in strings beginning with "(-)" in the world must be fewer than 1.
+free                     # Always start with this ritual in addition to the others.
+addstring     "Renata"
+addstring     "Dark Empress"     # Unique.
+addstring     " Renata"
+addstring     "Dark Empress"     # Unique.
+addstring     "(-)Dark Empress"     # This string will only be used by nomon[...] commands.
+addstring     "(-)God Empress of the Underworld"     # This string will only be used by nomon[...] commands.
+descr "The Emperor is married to the Empress to be.  The Emperor's bride is a Renata carefully selected by her order to become the future Empress.  Both the Emperor and a Renata must be present in the capital to perform the wedding ceremony."
+
+newritual "Undying Loyalty"
+ritpow                46 # God Emperor of the Underworld 
+level 2
+free
+apcost -1
+cost 14 10
+cost 1 20
+summoning
+addstring "5*Longdead Triarius & 5*Longdead Principe" 
+addstring "10*Longdead Hastatus"
+addstring "4*Longdead Triarius & 6*Longdead Hastatus"
+addstring "3*Longdead Principe & 7*Longdead Hastatus"
+descr "When our current Emperor was coronated he decreed that all citizens would serve him in both life and death. The bones of the dead gladly rise to fight His enemies once more. ^This ritual raises a number of principe, hastati or triarii who are equipped with their respective armaments."
+
+newritual "Gates of Perdition"
+ritpow                46 # God Emperor of the Underworld
+level 3
+free
+cost 13 500
+terr -28 #Towns or cities
+planereq 0
+alterloc 87 #Haunted City 
+makeportal 1000 #gateway to hades
+planeloc 5 #Hades, same place
+soundfx 57
+makeportal 1000
+centerloc
+descr "The Emperor's ambitions extend beyond the limits of Elysium, and he wishes to rule both the realms of the living and the dead. This ritual opens a permanent gateway into Hades. The ritual demands the sacrifice of an entire city's populace to tear the boundary between the worlds. Restless spirits will cross over to populate the city, transforming it into a haunted ruin."
+	
 newritpow #Dark Empress
 
 newritual     "Apotheosis"                                                
@@ -8985,6 +9112,8 @@ descr "Ruling over Elysium is a high achievement, but even the greatest ruler pa
 
 selectmonster "Dark Empress"
 power 0 2
+
+		# ----------  Magistratus -----------------
 
 selectritual "Erect Imperial Statue"
 nostart
@@ -9041,7 +9170,7 @@ randnewloc -58 #gold income
 scryloc 5 #just the square
 soundfx 57
 closewin
-descr The Magistratus dispatches trusted officials to conduct a census of the local population, assessing taxable citizens and evaluating the province's wealth. This ritual reveals a random source of gold income."
+descr "The Magistratus dispatches trusted officials to conduct a census of the local population, assessing taxable citizens and evaluating the province's wealth. This ritual reveals a random source of gold income."
 
 newritual "Issue Trade Charter"
 ritpow 57
@@ -9096,6 +9225,7 @@ addstring     "(-)Statue of the Underworld"     # This string will only be used 
 addstring     "Statue of the Underworld"
 addstring     "(&)Dark Emperor"     # This string will only be used by minmonreq, monworldreq, or monplayerreq commands.
 addstring     "(&)God Emperor of the Underworld"     # This string will only be used by minmonreq, monworldreq, or monplayerreq commands.
+gainbless 10
 descr "No major settlement is complete without its own gigantic statue of the Emperor, ceremonially inaugurated by his loyal Flamen. The statue will guard the village from beasts and brigands and in return the villagers will be fully loyal to the Emperor and nothing will be withheld from the tax collection.  There can only be one statue of the Emperor in a single settlement.  After all, there is only one Emperor. ^^The player must control a Dark Emperor for this ritual to be cast."
 
 selectmonster "Flamen"
@@ -19581,7 +19711,7 @@ likessouth -5
 likesnorth 5
 
 addmercrec  "Swanherd"                    		15  2   20   0    0
-recxcost     10   5                            		#  5 Sapphires additional cost.
+recxcost     10   5                            		#  5 Emeralds additional cost.
 addunitrec "Eagle Guard"                  		100 5   50  0  5
 recxcost 7 5
 recxcost 8 5
@@ -23050,9 +23180,10 @@ squareevent
 +turnnbr -1
 +player 25
 +chance 1
++chance 25
 +plane 2
-+terrain 194 #Cloud Forest
-alterterrain 813 # Sky Pool
++terrain 68 #Deep Sea
+alterterrain 170 # Sky Pool
 newunits 24 "1d20*Mist Warrior" 
 holdit
 endevent
@@ -23371,6 +23502,581 @@ randloc 1 17
 +terrain 17 #Town
 alterterrain 278 # Sacred City
 newunits 29 "2d6*Heavenly Sword & 6*Angel & 4*Angelic Warrior & 1*Seraph"
+holdit
+endevent
+
+# -------------------- Sea ------------------------------------------#
+
+
+			# ------------------Sea Monsters ---------------
+
+newmonster "Soulless Pirate"
+copystats "Armored Soulless"
+spr1 "Sprites/Soullesspirate1.tga"
+spr2 "Sprites/Soullesspirate2.tga"
+armor 0
+descr "The appearance of Soulless among shipwrecks and tidal graves has raised certain questions within the academic faculties. While spontaneous undead are well documented near graveyards or battlefields, the occurrence of sea-borne Soulless in the absence of an animating will remains less understood. One prevailing theory holds that seawater, having passed through innumerable corpses, may retain some faint property of death. In sufficient concentration -such as within the hull of a sunken ship- this might permit the reanimation of drowned bodies, provided the flesh remains suitably intact. The theory further posits that the water acts not as a necromantic agent itself, but as a medium through which residual necromantic essence may propagate. Alternative explanations involve the hypothetical presence of an underwater necromancer, a figure the Academy remains eager to engage in scientific dialogue. To encourage such an encounter, several waterproof placards have been affixed to coastal stones and driftwood, each bearing particularly stimulating hypotheses in magical theory. These efforts are supplemented by a long-running bottle campaign, in which carefully penned theses and polite invitations are set adrift under the Academy seal. Thus far, no response has been recorded, but it is hoped that intellectual curiosity will eventually outweigh whatever instinct for secrecy such a practitioner may possess."
+
+newmonster "Soulless Captain"
+copystats "Armored Soulless"
+spr1 "Sprites/Soullesscaptain1.tga"
+spr2 "Sprites/Soullesscaptain2.tga"
+hp 18
+armor 1
+meleeweapon                1   2 # Broadsword: d7 Slash damage.
+descr "The appearance of Soulless among shipwrecks and tidal graves has raised certain questions within the academic faculties. While spontaneous undead are well documented near graveyards or battlefields, the occurrence of sea-borne Soulless in the absence of an animating will remains less understood. One prevailing theory holds that seawater, having passed through innumerable corpses, may retain some faint property of death. In sufficient concentration -such as within the hull of a sunken ship- this might permit the reanimation of drowned bodies, provided the flesh remains suitably intact. The theory further posits that the water acts not as a necromantic agent itself, but as a medium through which residual necromantic essence may propagate. Alternative explanations involve the hypothetical presence of an underwater necromancer, a figure the Academy remains eager to engage in scientific dialogue. To encourage such an encounter, several waterproof placards have been affixed to coastal stones and driftwood, each bearing particularly stimulating hypotheses in magical theory. These efforts are supplemented by a long-running bottle campaign, in which carefully penned theses and polite invitations are set adrift under the Academy seal. Thus far, no response has been recorded, but it is hoped that intellectual curiosity will eventually outweigh whatever instinct for secrecy such a practitioner may possess."
+
+newmonster "Hermit Crab"
+spr1 "Sprites/Hermitcrab1.tga"
+spr2 "Sprites/Hermitcrab2.tga"
+armor                          4 # Armor.
+hp                            75 # Hit Points.
+str                            8 # Strength.
+mor                            2 # Morale.
+mr                             2 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon               22 520 # Pincer: d22 Slash damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+wander 9
+wandermaxdist 3
+wanderrest 85
+terrstealth 854
+drawsize -30
+descr "The Giant Hermit Crab is a solitary and unusually deliberate species, often mistaken for driftwood or debris until it begins to move. Unlike its more aggressive cousin the Giant Crab, the Hermit Crab displays signs of problem solving behavior, and according to frustrated fishermen, holds grudges. It selects its shell with great care, frequently repurposing shipwrecks, broken statues, or even outhouses, and will defend it with surprising tenacity. It has been known to revisit coastal villages that disturbed its scavenging, sometimes flipping boats or dragging off gear with what appears to be quiet satisfaction."
+
+newweapon     "Paralyzing Tentacles"                                            # 721
+trgrank              1 # Target: any enemy in range.
+range                1
+init                 1
+dmgtype              7 # Magic.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  -3 # 3 targets.
+an                     # Armor negating.
+mind                   # Doesn't affect mindless units.
+flymode              4 # Very fast particle effect, one for each strike or square hit.
+flylook            210
+flysound            70 # echo.wav
+look                54
+next
+nextdmg             16 # 
+
+newweapon     "Tentacle Paralyze"                                   # 722
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 1
+dmgtype             12 # Special damage (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mr                     # Resisted by rolling 2d4 < Magic Resistance.
+an                     # Armor negating.
+poison
+
+newmonster "Giant Anemone"
+spr1 "Sprites/Giantanemone1.tga"
+spr2 "Sprites/Giantanemone2.tga"
+armor                          0 # Armor.
+hp                           122 # Hit Points.
+str                            7 # Strength.
+mor                            8 # Morale.
+mr                            6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon 5 "Paralyzing Tentacles"
+stationary
+immobile
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+poisonres                    100 # Poison immunity.
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+charmres
+sleepres
+bluntres                         # Blunt resistance (half damage).
+poisoncloud                    3 # Poison Aura (3): This unit is surrounded by a radius 2 cloud which will poison anyone standing in it.
+descr "Sea anemones and garden anemones are entirely unrelated species. If one wishes to distinguish between them, scent is usually sufficient: the garden variety has a mild floral fragrance, while the sea anemone lives underwater, and attempts to smell it will result primarily in water entering the nose.^^It is equally important to differentiate between the ordinary sea anemone and the giant sea anemone. The former is small and only modestly hostile; the latter is significantly larger and known to consume unwary sailors. Reports of faint sea shanties heard near the larger specimens have been noted, though these are generally attributed to nerves or low morale."
+
+newmonster "Sea Witch"
+spr1 "Sprites/Seawitch1.tga"
+spr2 "Sprites/Seawitch2.tga"
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                            8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweaponbonus           4   2 # Hydromancy at level 2.
+meleeweapon                3  12 # Claw: d3 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+female                           # Female.
+poisonres                     75 # 75 Poison Resistance.
+water 
+randommisc                    15 # 15% chance to spawn with a random misc magic item.
+nametype 44
+spawn1d6mon 7
+descr "Drowning was once the standard procedure for managing meddlesome crones. This had unintended consequences as some, it turns out, thrived underwater. In hindsight this should have been expected.  By the time the modern concept of witch burning was introduced, it was already too late. Slimy and soaked in saltwater, Sea Witches are notoriously difficult to set alight."
+
+newmonster "Sea Dragon"
+copystats "Sea Dragon"
+wander 9
+wandermaxdist 6
+wanderrest 70
+
+newmonster "Void Larva"
+spr1 "Sprites/Voidlarva1.tga"
+spr2 "Sprites/Voidlarva2.tga"
+armor                          0 # Armor.
+hp                            54 # Hit Points.
+str                            6 # Strength.
+mor                           15 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                2  44 # Tentacle: d2 Blunt damage.
+meleeweapon                2  44 # Tentacle: d2 Blunt damage.
+meleeweapon                2  44 # Tentacle: d2 Blunt damage.
+meleeweapon                2  44 # Tentacle: d2 Blunt damage.
+meleeweapon                2  44 # Tentacle: d2 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
+horror                           # Likes to kill sentient people, also isn’t scared of the void.
+void2                            # Likes the void (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
+charmres
+coldres                      100 # Cold immunity.
+sleepres                         # Sleep immunity.
+acutesenses                      # Can see units with Stealth or Forest Stealth.
+invisible
+voidsanity                    30 # Void Sanity: 30: reduces insanity gains (like armor).
+meleeambush 1
+confusionaura 2
+spawnmon 1
+descr "Void Larvae are the immature forms of Horrors, birthed in places where the veil between worlds has thinned. Like all horrors, they feed on sensations and gestate in places of suffering and despair. Their presence alone can disturb dreams or cause the weak-willed to weep without reason. It is believed that Void Larvae are not truly alive in any mortal sense, but fragments of thought or will from deeper realms."
+
+newmonster "Mind Slime Horror"
+copystats "Mind Slime Horror" 
+
+newmonster " Soulless"
+copystats "Soulless" 
+terrstealth 854
+
+newmonster " Siren"
+copystats "Soulless" 
+terrstealth 854
+wander 9
+wandermaxdist 3
+wanderrest 85
+
+			#  ------------ Sea Terrain ----------------------------- # 
+
+selectterr 851
+name "Sea Bastion"
+spr "Sprites/Seabastion.tga"
+gold              2 # Gold:  2
+sacr              4 # Sacrifices:  2
+hands             3 # Hands:  1
+lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+dead              3 # The location starts with 3 * d6 corpses in it.
+apcost            1 # Action Point cost for moving through the terrain: 1
+batmap            28 # Battle map: port
+walls           # Siege weapons can be used in battles fought in this terrain square.
+woodengate          # The gate of the fort is wood.
+citadel             # The terrain functions as a citadel when owned.
+farsight            # The terrain gives increased vision range when there are units present there.
+visible
+realport            # Ships can be recruited here.
+port                # Partly Water (ships can enter this terrain).
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+water
+nodrown
+
+selectterr 852
+name "Free City"
+spr "Sprites/Freecity.tga"
+gold              5 # Gold:  5
+trade             3 # Trade:  3
+sacr              4 # Sacrifices:  4
+hands             3 # Hands:  3
+bonusrelics       3 # Relics:  3
+lifeforce        60 # 6 Lifeforce can be drained from this square per turn.
+dead              5 # The location starts with 5 * d6 corpses in it.
+pop              50 # Population level: 50
+apcost            1 # Action Point cost for moving through the terrain: 1
+batmap           39 # Battle map: city.
+walls           # Siege weapons can be used in battles fought in this terrain square.
+irongate          # The gate of the fort is wood.
+citadel             # The terrain functions as a citadel when owned.
+settlement          # Defines the terrain as a human settlement.
+library1            # Library level +1.
+town2               # Two town points for the purpose of mercenary and merchant offers.
+realport            # Ships can be recruited here.
+port                # Partly Water (ships can enter this terrain).
+visible
+
+selectterr 853
+name "Giant Corals"
+spr "Sprites/Giantcorals.tga"
+gold              2 # Gold:  2
+herbs             5 # Herbs:  5
+fungus            3 # Fungus:  3
+lifeforce        20 # 1 Lifeforce can be drained from this square per turn.
+apcost            2 # Action Point cost for moving through the terrain: 2
+water               # The terrain is water and cannot be passed, unless it is frozen or the monsters moving through it are amphibian or aquatic.
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+visible
+
+selectterr 854
+name "Shoals"
+spr "Sprites/Shoal.tga"
+gold              1 # Gold  1
+herbs             2 # Herbs:  2
+fungus            1 # Fungus:  1
+weed              2 # Weed:  2
+lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+apcost            2 # Action Point cost for moving through the terrain: 2
+desert
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+visible
+
+selectterr 855
+name "Reef"
+spr "Sprites/Reef.tga"
+gold              1 # Gold  1
+apcost 6
+water
+mountain
+lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+apcost            2 # Action Point cost for moving through the terrain: 2
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+misty
+mistrare 25
+visible
+farsight            # The terrain gives increased vision range when there are units present there.
+
+selectterr 856
+name "Ship Wreck"
+spr "Sprites/Shipwreck.tga"
+water
+lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+apcost            2 # Action Point cost for moving through the terrain: 2
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+visible
+
+selectterr 857
+name "Underwater Ruins"
+spr "Sprites/Underwaterruins.tga"
+water
+lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
+apcost            2 # Action Point cost for moving through the terrain: 2
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+visible
+batmap 51
+
+selectterr 858 
+name "Leviathan´s Grave"
+spr "Sprites/Leviathansgrave.tga"
+gold              1 # Gold:  1
+herbs             4 # Herbs:  4
+fungus            2 # Fungus:  2
+water
+lifeforce        20 # 1 Lifeforce can be drained from this square per turn.
+apcost            2 # Action Point cost for moving through the terrain: 2
+seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
+visible
+
+				# ---------- Sea Spawning Events -----------------------
+
+playerevent #Sea Bastion
++turnnbr -1
++player 25
++chance 15
++minterrains 1 9 0
+randloc 0 68
++terrain 68
+newunits 24 "3d6*Mariner & 3*Ballista"
+alterterrain 851
+holdit
+endevent
+
+playerevent #Sea Bastion
++turnnbr -1
++player 25
++chance 15
++minterrains 1 9 0
+randloc 0 68
++terrain 68
+newunits 24 "1*Soulless Captain & 3d6*Soulless Pirate & 1d4*Ghost & 1d4*Ballista"
+alterterrain 851
+holdit
+endevent
+
+playerevent #Free City
++turnnbr -1
++player 25
++chance 15
++minterrains 1 207 0
+randloc 0 311
++terrain 311
+newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 2d6*Mariner & 2d6*Pirate & 1*Magus Engineer & 2*Merchant"
+alterterrain 852
+holdit
+endevent
+
+playerevent #Free City
++turnnbr -1
++player 25
++chance 15
++minterrains 1 83 0
+randloc 0 311
++terrain 311
+newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 3d6*Pirate &  3d6*Mariner & 1*Engineer Magus & 2*Merchant"
+alterterrain 852
+holdit
+endevent
+
+playerevent #Free City
++turnnbr -1
++player 25
++chance 20
++minterrains 1 124 0
+randloc 0 311
++terrain 311
+newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 3d6*Pirate & 3d6*Mariner & 1*Engineer Magus & 2*Merchant"
+alterterrain 852
+holdit
+endevent
+
+playerevent #Giant Corals
++turnnbr -1
++player 25
++chance 12
+randloc 0 68
++terrain 68
+newunits 24 "1*Ancient Kraken"
+alterterrain 853
+holdit
+endevent
+
+playerevent #Giant Corals
++turnnbr -1
++player 25
++chance 12
+randloc 0 68
++terrain 68
+newunits 24 "1d2*Giant Anemone"
+alterterrain 853
+holdit
+endevent
+
+playerevent #Shoals
++turnnbr -1
++player 25
++chance 10
+randloc 0 69
++terrain 69
+newunits 24 "c* Siren & 3d4* Siren"
+alterterrain 854
+holdit
+endevent
+
+playerevent #Shoals
++turnnbr -1
++player 25
++chance 6
+randloc 0 69
++terrain 69
+newunits 24 "4d6* Soulless"
+alterterrain 854
+holdit
+endevent
+
+playerevent #Shoals
++turnnbr -1
++player 25
++chance 6
+randloc 0 69
++terrain 69
+newunits 24 "4d6* Soulless & 1*Treasure"
+alterterrain 854
+holdit
+endevent
+
+playerevent #Shoals
++turnnbr -1
++player 25
++chance 10
+randloc 0 69
++terrain 69
+newunits 24 "c*Hermit Crab & 1d3*Hermit Crab"
+alterterrain 854
+holdit
+endevent
+
+playerevent #Reef
++turnnbr -1
++player 25
++chance 6
+randloc 0 69
++terrain 69
+newunits 24 "2d2*Banshee & 1*Treasure"
+alterterrain 855
+holdit
+endevent
+
+playerevent #Reef
++turnnbr -1
++player 25
++chance 6
+randloc 0 68
++terrain 68
+newunits 24 "1d3*Sea Witch & 1d4*Giant Crab & 2d6*Lobster"
+alterterrain 855
+holdit
+endevent
+
+playerevent #Reef
++turnnbr -1
++player 25
++chance 6
+randloc 0 68
++terrain 68
+newunits 24 "c* Sea Dragon & 1*Treasure"
+alterterrain 855
+endevent
+
+playerevent #Shipwreck
++turnnbr -1
++player 25
++chance 8
+randloc 0 69
++terrain 69
+newunits 24 "1*Kraken & 1*Treasure"
+alterterrain 856
+holdit
+endevent
+
+playerevent #Shipwreck
++turnnbr -1
++player 25
++chance 8
+randloc 0 69
++terrain 69
+newunits 24 "1*Soulless Captain & 4d6*Soulless Pirate & 1*Treasure"
+alterterrain 856
+holdit
+endevent
+
+playerevent #Underwater Ruins
++turnnbr -1
++player 25
++chance 15
+randloc 0 68
++terrain 68
+newunits 24 "2d6*Ichtyid & 2d4*Ichtyid Raider & 2d4*Small Shark"
+alterterrain 857
+holdit
+endevent
+
+playerevent #Leviathans Grave
++turnnbr -1
++player 25
+#+chance 8
+randloc 0 68
++terrain 68
+newunits 26 "2d4*Void Larva"
+alterterrain 858
+holdit
+endevent
+
+playerevent #Leviathans Grave
++turnnbr -1
++player 25
++chance 8
+-minterrains 1 585 0
+randloc 0 68
++terrain 68
+newunits 26 "1*Ancient Kraken"
+alterterrain 858
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++chance 25
++plane 0
++terrain 68 #Deep Sea
+alterterrain 170 # Deep Sea Gem Deposit
+newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++chance 25
++plane 0
++terrain 68 #Deep Sea
+alterterrain 171 # Deep Sea Gem Deposit
+newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++chance 25
++plane 0
++terrain 68 #Deep Sea
+alterterrain 172 # Deep Sea Gem Deposit
+newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++chance 25
++plane 0
++terrain 68 #Deep Sea
+alterterrain 173 # Deep Sea Gem Deposit
+newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++chance 25
++plane 0
++terrain 68 #Deep Sea
+alterterrain 174 # Deep Sea Gem Deposit
+newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++plane 0
++terrain 68 #Deep Sea
+alterterrain 45 # Red Corals
+newunits 24 "1d10*Small Shark & 1d3*Great Shark"
+holdit
+endevent
+
+squareevent
++turnnbr -1
++player 25
++chance 1
++plane 0
++terrain 68 #Deep Sea
+alterterrain 46 # White Corals
+newunits 24 "1d6*Hippocampus"
 holdit
 endevent
 
@@ -27473,3 +28179,8 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+	
+
+
+
+  
