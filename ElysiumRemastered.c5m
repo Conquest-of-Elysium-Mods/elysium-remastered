@@ -13782,7 +13782,7 @@ spr1 "Sprites/Livingmercury1.tga"
 spr2 "Sprites/Livingmercury2.tga"
 armor                          0 
 hp                            40 
-str                            7 
+str                           10 
 mor                           99 
 mr                             4 
 rank                           1 # Front rank.
@@ -13808,7 +13808,7 @@ spr1 "Sprites/Livingmercury1.tga"
 spr2 "Sprites/Livingmercury2.tga"
 armor                          0 
 hp                            40 
-str                            5 
+str                           10 
 mor                           99 
 mr                             4 
 rank                           1 # Front rank.
@@ -18400,7 +18400,7 @@ spr1 "Sprites/Foulsand1.tga"
 spr2 "Sprites/Foulsand2.tga"
 armor                          0 
 hp                            38 
-str                            7 
+str                           10 
 mor                           99 
 mr                             5 
 rank                           1 # Front rank.
@@ -18600,10 +18600,10 @@ lifeforce 20
 huge
 nonmaginvul
 inanimate
-fireres 75
-coldres 75
+fireres 100
+coldres 100
 poisonres 100
-acidres 75
+acidres 100
 diseaseres
 affres 100
 unaging
