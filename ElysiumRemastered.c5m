@@ -1418,6 +1418,85 @@ mr 8 #from 6
 clearweapons
 siegeweapon               12 854 			# Dread Projection: Fear: d12 vs morale.
 rangedweaponbonus          9 855 			# Dread Projection: Fear: d9 vs morale.
+
+# Add more Longdead archers to the pool (+ 3 archers)
+
+newmonster    "Longdead"                                                 #  309
+descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
+spr1 "Sprites/Longdead_archer1.png"
+spr2 "Sprites/Longdead_archer2.png"
+armor                          0 # Armor.
+hp                             3 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   7 # Bow: d3 Pierce damage.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+allitemslots                     # Has the full set of item slots.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+
+
+newmonster    "Longdead"                                                 #  309
+descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
+spr1 "Sprites/Longdead_archer1.png"
+spr2 "Sprites/Longdead_archer2.png"
+armor                          0 # Armor.
+hp                             3 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   7 # Bow: d3 Pierce damage.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+allitemslots                     # Has the full set of item slots.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+
+
+newmonster    "Longdead"                                                 #  309
+descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
+spr1 "Sprites/Longdead_archer1.png"
+spr2 "Sprites/Longdead_archer2.png"
+armor                          0 # Armor.
+hp                             3 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   7 # Bow: d3 Pierce damage.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+allitemslots                     # Has the full set of item slots.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+
+
+
 	
 selectmonster "Wight" 						# Can overheal with drain life, a minor buff
 hpoverflow 1
@@ -1477,7 +1556,11 @@ fast
 	
 selectmonster "Abomination" 
 deployoutside 1 							# Deploys outside in fort battles, does not seem like something you would keep inside
-	
+
+selectweapon 476
+aoe 2
+
+
 selectmonster "Carrion" 					# better suicide and scouting but stays dead longer
 putridexpl 5 								#from 3
 immortalap 9								#From 6
@@ -1581,7 +1664,7 @@ rank                           1 # Front rank.
 meleeweapon                0  23 # Halberd: d8 Slash damage.
 human                            
 allitemslots                     # Has the full set of item slots
-minorstartaff 10
+minorstartaff 20
 descr "The Forlorn Hope is a veteran of a lost war, now working for the Necromancer. He fights with little regard for his own safety, as if seeking redemption in the darkness."
 
 newmonster "Villain"
@@ -1608,7 +1691,7 @@ str                            4
 mor                            2 
 mr                             4 
 rank                           1 # Front rank.
-meleeweapon                0   5 # Staff: d3 Blunt damage.
+meleeweapon               -1   5 # Staff: d3 Blunt damage.
 human                            
 allitemslots                     # Has the full set of item slots.
 minorstartaff 25
@@ -1838,7 +1921,7 @@ descr "The corpse of a powerful beast, reanimated to serve the necromancer. Is h
 
 newweapon "Shadow Breath"
 trgrank              9 # Target: any enemy in range.
-range                5
+range                6
 init                 4
 dmgtype              7 # Magic.
 dmg                  5 
@@ -1878,7 +1961,7 @@ descr "When a mighty creature dies a violent death, its rage may keep it tethere
 	
 newweapon "Eyes of the Bodak"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
-range               7
+range               8
 init                10
 dmgtype             12 # Special damage (determined by bitmask where this attack is used).
 dmg                  0 
@@ -1938,7 +2021,7 @@ selectritual "Raven Spy" 						# Two utility spells are rarestart, for more cons
 rarestart
 	
 selectritual "Pierce the Veil of Death" 
-rarestart
+free
 
 selectritual "Ravenous Curse" 					# noew exclusive to Markgraf
 level 9
@@ -2020,7 +2103,7 @@ descr "Summon one or more minor spirits from Hades such as ghost warriors or sha
 newritual "Major Invocation" 
 ritpow                 1 # Necromancy
 level                  2
-cost              5   75 # 75 Hands
+cost              5   60 # 60 Hands
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "(-78)c*Bane Lord & 1d4*Bane"
@@ -2168,11 +2251,14 @@ addstartunits          "Villain"                      5
 addstartunits          "Longdead"                     5
 addstartcom            "Necromancer's Apprentice"
 
+nostdtroops # remove Crossbowman, Swordsman and Heavy Infantry
 clearrec
-#                                       %   No gold die iron
+#                                       		%   No gold die iron
+addunitrec  "Spearman"							100 5 50 0 0
+addunitrec  "Archer"							100 5 50 0 0
 addunitrec "Forlorn Hope"               		100 4 50 0 5
 addunitrec "Villain"                    		100 5 50 0 0 
-addunitrec  "Wretch"                    		100 5 10 0 0
+addunitrec  "Wretch"                    		100 5 25 0 0
 addunitrec  "Soulless Soldier"               	100 5 0 0 5
 reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
 addunitrec  "Armored Soulless"                	100 5 0 0 10
