@@ -1,4 +1,5 @@
 
+
 icon "Smallbanner.tga"
 description "An overhaul mod. Flavor, balance and content." 
 modprio 1 # Will be overwritten by other mods in case of conflict.
@@ -1566,7 +1567,6 @@ deployoutside 1 							# Deploys outside in fort battles, does not seem like som
 
 selectweapon 476
 aoe 2
-
 
 selectmonster "Carrion" 					# better suicide and scouting but stays dead longer
 putridexpl 5 								#from 3
@@ -16767,14 +16767,57 @@ walls
 irongate
 snowok              # Income in this terrain is not affected by snow.
 
+newmonster "Test Subject"
+spr1 "Sprites/Testsubject1.tga"
+spr2 "Sprites/Testsubject2.tga"
+armor                          0 # Armor.
+hp                             2 # Hit Points.
+str                            3 # Strength.
+mor                            1 # Morale.
+mr                             3 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+noslots  
+dmgonterr -1 
+noheal 
+stationary 
+
+newmonster "Test Subject"
+copystats "Hoburg Slinger"
+clearweapons 
+spr1 "Sprites/Testsubject1.tga"
+spr2 "Sprites/Testsubject2.tga"
+armor                          0 # Armor.
+hp                             1 # Hit Points.
+str                            2 # Strength.
+mor                            1 # Morale.
+mr                             3 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+noslots  
+dmgonterr -1 
+noheal 
+stationary 
+drawsize -40
+
+playerevent
++varequal 4 1    
++class -2 "Markgraf"
++ownsloctarg -2 837
++terrain 837
+newunits -2 "1d4*Test Subject"  
+endevent 
+
 selectterr 838
-name                 "Fortified Hoburg " #new version for Markgraf to disable recruitment of hoburg militias and slingers.
-spr "Sprites/Fortifiedhoburg_1.tga"
+name                 "Dark Hoburg " #new version for Markgraf to disable recruitment of hoburg militias and slingers.
+spr "Sprites/Darkhoburg.tga"
 gold              2 # Gold:  2
 trade             1 # Trade:  1
 weed              1 # Weed:  1
 lifeforce        50 # 5 Lifeforce can be drained from this square per turn.
-dead              1 # The location starts with 1 * d6 corpses in it.
+dead              3 # The location starts with 3 * d6 corpses in it.
 apcost            1 # Action Point cost for moving through the terrain: 1
 batmap           10 # Battle map: palisaden.
 walls
@@ -16807,12 +16850,9 @@ newweapon     "Torch"                                            # 295
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
 init                 3
-dmgtype              2 # Blunt.
-dmg                  1 
-aoe                  1 # Area: burst 1.
+dmgtype              4 # fire
+dmg                  2 
 sound                1 # spear.smp (Spear)
-nextwep             411 # Extra effect if target is affected: 411: Fire.
-nextdmg              1 # d1 Fire damage.
 
 newweapon "Ghoul Sword"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -17245,7 +17285,7 @@ pierceres                        # Pierce resistance (half damage).
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
 clumsy                           # 50% chance to miss each attack.
 meleeweapon               -1   1 # Dagger: d1 Pierce damage.
-meleeweapon               1 "Torch"
+meleeweapon               0 "Torch"
 rangedweapon              0 "Aimed Shot"
 descr "The Black Hoods are the Markgraf's elite rangers, drawn from the finest hunters in Markgrafdom-a necessity in a land plagued by beasts and lacking fertile soil. Their unenviable duties include patrolling the outer woods, hunting rebellious undead, and driving off wolves with arrows and torches. Recently, they have expanded their patrols to the streets at night. Rumors quietly suggest a connection between the Black Hoods and the mysterious fire at the Free Hobmark Press, though such topics are rarely discussed openly. For the time being, the Black Hoods ensure that things remain quiet-sometimes uncomfortably so. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
 
@@ -17254,54 +17294,8 @@ copystats "Little Soulless"
 spr1 "Sprites/Littlesoullessworker1.tga"
 spr2 "Sprites/Littlesoullessworker2.tga"
 clearweapons
-armor                          0 
-hp                             4 
-str                            3 
-mor                           99 
-mr                             1 
-rank                           1 # Front rank.
 meleeweapon               -1  88 # Pitchfork: d3 Pierce damage.
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-undead
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-noheal                           # Does not heal naturally.
-diseaseres                       # Disease immunity.
-pierceres                        # Pierce resistance (half damage).
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-clumsy                           # 50% chance to miss each attack.
-stupid
 stationary
-descr "While being one of the basic units in the undead army, the Soulless were also the original workers in the necromantic manufacturies of the Markgraf.  Though slow and sluggish, they worked both day and night, thus earning good money for their proprietor.  Among the first batches it was noted however, that the undead Hoburgher would still stop for second or third breakfasts even without needing to eat more than the occasional brain."
-
-newmonster "Little Soulless Foreman"
-copystats "Little Soulless" 
-spr1 "Sprites/Littlesoullessforeman1.tga"
-spr2 "Sprites/Littlesoullessforeman2.tga"
-clearweapons
-armor                          0 
-hp                             4 
-str                            3 
-mor                           99 
-mr                             1 
-rank                           1 # Front rank.
-meleeweapon               -1  88 # Pitchfork: d3 Pierce damage.
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-undead
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-noheal                           # Does not heal naturally.
-diseaseres                       # Disease immunity.
-pierceres                        # Pierce resistance (half damage).
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-clumsy                           # 50% chance to miss each attack.
-stupid 
-stationary
-limitgold 1 
 descr "While being one of the basic units in the undead army, the Soulless were also the original workers in the necromantic manufacturies of the Markgraf.  Though slow and sluggish, they worked both day and night, thus earning good money for their proprietor.  Among the first batches it was noted however, that the undead Hoburgher would still stop for second or third breakfasts even without needing to eat more than the occasional brain."
 
 newmonster "Little Longdead Worker"
@@ -17309,19 +17303,48 @@ copystats "Little Longdead"
 spr1 "Sprites/Littlelongdeadworker1.tga"
 spr2 "Sprites/Littlelongdeadworker2.tga"
 clearweapons
-meleeweapon -4 441 #pick axe d3
+meleeweapon               -1  88 # Pitchfork: d3 Pierce damage.
 stationary
-descr "According to necromantic economic theory, Longdead are by far the most advantageous form of undead. Though more brittle than the Soulless, the resources required to make them are almost limitless. Longdead also retain a degree of anatomical nimbleness, making them better suited for tasks that demand dexterity or precision, an advantage in many industrial operations."
+descr "Recent necro-economic theory propose Longdead to be the superior choice for large-scale labor. Though more brittle than the Soulless, the resources required to make them are almost limitless. Longdead also retain a degree of anatomical nimbleness, making them better suited for tasks that demand dexterity or precision, an advantage in many industrial operations."
 
-newmonster "Little Longdead Foreman"
-copystats "Little Longdead"
-spr1 "Sprites/Littlelongdeadforeman1.tga"
-spr2 "Sprites/Littlelongdeadforeman2.tga"
+newmonster "Little Soulless Foreman"
+copystats "Little Soulless" 
+spr1 "Sprites/Littlesoullessforeman1.tga"
+spr2 "Sprites/Littlesoullessforeman2.tga"
+clearweapons
+meleeweapon               -1  88 # Pitchfork: d3 Pierce damage.
+stationary
+limitgold 1
+descr "While being one of the basic units in the undead army, the Soulless were also the original workers in the necromantic manufacturies of the Markgraf.  Though slow and sluggish, they worked both day and night, thus earning good money for their proprietor.  Among the first batches it was noted however, that the undead Hoburgher would still stop for second or third breakfasts even without needing to eat more than the occasional brain."
+
+newmonster "Little Soulless Miner"
+copystats "Little Soulless" 
+spr1 "Sprites/Littlesoullessminer1.tga"
+spr2 "Sprites/Littlesoullessminer2.tga"
 clearweapons
 meleeweapon -4 441 #pick axe d3
 stationary
-limitiron 2
-limitgold 2 
+drawsize -40
+descr "While being one of the basic units in the undead army, the Soulless were also the original workers in the necromantic manufacturies of the Markgraf.  Though slow and sluggish, they worked both day and night, thus earning good money for their proprietor.  Among the first batches it was noted however, that the undead Hoburgher would still stop for second or third breakfasts even without needing to eat more than the occasional brain."
+
+newmonster "Little Longdead Miner"
+copystats "Little Longdead"
+spr1 "Sprites/Littlelongdeadminer1.tga"
+spr2 "Sprites/Littlelongdeadminer2.tga"
+clearweapons
+meleeweapon -4 441 #pick axe d3
+stationary
+descr "Recent necro-economic theory propose Longdead to be the superior choice for large-scale labor. Though more brittle than the Soulless, the resources required to make them are almost limitless. Longdead also retain a degree of anatomical nimbleness, making them better suited for tasks that demand dexterity or precision, an advantage in many industrial operations."
+
+newmonster "Little Longdead Overseer"
+copystats "Little Longdead"
+spr1 "Sprites/Littlelongdeadoverseer1.tga"
+spr2 "Sprites/Littlelongdeadoverseer2.tga"
+clearweapons
+meleeweapon -4 441 #pick axe d3
+stationary
+limitiron 1
+limitgold 1 
 descr "According to necromantic economic theory, Longdead are by far the most advantageous form of undead. Though more brittle than the Soulless, the resources required to make them are almost limitless. Longdead also retain a degree of anatomical nimbleness, making them better suited for tasks that demand dexterity or precision, an advantage in many industrial operations."
 
 newmonster "Hobmark Bandit" 
@@ -17367,12 +17390,12 @@ assassinweapon             6 "Stab and Bite" #d6 piercing damage + d4 slash + gh
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
 undead
+stealth 
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 diseaseres                       # Disease immunity.
 allitemslots                     # Has the full set of item slots.
 sensedead                      1 # Can sense the number of corpses of all types in current square.
-stealth                          # 
 descr "This one was once a brutal murderer, and becoming a ghoul has done nothing to improve his temperament. He is now a highly effective assassin, but after a few incidents involving late-night meals in the barracks, he is kept far away from the living soldiers." 
 
 newweapon "Poison "
@@ -17395,9 +17418,9 @@ str                            2
 mor                         3 
 mr                            8 
 rank                          -1 # Back rank.
-spellweapon               55   1 # Alchemy at level 1.
+spellweapon               69   1 # Apothecary at level 1.
 meleeweapon               -1 146 # Dagger: d2 pierce damage + d15 poison
-assassinweapon            20  "Poison " # Poison d20 Pierce damage.
+assassinweapon            20  "Poison " # Poison d20 damage.
 slow                             # The monster only has 2 AP.
 human                            
 allitemslots                     # Has the full set of item slots.
@@ -17433,7 +17456,7 @@ hp                             3
 str                            3 
 mor                            3 
 mr                             6 
-rank                           1 # Front rank.
+rank                           0 
 rangedweapon              -1  27 # Sling: d1 Blunt damage.
 meleeweapon               -1   8 # Short Sword: d4 Pierce damage.
 human                            
@@ -17490,6 +17513,87 @@ fear 1
 wall
 huge
 descr "A crowning achievement of arcane craftsmanship, this massive construct is assembled from the finest components of countless corpses, and illicitly imported clockwork from the Hoburgs. Every sinew, joint, and organ has been meticulously chosen for durability and suitable color, then animated through necromantic spells and galvanic electricity. The ticking noise it makes when walking is considered especially refined."
+
+newweapon     "Corrosive Discharge"                                                 # 669
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                3
+init                 2
+dmgtype             10 # Acid.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  4008 # Area: wide cone 8.
+an                     # Armor negating.
+flymode              3 # Fast particle effect, one for each strike or square hit.
+flylook           99
+flysound           104 # swosh2.sw (Spell Flysound)
+look                49
+sound              108 # sizzle.sw
+
+newweapon     "Corrosive Tentacle"                                            # 667
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 2
+dmgtype              2 # blunt 
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+nextwep            668 # Extra effect if target is affected: 668: Acid.
+nextdmg              5 # d5 Acid damage.
+
+newmonster "Masterpiece"
+spr1 "Sprites/Masterpiece1.tga"
+spr2 "Sprites/Masterpiece2.tga"
+armor 3 
+hp 110
+str 9
+mor                           99 
+mr                             7 
+rank                           1 # Front rank.
+meleeweapon               15  "Caustic Tentacle" # Tentacle: d15 Blunt damage.
+meleeweapon                12 "Spiked Leg" #d12 Pierce damage
+meleeweapon                12 "Spiked Leg" #d12 Pierce damage
+rangedweapon50             7 "Corrosive Discharge"
+poisonres                    100 # Poison immunity.
+acidres 100 
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+shockres                     100 # Shock immunity.
+diseaseres                       # Disease immunity.
+pierceres
+inanimate              
+fear 1
+wall
+huge
+descr "A crowning achievement of arcane craftsmanship, this massive construct is assembled from the finest components of countless corpses, and illicitly imported clockwork from the Hoburgs. Every sinew, joint, and organ has been meticulously chosen for durability and suitable color, then animated through necromantic spells and galvanic electricity. Its tendrils rasp and hiss as it moves, and a faint acrid tang hangs in the air around it."
+
+newmonster "Masterpiece"
+spr1 "Sprites/Masterpiece1.tga"
+spr2 "Sprites/Masterpiece2.tga"
+armor 3 
+hp 102
+str 9
+mor                           99 
+mr                             7 
+rank                           1 # Front rank.
+meleeweapon                4 736 # Iron Claw: d9 Slash damage.
+meleeweapon                4 736 # Iron Claw: d9 Slash damage.
+meleeweapon                4 736 # Iron Claw: d9 Slash damage.
+meleeweapon                10 248 # Spiked Arm: d10 Pierce damage.
+meleeweapon                10 248 # Spiked Arm: d10 Pierce damage.
+meleeweapon                10 248 # Spiked Arm: d10 Pierce damage.
+meleeweapon                2   2 # Broadsword: d8 Slash damage.
+meleeweapon                2   2 # Broadsword: d8 Slash damage.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+shockres                     100 # Shock immunity.
+diseaseres                       # Disease immunity.
+pierceres
+inanimate              
+fear 1
+flying 
+huge
+descr "A crowning achievement of arcane craftsmanship, this massive construct is assembled from the finest components of countless corpses, and illicitly imported clockwork from the Hoburgs. Every sinew, joint, and organ has been meticulously chosen for durability and suitable color, then animated through necromantic spells and galvanic electricity. To the untrained eye it would seem to be just several flesh golems stiched together and given wings, but it moves with the precision of a dancer. The Nekromant insists the wings are strictly practical, yet somehow they are always meticulously oiled and adjusted whenever visitors arrive."
 
 newweapon     "Iron Claw "                                                 # 736
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -17622,7 +17726,7 @@ str                            3
 mor                           99 
 mr                             1 
 rank                           1 # Front rank.
-meleeweapon 			1 "Torch"
+meleeweapon 			0 "Torch"
 battleslow                       
 water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
 coldres                      100 # Cold immunity.
@@ -17678,6 +17782,7 @@ descr "In many aspects the Hobmark troops are more or less copies of the Hoburgh
 newmonster "Little Soulless Soldier "
 copystats "Little Soulless Soldier"
 clearmove
+water
 battleslow
 descr "In many aspects the Hobmark troops are more or less copies of the Hoburgher regiments, albeit paler of skin and with less colorful garb.  The soldiers are mainly forced volunteers and though being far more independent than the Thralls, they are also far more prone to act randomly, a flaw that is readily pointed out by the Nekromants. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
 
@@ -17689,6 +17794,7 @@ descr "Some of the more loyal troops are both better paid and better armored.  T
 newmonster "Little Soulless Defender "
 copystats "Little Soulless Defender"
 clearmove
+water
 battleslow
 descr "Some of the more loyal troops are both better paid and better armored.  Though their regular role is to defend the villages and towns, they are given special training to deal with upset Hobmark farmers carrying pitchforks and torches.  So far only lesser members of the Markgraf family have been burned at the stake, which has of course been followed with an appropriate response from the Defenders. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
 
@@ -17764,6 +17870,7 @@ descr "Due to a desire to appear quite as successful as his more prosperous cous
 newmonster "Little Soulless Guard"
 copystats "Little Soulless Defender"
 clearmove 
+water
 battleslow
 hp 5
 descr "Due to a desire to appear quite as successful as his more prosperous cousins, the Markgraf has chosen to more or less copy the trappings of the office of the Burgmeister, including his own bodyguard.  Mainly deployed to man the walls or to guard the Markgraf, the guard is specialized in countering throngs of angered peasants, and they are famed for their ability to form living chains before the Markgraf, and for being able to find hidden food larders during the Markgraf's impromptu tax rounds. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
@@ -17878,17 +17985,137 @@ mor                           99
 mr                             4 
 rank                           0 # Mid rank.
 rangedweapon 6 "Necrotic Miasma"
-meleeweapon                5 736 # Iron Claw: d8 Slash damage.
-meleeweapon                5 736 # Iron Claw: d8 Slash damage.
+meleeweapon                6 "Spiked Leg" # d6 Slash damage.
+meleeweapon                6 "Spiked Leg" # d6 Slash damage.
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 shockres                     100 # Shock immunity.
 diseaseres                       # Disease immunity.
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-descr "The disappearing skulls of the buried academy members where quite a conundrom for a while. The cause became obvious when the visage of the late dean of pyrotechnics appeared wobbling on top of an ungodly five-legged construct. Apparently the nekromants had maintained a grave-robbing ring and had been hording 'special heads' for quite a while. While not really sentient, the severed head appears able to maintain control over a monstrous amalgamation of iron and flesh. The exhaust on its back spews sickly green miasma, choking the air with plague and rot."  
+descr "The disappearing skulls of the buried academy members were quite a conundrom for a while. The cause became obvious when the visage of the late dean of pyrotechnics appeared wobbling on top of an ungodly five-legged construct. Apparently the nekromants had maintained a grave-robbing ring and had been hording 'special heads' for quite a while. While not really sentient, the severed head appears able to maintain control over a monstrous amalgamation of iron and flesh. The exhaust on its back spews sickly green miasma, choking the air with plague and rot."  
 
+newweapon "Galvanic Burst"
+trgrank              9 # Target: any enemy in range.
+range                2
+init                 1
+dmgtype              6 # Shock.
+dmg                  0 
+aoe                  9205 # Area: chain lightning 5 targets, 2 range.
+an                     # Armor negating.
+look               58
+sound               24 # el.smp (Lightning)
+
+newmonster "Sparky Longlegs" 
+spr1 "Sprites/Sparkylonglegs1.tga"
+spr2 "Sprites/Sparkylonglegs2.tga"
+armor                          1 
+hp                            45 
+str                            6 
+mor                           99 
+mr                             4 
+rank                           1 # front rank.
+frontpos 
+rangedweaponbonus 5 "Galvanic Burst"
+meleeweapon                	8 "Spiked Leg" # d8 Slash damage.
+shockaura 2 
+pierceres 
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+shockres                     100 # Shock immunity.
+diseaseres                       # Disease immunity.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+descr "This strange golem is mostly a tightly coiled electrical conductor, with wires wound around a giant ribcage. The long legs are supposedly there to keep it from grounding, but one suspects the inventor simply liked the look."
+
+newmonster "Failed Experiment"
+spr1 "Sprites/Failedexperiment1.tga"
+spr2 "Sprites/Failedexperiment2.tga"
+armor                          0 # Armor.
+hp                           75 # Hit Points.
+str                           10 # Strength.
+mor                           99 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                6  11 # Bite: d6 Slash damage.
+meleeweapon                2   0 # Fist: d3 Blunt damage.
+meleeweapon                5  12 # Claw: d5 Slash damage.
+clumsy 
+slow 
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+descr "This is nothing but a misbegotten jumble of bones and body parts. Most necromancers would prefer to bury such things again, yet few are willing to discard free labor. Waste not, want not."
+
+newweapon "Sting "
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              9 # Poison.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+sound                1 # spear.smp (Spear)
+
+newmonster "Corpse Wasps"
+spr1 "Corpsewasps1.tga"
+spr2 "Corpsewasps2.tga"
+armor                          0 # Armor.
+hp                             1 # Hit Points.
+str                            1 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+frontpos 
+meleeweapon                1  "Sting " # d1 poison damage.
+flying  
+fast                        
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+tiny                             # Tiny: 50% chance to be missed by each single-target attack against it.
+evasion 1
+maxsum 500
+
+newweapon "Summon Corpse Wasps"
+trgrank              7 # Target: any square in range.
+range               2
+init                 3
+dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+reload2 
+look                 1
+sound               57 # orchhit.smp (Summoning)
+
+newmonster "Apiarium" 
+spr1 "Sprites/Apiarium1.tga"
+spr2 "Sprites/Apiarium2.tga"
+armor                          0
+hp                            65 
+str                            7 
+mor                           99 
+mr                             4 
+rank                           0 # Mid rank.
+meleeweapon                11   0 # Fist: d12 Blunt damage.
+rangedweapon50 4 "Summon Corpse Wasps"
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+fireres 						-50 
+diseaseres                       # Disease immunity.
+clumsy 
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+descr "Corpse wasps are a persistent nuisance to Nekromants, infesting stored cadavers and spoiling other preparations. To put them to use, some have developed a method of fitting a golem chassis with wax, comb, and alchemical attractants, turning it into a mobile hive. At a signal, the swarm pours out in a dense cloud, stinging and biting anything nearby befor retrating to the husk. The degree of control is unclear, but the handlers are usually seen in traditional Hoburg beekepeer garb."
 # ------------------------------------- Markgraf Rituals Edit ----------------------------------------------------------# 
+
+selectritual "Dark Knowledge" 1
+level 9
+free
 
 selectritual "Flesh Rite"
 free
@@ -17928,28 +18155,31 @@ free
 
 # ------------------------ Markgraf New Rituals ---------------------------------------------# 
 
-newritual "Seance"
+newritual "Wishbone Triangulation"
 ritpow                39 # Nekromant
 level                  1
-cost              5   15 # 15 Hands
-terr                 -42 # Required terrain: any land.
-summoning                # The ritual will summon the monsters specified in a random string.
-sum0chance 70
-addstring     "1d6+1*Dispossessed Spirit"
-aiweakonly 800
-descr "The Nekromant hosts a seance, calling upon the spirits of the dead. Will summon dispossessed spirits, or rarely more powerful ghosts."
+cost              5   2 # 2 Hands
+ritmaxrange 3
+chooseloc              2 # Player chooses the target location.
+centerloc                # Center screen on target location.
+scryloc               5 # Scry radius 1.5 around target location.
+closewin
+soundfx               70 # Sound effect when the ritual is cast: echo.wav.
+rarestart
+airare                 5 # Only 5% of normal chance that AI will cast this ritual.
+descr "A properly calibrated wishbone will tremble faintly when pointed toward piles of bones. Through careful triangulation, the Nekromant may thus locate hidden repositories of corpses. Target a tile within 3 squares; the ritual reveals the nearest site of many dead to that location."
 
 newritual "Flesh Rite "  
 ritpow                39 # Nekromant
 level                  1
-cost              5   50 # 50 Hands
+cost              5   30 # 30 Hands
 terr -70 #Graveyards
 promotion             -1 # Promote 1 unit to a commander and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+addstring "Markmann"
+addstring "Ghoul Baron"
 addstring     "Markgraf"
 addstring     "Ghoul Baron"
 addstring     "Markmeister"
-addstring     "Ghoul Baron"
-addstring     "Markmann"                      
 addstring     "Ghoul Baron"
 addstring     "Hobmark Murderer"
 addstring     "Ghoul Murderer" 
@@ -17958,7 +18188,7 @@ descr "This ritual turns a Markgraf, Markmeister, Markmann or Murderer into a Gh
 newritual "Create Flesh Hound"
 ritpow                39 	# Nekromant
 level                  1
-cost              5   5 	# 10 Hands
+cost              5   5 	# 5 Hands
 cost 		  17 1 			#1 corpse 
 terr                 -42	# Required terrain: any land.
 summoning                	# The ritual will summon the monsters specified in a random string.
@@ -18025,11 +18255,10 @@ descr "The Alchemical Corpse was the first product of an interdisciplinary colla
 newritual "Create Flesh Golem " 
 ritpow                39 	# Nekromant
 level                  2
-cost              5    5 	# 10 hands
+cost              5    10 	# 10 hands
 cost             17    5 	# 5 Corpses
 terr                 -42 	# Required terrain: any land.
 summoning                	# The ritual will summon the monsters specified in a random string.
-apcost                 1 	# Actual AP cost: 2.
 aialways              100 	# Extra 50% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
 addstring     "Flesh Golem"
 nexttoo
@@ -18046,29 +18275,22 @@ addstring     "Iron Grafted Golem"
 nostart  
 descr "This ritual puts armored plates on a Flesh Golem and replaces the Golem's hands with iron weapons."
 
-newritual "Create Necrotod "
+newritual "Create Experimental Golem" #
 ritpow                39 # Nekromant
 level                  2
-cost              5   20 # 20 Hands
-cost             17   10 # 10 Corpses
-terr                 -42 # Required terrain: any land.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 1 # Actual AP cost: 2.
-aialways              100 # Extra 75% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "Necrotod"
-descr "The bones of ten corpses are gathered together to form the Necrotod, an animated snake made of bones. The construction is complicated, and takes a considerable amount of time."
-
-newritual "Create Dread Pentacle" #
-ritpow                39 # Nekromant
-level                  2
-cost              5   20 # 40 Hands
-cost             17   10 # 20 Corpses
+cost              5   40 # 40 Hands
+cost             17   15 # 15 Corpses
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 apcost                 1 # Actual AP cost: 2.
 aialways              100 # Extra 100% chance that AI will try to cast this ritual if it currently can, but it will not make long term plans to do so.
+sum0chance 8
+addstring     "Failed Experiment"
+addstring     "1d2*Necrotod"
 addstring     "Dread Pentacle"
-descr "The bones of twenty corpses are combined into a Dread Pentacle, a hideous necromantic construct able to spew noxious miasma from a distance."
+addstring     "Sparky Longlegs"
+addstring     "Apiarium"
+descr "Golemcraft is equal parts art, ingenuity and trial-and-error. If all goes well, this ritual will summon an advanced necromantic construct."
 
 newritual "Create Masterpiece"
 ritpow                39 # Nekromant
@@ -18102,12 +18324,13 @@ newritpow #Markgraf
 newritual "Labor Reforms"
 level 1
 terr -24 #farms and hamlets
-promotion 15
+promotion 5
 killtarg 9999
 summoning 
-sum0chance 100
+sum0chance 0
+sum1chance 100
+addstring "Placeholder"
 addstring "Little Soulless Foreman" 
-addstring "Little Soulless Worker"
 addstring "Little Soulless"
 addstring "Little Soulless Worker"
 addstring "Little Soulless Soldier"
@@ -18126,8 +18349,8 @@ addstring "Little Soulless Crossbow"
 addstring "Little Soulless Worker"
 addstring "Little Soulless Black Hood"
 addstring "Little Soulless Worker"
-nomonreq 
-addstring "(-)Little Soulless Foreman"
+addstring "Little Longdead"
+addstring "Little Longdead Worker"
 minmonreq 5
 addstring "(&)Little Soulless"
 addstring "(&)Little Soulless Soldier"
@@ -18138,26 +18361,53 @@ addstring "(&)Little Soulless Militia"
 addstring "(&)Little Soulless Slinger"
 addstring "(&)Little Soulless Crossbow"
 addstring "(&)Little Soulless Black Hood"
+addstring "(&)Little Longdead"
 nexttoo
-descr "The Markgraf modernizes the rural workforce by introducing soulless laborers. The peasantry are of course delighted by the resulting increase of productivity. This ritual will assign 15 Little Soulless of any type to farming work. The workforce will increase the output of a farm by +1 gold or a hamlet or village by +2 Gold, as long as the Foreman is functional."
+descr "The Markgraf modernizes the rural workforce by introducing undead laborers. The peasantry are of course delighted by the resulting increase of productivity. This ritual will assign 5 Little Soulless or Little Longdead of any type to farming work. The workforce will increase the gold output of a rural settlement as long as the Foreman is functional. If enough workcrews are gathered the settlements production can be doubled."
  
 newritual "Mining Directives"
 level 1
 terr -4 #mines
-promotion 15
+promotion 10
 killtarg 9999
 summoning 
-sum0chance 100
-addstring "Little Longdead Foreman"
-addstring "Little Longdead Worker"
+sum0chance 0
+sum1chance 100
+addstring "Placeholder"
+addstring "Little Longdead Overseer"
 addstring "Little Longdead"
-addstring "Little Longdead Worker"
-nomonreq 
-addstring "(-)Little Longdead Foreman"
-minmonreq 15
+addstring "Little Longdead Miner"
+addstring "Little Soulless"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Soldier"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Defender"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Pikeneer"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Hammerer"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Militia"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Slinger"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Crossbow"
+addstring "Little Soulless Miner"
+addstring "Little Soulless Black Hood"
+addstring "Little Soulless Miner"
+minmonreq 10
 addstring "(&)Little Longdead"
+addstring "(&)Little Soulless"
+addstring "(&)Little Soulless Soldier"
+addstring "(&)Little Soulless Defender"
+addstring "(&)Little Soulless Pikeneer"
+addstring "(&)Little Soulless Hammerer"
+addstring "(&)Little Soulless Militia"
+addstring "(&)Little Soulless Slinger"
+addstring "(&)Little Soulless Crossbow"
+addstring "(&)Little Soulless Black Hood"
 nostart
-descr "The Markgraf issues formal directives to increase the output of subterranean resource gathering. Undead workers are deployed to conduct round-the-clock excavation, unconstrained by the usual concerns of rest, morale, or tunnel collapses. Longdead are more nimble and less prone to structural fatigue than the soulless, making them the preferred choice for industrial operations. This ritual will assign 15 Little Longdead to mining work.The workforce will increase increase the output of a mine by up to +2 Iron and +2 Gold, as long as the Foreman is functional." 
+descr "The Markgraf issues formal directives to increase the output of subterranean resource gathering. Undead workers are deployed to conduct round-the-clock excavation, unconstrained by the usual concerns of rest, morale, or tunnel collapses. This ritual will assign 10 Little Soulless or Little Longdead of any type to mining work.The workforce will increase increase the output of a mine as long as the Foreman is functional. If enough mining crews are gathered the mines output can be doubled." 
 
 newritual     "Network of Informants" 
 level                  1
@@ -18166,6 +18416,7 @@ randnewloc           -24 # Sets target location to a random terrain of this type
 scryloc               15 # Scry radius 1.5 around target location.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 airare                 5 # Only 5% of normal chance that AI will cast this ritual.
+rarestart
 closewin                 # Closes cast ritual window.
 descr "The Markgraf maintains a vast network of informants among the rural population of Elysium. For a small price he obtains information about a random farm, hamlet or village"
 
@@ -18209,7 +18460,9 @@ descr "Under the Markgraf's supervision, the village shifts its economy toward m
 
 newritual     "Construct Secret Laboratory"                                 
 level                  1
-cost              0  250 # 250 Gold
+cost              0 300 # 300 Gold
+cost              1 100 # 100 iron
+cost              5 50 # 50 hands 
 maxcast 1
 apcost 5
 monplayerreq 1
@@ -18221,6 +18474,7 @@ airare -1
 forgetcurrit
 rarestart
 noundead
+seteventvar 4
 descr "With the aid of the Nekromant, the Markgraf establishes an unsettling facility hidden within an abandoned mine. Each day, prisoners and livestock are brought in large numbers, yet none ever emerge. A black spire looms atop the mountain, surrounded by ominous flashes of lightning. Its true purpose remains a closely guarded secret, known only to the Markgraf and the Grand Nekromant."
 
 newritual     "Cunning Schemes"                                     # 288
@@ -18231,9 +18485,9 @@ soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Su
 free                     # Always start with this ritual in addition to the others.
 descr "This ritual grants the caster a new first level ritual."
 
-newritual     "Occult Investigations"            #Necromantic Studies                             # 289
+newritual     "Occult Investigations"            
 level                  1
-cost              5   60 # 120 Hands
+cost              5   60 # 60 Hands
 newrit                 2 # Caster will learn a new ritual of level 2.
 levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -18260,9 +18514,10 @@ terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 70
 addstring     "1d6+1*Dispossessed Spirit"
+addstring     "(-78)2d5+1*Dispossessed Spirit"
 resreq 16
 aiweakonly 800
-descr "The Nekromant hosts a seance, calling upon the spirits of the dead. Will summon dispossessed spirits, or rarely more powerful ghosts."
+descr "The occult-curious Markgraf conducts a seance, reaching across the veil to commune with the departed. This ritual summons a small number of dispossessed spirits."
 
 newritual     "Occult Summoning"                                           # 293
 level                  3
@@ -18279,19 +18534,6 @@ addstring "1*Dire Wolf"
 addstring "2*Dire Wolf"
 descr "This ritual summons one of the more powerful necromantic beings that haunt the lands of Hobmark."
 
-newritual "Ghoul Guardians" 
-level 2
-cost 5 5 
-promotion 10 
-addstring "Markgraf Guard"
-addstring "Ghoul Guardian"
-addstring "Contract Guard"
-addstring "Ghoul Guardian"
-resrestrict      1048576
-aialways 100
-nofemale
-descr "The Ghoulgraf invokes the binding clause in the Guard employment contract. This ritual will promote 10 Markgraf Guards into Ghoul Guardians."
-
 newritual "Ravenous Curse "
 level                  2
 cost              5   40 # 40 Hands
@@ -18299,8 +18541,8 @@ terr                 -24 # Required terrain: villages and smaller settlements.
 reducetown               # Reduces size of settlement at target location by one step.
 defctrl              997 # Control of summonings cannot fail; log text is "raised" instead of "summoned"; sound is digrydoo.smp instead of orchhit.smp.
 summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "(70)6d6*Little Ghoul"     # This string will only be included in terrain: Hoburg Village.
-addstring     "(10070)3d6*Ghoul"     # This string will only be included in terrain: not Hoburg Village.
+addstring     "(70)8d6*Little Ghoul"     # This string will only be included in terrain: Hoburg Village.
+addstring     "(10070)4d6*Ghoul"     # This string will only be included in terrain: not Hoburg Village.
 resrestrict      1048576
 airare -1
 nofemale
@@ -18323,7 +18565,7 @@ descr "This ritual is used to raise dead animals as servants of the Necromancer.
 newritual "Blood Servant "
 level                  3
 cost              5   75 # 75 Hands
-#terr                  837 # Required terrain: Secret Laboratory.
+terr                  837 # Required terrain: Secret Laboratory.
 promotion             -1 # Promote 1 unit to a commander and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
 updatehome               # Updates home (immortal resurrection location) for target unit to where he stands.
 addstring     "Markmeister"
@@ -18333,70 +18575,107 @@ aialways 100
 descr "With this ritual the Vampire turns a Markmeister into a Vampire.  To perform this ritual both the Vampire and the Markmeister must be in a Secret Laboratory. Vampires created with this power will be able to perform simple necromantic rituals like raising the dead."
 
 selectmonster "Markgraf"
+gatherhands 
 power 0 1
 
 selectmonster "Ghoul Baron"
+gatherhands
 power 0 1
 classcost 1
 
 selectmonster "Ghoulgraf"
+gatherhands
 power 0 2
 classcost 1
 
 selectmonster "Malefic Markgraf"
+gatherhands
 power 0 2 
 female
 nametype 4
 
 selectmonster "Malefic Master"
+gatherhands
 power 0 3 
 female 
 nametype 4 
 
 selectmonster "Malefic Markmeister"
+gatherhands
 power 0 1
 female 
 nametype 4 
 
 selectmonster "Malefic Hauptmarkmeister"
+gatherhands
 power 0 2
 female 
 nametype 4 
 
+newritpow # Ghoul Baron, ensure he always knows how to make Ghoul Guardians from the start 
+newritual "Ghoul Guardians" 
+level 1
+cost 5 5 
+promotion 10 
+addstring "Markgraf Guard"
+addstring "Ghoul Guardian"
+addstring "Contract Guard"
+addstring "Ghoul Guardian"
+resrestrict      1048576
+free
+aialways 100
+nofemale
+descr "The Ghoulgraf invokes the binding clause in the Guard employment contract. This ritual will promote 10 Markgraf Guards into Ghoul Guardians."
+
+selectmonster "Ghoul Baron" 
+power 0 1
+selectmonster "Ghoulgraf"
+power 0 1 
+ 
 # ---------- Markgraf Class & Recruitment ------------------------------# 
  
 selectclass 23 #Markgraf
 hometerr          838 # Markgraf version of Fortified Hoburg
 classcitterr 841
+likesnorth -5
+
+clearstartunits 
+setmaincom "Markgraf"
+addstartcom "Markmann" 
+addstartcom "Nekromant"
+addstartunits "Hobmark Crossbow" 12
+addstartunits "Hobmark Soldier" 12
+addstartunits "Hobmark Defender" 6  
+
 clearrec
 #                                               % No gold die iron
 addunitrec  "Hobmark Bandit"                  	100 10   50   0    0
-addunitrec  "Hobmark Militia"                 	100 15   50   0    0
+addunitrec  "Hobmark Militia"                 	100 15   40   0    0
 addunitrec  "Hobmark Slinger"                 	100 15   50   0    0
-addunitrec  "Hobmark Crossbow"                	100 15   50   0    5
+addunitrec  "Hobmark Crossbow"               100 15   50   0    5
 addunitrec  "Hobmark Soldier"                 	100 15   50   0    5
-addunitrec  "Hobmark Defender"                	100 15   50   0   10
-addunitrec  "Hobmark Hammerer"                	100 10   30   0    5
-addunitrec  "Hobmark Pikeneer"                	100 10   30   0    5
-addunitrec  "Markgraf Guard"                  	100 10   40   0   10
-addunitrec  "Hog Hussar"                      	100  5   50   0    5
-addunitrec  "Catapult"                        	100  1   25   0   50
+addunitrec  "Hobmark Defender"                100 15   50   0   10
+addunitrec  "Hobmark Hammerer"             100 10   40   0    5
+addunitrec  "Hobmark Pikeneer"                	100 10   40   0    5
+addunitrec  "Markgraf Guard"                 		100 10   40   0   10
+addunitrec  "Hog Hussar"                      		100  5   50   0    5
+addunitrec  "Catapult"                        			100  1   25   0   50
 addunitrec  "Corpse Trebuchet" 					100  1   50   0   50
-	recxcost     5  25                            # 25 Hands additional cost.
-addunitrec  "Black Hood"		      	20 10 75 0 5 
+	recxcost     5  15                            # 15 Hands additional cost.
+addunitrec  "Black Hood"		      					20 10 60 0 5 
 addmercrec "Hobmark Scout"                    	10 1 25 5 0  
-addcomrec   "Markgraf"                         	10      45   5    0 
+addcomrec   "Markgraf"                         		 	10 45 5 0 
 	reclimiter  "-Markgraf"                       # Owning a Markgraf prevents the preceding offer.
 	reclimiter  "-Malefic Markgraf"               # Owning a Malefic Markgraf prevents the preceding offer.
 	reclimiter  "-Malefic Master"                 # Owning a Malefic Master prevents the preceding offer.
-addcomrec "Hobmark Murderer"                  	4  1   30  10    0 
-addcomrec   "Markmeister"                      	15      25   5    0 
-addcomrec   "Markmann"                         	20      20   5    0 
-addcomrec   "Nekromant"                         6      55  10    0 
+addcomrec "Hobmark Murderer"               	4 30 10 0 
+addcomrec   "Markmeister"                      		15 25 5 0 
+addcomrec   "Markmann"                         		20 20 5 0 
+addcomrec   "Nekromant"                         	 	6 55 10 0 
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
-addcomrec   "Toxicologist"                    	2      55  10    0 
+addcomrec   "Toxicologist"                    			2 55 10 0 
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
-addcomrec   "Nekromant"                         6      55  10    0 
+addcomrec   "Nekromant"                         	 	6 55 10 0 
 	reclimiter "-Nekromant"
 	reclimiter "-Grand Nekromant"
 	reclimiter "-Corpse Nekromant"
@@ -28068,7 +28347,7 @@ addcomrec   "Illusionist's Apprentice"      100      55  20    0 # suicide count
 # AI can not play this class rationally, as it does not keep track of corpse locations and has some ritual dependencies which it cannot handle (markgraf and nekromant present at the same time etc). Therefore gets some help. 
 
 playerevent 				# AI will automatically spawn a secret lab in vicinity of home   
-+turnnbr -1
++turnnbr 30
 +aiplayer -2
 +class -2 "Markgraf"
 newunits -2 "Secret Architect"
@@ -28089,6 +28368,7 @@ human
 allitemslots                     # Has the full set of item slots.
 nametype                       4 # Germanic male.
 invul 
+invisible
 stupid
 makecolony 837 
 
@@ -28128,6 +28408,11 @@ aihold 1
 
 selectclass 23 #Markgraf
 
+addunitrec " Test Subject" 	100 3 1 0 0 	#Secret Lab corpse generator 
+	reclimiter "+AI"
+	reclimiter "+Late AI"
+	recterr 837
+	
 addmercrec " Corpse Trebuchet"		100 1 50 0 50	#Standard defense
 	reclimiter "+AI"
 	reclimiter "+Late AI"
