@@ -11044,6 +11044,7 @@ rangedweaponbonus         15 "Zap" # Electric discharge, d8 Shock damage.
 meleeweapon                4  11 # Bite: d4 Slash damage.
 fireres -25
 coldres -25
+healonterr 129 # heals on manufactory
 
 newweapon "Lightning Discharge"
 trgrank              9 # Target: any enemy in range.
@@ -11062,6 +11063,7 @@ rangedweaponbonus          4 "Lightning Discharge" #d4 Shock damage.
 meleeweapon                1   8 # Shortsword: d6 Slash damage.
 fireres -25
 coldres -25
+healonterr 129 # heals on manufactory
 
 newweapon "Lightning Beam"                                          
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -11080,64 +11082,78 @@ rangedweaponbonus         7 "Lightning Beam" # d7 Shock damage.
 meleeweapon               25  11 # Bite: d25 Slash damage.
 fireres -25
 coldres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Diamond Clockwork Horror"
 fireres -25
 coldres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Iron Scorpion"
 fireres -25
 coldres -25
 shockres -25 
+healonterr 129 # heals on manufactory
 
 selectmonster "Emerald Clockwork Soldier"
 fireres -25
 coldres -25
 shockres -25 
+healonterr 129 # heals on manufactory
 
 selectmonster  "Emerald Clockwork Horror"
 armor 3
 fireres -25
 coldres -25
 shockres -25 
+healonterr 129 # heals on manufactory
 
 selectmonster "Emerald Iron Dragon"
 hp 330
 fireres -25
 coldres -25
 shockres -25 
+healonterr 129 # heals on manufactory
 
 selectmonster "Iron Spider"
 fireres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Sapphire Clockwork Soldier"
 fireres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Sapphire Clockwork Horror"
 fireres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Sapphire Iron Dragon"
 fireres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Iron Ant"
 fireres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Ruby Clockwork Soldier"
 coldres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Ruby Clockwork Horror"
 coldres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Ruby Iron Dragon"
 coldres -25
 shockres -25
+healonterr 129 # heals on manufactory
 
 selectmonster "Garden Master"
 descr "Tending the Burgmeister's gardens is the Garden Master, a Horticulturist who has dedicated his or her life to the study of the intricacies of plantlife in further detail.  While maintaining a beautiful garden, the Garden Master will also introduce strange and exotic plants to study the ways they can be used.  It is well known that they still maintain the ancient rituals of awakening trees and bushes to the defense of the Hoburg villages, should an overwhelming danger arise.  This bond with the land stems from an ancient time when the Hoburghers were more in tune with the nature around them.  At times the Garden Masters will travel the known world's colleges and universities in pursuit of more knowledge.  From various forgotten or recently discovered notebooks it has been possible to discern a peculiar interest in fertilization.  Though our scholars have had no opportunity to sample the soil there, Bibula has put forth the theory that the Hoburg heartlands are all worn out due to the high yields that have been demanded from the soil there, and the foul remains pouring out from the new manufacturies."
@@ -11241,7 +11257,7 @@ trample 					   4
 weaponslots
 descr "Elephant Hogs are colossal swine bred under the careful supervision of Hoburg horticulturists. Captured as piglets and raised for labor, battle, and county fair competitions, these massive beasts are more docile than their wild counterparts. Despite their tempered nature, they remain immensely powerful creatures, capable of trampling foes and withstanding significant punishment in combat."
 
-newmonster    "Eagle Rider"   #Eagle Knight                               
+newmonster    "Eagle Rider"   #Eagle Knight                              
 copystats "Bakemono Sho"
 clearweapons
 spr1 "Sprites/Eaglerider1.tga"
@@ -11251,13 +11267,14 @@ hp                             8
 str                            3 
 mor                            7 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               0   7 # Bow: d3 Pierce damage.
 meleeweapon                3  94 # Talon: d3 Slash damage.
 meleeweapon                3  94 # Talon: d3 Slash damage.
 meleeweapon                4  93 # Beak: d4 Slash damage.
 human                            
 flying
+fast
 evasion 1
 nobootslots                      # Has no boot slots.
 descr "Hoburgs have long shared a bond with the wild eagles of Elysium. Under the guidance of the High Gardener, brave men now train to ride these majestic birds of prey into battle."
@@ -11418,7 +11435,7 @@ addstring "(-20)Marsh Worm"
 addstring "(-20)Crocodile"
 
 selectritual "Farm Animal Summoning" #Now summons actual farm animals.
-addstring "1d3+2*Beetle" #Like the common farm beetle
+addstring "1d3+2*Beetle" 
 addstring "Horse"
 addstring "1d2+1*Goat"
 addstring "1d2*Donkey"
@@ -11503,12 +11520,21 @@ power 0 1
 # ----------------------- Burgmeister Class and Recruitment --------------------------------------------------#
 
 selectclass 11 #Burgmeister
-	likesnorth -5 #as they're slow, a north start is a game over
+likesnorth -5 #as they're slow, a north start is a game over
+
+clearstartunits 
+setmaincom             "Burgmeister"
+addstartcom           "Hogmeister"
+addstartcom           "Burgmann"
+addstartunits          "Hoburg Defender"       6
+addstartunits          "Hoburg Soldier"           12
+addstartunits          "Hoburg Crossbow"      12
+
 clearrec
-addunitrec  "Hoburg Militia"                  	100 15   50   0    0
+addunitrec  "Hoburg Militia"                  	    100 15   40   0    0
 addunitrec  "Hobmark Slinger"                  	100 15   50   0    0
 addunitrec  "Hoburg Crossbow"                 	100 15   50   0    5
-addunitrec  "Hoburg Soldier"                  	100 15   50   0    5
+addunitrec  "Hoburg Soldier"                  	    100 15   50   0    5
 addunitrec  "Hoburg Defender"                 	100 15   50   0   10
 addunitrec  "Hoburg Pikeneer"                 	100 10   30   0    5
 addunitrec  "Burgmeister Guard"               	100 10   40   0   10
