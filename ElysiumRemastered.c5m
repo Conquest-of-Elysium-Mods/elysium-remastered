@@ -421,6 +421,21 @@ aoe                  0 # Area: single target.
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
 sound                1 # spear.smp (Spear)
 
+newweapon     "Hunting Crossbow "
+trgrank              9 			# Target: Any enemy
+range                5
+init                 4
+dmgtype              3 			# Pierce.
+dmg                  5 			
+aoe                  0 			# Area: single target.
+reload1                			# Takes 1 round to reload.
+mundane                			# Non-magic. Ethereal units have a 75% chance to be unaffected.
+arrow                  			# Can be negated by air shield.
+rangepen               			# Does half damage if distance >= half range.
+flymode              1 			# Missile sprite, one for each strike or square hit.
+flylook             14
+flysound            13 			# crossb.smp (Crossbow)
+
 newmonster    "Ranger"
 spr1 "Sprites/Ranger1.tga"
 spr2 "Sprites/Ranger2.tga"
@@ -430,7 +445,7 @@ str                             4
 mor                          4 
 mr                             4 
 rank                          0 # Mid rank.
-rangedweapon               0   "Light Crossbow" # d5 Pierce damage.
+rangedweapon               0   "Hunting Crossbow " # d5 Pierce damage.
 meleeweapon                 0 "Hand Axe" #d5 Slash damage.
 meleeweapon                 0 1  # Dagger: d3 Pierce damage.
 human                            
@@ -10910,13 +10925,13 @@ free
 newritual "Wild Hunt "
 ritpow                 5 # Druidism
 level                  3
-cost              2  500 # 500 Herbs
+cost              2  400 # 400 Herbs
 noplanereq              7 # Primal; cannot be cast on this plane.
 nomonelysiumreq          # Monsters in strings beginning with "(-)" must not be in Elysium/Sky/Agartha.
 summoning                # The ritual will summon the monsters specified in a random string.
 ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
 addstring     "(-)Lord of the Hunt"     # This string will only be used by nomon[...] commands.
-addstring     "c*Lord of the Hunt & 5d6*Wild Hunter"     # Unique (Herne).
+addstring     "c*Lord of the Hunt & 8d6*Wild Hunter"     # Unique (Herne).
 descr "The druid calls the Wild Hunt in an ancient forest and releases it upon the world. The Hunt moves to ancient forests and claims them for the wild. If there are no more unclaimed ancient forests in Elysium, the Hunt will advance on the bastions of civilization instead."
 
 selectritual "Call Primal Being"
@@ -13423,7 +13438,7 @@ sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 pierceres
 noheal                           # Does not heal naturally.
-healonterr -1199 # Required terrain: Temple City or Temple Pyramid.
+healonterr 3 #Temple City 
 diseaseres                       # Disease immunity.
 allitemslots                     # Has the full set of item slots.
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
@@ -13451,7 +13466,7 @@ sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 pierceres
 noheal                           # Does not heal naturally.
-healonterr -1199 # Required terrain: Temple City or Temple Pyramid.
+healonterr 3 # temple city 
 diseaseres                       # Disease immunity.
 allitemslots                     # Has the full set of item slots.
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
@@ -15859,7 +15874,7 @@ mr 7
 
 # ----------------- Dwarf Queen New Monsters -------------------------------------------# 
 
-newmonster "Memorywarden" 
+newmonster "High Councilor" 
 copystats "Queen's Councilor"
 spr1 "Sprites/Lorekeeper1.tga"
 spr2 "Sprites/Lorekeeper2.tga"
@@ -15983,7 +15998,7 @@ tunnel
 rank 0
 aimaxshop 4
 drawsize -10
-descr "While all dwarves are skilled tunnelers, only a select few are tasked with carving passages large enough for armies to march through. These miners often strike underground reservoirs, flooding their tunnels flooding the tunnels and sometimes taking the entire squad with them. Incidents like these might explain why dwarves prefer to found their colonies on the surface."
+descr "While all dwarves are skilled tunnelers, only a select few are tasked with carving passages large enough for armies to march through. These miners often strike underground reservoirs, flooding their tunnels and sometimes taking the entire squad with them. Incidents like these might explain why dwarves prefer to found their colonies on the surface."
 
 # ------------------- Dwarf Queen Ritual Edits --------------------------------------# 
 
@@ -16074,7 +16089,7 @@ free
 cost 					9 50 # 50 diamonds
 promotion 				1
 addstring "Queen's Councilor"
-addstring "Memorywarden"
+addstring "High Councilor"
 soundfx					57
 aialways 999
 monplayerreq 1
@@ -16089,7 +16104,7 @@ newspell1             45 # Learn a new level 1 combat spell of this path: Dwarf 
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 airare                -1 # AI will never cast this ritual.
 free                     # Always start with this ritual in addition to the others.
-descr "The Memorywarden taps into the ancient lore of Dvalin and learns a new combat spell."
+descr "The High Councilor taps into the ancient lore of Dvalin and learns a new combat spell."
 
 newritual     "Lore of Dvalin II"                                         # 378
 ritpow                30 # Councilor
@@ -16099,7 +16114,7 @@ newspell2             45 # Learn a new level 2 combat spell of this path: Dwarf 
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 airare                 1 # Only 1% of normal chance that AI will cast this ritual.
 free                     # Always start with this ritual in addition to the others.
-descr "The Memorywarden taps into the ancient lore of Dvalin and learns a new combat spell."
+descr "The High Councilor taps into the ancient lore of Dvalin and learns a new combat spell."
 
 newritual "Exodus" 
 ritpow                28 # Dvala
@@ -19566,7 +19581,7 @@ meleeweapon 4 849 #Touch of the Fallen d4
 spellweapon 67 1 #Destruction at level 1 
 spellweapon 67 1 #Destruction at level 1
 drawsize -35
-descr "Desert Wraiths are vengeful demons born from the scorching sirocco. They and thrive on madness and isolation, and can be be heard howling during sandstorms." 
+descr "Desert Wraiths are vengeful demons born from the scorching sirocco. They thrive on madness and isolation, and can be be heard howling during sandstorms." 
 
 newmonster "Slaver"
 spr1 "Sprites/Slaver1.tga"
@@ -21032,14 +21047,15 @@ burnforest 3
 
 # Black kobolds get bleeding attacks,
 
-
 selectmonster "Black Kobold Slayer Shaman" 
 clearweapons 
+spellweapon                9   1 # Dark Magic at level 1.
 meleeweapon                0 "Chitin Dagger" # d4 pierce + bleed.
 assassinweapon             1 "Chitin Dagger " # d4 pierce + bleed.
 
 selectmonster "Black Kobold Slayer Prophet" 
 clearweapons 
+spellweapon                9   2 # Dark Magic at level 2.
 meleeweapon                0 "Chitin Dagger" # d3 pierce + bleed.
 meleeweapon                0 "Chitin Dagger" # d3 pierce + bleed.
 assassinweapon             1 "Chitin Dagger " # d4 pierce + bleed.
@@ -22491,58 +22507,72 @@ demonic
 selectmonster    "Possessed Soulless Bandar"                                
 clearmove
 battleslow  
+water
 
 selectmonster    "Possessed Soulless Bandar" 1
 clearmove
-battleslow                                 
+battleslow  
+ water                      
 
 selectmonster    "Possessed Armored Soulless Bandar"                       
 clearmove
 battleslow  
+water
 
 selectmonster    "Possessed Soulless Vanara" 
 clearmove
 battleslow                               
+water
 
 selectmonster    "Possessed Soulless Vanara Soldier"                        
 clearmove
 battleslow  
+water
 
 selectmonster    "Soulless Bandar"                                          
 clearmove
 battleslow  
+water
 
 selectmonster    "Soulless Bandar" 1                                         
 clearmove
 battleslow  
+water
 
 selectmonster    "Armored Soulless Bandar"                                  
 clearmove
 battleslow  
+water
 
 selectmonster    "Soulless Vanara"                                         
 clearmove
 battleslow  
+water
 
 selectmonster    "Soulless Vanara Soldier"                                 
 clearmove
 battleslow  
+water
 
 selectmonster    "Soulless Markata"                                        
 clearmove
 battleslow  
+water
 
 selectmonster    "Possessed Soulless"                                       
 clearmove
 battleslow  
+water
 
 selectmonster    "Possessed Soulless Giant"                                
 clearmove
 battleslow  
+water
 
 selectmonster    "Possessed Little Soulless"                               
 clearmove
 battleslow  
+water
 
 # ---------- Raksharaja New Monsters ------------# 
 
@@ -24671,6 +24701,14 @@ addunitrec  "Worldroof Warrior"                 100 5   150   0   0
 addunitrec  "Mammoth Rider"                     10  1   150   0   25 
 	recterr 814
 addcomrec "Worldroof Chieftain"                 2   45   20   0 
+	recterr 814
+	
+selectclass 30
+addunitrec  "Worldroof Warrior"                 100 5   75   0   0
+	recterr 814
+addunitrec  "Mammoth Rider"                     10  1   75   0   25 
+	recterr 814
+addcomrec "Worldroof Chieftain"                 2   25   10   0 
 	recterr 814
 
 # ---------------------- Celestial Realm -------------------------------------# 
@@ -26917,6 +26955,60 @@ addunitrec  "Serpent"                           100  5  50   0    0
 addcomrec  "Civateteo" 			      			5   55 20  0 
 	recterr -1121
 
+selectclass 30
+addunitrec "Sidhe Warrior" 						100 4 100 0 0 0 	#Mag Mell
+	recterr 286
+addcomrec  "Sidhe Champion" 					6 100 0 0 0
+	recterr 286
+addcomrec "Sidhe Lord"     						3 150 0 0
+	recterr 286
+addcomrec "Bean Sidhe"     						2 150 0 0 
+	recterr 286
+addunitrec "Sword of the Bastion" 				100 2 25 0 0
+	recterr -1122
+addunitrec "Soldier of the Bastion" 			100 1 150 0 0
+	recterr -1122
+addcomrec "Errant Angel" 						5 150 0 0
+	recterr -1122
+addunitrec  "Slave"	                   			100 10  25   0    0		#Any Aztlan city
+	recterr -1120
+addcomrec  "Nahualli"                        	3 55  20   0   		
+	recterr -1120
+addunitrec  "Rainbow Macaw"                   	100  5   50   0    0	#City of the Sky
+	recterr 287
+addunitrec "Turkey Spirit Double" 				100  5   50   0    0
+	recterr 287
+addunitrec  "Tzitzimitl"                      	2    5   150  0    0
+	recterr 287
+addunitrec  "Toad Warrior"                    	100  5   50   0    0	#City of Rain
+	recterr 288
+addunitrec "Giant Toad"							100  2   50   0    0
+	recterr 288
+addunitrec  "Jaguar"                          	100  4   75   0    0	#City of War
+	recterr 289
+addunitrec "Ozelotl"							100  2   75   0    0
+	recterr 289
+addunitrec  "Crocodile"                       	100  2   75   0    0	#City of the Mother
+	recterr 290
+addunitrec  "Plumed Serpent"					100  1   100  0    0
+	recterr 290
+addcomrec "Tlahuelpuci"			      			3    55  20   0
+	recterr 290
+addunitrec  "Zotz"                            	100  15  50   0    0	#City of the Night
+	recterr 291
+addunitrec  "Zotz Hunter"                       100  10  50   0    0	
+	recterr 291
+addunitrec  "Zotz Warrior"                      100  10  50   0    0	
+	recterr 291
+addunitrec  "Tzitzimitl"                      	2    5   150  0    0
+	recterr 287
+addunitrec  "Shade"                           	100  5  50   0    0		#City of the Dead
+	recterr -1121
+addunitrec  "Serpent"                           100  5  50   0    0
+	recterr -1121
+addcomrec  "Civateteo" 			      			5   55 20  0 
+	recterr -1121
+
 ################################ AI Class Modifications #############################################  
 
 newmonster "AI"
@@ -26944,33 +27036,25 @@ immortal
 charmres
 descr "..."
 
-newweapon "AIdefense"
-range 99
-aoe 999
-dmg 999
-an
-init 9
-dmgtype 7 #magic
-
-newmonster "AIdefender"
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 5
-prebatweapon 0 "AIdefense"
-invisible
-stupid
+newmonster "Provisional Garrison"
+copystats "Ballista"
 stationary
-noheal
-charmres
+growtime 10
+descr "A defensive force raised under a short charter. It is formidable for now, but due to be stood down soon."
+
+newmonster "Provisional Garrison "
+copystats "Ballista"
+stationary
 dmgonterr -1
-descr "An AI suicide countermeasure. Stay clear. It will disappear within 5 rounds."
+dmgonterrbonus 9999
+descr "A defensive force raised under a short charter. It is formidable for now, but due to be stood down soon."
 
 playerevent
 +turnnbr -1
 +aiplayer -2
 -hasunit -2 "AI"
 -hasunithere -2 "AI"
-newunits -2 "AI & AIdefender"
+newunits -2 "AI & 3*Provisional Garrison"
 endevent 
 
 # --------------- AI Generic siege and citadel defense  ----------# 
