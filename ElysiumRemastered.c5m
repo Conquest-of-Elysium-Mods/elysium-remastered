@@ -4182,7 +4182,6 @@ addcomrec "Damned Demonologist" 4 60 20 0
 	reclimiter "+Damned Master"
 
 ################################# Witch #################################################
-
 #------------------- Witch Terrains -------------------------#
 
 selectterr 97   						#for atmosphere
@@ -4193,16 +4192,31 @@ weed 1
 misty
 mistrare 10
 
+selectterr 832
+name "Hag Stones"
+spr "Sprites/Witchmoot2.tga"
+fungus 2
+herbs 2 
+weed 1
+apcost 1
+dead 3 
+nostdrec
+snowok
+batmap 48 								#Fairy Circle
+visible 
+lifeforce 20
+destroyto 197							#Fairy Circle
+
 selectterr 833
 name "Witchmoot"
-spr "Sprites/Shadowcircle.tga"
-gold 1
-hands 1
+spr "Sprites/Witchmoot1.tga"
+gold 3
+hands 2
 fungus 3
 herbs 2 
 weed 1
 apcost 1
-trade 1 
+trade 2 
 dead 3 
 citadel
 nostdrec
@@ -4212,6 +4226,11 @@ visible
 smoke 
 lifeforce 20
 destroyto 197							#Fairy Circle
+
+selectclass 4
+classcitterr 832
+
+
 
 #################################### Ordinary Witch Changes ##################################
 
@@ -4297,7 +4316,6 @@ spiritsight
 selectmonster "Manflayer"
 poisonres 75
 swamp
-rank -1
 
 selectmonster "Swamp God"
 fastheal
@@ -4362,8 +4380,6 @@ copystats "Doppel Spawn"
 
 newmonster    "Androphag Archer" 1                                       
 copystats "Androphag Archer"
-
-# No longer unkillable by some classes, but serves same function as before
 
 selectmonster "Creeping Doom"
 affres 100 
@@ -4457,14 +4473,14 @@ newmonster "Tatterman"
 spr1 "Sprites/Tatterman1.tga"
 spr2 "Sprites/Tatterman2.tga"
 armor                          2 
-hp                            33 
+hp                            25 
 str                            7 
 mor                            9 
 mr                             8 
 rank                           1 # front rank.
 meleeweapon                10  "Hook" # Hook: d10 Slash damage.
-meleeweaponbonus           4  427 # Horror Tentacle d4.
-meleeweaponbonus           4  427 # Horror Tentacle d4
+meleeweaponbonus           3  427 # Horror Tentacle d3.
+meleeweaponbonus           3  427 # Horror Tentacle d3
 meleeweaponbonus           4  95 # Hoof: d4 Blunt damage.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
 fear 2
@@ -4477,7 +4493,7 @@ diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
 nobootslots                      # Has no boot slots.
 voidsanity 20
-fastheal
+affres 100
 drawsize -10
 noleader
 descr "A Tatterman is an ancient nightmare of the dream realms. It infiltrates sleeping minds and feeds on fear. In places where the veil between worlds is thin, a Tatterman may sometimes slip into the physical world as a manifestation of mans deepest terrors."   
@@ -4559,38 +4575,10 @@ poisonres 75
 size2x2
 tunnelmove 2
 siegetunnel 70
-meleeweapon 20 43 #Weak venomous bite d20
+meleeweapon 16 43 #Weak venomous bite d16
 animal
 drawsize -10
 descr "The Rotworm is a larger, more aggressive species of earthworm. Beware of lingering near piles of detritus, as they tend to surface unexpectedly at the most inconvenient moments."
-
-newweapon "Yellow Spore Cloud"
-trgrank              9 # Target: any enemy in range.
-range                6
-init                 1
-dmgtype              9 # Poison.
-dmg                  0 
-aoe                  10 # Area: burst 10.
-an                     # Armor negating.
-flymode              3 # Fast particle effect, one for each strike or square hit.
-flylook             62
-flysound           104 # swosh2.sw (Spell Flysound)
-look                 7
-sound              109 # shortsizz.sw
-next               440 # Extra effect if target is hit: 440: Sleep Spores.
-nextdmg              1 # Sleep.
-
-newweapon     "Yellow Spores"                                              # 440
-trgrank              9 # Target: any enemy in range.
-range                2
-init                 1
-dmgtype             16 # Sleep.
-dmg                  0 
-aoe                  1 # Area: burst 1.
-mr                     # Resisted by rolling 2d4 < Magic Resistance.
-an                     # Armor negating.
-look                11
-sound               22 # fear.smp (Fear)
 
 newmonster "Yellow Musk Creeper" 
 spr1 "Sprites/Yellowmuskcreeper1.tga"
@@ -4609,150 +4597,293 @@ diseaseres
 sleepres
 affres 100
 foreststealth
-immobile
 rank 0
 size2x2
 rangedweaponbonus 10 "Yellow Spore Cloud"
-spawnmon 50
+spawnmon 25
 stupid
 stationary
+immobile
 drawsize -20
-descr "The Yellow Musk Creeper propagates by planting their spores in the cadavers of nearby dead animals. These husks will wander around spreading spores and protecting the plant until they decompose. If no nearby corpses are to be found, the mother plant will instead attract and kill living creatures with a sweet-scented and sedative poison." 
- 
-newmonster "Yellow Musk Spores"
-spr1 "Sprites/Yellowspores.tga"
-spr2 "Sprites/Yellowspores.tga"
-hp 2
-armor 0
-mr 2
-mor 99
-str 1
-dmgonterr -1
-noheal
-stupid
-absorbdead 1
-growtime 3
-growoffs 3
-float
-immobile
-affres 100
-nozoc
-nocombat
-invisible
-descr "The Yellow Musk Creeper propagates by planting their spores in the cadavers of nearby dead animals. These husks will wander around spreading spores and protecting the plant until they decompose. If no nearby corpses are to be found, the mother plant will instead attract and kill living creatures with a sweet-scented and sedative poison." 
-
-newmonster "Yellow Musk Spores"
-spr1 "Sprites/Yellowspores.tga"
-spr2 "Sprites/Yellowspores.tga"
-hp 2
-armor 0
-mr 2
-mor 99
-str 1
-dmgonterr -1
-noheal
-stupid
-absorbdead 1
-growtime 3
-growoffs 3
-float
-immobile
-affres 100
-nozoc
-nocombat
-invisible
-descr "The Yellow Musk Creeper propagates by planting their spores in the cadavers of nearby dead animals. These husks will wander around spreading spores and protecting the plant until they decompose. If no nearby corpses are to be found, the mother plant will instead attract and kill living creatures with a sweet-scented and sedative poison." 
-
-newmonster "Yellow Musk Spores"
-spr1 "Sprites/Yellowspores.tga"
-spr2 "Sprites/Yellowspores.tga"
-hp 2
-armor 0
-mr 2
-mor 99
-str 1
-dmgonterr -1
-noheal
-stupid
-absorbdead 1
-growtime 3
-growoffs 3
-float
-immobile
-affres 100
-nozoc
-nocombat
-invisible
-descr "The Yellow Musk Creeper propagates by planting their spores in the cadavers of nearby dead animals. These husks will wander around spreading spores and protecting the plant until they decompose. If no nearby corpses are to be found, the mother plant will instead attract and kill living creatures with a sweet-scented and sedative poison." 
+descr "The Yellow Musk Creeper propagates by implanting spores into living creatures drawn close by its sweet, soporific scent. Infected victims become husks that wander without will, dispersing spores and guarding the mother plant until their bodies decay." 
 
 newmonster "Yellow Musk Thrall"
-copystats "Soulless"
 spr1 "Sprites/Yellowthrall1_1.tga"
 spr2 "Sprites/Yellowthrall1_2.tga"
+armor                          0 # Armor.
+hp                            10 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                1   0 # Fist: d2 Blunt damage.
+slow                             # The monster only has 2 AP.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+clumsy                           # 50% chance to miss each attack.
 foreststealth
 stupid
 forest1
 jungle1
 stationary
+poisoncloud 2
+growtime 20
+human
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls are not in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."  
+
+newmonster " Yellow Musk Thrall"
+spr1 "Sprites/Yellowthrall1_1.tga"
+spr2 "Sprites/Yellowthrall1_2.tga"
+armor                          0 # Armor.
+hp                            10 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                1   0 # Fist: d2 Blunt damage.
+slow                             # The monster only has 2 AP.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+clumsy                           # 50% chance to miss each attack.
+foreststealth
+stupid
+forest1
+jungle1
 inanimate
 poisoncloud 2
+dmgonterr -1
+dmgonterrbonus 2
+human
 descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls are not in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."  
 
 newmonster "Yellow Musk Thrall"
-copystats "Restless Carcass"
 spr1 "Sprites/Yellowthrall2_1.tga"
 spr2 "Sprites/Yellowthrall2_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  11 # Bite: d3 Slash damage.
+fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+clumsy                           # 50% chance to miss each attack.
 foreststealth
 stupid
 forest1
 jungle1
 stationary
-inanimate
 poisoncloud 2
+growtime 20
+animal
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
+
+newmonster " Yellow Musk Thrall"
+spr1 "Sprites/Yellowthrall2_1.tga"
+spr2 "Sprites/Yellowthrall2_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  11 # Bite: d3 Slash damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+clumsy                           # 50% chance to miss each attack.
+foreststealth
+stupid
+forest1
+jungle1
+stationary
+poisoncloud 2
+growtime 20
+animal
 descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
 
 newmonster "Yellow Musk Thrall"
-copystats "Restless Carcass"
 spr1 "Sprites/Yellowthrall3_1.tga"
 spr2 "Sprites/Yellowthrall3_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  14 # Antlers: d3 Pierce damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+clumsy                           # 50% chance to miss each attack.
+foreststealth
+stupid
+forest1
+jungle1
+stationary
+poisoncloud 2
+growtime 20
+animal
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
+
+newmonster " Yellow Musk Thrall"
+spr1 "Sprites/Yellowthrall3_1.tga"
+spr2 "Sprites/Yellowthrall3_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  14 # Antlers: d3 Pierce damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+clumsy                           # 50% chance to miss each attack.
 foreststealth
 stupid
 forest1
 jungle1
 inanimate
 poisoncloud 2
-descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls are not in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
-
-newmonster "Yellow Musk Spores"
-spr1 "Sprites/Yellowspores.tga"
-spr2 "Sprites/Yellowspores.tga"
-hp 2
-armor 0
-mr 2
-mor 99
-str 1
-noheal
-stupid
-growtime 1
-float
-immobile
-affres 100
-nozoc
-nocombat
-invisible
-descr "The Yellow Musk Creeper propagates by planting their spores in the cadavers of nearby dead animals. These husks will wander around spreading spores and protecting the plant until they decompose. If no nearby corpses are to be found, the mother plant will instead attract and kill living creatures with a sweet-scented and sedative poison." 
+dmgonterr  -1
+dmgonterrbonus 2
+animal
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
 
 newmonster "Yellow Musk Thrall"
-copystats "Restless Carcass"
 spr1 "Sprites/Yellowthrall3_1.tga"
 spr2 "Sprites/Yellowthrall3_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  14 # Antlers: d3 Pierce damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+clumsy                           # 50% chance to miss each attack.
+foreststealth
+stupid
+forest1
+jungle1
+stationary
+poisoncloud 2
+growtime 20
+animal
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
+
+newmonster " Yellow Musk Thrall"
+spr1 "Sprites/Yellowthrall3_1.tga"
+spr2 "Sprites/Yellowthrall3_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  14 # Antlers: d3 Pierce damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+clumsy                           # 50% chance to miss each attack.
 foreststealth
 stupid
 forest1
 jungle1
 inanimate
 poisoncloud 2
-descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls are not in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
+dmgonterr  -1
+dmgonterrbonus 2
+animal
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
+
+newmonster "Yellow Musk Thrall"
+spr1 "Sprites/Yellowthrall3_1.tga"
+spr2 "Sprites/Yellowthrall3_2.tga"
+armor                          0 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  14 # Antlers: d3 Pierce damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+clumsy                           # 50% chance to miss each attack.
+foreststealth
+stupid
+forest1
+jungle1
+inanimate
+poisoncloud 2
+dmgonterr  -1
+dmgonterrbonus 2
+animal
+descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."
 
 newmonster "Bat"
 spr1 "Sprites/Bat1.tga"
@@ -4765,6 +4896,7 @@ mr                             1
 rank                           1 # Front rank.
 meleeweapon                1 753 # Foul Bite: d1 Slash damage.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+flying 
 animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 diseaseres                       # Disease immunity.
 tiny                             # Tiny: 50% chance to be missed by each single-target attack against it.
@@ -4852,11 +4984,10 @@ str                            8
 mor                           99 
 mr                             3 
 rank                           1 # Front rank.
+meleeweapon                7 332 # Tangle Vines: d7 Blunt damage.
+meleeweaponspec 	   5 "Engulf " #
 meleeweapon               15 864 # Wooden Fist: d16 Blunt damage.
-meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
 rangedweaponbonus          3 687 # Poison Cloud: d3 Poison damage.
-meleeweapon 	          5 "Engulf " #
 size2x2
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
@@ -4865,14 +4996,12 @@ diseaseres                       # Disease immunity.
 bluntres                         # Blunt resistance (half damage).
 pierceres                        # Pierce resistance (half damage).
 fireres                      -50 # 50 Fire Vulnerability.
-shockres 150
+shockres 125
 drawsize                      10 # Draw the unit 10% larger when shown on its unit token.
 tangleres                      1 # Immunity to tangle vines.
 absorbdead 2
 slow
 terrstealth -20
-fastheal
-semistupid
 swamp2
 incorporate 1
 affres 100
@@ -4888,9 +5017,9 @@ str                            7
 mor                           99 
 mr                             1 
 rank                           1 # Front rank.
-meleeweapon               10 864 # Wooden Fist: d10 Blunt damage.
 meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon 	          5 "Engulf " #
+meleeweaponspec 	   5 "Engulf " #
+meleeweapon               10 864 # Wooden Fist: d10 Blunt damage.
 size2x2
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
@@ -4899,15 +5028,15 @@ diseaseres                       # Disease immunity.
 bluntres                         # Blunt resistance (half damage).
 pierceres                        # Pierce resistance (half damage).
 fireres                      -50 # 50 Fire Vulnerability.
-shockres 150
+shockres 125
 tangleres                      1 # Immunity to tangle vines.
-fastheal
+affres 100
 growhp 85
-absorbdead 2
+absorbdead 1
+incorporate 1
 hpoverflow 1
 slow
 terrstealth -20
-semistupid
 swamp2
 drawsize -15
 affres 100
@@ -4917,15 +5046,15 @@ descr "The Shambling Mound appears to be a heap of tangled vines and freshly tur
 newmonster "Marsh Giant"
 spr1 "Sprites/Marshgiant1.tga"
 spr2 "Sprites/Marshgiant2.tga"
-armor                          1 
-hp                            75 
-str                           9 
-mor                            5 
-mr                             3 
-rank                           0 # Mid rank.
-siegeweapon               18 237 # Boulder: d18 Blunt damage.
-meleeweapon                4 632 # Great Club: d14 Blunt damage.
-rangedweapon              20 305 # Throw Boulder: d20 Blunt damage.
+armor                          1 # Armor.
+hp                            47 # Hit Points.
+str                            8 # Strength.
+mor                            6 # Morale.
+mr                             3 # Magic Resistance.
+rank                           1 # Front rank.
+siegeweapon               12 237 # Boulder: d12 Blunt damage.
+meleeweapon               13  19 # Club: d16 Blunt damage.
+rangedweapon              12 305 # Throw Boulder: d12 Blunt damage.
 poisonres 50
 swamp2
 swamp
@@ -4977,7 +5106,7 @@ str                            6
 mor                            7 
 mr                             9 
 rank                           0 # Mid rank.
-spellweapon               42  1 # Void Magic at level 1
+spellweapon               36  1 # Command Magic at level 1
 meleeweapon               1  892 # Cane: d3 Blunt damage.
 meleeweapon                5 296 # Mutation Tentacle: d6 Blunt damage.
 meleeweapon                5 296 # Mutation Tentacle: d6 Blunt damage.
@@ -5143,7 +5272,7 @@ spr1 "Sprites/Huldre1.tga"
 spr2 "Sprites/Huldre2.tga"
 swamp
 poisonres 75
-fastheal
+affres 50
 firstshape 1
 descr "The Huldre appears as a beautiful young woman, but her true nature is revealed when she turns her back, exposing a hollow, bark-covered torso. She lures men into her snares with seductive magics. It is best advised to not follow naked ladies into murky swamps, unless they are running and with their backs exposed."  
 
@@ -5152,6 +5281,7 @@ copystats "Cursed Tree"
 spr1 "Sprites/Hollowtree1.tga"
 spr2 "Sprites/Hollowtree2.tga"
 affres 100
+fastheal 
 meleeweapon                3 326 # Branch: d3 Blunt damage.
 secondshape 1
 
@@ -5168,20 +5298,21 @@ sound                1 # spear.smp (Spear)
 newmonster "Hollow one" 
 spr1 "Sprites/Hollowone1.tga" 
 spr2 "Sprites/Hollowone2.tga"
-hp 15
+hp 12
 armor 0
 str 5
 mor 5
-mr 5
+mr 6
 rank 1
-poisonres 75
+poisonres 100
 invisible
 swamp
 tiny
-airshield 100
+evasion 1
+airshield 100 
 allitemslots
 meleeweapon 8 "Invisible Blade"
-descr "Hollow Ones are invisible beings, often found in service to the Witches. Their exact nature is unclear, due to the considerable difficulty of finding them. They are believed to be the cause of objects inexplicably moving around and things going bump in the night."  
+descr "It is an undeniable fact that there are things which go bump in the night, though it remains exceedingly hard to determine what they are. Some scholars insist they are not truly invisible, but somehow absent, like a moving gap in the world. Others propose that they have no body at all, and that what people see are only the clothes of their last victim moving on their own. Reports of creaks, knocks, and rustlings after dark are plentiful, but rarely reliable. There is, however, one recorded capture, or at least the capture of something that appeared to be wearing a coat. The garment itself proved quite ordinary, but Professor Albinus Greel insists he found a walnut sized solid within. When isolated for study, the object slipped away, and no one has been able to locate it since. At present, then, the sum of our knowledge is this: there are invisible beings abroad, sometimes they wear coats, and inside them there may or may not be walnuts"
 
 newmonster    "Toad Familiar"                                            #  529
 spr1 "Sprites/Toadfamiliar1.tga"
@@ -5257,9 +5388,6 @@ rank -1
 battleslow 2
 meleeweapon 4 11
 spellweapon 63 3
-more1spells -1
-more2spells -1 
-more3spells -1
 size1x1
 drawsize -50
 descr "The Toad has grown to grotesque proportions. It is now croaking in ancient tongues, muttering incoherent curses, proclaiming the coming of the Old Ones and offering bargains of secrets and power. Kissing it seems to late." 
@@ -5277,13 +5405,9 @@ rangedweaponbonus         20  40 # Death Gaze: d20 Magic damage.
 meleeweapon               15  37 # Gore: d15 Slash damage.
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 fear                             # Causes Fear (1d7 vs morale) in adjacent squares.
-clearspec
-clearmove
 coldaura 4
 poisonres 100
 coldres 100
-fear
-huge
 snow
 changetemp -25
 descr "The Pale Beasts are said to be manifestations of entropy, the inevitable unravelling of all things towards the still and cold that existed before the world was born. They appear in the shapes of massive aurochs, their white fur encrusted with ice and snow. They can be seen during blizzard in far northern reaches, and there are countless stories of their terrifying passage through the lands of Elysium. When the Pale Beast stirs, bitter winds follow and life withers at the creature's steps."
@@ -5311,7 +5435,7 @@ mor 6
 mr 3
 rank 1
 noslots
-meleeweapon 10 "Leeching Bite" 
+meleeweapon 8 "Leeching Bite" 
 poisonres 75
 swamp
 swamp1
@@ -5384,7 +5508,7 @@ meleeweapon 8 "Paralyzing Poison Bite"
 rangedweapon 20 46 #poison spit d20
 rangedweapon 4294967296 "Great Web" 
 huge
-fear 1
+fear 
 descr "An old tale speaks of a traveler who ventured deep into the woods and discovered vast, intricate webs stretching for miles-delicate structures resembling palaces and strange works of art. At the center of one such masterpiece was a colossal spider, weaving her stunning tapestries as if to conceal her own ugliness."
 
 newweapon "Black Thorns"
@@ -5773,6 +5897,95 @@ meleeambush 1
 descr “Whatever they were before, they serve the Witch now.”
 
 
+newweapon "Woodsman's Axe"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              1 # Slash.
+dmg                  21 
+aoe                  0 # Area: single target.
+sweep
+sound                8 # sword.wav (Sword)
+
+newweapon     "Invitation"                                           # 420
+trgrank              1 # Target: rear enemy (any enemy, preferring rear-most).
+range                5
+init                 4
+dmgtype             14 # Charm.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  3 # Area: burst 3.
+hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
+an                     # Armor negating.
+mind                   # Doesn't affect mindless units.
+affecthuman
+flymode              8 # Slow line, one for each strike or square hit.
+flylook            149
+flysound            94 # 
+
+newmonster "Black Goat"
+spr1 "Blackgoat1.tga"
+spr2 "Blackgoat2.tga"
+armor                          1 # Armor.
+hp                            66 # Hit Points.
+str                            8 # Strength.
+mor                            7 # Morale.
+mr                            10 # Magic Resistance.
+rank                          0 # Mid rank.
+meleeweapon  0 "Woodsman's Axe" 
+rangedweaponbonus 8 "Invitation"
+vengeance 1
+poisonres 100
+swamp
+foreststealth
+acutesenses
+localleadership 3 
+allitemslots                     # Has the full set of item slots.
+size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+nametype                       40 # Demonic
+descr "We have received the account of a young farmhand who claims to have observed a witches' gathering from hiding near the edge of a hollow. He reports that a dark figure stood at the center of their circle, a great man, though not quite a man, with the horned head of a ram. He wore the rough leathers of a woodsman, yet the witches bowed to him and caressed him as one might a beloved idol.
+As the revel grew wilder, the figure began to move among them, not mad like the rest, but slow and deliberate, as though all moved to his step. The farmhand swears the creature's eyes turned toward him, though he was well concealed, and he claims to remember nothing after that. At dawn, the fire had gone out, the clearing was empty, and his boots were on the wrong feet."
+
+newweapon     "Shadow Touch"                                         # 501
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              7 # magic.
+dmg                  6 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+nostr                  # Unaffected by damage bonuses from any source.
+sound                1 # spear.smp (Spear)
+nextwep             15 # Extra effect if target is affected: 15: aff (mr).
+nextdmg           2048 # Weakness
+
+newmonster "Faceless Courtier"
+spr1 "Facelesscourtier1.tga"
+spr2 "Facelesscourtier2.tga"
+armor                          0 # Armor.
+hp                            15 # Hit Points.
+str                            5 # Strength.
+mor                            9 # Morale.
+mr                            10 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon         43   2 # Illusionism at level 2.
+spellweapon         36   2 # Command at level 2.
+meleeweapon                0 "Shadow Touch"# d6 Magic damage.
+float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+diseaseres                       # Disease immunity.
+ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
+invisible
+randomitem                   30 # 30% chance to spawn with a random magic item of any type.
+unique 1
+gold 3
+more1spells 1
+more2spells 1 
+nametype 2 #Anglo-saxon male 
+descr "They say there was once a nobleman, kind and just, who was much loved by his people. Yet even good men cast shadows, and his grew long. At night he dreamed of strange adventures, of choices never made, and woke with guilt he could not shake. In the end he went to a crone in the hills and begged her to free him from the darkness that followed him. Whatever charms she laid, they worked. His sleep grew easy, and when dawn came, his shadow was gone.^^But the story does not end there. Freed from its master, the shadow found it liked to walk on its own. It slipped into feasts and councils uninvited, bowed and whispered in ways no one quite remembers, and wandered the world in pursuit of vices its nobleman never dared. That was long ago. The noble is dust, but the shadow remains. They call it the Faceless Courtier now. It has stood beside mad kings and whispered ruin into their ears, walked forgotten halls, and gathered secrets others would rather keep buried. It deals in forbidden knowledge, and will sometimes serve the powerful, though never for long."
+
 # -------------- Witch Rituals ---------------------------------------------------------------#
 
 selectritual "Marshlands"
@@ -5828,18 +6041,20 @@ terr                 -42 # Required terrain: any land.
 varcost               50 # Can set Sacrifice Level anywhere from 50 to 150. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
 defctrl               75 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                # The ritual will summon the monsters specified in a random string.
+sum0chance 5
+sum0chance 5
+addstring     "(!)Black Cat Familiar"     # If a Black Cat Familiar is present, it will become a Magic Cat Familiar; otherwise, if a Magic Cat Familiar is present, it will gain a spell. If neither is present, summon a Black Cat Familiar. Actual base control chance: 100%.
+addstring 	"(!)Toad Familiar"
 addstring     "3d6*Frog"
 addstring     "2d4*Giant Snail"
 addstring     "(115)Crocodile"
 addstring     "1*Marsh Worm"
-addstring     "(!)Black Cat Familiar"     # If a Black Cat Familiar is present, it will become a Magic Cat Familiar; otherwise, if a Magic Cat Familiar is present, it will gain a spell. If neither is present, summon a Black Cat Familiar. Actual base control chance: 100%.
 addstring     	"(-20)1d2*Bog Beast"
 addstring     	"1*Swamp Monster"
 addstring     	"1*Swamp Thing"
 addstring     	"1*Giant Toad"
 addstring 	"1*Ochre Jelly"
 addstring 	"1*Swarm of Bees"
-addstring 	"(!)Toad Familiar"
 addstring 	"2d3*Wolf"
 addstring     	"2d6*Bat"
 addstring 	"1*Primordial Leech"
@@ -5880,9 +6095,13 @@ rebateterr20 833 				#20% rebate on Witchmoot
 sum0chance 5
 sum1chance 5
 sum2chance 5
+sum3chance 5
+sum4chance 5
 addstring "c*Elder Doppelganger"
 addstring "(!)0*Magic Toad Familiar"	
 addstring "(833)c*Tatterman"	
+addstring "(833)c*Faceless Courtier"
+addstring "(833)c*Black Goat"
 addstring "1*Burning Skull"		
 addstring "2d3+1*Hollow One"			
 addstring "1*Doppelganger"		
@@ -5890,7 +6109,7 @@ addstring "1d2*Huldre"
 addstring "1d2*Werewolf"
 addstring "2d2*Swamp Ghost"
 addstring "1*Will o'the Wisp"
-addstring  "2d6*Rushlight"
+addstring  "3d4*Rushlight"
 addstring "(88)c*Elder Doppelganger"	#Academy of higher magic	
 descr "With this ritual the Witch brews a potion to summon and control creatures that dwell in twilight and shadows. The more fungi added to the brew, the higher the chance of successfully controlling the summoned beings."
 
@@ -5929,7 +6148,7 @@ addstring "1*Ancient Presence"
 addstring "1*Ancient Hydra"
 addstring "1*Wyrm"
 addstring "1*Swamp God"
-addstring "(-101)1*Pale Beast" #Snowy Location
+addstring "(-101)1*Pale Beast" #snowy location
 addstring "1*Great Weaver"
 addstring "c*Worm Soul"
 descr "With this ritual the Witch will brew a decoction that is used to awaken and control one of the Old Ones.  The Old Ones slumber in the swamps and the ritual can only be performed there.  The more fungi used, the greater the chance of managing to control the Old One."
@@ -5954,13 +6173,33 @@ level 3
 cost 0 150
 cost 3 250
 apcost 3
+seasonreq 1
 terr -10 #Forests, jungles and swamps
 alterloc 833
+seteventvar 3
 planereq 0
 rarestart
 maxcast 1
 aialways 999 #ai will always cast and make plans for it
-descr "The Witches' Sabbath is a gathering of witches and other practitioners of dark arts. Through this ritual, the Witch creates an occult circle where rituals and celebrations of the old powers are performed. Within the circle, summoning shadow creatures becomes easier. During the Sabbath, other dark mages might approach to offer their services. The circle must be placed in secluded locations, such as forests or swamps, far from the prying eyes of civilization."
+descr "This ritual creates an occult circle in forests, swamps, or other hidden places. Each autumn witches and other dark mages gather there, and summoning shadow creatures becomes easier. In other seasons the circle remains but stands deserted and grants no bonuses. It can be cast only once, and only during autumn."
+
+playerevent
++varequal 3 1 
++season 2   
++player 24
+randloc 0 833
++terrain 833
+alterterrain 832  
+endevent 
+
+playerevent
++varequal 3 1 
++season 1
++class -2 "Witch"
++ownsloctarg -2 832
++terrain 832
+alterterrain 833  
+endevent 
 
 newritual "Hag's Cure" 
 ritpow 4
@@ -6010,7 +6249,7 @@ alterloc 		839			# sprouting tower
 teleportloc 2					# teleport caster + army
 squarespec 65536				# generate green mist
 movehome					# move home square
-seteventvar 1 					# activate event
+seteventvar 3 					# activate event
 soundfx               23 			# Sound effect when the ritual is cast: airduct.smp.
 airare                -1 			# AI will never cast this ritual.
 closewin                 			# Closes cast ritual window.
@@ -6040,7 +6279,7 @@ descr "The witch has learned the secrets of transformation and is no longer boun
 newritpow #Black Dragon
 
 newritual     	"Return to Human Form"
-descr 		"..."
+descr 		"Returns the Hag to her human form."
 level             1
 soundfx           32 # Sound effect when the ritual is cast: orchhit.smp (summoning).
 castertarg
@@ -6250,6 +6489,7 @@ armor            0
 mr               8  
 mor              4  
 str              4  
+rank -1 
 spellweapon     15   2 # Onyx Sorcery at level 2.
 meleeweapon  0 146  # Poison Dagger
 mountain            
@@ -6265,7 +6505,6 @@ nametype        15
 unaging
 randomitem 75
 randomrare 25
-rank            -1
 descr "The Svartalf is a dwarf of sinister nature. They avoid daylight and dwell in deep caves, crafting their wonders in the shadows. While malicious and greedy, the Svartalf is also highly skilled in the rune-magic of shadows and stone." 
 
 newmonster "Fallen Knight" 
@@ -6278,7 +6517,7 @@ mor                            8
 mr                             6 
 rank                           1 # Front rank.
 meleeweapon                  21 # Greatsword: d12 Slash damage.
-spellweapon50		   37  1 # Black Magic level 1, combat caster
+spellweaponbonus		   37  1 # Black Magic level 1, combat caster
 human                            
 allitemslots                     # Has the full set of item slots.
 localleadership                1 # +1 Morale for allied units within two squares of this unit.
@@ -6297,14 +6536,13 @@ mor                            8
 mr                             7 
 rank                           1 # Front rank.
 meleeweapon                  21 # Greatsword: d12 Slash damage.
-spellweapon50		   37  1 # Black Magic level 1, combat caster
+spellweaponbonus	   37  2 # Black Magic level 2, combat caster
 human                            
 allitemslots                     # Has the full set of item slots.
 localleadership                1 # +1 Morale for allied units within two squares of this unit.
 nametype                       2 # Anglo-Saxon male.
 randomrare                    10 # 10% chance to spawn with a random rare magic item.
 randomitem                    25 # 25% chance to spawn with a random magic item of any type.
-darkbless
 descr "The Fallen Knight was once a holy templar of El, sworn to the light. Over time, he was drawn in by the promises of the dark powers he once fought against. He turned from his faith and now searches for forbidden knowledge in service to old and forgotten gods."
 
 newmonster "Old Man of the Forest" #Wolf Mage
@@ -6436,7 +6674,6 @@ free
 level                  1
 cost              5   15 # 15 Hands
 terr                 -42 # Required terrain: any land.
-sum0chance 10
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "Swamp Wight"
 addstring     "Swamp Ghost"
@@ -6512,7 +6749,7 @@ poisonres                    100 # Poison immunity.
 spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
-invisible                          # Can only be seen by units with Acute Senses or Spirit Sight.
+stealth                           # Can only be seen by units with Acute Senses or Spirit Sight.
 diseaseres                       # Disease immunity.
 ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
 drawsize 10
@@ -6535,7 +6772,7 @@ poisonres                    100 # Poison immunity.
 spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
-invisible                          # Can only be seen by units with Acute Senses or Spirit Sight.
+stealth                           # Can only be seen by units with Acute Senses or Spirit Sight.
 diseaseres                       # Disease immunity.
 ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
 fear 1
@@ -6560,7 +6797,7 @@ poisonres                    100 # Poison immunity.
 spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
-invisible                          # Can only be seen by units with Acute Senses or Spirit Sight.
+stealth                           # Can only be seen by units with Acute Senses or Spirit Sight.
 diseaseres                       # Disease immunity.
 ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
 size2x2
@@ -6613,10 +6850,14 @@ armor 1
 str 5
 mor 5
 mr 7
-ethereal
-poisonres 100
+poisonres                    100 # Poison immunity.
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+stealth                           # Can only be seen by units with Acute Senses or Spirit Sight.
+diseaseres                       # Disease immunity.
+ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
 swamp
-stealth
 rank 0
 rangedweapon 4294967296 "Web of Terrors"
 meleeweapon 4 "Dream Poison Bite"
@@ -6627,7 +6868,7 @@ trgrank              8 # Target: rear enemy (any enemy, preferring rear-most).
 range                1
 init                 4
 dmgtype             8 # fear
-aoe                  -5 # Area: 5 targets.
+aoe                  -4 # Area: 4 targets.
 hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
 an                     # Armor negating.
 mind                   # Doesn't affect mindless units.
@@ -6654,11 +6895,11 @@ mr                            10
 rank                          -1 # Back rank.
 flying
 meleeweapon 3 913 	#Draining Touch
-spellweapon50s               36 1 # Command at level 1.
-spellweapon 		  9 2 # Dark Magic level 2
+spellweapon      52 2 # Moon Magic at level 2.
+spellweapon		 46 1 # maladies at level 1
 assassinweapon 16 "Dream Haunting" #paralysis og fear
 poisonres                    100 # Poison immunity.
-invisible
+stealth 
 human                            
 allitemslots                     # Has the full set of item slots.
 female                           # Female.
@@ -6680,11 +6921,11 @@ rank                          -1 # Back rank.
 flying
 stationary
 meleeweapon 3 913 	#Draining Touch
-spellweapon50s               36 1 # Command at level 1.
-spellweapon 		  9 2 # Dark Magic level 2
+spellweapon      52 2 # Moon Magic at level 2.
+spellweapon		 46 1 # maladies at level 1
 assassinweapon 16 "Dream Haunting" #paralysis og fear
 poisonres                    100 # Poison immunity.
-invisible
+stealth
 human                            
 allitemslots                     # Has the full set of item slots.
 female                           # Female.
@@ -6795,29 +7036,25 @@ addmercrec "Androphag Beastmaster"	      	    10 2 50 0 0
 addcomrec  "Lizard Shaman"                      3 55 20 0 
 addmercrec "Lizardman"                          15 5 50 10 0
 	reclimiter "+Lizard Shaman"
-addcomrec "Night Hag" 							5 120 20 0
+addcomrec "Night Hag" 							4 140 50 0
 	recterr 833 #Witchmoot 
-	reclimiter "-Night Hag"
-addcomrec "Night Hag" 							1 120 20 0
-	recterr 833 #Witchmoot 
-addcomrec "Fallen Knight"						2 70 20 0
+addcomrec "Fallen Knight"						4 70 20 0
 	recterr 833 #Witchmoot
-addcomrec "Old Man of the Forest"				5 80 20 0
+addcomrec "Old Man of the Forest"		4 100 20 0
 	recterr 833 #Witchmoot
-	reclimiter "-Old Man of the Forest"
-addcomrec "Old Man of the Forest"				2 80 20 0
+addcomrec "Ice Witch" 							6 70 20 0
 	recterr 833 #Witchmoot
-addcomrec "Ice Witch" 							3 70 20 0
+addcomrec "Black Sorceress" 					6 70 20 0
 	recterr 833 #Witchmoot
-addcomrec "Black Sorceress" 					3 70 20 0
+addcomrec "Svartalf Sorcerer"				5 100 20 0
 	recterr 833 #Witchmoot
-addcomrec "Svartalf Sorcerer"					2 120 20 0
+addcomrec "Mad Old Wizard"					4 140 50 0
 	recterr 833 #Witchmoot
-addcomrec "Mad Old Wizard"						2 120 20 0
+addcomrec   "Manflayer"                          5 70 20 0 
 	recterr 833 #Witchmoot
-addcomrec   "Manflayer"                         2 70 20 0 
+addcomrec   "Witch"                                 40 55 10 0 
 	recterr 833 #Witchmoot
-addcomrec   "Witch"                             10 55 10 0 
+addcomrec   "Witch's Apprentice"          40 35 10 0 
 	recterr 833 #Witchmoot
 
 ####################### High Priestess ##############################
@@ -25065,7 +25302,7 @@ playerevent
 +hasunit 28 "Duke of Hell"
 targetunitloc
 +terrain -36
-newunits 28 "3*Succubus & 1*Infernal Magistrate"
+newunits 28 "3*Succubus & 1*Infernal Magistrate & 1*Faceless Courtier"
 endevent
 
 playerevent
