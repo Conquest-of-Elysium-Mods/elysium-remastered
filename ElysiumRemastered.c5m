@@ -17372,6 +17372,7 @@ charmres                         # Charm immunity.
 diseaseres                       # Disease immunity.
 allitemslots                     # Has the full set of item slots.
 sensedead                      1 # Can sense the number of corpses of all types in current square.
+stealth                          # 
 descr "This one was once a brutal murderer, and becoming a ghoul has done nothing to improve his temperament. He is now a highly effective assassin, but after a few incidents involving late-night meals in the barracks, he is kept far away from the living soldiers." 
 
 newweapon "Poison "
@@ -17947,6 +17948,8 @@ promotion             -1 # Promote 1 unit to a commander and make it the target 
 addstring     "Markgraf"
 addstring     "Ghoul Baron"
 addstring     "Markmeister"
+addstring     "Ghoul Baron"
+addstring     "Markmann"                      
 addstring     "Ghoul Baron"
 addstring     "Hobmark Murderer"
 addstring     "Ghoul Murderer" 
