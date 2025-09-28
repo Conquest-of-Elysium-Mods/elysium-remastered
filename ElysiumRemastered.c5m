@@ -5938,8 +5938,8 @@ flylook            149
 flysound            94 # 
 
 newmonster "Black Goat"
-spr1 "Blackgoat1.tga"
-spr2 "Blackgoat2.tga"
+spr1 "Sprites/Blackgoat1.tga"
+spr2 "Sprites/Blackgoat2.tga"
 armor                          1 # Armor.
 hp                            66 # Hit Points.
 str                            8 # Strength.
@@ -5957,8 +5957,7 @@ localleadership 3
 allitemslots                     # Has the full set of item slots.
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 nametype                       40 # Demonic
-descr "We have received the account of a young farmhand who claims to have observed a witches' gathering from hiding near the edge of a hollow. He reports that a dark figure stood at the center of their circle, a great man, though not quite a man, with the horned head of a ram. He wore the rough leathers of a woodsman, yet the witches bowed to him and caressed him as one might a beloved idol.
-As the revel grew wilder, the figure began to move among them, not mad like the rest, but slow and deliberate, as though all moved to his step. The farmhand swears the creature's eyes turned toward him, though he was well concealed, and he claims to remember nothing after that. At dawn, the fire had gone out, the clearing was empty, and his boots were on the wrong feet."
+descr "There is a story of a young farmhand who once hid near a hollow by the woods and watched a gathering of witches. He said a dark figure stood at the center, shaped like a tall man, but with the horned head of a ram. It wore rough leathers like a woodsman, yet the women bowed to it and touched it as if it were a sacred idol. As their dancing grew wild, the figure moved among them, not frantic but steady, and the others seemed to follow its step. The farmhand swore its eyes found him though he was well hidden. What happened after, he could not say. At dawn the fire was out, the clearing was empty, and his boots were on the wrong feet."
 
 newweapon     "Shadow Touch"                                         # 501
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -5973,8 +5972,8 @@ nextwep             15 # Extra effect if target is affected: 15: aff (mr).
 nextdmg           2048 # Weakness
 
 newmonster "Faceless Courtier"
-spr1 "Facelesscourtier1.tga"
-spr2 "Facelesscourtier2.tga"
+spr1 "Sprites/Facelesscourtier1.tga"
+spr2 "Sprites/Facelesscourtier2.tga"
 armor                          0 # Armor.
 hp                            15 # Hit Points.
 str                            5 # Strength.
@@ -5989,7 +5988,6 @@ coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
-stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
 diseaseres                       # Disease immunity.
 ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
 invisible
@@ -5999,7 +5997,7 @@ gold 3
 more1spells 1
 more2spells 1 
 nametype 2 #Anglo-saxon male 
-descr "They say there was once a nobleman, kind and just, who was much loved by his people. Yet even good men cast shadows, and his grew long. At night he dreamed of strange adventures, of choices never made, and woke with guilt he could not shake. In the end he went to a crone in the hills and begged her to free him from the darkness that followed him. Whatever charms she laid, they worked. His sleep grew easy, and when dawn came, his shadow was gone.^^But the story does not end there. Freed from its master, the shadow found it liked to walk on its own. It slipped into feasts and councils uninvited, bowed and whispered in ways no one quite remembers, and wandered the world in pursuit of vices its nobleman never dared. That was long ago. The noble is dust, but the shadow remains. They call it the Faceless Courtier now. It has stood beside mad kings and whispered ruin into their ears, walked forgotten halls, and gathered secrets others would rather keep buried. It deals in forbidden knowledge, and will sometimes serve the powerful, though never for long."
+descr "There was once a nobleman, fair and much loved by his people. But even good men cast shadows, and his grew long. At night he dreamed of lives he had not lived and woke with a guilt he could not name. At last he went to a crone in the hills and begged her to take the darkness from him. Whatever charm she laid, it worked. He slept in peace, and when morning came, his shadow was gone. But the tale does not end there. The shadow had learned to walk, and once freed it went its own way. It crept into feasts and councils, bowing and whispering in ways no one quite remembers, and sought out the pleasures its master had denied. The nobleman is long dead, but the shadow still lingers. Now they call it the Faceless Courtier. It has stood beside mad kings, whispered ruin in their ears, walked forgotten halls, and gathered secrets best left buried. It will sometimes serve the mighty, but never stays."
 
 # -------------- Witch Rituals ---------------------------------------------------------------#
 
@@ -6111,12 +6109,12 @@ sum0chance 5
 sum1chance 5
 sum2chance 5
 sum3chance 5
-sum4chance 5
-addstring "c*Elder Doppelganger"
+sum4chance 10
 addstring "(!)0*Magic Toad Familiar"	
 addstring "(833)c*Tatterman"	
 addstring "(833)c*Faceless Courtier"
 addstring "(833)c*Black Goat"
+addstring "(833)c*Elder Doppelganger"
 addstring "1*Burning Skull"		
 addstring "2d3+1*Hollow One"			
 addstring "1*Doppelganger"		
@@ -6125,8 +6123,7 @@ addstring "1d2*Werewolf"
 addstring "2d2*Swamp Ghost"
 addstring "1*Will o'the Wisp"
 addstring  "3d4*Rushlight"
-addstring "(88)c*Elder Doppelganger"	#Academy of higher magic	
-descr "With this ritual the Witch brews a potion to summon and control creatures that dwell in twilight and shadows. The more fungi added to the brew, the higher the chance of successfully controlling the summoned beings."
+descr "With this ritual, the Witch brews a potion to call forth and control creatures of twilight and shadow. The more fungi she stirs into the brew, the greater her chance of binding them. When performed during a Witches' Sabbath, the cost of the ritual is reduced, and beings of greater power may appear."
 
 newritual "Awaken the Mires"
 ritpow                 4 # Witchery
@@ -15909,7 +15906,7 @@ mr 7
 clearweapons
 meleeweapon                2   8 # Shortsword: d7 Slash damage.
 spellweapon               45   2 # Dwarf Magic at level 2.
-descr "Among the Dwarves, it is the eldest councilors who bear the responsibility of preserving the rich history of their kind. Their memories, extending well beyond their natural lifespans, suggest something rather extraordinary-a collective consciousness that seems to transcend the individual. In many ways, the Dwarves function much like a hive, each member contributing to the whole, not as a singular entity, but as a part of something larger. Much like ants within an anthill, their role is defined not by individuality, but by their contribution to the collective." 
+descr "Among the Dwarves, it is the eldest councilors who bear the responsibility of preserving the rich history of their kind. Their memories, extending well beyond their natural lifespans, suggest something rather extraordinary- a collective consciousness that seems to transcend the individual. Much like ants within an anthill, each dwarf's role is defined not by individuality, but by their contribution to the whole." 
 
 newmonster "Migrating Dvala"
 spr1 "Sprites/Migratingdvala1.tga"
@@ -18341,8 +18338,8 @@ an                     # Armor negating.
 sound                1 # spear.smp (Spear)
 
 newmonster "Corpse Wasps"
-spr1 "Corpsewasps1.tga"
-spr2 "Corpsewasps2.tga"
+spr1 "Sprites/Corpsewasps1.tga"
+spr2 "Sprites/Corpsewasps2.tga"
 armor                          0 # Armor.
 hp                             1 # Hit Points.
 str                            1 # Strength.
@@ -25366,7 +25363,8 @@ playerevent
 +hasunit 28 "Duke of Hell"
 targetunitloc
 +terrain -36
-newunits 28 "3*Succubus & 1*Infernal Magistrate & 1*Faceless Courtier"
+newunits 28 "3*Succubus & 1*Infernal Magistrate & c*Faceless Courtier"
+holdit 1 
 endevent
 
 playerevent
@@ -28709,7 +28707,7 @@ str                            2
 mor                            3 
 mr                             8 
 rank                          -1 # Back rank.
-spellweapon               55   1 # Alchemy at level 1.
+spellweapon               55   2 # Alchemy at level 2.
 meleeweapon               -1 146 # Dagger: d2 pierce damage + d15 poison
 human                            
 allitemslots                     # Has the full set of item slots.
@@ -29637,3 +29635,4 @@ newmonster "Netherstestguy"
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
 	
+
