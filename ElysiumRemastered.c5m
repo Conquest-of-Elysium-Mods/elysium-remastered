@@ -4,8 +4,9 @@ icon "Smallbanner.tga"
 description "An overhaul mod. Flavor, balance and content." 
 modprio 1 # Will be overwritten by other mods in case of conflict.
 
-# terrains used 800 to 837
+# terrains used 800 to 842
 # terrain groups used -1099 to -1122
+# Event variables used 1-6
 
 ############################ General changes ################################### 
 
@@ -4208,7 +4209,7 @@ misty
 mistrare 10
 
 selectterr 832
-name "Hag Stones"
+name "Hagstones"
 spr "Sprites/Witchmoot2.tga"
 fungus 2
 herbs 2 
@@ -4246,9 +4247,7 @@ selectclass 4
 classcitterr 832
 
 
-
 #################################### Ordinary Witch Changes ##################################
-
 
 #----------------- Witch Monster edits ---------------------------------------#
 
@@ -4494,8 +4493,8 @@ mor                            9
 mr                             8 
 rank                           1 # front rank.
 meleeweapon                10  "Hook" # Hook: d10 Slash damage.
-meleeweaponbonus           3  427 # Horror Tentacle d3.
-meleeweaponbonus           3  427 # Horror Tentacle d3
+meleeweaponbonus           3  427 # Horror Tentacle d4.
+meleeweaponbonus           3  427 # Horror Tentacle d4
 meleeweaponbonus           4  95 # Hoof: d4 Blunt damage.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
 fear 2
@@ -6211,6 +6210,7 @@ playerevent
 +ownsloctarg -2 832
 +terrain 832
 alterterrain 833  
+message -2 "The fall equinox marks the start of the sabbath. Witches and nightkin gather at the Hagstones until the end of the season."
 endevent 
 
 newritual "Hag's Cure" 
@@ -18330,7 +18330,7 @@ descr "This is nothing but a misbegotten jumble of bones and body parts. Most ne
 newweapon "Sting "
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
-init                 3
+init                 4
 dmgtype              9 # Poison.
 dmg                  0 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
@@ -18357,8 +18357,8 @@ maxsum 500
 
 newweapon "Summon Corpse Wasps"
 trgrank              7 # Target: any square in range.
-range               2
-init                 3
+range               3
+init                 5
 dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
 dmg                  0 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
@@ -29635,4 +29635,3 @@ newmonster "Netherstestguy"
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
 	
-
