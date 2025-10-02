@@ -9450,7 +9450,7 @@ descr "This ritual grants the caster a new third level ritual.  If the caster is
 
 newritual "Design Bear Tattoo"
 copyritual "Design Lion Tattoo"
-cost 2 0
+cost 2 25
 apcost 5
 level 1
 terr					 2 # Forest
@@ -9459,7 +9459,7 @@ descr "Trough deep meditation and comunion with the forest spirits, wotan learns
 
 newritual "Design Aurochs Tattoo"
 copyritual "Design Badger Tattoo"
-cost 2 0
+cost 2 25
 apcost 5
 level 1
 terr					 0 # Plain
@@ -9468,7 +9468,7 @@ descr "Trough deep meditation and comunion with the spirits of the plains, wotan
 
 newritual "Design Hawk Tattoo"
 copyritual "Design Eagle Tattoo"
-cost 2 0
+cost 2 25
 apcost 5
 level 1
 terr					 73 # Hills
@@ -9477,7 +9477,7 @@ descr "Trough deep meditation and comunion with the highland spirits, wotan lear
 
 newritual "Design Moon Tattoo"
 copyritual "Design Serpent Tattoo" 
-cost 2 0
+cost 2 50
 apcost 8
 level 2
 terr					 44 # Tundra
@@ -9486,7 +9486,7 @@ descr "Trough pilgrimage trough the north, and meditating in the long dark of th
 
 newritual "Design Sun Tattoo"
 copyritual "Design Gryphon Tattoo"
-cost 2 0 
+cost 2 50 
 apcost 8
 level 2
 terr					 117 # Desert
@@ -9495,7 +9495,7 @@ descr "Trough pilgrimage trough the South, and meditating in the scorching desse
 
 newritual "Design Tattoo of the Dead" 
 copyritual "Design Skull Tattoo"
-cost 2 0 
+cost 2 100
 cost             14    50 # 5 Corpses (humanoid)
 apcost 11
 level 3
@@ -9504,7 +9504,7 @@ descr "Trough listening the voices of the dead, wotan learns how to inscribe sym
 
 newritual "Design Tattoo of Rebirth"
 copyritual "Design Hydra Tattoo"
-cost 2 0
+cost 2 100
 apcost 11
 level 3
 terr					 834 # Irminsul
@@ -9515,7 +9515,7 @@ descr "Trough deep comunion with the werebears that gather around the Irminsul, 
 
 newritual "Design Tattoo of Travels" 
 copyritual "Design Pegasus Tattoo"
-cost 3 0
+cost 3 100
 apcost 14
 level 3
 terr					 12 # Mountains
@@ -9523,7 +9523,7 @@ free
 descr "Trough long pilgrimage in the mountain of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
 
 newritual "Paint Enchanted Tattoos" 
-cost 2 50 
+cost 2 25 
 level 1
 choosefxtarg           0
 promotion 1  
@@ -9539,6 +9539,7 @@ addstring "Wolf Champion"
 addstring "Painted Wolf Champion"
 addstring "Steel Valkyrie"
 addstring "Painted Valkyrie"
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 free
 descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones."
 
@@ -9554,6 +9555,7 @@ addstring "Wolf Shaman"
 addstring "Elder Wolf Shaman"
 addstring "Maiden Priestes"
 addstring "Elder Maiden Priestes"
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 free
 descr "Oldest of ther Wotan, who heard and told stories from generations of warriors and traveleres have errie ability to let spirits speak directly trough them, their words is heeded even by the Shamans of the tribes who seldom listen to others. By inscribing tattoos and ofering prayers and advice to them Wotan can elavate shamans connection to the spirits, greatly empowering them in battle"
 
