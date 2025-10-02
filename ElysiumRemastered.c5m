@@ -8596,7 +8596,7 @@ allitemslots                     # Has the full set of item slots.
 female
 descr "Warfare and strife is a way of life among the Barbarians, and their women are trained to defend their villages, as well as the men. Many choose bows as their preferred weapon, offering ranged support in times of battle."
 
-newmonster    "Barbarian Champion"
+newmonster    "Champion Warrior"
 spr1 "Sprites/Barbarianchampion1.tga"
 spr2 "Sprites/Barbarianchampion2.tga"
 armor                          1 
@@ -8605,13 +8605,13 @@ str                            8
 mor                            8 
 mr                             4 
 rank                           1 # Front rank.
-meleeweapon               8  258 # Battle Axe: d16 Slash damage.
+meleeweapon               4  258 # Battle Axe: d14 Slash damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght far above avarage tribesman, their body patchwork of scars and their belts decorated with trophies of victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
 
-newmonster    "Painted Champion"
+newmonster    "Painted Warrior"
 copystats "Painted Crystal Amazon"
 clearweapons
 spr1 "Sprites/Paintedchampion1.tga"
@@ -8622,7 +8622,7 @@ str                            8
 mor                            8 
 mr                             4 
 rank                           1 # Front rank.
-meleeweapon               8  907 # Magical Axe: d16 Slash damage.
+meleeweapon               4  907 # Magical Axe: d14 Slash damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
@@ -8676,7 +8676,7 @@ allitemslots                     # Has the full set of item slots.
 female
 descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght and wit above avarage tribesman, their body patchwork of scars and their belts decorated with their victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
 
-newmonster    "Painted Archer"
+newmonster "Painted Archer"
 copystats "Painted Crystal Amazon"
 clearweapons
 spr1 "Sprites/Paintedarcher1.tga"
@@ -8867,6 +8867,20 @@ sound -1
 reload2 #very slow reload
 reloadsnd -1
 
+newweapon "Heavy Hunting Javelins" #can be thrown more than once
+range 3
+init 2
+dmgtype 3
+dmg 9
+mundane
+arrow
+flymode 1
+flylook 1
+flysound 19
+sound -1
+reload2 #very slow reload
+reloadsnd -1
+
 newweapon "Summon Wolf"
 trgrank              7 # Target: any square in range.
 range                3
@@ -8907,10 +8921,11 @@ mor                            8
 mr                             4 
 rank                           1 # Front rank.
 meleeweapon                3   4 #spear d7
-rangedweapon                   0 "Hunting Javelins"
+rangedweapon                   0 "Heavy Hunting Javelins"
 rangedweapon 				   3 "Summon Wolf"
 human                            
 shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+foreststealth
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 descr "Wolf Champions are warriors chosen among the wolf tribes for their extraordinary strenght and ailities to comand bests. They wear pealts of great bests they hunted, and move quielty trough the forest despite theyr stature. Wolf champions are always acompanied by a pack of wolfes that follow them as their leaders"
@@ -8927,10 +8942,11 @@ mor                            8
 mr                             4 
 rank                           1 # Front rank.
 meleeweaponbonus 3                606 # Magic Spear: d6 pierce damage
-rangedweapon                   0 "Hunting Javelins"
+rangedweapon                   0 "Heavy Hunting Javelins"
 rangedweapon 				   4 "Summon Wolf"
 human                            
 shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+foreststealth
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 descr "Wolf Champions who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
@@ -8965,6 +8981,7 @@ rank                           -1 # back rank.
 frontpos
 spellweapon               47   2 # Beast wards at level 2.
 meleeweapon                0   5 # Staff: d3 Blunt damage.
+foreststealth
 human                            
 allitemslots                     # Has the full set of item slots.
 descr "Wolf Shamans are spiritual guides of the Wolf tribes, they wear the pelts of beasts and call upon them in battle. They say beast totems are inhabited by spirits of Wolf shamans"
@@ -8983,6 +9000,7 @@ rank                           -1 # back rank.
 frontpos
 spellweapon               47   3 # Beast wards at level 3.
 meleeweapon                0   5 # Staff: d3 Blunt damage.
+foreststealth
 human                            
 allitemslots                     # Has the full set of item slots.
 descr "Wolf Shamans that comuned with the Ancestral spirits are given title of Elders, they recieve tattoo's from the Wotan as a symbol of wisdom and ancestral spirits guide their magic, allowing it to reach greater power"
@@ -9108,7 +9126,7 @@ spr2 "Sprites/Barbarianchief2.tga"
 clearweapons
 armor							1
 meleeweapon                1 21 # Greatsword: d10 Slash damage.
-descr "Barbarian tribes have little to no semblence of military leadership, those who lead the bands of barbarians are usualy strongest warriors around, with a vague of idea about organization and leadership, wich makes them cream of the crop in terms of inteligence among barbarian tribes. Their "military campains" usualy consist to raiding some unprotected villages and slaughtering pesants, until in thieir reckless overconfidance they throw themselfs to die on a fortifed village killed by first patrol that comes trough. As long as the cheif keeps the the band coontent by pillaging and robing good people of elysium they will stick together, but the bands are fickle and if the so called chief crosses to many of his warriors or fails to deliver on the victories, he may find himself "demoted" and left behind to feed the crows"
+descr "Barbarian tribes have little to no semblence of military leadership, those who lead the bands of barbarians are usualy strongest warriors around, with a vague of idea about organization and\or leadership, wich makes them cream of the crop in terms of inteligence among barbarian tribes. Their "military campains" usualy consist to raiding some unprotected villages and slaughtering pesants and ocassionaly distributing stolen land among warriors, until in thieir reckless overconfidance they throw themselfs to die on a fortifed village, or get killed by first patrol that comes trough. As long as the cheif keeps the the band coontent by pillaging and robing good people of elysium they will stick together, but the bands are fickle and if the so called chief crosses to many of his warriors or fails to deliver on the victories, he may find himself "demoted" and left behind to feed the crows"
 
 newmonster "Barbarian Warlord"
 spr1 "Sprites/Barbarianwarlord1.tga"
@@ -9279,6 +9297,17 @@ aialways 999
 forgetcurrit
 descr "With bribes, offerings and promises of conquest, the Warlord gains the loyalty of the chiefs and favor of the spirits. Will promote the Warlord to Barbarian King."  
 
+newritual "Assign Warlord"
+level 3
+cost 0 50 
+promotion 1 
+addstring "Barbarian Chief"
+nomonplayerreq 3
+addstring "(-)Barbarian Warlord"
+aialways 999
+forgetcurrit
+descr "Barbarian king has the authority to assign the title of a Warlord to any upcoming barbarian chief he sees fit. But he must be careful while doing this, as assigning more than a few Warlords would spark animosity amongst other clan chiefs"
+
 # Raid + resettlement is a neat mechanic, which is taken straight from Alexthebeetrayer's Large overhaul mod.
 
 newritual "Raid"  
@@ -9362,6 +9391,27 @@ soundfx               57
 aialways 50
 ainotnearhome          10
 descr "Raid a small settlment for supplies and gold. This will damage or destroy settlements."
+
+newritual "Resettle" 
+level 1
+free
+terr 184 #house ruins
+cost 0 10
+apcost 1
+montarg 2
+killtarg 9999
+airare -1
+minmonreq 2
+addstring "Barbarian Swordsman"
+addstring "Barbarian Warrior"
+addstring "(&)Barbarian Swordsman"
+addstring "(&)Barbarian Warrior"
+addstring "Barbarian Archer"
+addstring "(&)Barbarian Archer"
+alterloc 109
+soundfx               57 
+aialways 50
+descr "The Barbarians regularly give their people opportunity to retire and live on the land they conquered. They largely rely on reoccupying raided settlements, and after a belssing is given by the chief ritual they build yurts on the abandoned fields. Destroys 2 friendly barbarians to create a tent village on any house ruins."
 
 selectmonster "Barbarian chief"
 power 0 1
@@ -9473,15 +9523,16 @@ free
 descr "Trough long pilgrimage in the mountain of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
 
 newritual "Paint Enchanted Tattoos" 
-cost 2 20 
+cost 2 50 
 level 1
+choosefxtarg           0
 promotion 1  
-addstring "Barbarian Champion"
-addstring "Painted Champion"
+addstring "Champion Warrior"
+addstring "Painted Warrior"
 addstring "Swordsman Champion"
 addstring "Painted Swordsman"
 addstring "Champion Archer"
-addstring "Painted Archer
+addstring "Painted Archer"
 addstring "Horned Champion"
 addstring "Painted Horned Champion"
 addstring "Wolf Champion"
@@ -9489,12 +9540,13 @@ addstring "Painted Wolf Champion"
 addstring "Steel Valkyrie"
 addstring "Painted Valkyrie"
 free
-descr "A Wotan paints a group of chosen warriors with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones."
+descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones."
 
 newritual "Spirit Guidance" 
 cost 2 250
 apcost 2
 level 3
+choosefxtarg           0
 promotion 1  
 addstring "Horned Shaman"
 addstring "Elder Horned Shaman"
@@ -9606,7 +9658,7 @@ selectritual     "Promise of the Ancestors"
 addstring "Barbarian Warlord"
 addstring "Barbarian King"
 
-# ---------------------------Barbarian Class and Recruitment -------------------------------------------# 
+# ---------------------------Barbarian Class and Recruitment-------------------------------------------# 
 
 selectclass  7 # Barbarian
 classdescr "Since ancient times, Barbarian hordes have plundered the lands of Elysium.  Of unknown origin, their sudden arrival at the fringes of civilization sends tremors throughout the realms.  Some speculate that they hail from small villages in secluded regions while others say they come from the Netherworld.  The Barbarian threat is always present and only with a united show of force can the tide be turned. ^Barbarians are physically more powerful than normal men, but they are also more vulnerable to magic.  The Barbarian Warlord cannot buy advanced weapons like siege engines, but may sometimes recruit werebears or fierce warriors from independent warbands.  Werebears look just like ordinary Barbarians until they reveal themselves in combat, where their strength and rage make them far more powerful than a common Barbarian warrior.  Barbarians also have access to Spirit Guides who use magical herbs to contact ancestral spirits and summon them to join the armies of Barbarians again.  More powerful Spirit Guides are called Enaries."
@@ -9616,6 +9668,7 @@ classcitterr 834
 clearstartunits
 addstartunits          "Barbarian Warrior"        20
 addstartunits          "Warrior Idol"              1
+addstartunits          "Effigy"                    2
 addstartunits          "Barbarian Archer"          5
 addstartcom            "Mounted Chief"
 addstartunits          "Barbarian Cavalry"         5
@@ -9628,9 +9681,35 @@ addunitrec  "Barbarian Swordsman"             	100  7   50   0   10
 addunitrec  "Barbarian Cavalry"               	100  4   50   0    0
 addunitrec  "Barbarian Lancer"                	100  4   50   0   10
 addunitrec  "Battering Ram"			            100  1   25   0   25
-addmercrec  "Barbarian Champion"               	20   2   45   5    0
-addmercrec  "CHampion Swordsman"               	20   2   45   5   10
-addmercrec  "Champion Archer"               	20   3   45   5    0
+##########CHAMPION BLOCK#########
+addmercrec  "Barbarian Champion"               	10   1   20   0    0 #Leader
+	reclimiter "-Barbarian Warlord"
+	reclimiter "-Barbarian King"
+addmercrec  "CHampion Swordsman"               	10   1   20   0    5 #Leader
+	reclimiter "-Barbarian Warlord"
+	reclimiter "-Barbarian King"
+addmercrec  "Champion Archer"               	10   1   20   0    0 #Leader
+	reclimiter "-Barbarian Warlord"
+	reclimiter "-Barbarian King"
+addmercrec  "Barbarian Champion"               	20   1   20   0    0 #Warlord
+	reclimiter "-Barbarian Leader"
+	reclimiter "-Barbarian King"
+addmercrec  "CHampion Swordsman"               	20   1   20   0    5 #Warlord
+	reclimiter "-Barbarian Leader"
+	reclimiter "-Barbarian King"
+addmercrec  "Champion Archer"               	20   1   20   0    0 #Warlord
+	reclimiter "-Barbarian Leader"
+	reclimiter "-Barbarian King"
+addmercrec  "Barbarian Champion"               	30   1   20   0    0 #King
+	reclimiter "-Barbarian Leader"
+	reclimiter "-Barbarian Warlord"
+addmercrec  "CHampion Swordsman"               	30   1   20   0    5 #King
+	reclimiter "-Barbarian Leader"
+	reclimiter "-Barbarian Warlord"
+addmercrec  "Champion Archer"               	30   1   20   0    0 #King
+	reclimiter "-Barbarian Leader"
+	reclimiter "-Barbarian Warlord"
+##########CHAMPION BLOCK#########
 addmercrec  "Barbarian Werebear"               	5    1   25   0    0
 addmercrec  "Barbarian Werebear"               	75   1   25   0    0 
 	recterr 834
@@ -9653,7 +9732,7 @@ addcomrec   "Mounted Chief"                    	10 50 5 0
 addmercrec  "Mounted Scout"                    	15 1 15 10 0 
 addunitrec "Horned Warrior" 			100 7 50 0 10
     reclimiter "+Horned Chief"
-addunitrec "Horned Champion" 			15 2 60 10 15
+addunitrec "Horned Champion" 			15 1 25 0 10
     reclimiter "+Horned Chief"
 addcomrec "Horned Chief"   			 10 1 55 10 10
 	reclimiter "+Barbarian Warlord"
@@ -9663,7 +9742,7 @@ addcomrec   "Horned Shaman"          8 1 60 20 0
 	templerec
 addunitrec "Wolf Warrior"       		100 7 60 0 0
     reclimiter "+Wolf Chief"
-addunitrec "Wolf Champion"       		15 2 75 10 0
+addunitrec "Wolf Champion"       		15 1 35 0 0
     reclimiter "+Wolf Chief"
 addcomrec "Wolf Chief"				 10 1 60 5 5 
 	reclimiter "+Barbarian Warlord"
@@ -9673,7 +9752,7 @@ addcomrec   "Wolf Shaman"          8 1 60 20 0
 	templerec
 addunitrec "Steel Maiden"       		100 7 55 0 5
     reclimiter "+Steel Mother"
-addunitrec "Steel Valkyrie"       		15 2 70 10 5
+addunitrec "Steel Valkyrie"       		15 2 30 0 5
     reclimiter "+Steel Mother"
 addcomrec "Steel Mother"			10 1 60 5 5 
 	reclimiter "+Barbarian Warlord"
