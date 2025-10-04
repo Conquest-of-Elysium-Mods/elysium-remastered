@@ -9698,31 +9698,31 @@ addunitrec  "Barbarian Swordsman"             	100  7   50   0   10
 addunitrec  "Barbarian Cavalry"               	100  4   50   0    0
 addunitrec  "Barbarian Lancer"                	100  4   50   0   10
 addunitrec  "Battering Ram"			            100  1   25   0   25
-addmercrec  "Barbarian Champion"               	10   1   20   0    0 #Leader
+addmercrec  "Barbarian Champion"               	15   1   20   0    0 #Leader
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King"
-addmercrec  "Champion Swordsman"               	10   1   20   0    5 #Leader
+addmercrec  "Champion Swordsman"               	15   1   20   0    5 #Leader
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King"
-addmercrec  "Champion Archer"               	10   1   20   0    0 #Leader
+addmercrec  "Champion Archer"               	15   1   20   0    0 #Leader
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King"
-addmercrec  "Barbarian Champion"               	20   1   20   0    0 #Warlord
+addmercrec  "Barbarian Champion"               	30   1   20   0    0 #Warlord
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian King"
-addmercrec  "CHampion Swordsman"               	20   1   20   0    5 #Warlord
+addmercrec  "CHampion Swordsman"               	30   1   20   0    5 #Warlord
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian King"
-addmercrec  "Champion Archer"               	20   1   20   0    0 #Warlord
+addmercrec  "Champion Archer"               	30   1   20   0    0 #Warlord
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian King"
-addmercrec  "Barbarian Champion"               	30   1   20   0    0 #King
+addmercrec  "Barbarian Champion"               	45   1   20   0    0 #King
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian Warlord"
-addmercrec  "CHampion Swordsman"               	30   1   20   0    5 #King
+addmercrec  "CHampion Swordsman"               	45   1   20   0    5 #King
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian Warlord"
-addmercrec  "Champion Archer"               	30   1   20   0    0 #King
+addmercrec  "Champion Archer"               	45   1   20   0    0 #King
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian Warlord"
 addmercrec  "Barbarian Werebear"               	75   1   25   0    0 
@@ -9746,7 +9746,7 @@ addcomrec   "Mounted Chief"                    	10 50 5 0
 addmercrec  "Mounted Scout"                    	15 1 15 10 0 
 addunitrec "Horned Warrior" 			100 7 50 0 10
     reclimiter "+Horned Chief"
-addunitrec "Horned Champion" 			15 1 25 0 10
+addunitrec "Horned Champion" 			25 1 25 0 10
     reclimiter "+Horned Chief"
 addcomrec "Horned Chief"   			 10 1 55 10 10
 	reclimiter "+Barbarian Warlord"
@@ -9756,7 +9756,7 @@ addcomrec   "Horned Shaman"          8 1 60 20 0
 	templerec
 addunitrec "Wolf Warrior"       		100 7 60 0 0
     reclimiter "+Wolf Chief"
-addunitrec "Wolf Champion"       		15 1 35 0 0
+addunitrec "Wolf Champion"       		25 1 35 0 0
     reclimiter "+Wolf Chief"
 addcomrec "Wolf Chief"				 10 1 60 5 5 
 	reclimiter "+Barbarian Warlord"
@@ -9766,7 +9766,7 @@ addcomrec   "Wolf Shaman"          8 1 60 20 0
 	templerec
 addunitrec "Steel Maiden"       		100 7 55 0 5
     reclimiter "+Steel Mother"
-addunitrec "Steel Valkyrie"       		15 2 30 0 5
+addunitrec "Steel Valkyrie"       		25 2 30 0 5
     reclimiter "+Steel Mother"
 addcomrec "Steel Mother"			10 1 60 5 5 
 	reclimiter "+Barbarian Warlord"
