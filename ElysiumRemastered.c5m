@@ -8578,6 +8578,7 @@ gatherherbs
 selectmonster "Barbarian leader"
 rank                           1 # Front rank.
 rearpos
+
 # ------------------------------ Barbarian New Monsters ---------------------------------------# 
 
 newmonster "Barbarian Archer"
@@ -9508,46 +9509,43 @@ cost 2 100
 apcost 11
 level 3
 terr					 834 # Irminsul
-minmonreq 10
+minmonreq 12
 addstring "Barbarian Werebear"
 free
-descr "Trough deep comunion with the werebears that gather around the Irminsul, wotan learns how to inscribe symbol of Rebirth , upon being inscribed on a warriors skin it grants the ability to recover from any wound"
+descr "Trough deep comunion with at least dozen werebears at the Irminsul, wotan learns how to inscribe symbol of Rebirth, upon being inscribed on a warriors skin it grants the ability to recover from any wound"
 
 newritual "Design Tattoo of Travels" 
 copyritual "Design Pegasus Tattoo"
 cost 3 100
-apcost 14
+apcost 17
 level 3
 terr					 12 # Mountains
 free
-descr "Trough long pilgrimage in the mountain of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
+descr "Trough long pilgrimage trough the mountain of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
 
 newritual "Paint Enchanted Tattoos" 
 cost 2 25 
 level 1
-choosefxtarg           0
 promotion 1  
-addstring "Champion Warrior"
-addstring "Painted Warrior"
-addstring "Swordsman Champion"
-addstring "Painted Swordsman"
-addstring "Champion Archer"
-addstring "Painted Archer"
 addstring "Horned Champion"
 addstring "Painted Horned Champion"
-addstring "Wolf Champion"
-addstring "Painted Wolf Champion"
 addstring "Steel Valkyrie"
 addstring "Painted Valkyrie"
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+addstring "Wolf Champion"
+addstring "Painted Wolf Champion"
+addstring "Swordsman Champion"
+addstring "Painted Swordsman"
+addstring "Champion Warrior"
+addstring "Painted Warrior"
+addstring "Champion Archer"
+addstring "Painted Archer"
 free
-descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones."
+descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones. Wotan will prioritize stronger champions first"
 
 newritual "Spirit Guidance" 
-cost 2 250
+cost 2 500
 apcost 2
 level 3
-choosefxtarg           0
 promotion 1  
 addstring "Horned Shaman"
 addstring "Elder Horned Shaman"
@@ -9555,7 +9553,6 @@ addstring "Wolf Shaman"
 addstring "Elder Wolf Shaman"
 addstring "Maiden Priestes"
 addstring "Elder Maiden Priestes"
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 free
 descr "Oldest of ther Wotan, who heard and told stories from generations of warriors and traveleres have errie ability to let spirits speak directly trough them, their words is heeded even by the Shamans of the tribes who seldom listen to others. By inscribing tattoos and ofering prayers and advice to them Wotan can elavate shamans connection to the spirits, greatly empowering them in battle"
 
@@ -9623,6 +9620,24 @@ selectritual  "Summon Heroes of Old"
 level 9
 free
 
+newritual     "Ritual of Beast"
+ritpow                13 # Spirit Summons
+level                  2
+cost              2  200 # 200 Herbs
+terr                 -1102 # Required terrain: ancient forest, old battlefield or irminsul.
+montarg 12
+killtarg 9999
+minmonreq 12
+addstring "Barbarian Warrior"
+addstring "Barbarian Swordsman"
+addstring "(&)Barbarian Warrior"
+addstring "(&)Barbarian Swordsman"
+summoning     # The ritual will summon the monsters specified in a random string.
+addstring     "2d4+1*Barbarian Werebear"
+rebateterr20  834
+
+descr "The Spirit Guide performs a dangerous ritual of the beast in a place where spirits manifest easly, during wich a dozen warriors get ritualisticly tattoed and scarified, then crawl into fresh skins of bears. After that the Spirit guide burns large amount of herbs, and utters ancient spells in an attenmpt to merge spirits of the warriors and bears into one being. During the ritual the spirit of the bear must be subdued by the warrior. If it suceeds warriors gains the ability to transform into powerfull werebear in combat. However subduing the spirit of the bear is no easy task and if the warrior fails, his body will die and his spirit will get devoured by the beast"
+
 newritual     "Summon Heroes of Old "                                      # 335
 ritpow                13 # Spirit Summons
 level                  2
@@ -9683,11 +9698,10 @@ addunitrec  "Barbarian Swordsman"             	100  7   50   0   10
 addunitrec  "Barbarian Cavalry"               	100  4   50   0    0
 addunitrec  "Barbarian Lancer"                	100  4   50   0   10
 addunitrec  "Battering Ram"			            100  1   25   0   25
-##########CHAMPION BLOCK#########
 addmercrec  "Barbarian Champion"               	10   1   20   0    0 #Leader
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King"
-addmercrec  "CHampion Swordsman"               	10   1   20   0    5 #Leader
+addmercrec  "Champion Swordsman"               	10   1   20   0    5 #Leader
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King"
 addmercrec  "Champion Archer"               	10   1   20   0    0 #Leader
@@ -9711,8 +9725,6 @@ addmercrec  "CHampion Swordsman"               	30   1   20   0    5 #King
 addmercrec  "Champion Archer"               	30   1   20   0    0 #King
 	reclimiter "-Barbarian Leader"
 	reclimiter "-Barbarian Warlord"
-##########CHAMPION BLOCK#########
-addmercrec  "Barbarian Werebear"               	5    1   25   0    0
 addmercrec  "Barbarian Werebear"               	75   1   25   0    0 
 	recterr 834
 addmercrec  "Barbarian Werebear"               	50   1   25   0    0 
