@@ -8642,7 +8642,7 @@ meleeweapon               3   21 # Greatsword: d12 Slash damage. sweep
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght and wit above avarage tribesman, their body patchwork of scars and their belts decorated with their victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
+descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght above avarage tribesman, their body patchwork of scars and their belts decorated with trophies of victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
 
 newmonster    "Painted Swordsman"
 copystats "Painted Crystal Amazon"
@@ -8783,7 +8783,7 @@ human
 largeshield                      # Reduces damage from most weapons by 0-2; 0-4 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-descr "Horned Champions are warriors chosen among the horned tribes for their extraordinary strenght and stature, clad in armor that would immobilize lesser man, assembled over the years from gear belonging to slain foes and rivals, and wielding huge weapons with great efficiency"
+descr "Horned Champions are warriors chosen among the horned tribes for their extraordinary strenght and stature, clad in armor that would immobilize lesser man, assembled over the years from gear belonging to slain foes and rivals, and wielding heavy weapons with great efficiency"
 
 newmonster    "Painted Horned Champion"
 copystats "Painted Crystal Amazon"
@@ -8834,7 +8834,7 @@ meleeweapon                3   6 # hammer 1d6 damage
 human                            
 allitemslots                     # Has the full set of item slots.
 
-descr "Horned Shamans are spiritual leaders of the Horned tribes, living deep in the mountains they have deep conection to the Lord of the sky, calling his wrath upon enemies. They say totems of thunder are inhabited by the spirits of Horned Shamans"
+descr "Horned Shamans are spiritual leaders of the Horned tribes, living deep in the mountains they have conection to the Lord of the sky, calling his wrath upon enemies. They say idols of thunder are inhabited by the spirits of Horned Shamans"
 
 newmonster    "Elder Horned Shaman"
 copystats "Painted Crystal Amazon"
@@ -8929,7 +8929,7 @@ shield                           # Reduces damage from most weapons by 0-1; 0-2 
 foreststealth
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-descr "Wolf Champions are warriors chosen among the wolf tribes for their extraordinary strenght and ailities to comand bests. They wear pealts of great bests they hunted, and move quielty trough the forest despite theyr stature. Wolf champions are always acompanied by a pack of wolfes that follow them as their leaders"
+descr "Wolf Champions are warriors chosen among the wolf tribes for their extraordinary strenght and abilities to live among beasts. They wear pelts of great beasts they hunted, and move quielty trough the forest despite their stature. Wolf champions are always acompanied by a pack of wolfes that follow them as their leaders"
 
 newmonster    "Painted Wolf Champion"
 copystats "Painted Crystal Amazon"
@@ -8985,7 +8985,7 @@ meleeweapon                0   5 # Staff: d3 Blunt damage.
 foreststealth
 human                            
 allitemslots                     # Has the full set of item slots.
-descr "Wolf Shamans are spiritual guides of the Wolf tribes, they wear the pelts of beasts and call upon them in battle. They say beast totems are inhabited by spirits of Wolf shamans"
+descr "Wolf Shamans are spiritual guides of the Wolf tribes, they wear the pelts of beasts and call upon them in battle. They say beast idols are inhabited by spirits of Wolf shamans"
 
 newmonster    "Elder Wolf Shaman"
 copystats "Painted Crystal Amazon"
@@ -9042,7 +9042,7 @@ allitemslots
 human
 berserker
 female
-descr "Steel Valkyries are champions of Erka, the best among the maidens who swore oath to her. Girls chosen to become a Valkyries rarely survive the ordeal but those who, do posses exeptional strenght and agility, armed with swords and spears they are capable of decimating entire groups of men in combat, while sorcery and fear holds little power over them. Other champions treat them with caution while lesser men are to afraid to aproach them. Attempts at familiarity, especially of the lighter kind, should sommone be stupid enough to try never end well."
+descr "Steel Valkyries are champions of Erka, the best among the maidens who swore oath to her. Girls chosen to become a Valkyries rarely go trough extreme training and not all survive, but those who do, posses exeptional strenght and agility, armed with swords and spears they are capable of decimating entire groups of men in combat, while sorcery and fear holds little power over them. Other champions treat them with caution, while lesser men are to afraid to aproach them. Attempts at familiarity, especially of the lighter kind, should sommone be stupid enough to try, never end well."
 
 newmonster    "Painted Valkyrie"
 copystats "Painted Crystal Amazon"
@@ -9099,7 +9099,7 @@ meleeweapon                0   5 # Staff: d3 Blunt damage.
 human                            
 allitemslots                     # Has the full set of item slots.
 female
-descr "Maiden Priestes are spiritual leaders of Steel Maiden tribes teaching ways of the Oath of Erka, they say spirits called to totems of maladies belonged to Maiden Priesteses"
+descr "Maiden Priestes are spiritual leaders of Steel Maiden tribes teaching ways of the Oath of Erka, they say spirits called to idols of maladies belonged to Maiden Priesteses"
 
 newmonster    "Elder Maiden Priestes"
 copystats "Painted Crystal Amazon"
@@ -9127,7 +9127,7 @@ spr2 "Sprites/Barbarianchief2.tga"
 clearweapons
 armor							1
 meleeweapon                1 21 # Greatsword: d10 Slash damage.
-descr "Barbarian tribes have little to no semblence of military leadership, those who lead the bands of barbarians are usualy strongest warriors around, with a vague of idea about organization and\or leadership, wich makes them cream of the crop in terms of inteligence among barbarian tribes. Their "military campains" usualy consist to raiding some unprotected villages and slaughtering pesants and ocassionaly distributing stolen land among warriors, until in thieir reckless overconfidance they throw themselfs to die on a fortifed village, or get killed by first patrol that comes trough. As long as the cheif keeps the the band coontent by pillaging and robing good people of elysium they will stick together, but the bands are fickle and if the so called chief crosses to many of his warriors or fails to deliver on the victories, he may find himself "demoted" and left behind to feed the crows"
+descr "Barbarian tribes have little to no semblence of military leadership, those who lead the bands of barbarians are usualy strongest warriors around, with a vague of idea about organization and\or leadership, wich makes them cream of the crop in terms of inteligence among barbarian tribes. Their "military campain" usualy consist to raiding unprotected villages and slaughtering defensless pesants while ocassionaly distributing stolen land among warriors, until in their reckless overconfidance, they throw themselfs and die on a fortification, or get killed by a passing patrol. As long as the cheif keeps the the band content by pillaging and robing good people of elysium, they will stick together but the bands are fickle and if the so called chief crosses to many of his warriors or fails to deliver on the victories, he may find himself left behind to feed the crows"
 
 newmonster "Barbarian Warlord"
 spr1 "Sprites/Barbarianwarlord1.tga"
@@ -9307,7 +9307,7 @@ nomonplayerreq 3
 addstring "(-)Barbarian Warlord"
 aialways 999
 forgetcurrit
-descr "Barbarian king has the authority to assign the title of a Warlord to any upcoming barbarian chief he sees fit. But he must be careful while doing this, as assigning more than a few Warlords would spark animosity amongst other clan chiefs"
+descr "Barbarian king has the authority to assign the title of a Warlord to any upcoming barbarian chief he sees fit. But he must be careful while doing this, as assigning more than a few Warlords would spark animosity amongst other clans"
 
 # Raid + resettlement is a neat mechanic, which is taken straight from Alexthebeetrayer's Large overhaul mod.
 
@@ -9344,7 +9344,7 @@ soundfx               57
 aialways 50
 descr "The Barbarians regularly give their people opportunity to retire and live on the land they conquered. They largely rely on reoccupying raided settlements, and after a belssing is given by the chief ritual they build yurts on the abandoned fields. Destroys 2 friendly barbarians to create a tent village on any house ruins."
 
-newritual "Pillage"  
+newritual "Pillage"
 level 2
 free
 terr -32 # village or larger settlement
@@ -9412,7 +9412,9 @@ addstring "(&)Barbarian Archer"
 alterloc 109
 soundfx               57 
 aialways 50
-descr "The Barbarians regularly give their people opportunity to retire and live on the land they conquered. They largely rely on reoccupying raided settlements, and after a belssing is given by the chief ritual they build yurts on the abandoned fields. Destroys 2 friendly barbarians to create a tent village on any house ruins."
+descr "The Barbarians regularly give their people opportunity to retire and live on the land they conquered. They largely rely on reoccupying raided settlements, and after a belssing is given by the chief, they build yurts on the abandoned fields. Destroys 2 friendly barbarians to create a tent village on any house ruins."
+
+descr "Barbarian chief orders his men to build battering ram from trunk trees in a local forest.
 
 selectmonster "Barbarian chief"
 power 0 1
@@ -9474,7 +9476,7 @@ apcost 5
 level 1
 terr					 73 # Hills
 free
-descr "Trough deep meditation and comunion with the highland spirits, wotan learns how to inscribe symbol of the Hawk, symbol of perception and accuracy"
+descr "Trough deep meditation and comunion with the highland spirits, wotan learns how to inscribe symbol of the Hawk, symbol of accuracy"
 
 newritual "Design Moon Tattoo"
 copyritual "Design Serpent Tattoo" 
@@ -9483,7 +9485,7 @@ apcost 8
 level 2
 terr					 44 # Tundra
 free
-descr "Trough pilgrimage trough the north, and meditating in the long dark of the winter nights, wotan learns how to inscribe symbol of the Moon, to fortify the immunity of body and resiliance of the mind"
+descr "Trough pilgrimage trough the north, and meditating in the long dark of the winter nights, wotan learns how to inscribe symbol of the Moon, to fortify the warriors against magic and poison"
 
 newritual "Design Sun Tattoo"
 copyritual "Design Gryphon Tattoo"
@@ -9492,7 +9494,7 @@ apcost 8
 level 2
 terr					 117 # Desert
 free
-descr "Trough pilgrimage trough the South, and meditating in the scorching dessert heat, wotan learns how to inscribe symbol of the Sun, to strenghten the body and fortify against fire"
+descr "Trough pilgrimage trough the South, and meditating in the scorching dessert heat, wotan learns how to inscribe symbol of the Sun, to strenghten the body and fortify the skin against fire"
 
 newritual "Design Tattoo of the Dead" 
 copyritual "Design Skull Tattoo"
@@ -9501,7 +9503,7 @@ cost             14    50 # 5 Corpses (humanoid)
 apcost 11
 level 3
 free
-descr "Trough listening the voices of the dead, wotan learns how to inscribe symbol of the Dead, inscribed on the skin of the warrior will grant them resiliance against wounds"
+descr "Trough listening the voices of the numerous dead, wotan learns how to inscribe symbol of the dead, inscribed on the skin of the warrior will grant them resiliance against open wounds"
 
 newritual "Design Tattoo of Rebirth"
 copyritual "Design Hydra Tattoo"
@@ -9521,7 +9523,7 @@ apcost 17
 level 3
 terr					 12 # Mountains
 free
-descr "Trough long pilgrimage trough the mountain of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
+descr "Trough long pilgrimage trough the mountains of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
 
 newritual "Paint Enchanted Tattoos" 
 cost 2 25 
@@ -9540,7 +9542,7 @@ addstring "Painted Warrior"
 addstring "Champion Archer"
 addstring "Painted Archer"
 free
-descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones. Wotan will prioritize stronger champions first"
+descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones. Wotan will prioritize stronger and more capable champions first"
 
 newritual "Spirit Guidance" 
 cost 2 500
@@ -9554,7 +9556,7 @@ addstring "Elder Wolf Shaman"
 addstring "Maiden Priestes"
 addstring "Elder Maiden Priestes"
 free
-descr "Oldest of ther Wotan, who heard and told stories from generations of warriors and traveleres have errie ability to let spirits speak directly trough them, their words is heeded even by the Shamans of the tribes who seldom listen to others. By inscribing tattoos and ofering prayers and advice to them Wotan can elavate shamans connection to the spirits, greatly empowering them in battle"
+descr "Few Wotan priests, who heard and told stories from generations of warriors and traveleres manifest errie ability to let spirits speak directly trough them, their word is heeded even by the Shamans of the tribes, who seldom listen to others. By inscrbing tattoo's, marking trinkets and words of advice, wotan can grant the shaman deeper conection to the ancestral spirits, greatly empowering their magic in battle"
 
 selectmonster "Warpriest"
 power 0 1
@@ -9636,7 +9638,7 @@ summoning     # The ritual will summon the monsters specified in a random string
 addstring     "2d4+1*Barbarian Werebear"
 rebateterr20  834
 
-descr "The Spirit Guide performs a dangerous ritual of the beast in a place where spirits manifest easly, during wich a dozen warriors get ritualisticly tattoed and scarified, then crawl into fresh skins of bears. After that the Spirit guide burns large amount of herbs, and utters ancient spells in an attenmpt to merge spirits of the warriors and bears into one being. During the ritual the spirit of the bear must be subdued by the warrior. If it suceeds warriors gains the ability to transform into powerfull werebear in combat. However subduing the spirit of the bear is no easy task and if the warrior fails, his body will die and his spirit will get devoured by the beast"
+descr "The Spirit Guide performs a dangerous ritual of the beast in a place where spirits manifest easly, during wich a dozen warriors get ritualisticly tattoed and scarified, then crawl into fresh skins of bears. After that the Spirit guide burns large amount of herbs, and utters ancient spells in an attempt to merge spirits of men and beasts into one being. During the ritual the spirit of the bear must be subdued by the warrior. If it suceeds warrior is reborn as a werebear, man capable of transforming into a bear in combat. However subduing the spirit of the bear is no easy task and should the warrior fail, his body will die and his spirit will be devoured by the beast"
 
 newritual     "Summon Heroes of Old "                                      # 335
 ritpow                13 # Spirit Summons
