@@ -9082,7 +9082,7 @@ newritual "Design Skull Tattoo"
 copyritual "Design Skull Tattoo"
 cost 2 0 
 level 3
-descr "The Wotan designs a Skull Tattoo that grants painted barbarians flesh almost impervious to physical damage. Only clubs and hammers that crush the bones of Amazons will cause severe wounds."
+descr "The Wotan designs a Skull Tattoo that grants painted barbarians flesh almost impervious to physical damage. Only clubs and hammers that crush the bones of barbarians will cause severe wounds."
 
 newritual "Design Tattoo of Rebirth"
 copyritual "Design Hydra Tattoo"
