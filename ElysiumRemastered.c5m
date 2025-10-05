@@ -8565,11 +8565,23 @@ allitemslots
 selectmonster "Ancestral Leader"
 spr1 "Sprites/Ancestralleader1.tga"
 spr2 "Sprites/Ancestralleader2.tga"
+spiritsight
 hp 24
 allitemslots
-	
+
 selectmonster "Sending"
 float
+
+selectmonster "Soothsayer"
+gatherherbs
+
+selectmonster "Barbarian leader"
+rank                           1 # Front rank.
+rearpos
+
+selectmonster "Barbarian Werebear"
+spr1 "Sprites/Barbarianwerebear1.tga"
+spr2 "Sprites/Barbarianwerebear2.tga"
 
 # ------------------------------ Barbarian New Monsters ---------------------------------------# 
 
@@ -8588,6 +8600,127 @@ human
 allitemslots                     # Has the full set of item slots.
 female
 descr "Warfare and strife is a way of life among the Barbarians, and their women are trained to defend their villages, as well as the men. Many choose bows as their preferred weapon, offering ranged support in times of battle."
+
+newweapon     "Cleave"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 5
+dmgtype              1 # Slash.
+dmg                 20 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+oneshot                # Can only be used once per battle.
+
+newmonster    "Champion Warrior"
+spr1 "Sprites/Barbarianchampion1.tga"
+spr2 "Sprites/Barbarianchampion2.tga"
+armor                          1 
+hp                            10
+str                            8 
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon               4  258 # Battle Axe: d14 Slash damage.
+meleeweaponbonus		  0		 "Cleave"
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght far above avarage tribesman, their body patchwork of scars and their belts decorated with trophies of victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
+
+newweapon     "Magical Cleave"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 5
+dmgtype              1 # Slash.
+dmg                 20 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+sound                1 # spear.smp (Spear)
+oneshot                # Can only be used once per battle.
+
+newmonster    "Painted Warrior"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Paintedchampion1.tga"
+spr2 "Sprites/Paintedchampion2.tga"
+armor                          1 
+hp                            10
+str                            8 
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon               6  907 # Magical Axe: d14 Slash damage.
+meleeweaponbonus		  0		 "Magical Cleave"
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Champions who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
+
+newmonster    "Champion Swordsman"
+spr1 "Sprites/Swordsmanchampion1.tga"
+spr2 "Sprites/Swordsmanchampion2.tga"
+armor                          2
+hp                            10
+str                            8 
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon               3   21 # Greatsword: d12 Slash damage. sweep
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght far above avarage tribesman, their body patchwork of scars and their belts decorated with trophies of victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
+
+newmonster    "Painted Swordsman"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Paintedswordsman1.tga"
+spr2 "Sprites/Paintedswordsman2.tga"
+armor                          2
+hp                            10
+str                            8 
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon               0  730 # Magic Greatsword: d12 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                     	 # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Champions who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
+
+newmonster "Champion Archer"
+spr1 "Sprites/Championarcher1.tga"
+spr2 "Sprites/Championarcher2.tga"
+armor                          1 
+hp                             8 
+str                            6 
+mor                            6 
+mr                             4 
+rank                           0 # Mid rank.
+rangedweapon               1  28 # LongBow: d5 Pierce damage.
+meleeweapon                0   8 # Shortsword:  d5 Pierce damage.
+human                            
+allitemslots                     # Has the full set of item slots.
+female
+descr "Few among the barbarian tribes can earn the titile of Champions, those that do are giant men and women possesing strenght and wit above avarage tribesman, their body patchwork of scars and their belts decorated with their victories. Armed with greatweapons and reveling in battle they are formidable pressence on the battlefield."
+
+newmonster "Painted Archer"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Paintedarcher1.tga"
+spr2 "Sprites/Paintedarcher2.tga"
+armor                          1 
+hp                             8 
+str                            6 
+mor                            6 
+mr                             4 
+rank                           0 # Mid rank.
+rangedweapon               0  28 # LongBow: d4 Pierce damage.
+meleeweapon                0   8 # Shortsword:  d5 Pierce damage.
+human                            
+allitemslots                     # Has the full set of item slots.
+female
+descr "Champions who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
 
 newmonster "Wotan"
 copystats "Painted Crystal Amazon"
@@ -8658,10 +8791,56 @@ mr                             5
 rank                           1 # Front rank.
 meleeweapon                3   3 # Axe: d10 Slash damage.
 human                            
-largeshield                      # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+largeshield                      # Reduces damage from most weapons by 0-2; 0-4 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 descr "Horned Warriors are veterans of many raids, marked by scars, trophies, and well-worn armor taken from the fallen. Unlike common fighters, they carry foreign steel and fight with the ease of those long accustomed to killing. They often lead warbands of their own, answering only to leaders strong enough to hold their loyalty."
+
+newweapon     "Shield Bash"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              2 # Blunt.
+dmg                  4 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+
+newmonster    "Horned Champion"
+spr1 "Sprites/Hornedchampion1.tga"
+spr2 "Sprites/Hornedchampion2.tga"
+armor                          3 
+hp                            16
+str                            9
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon                5   3 # Axe: d12 Slash damage.
+meleeweaponbonus 0 "Shield Bash" # d4 blunt
+human                            
+largeshield                      # Reduces damage from most weapons by 0-2; 0-4 against ranged weapons.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Horned Champions are warriors chosen among the horned tribes for their extraordinary strenght and stature, clad in armor that would immobilize lesser man, assembled over the years from gear belonging to slain foes and rivals, and wielding heavy weapons with great efficiency"
+
+newmonster    "Painted Horned Champion"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Paintedhornedchampion1.tga"
+spr2 "Sprites/Paintedhornedchampion2.tga"
+armor                          3 
+hp                            16
+str                            9
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon                2   907 # Magic Axe: d10 Slash damage.
+meleeweaponbonus  0  "Shield Bash" # d4 blunt
+human                            
+magicshield                      # Reduces damage from most weapons by 0-3; 0-6 against ranged weapons.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Horned Champions who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe upon them, and their armor sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
 
 newmonster "Horned Chief"
 spr1 "Sprites/Hornedchief1.tga"
@@ -8680,6 +8859,40 @@ allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 descr "Horned Warriors are veterans of many raids, marked by scars, trophies, and well-worn armor taken from the fallen. Unlike common fighters, they carry foreign steel and fight with the ease of those long accustomed to killing. They often lead warbands of their own, answering only to leaders strong enough to hold their loyalty."
 
+newmonster    "Horned Shaman"
+spr1 "Sprites/Hornedshaman1.tga"
+spr2 "Sprites/Hornedshaman2.tga"
+armor                          2 
+hp                             10 
+str                            5 
+mor                            6 
+mr                             6 
+rank                          -1 # back rank.
+spellweapon                5   2 # Storm magic at level 2.
+meleeweapon                3   6 # hammer 1d6 damage
+human                            
+allitemslots                     # Has the full set of item slots.
+
+descr "Horned Shamans are spiritual leaders of the Horned tribes, living deep in the mountains they have deep conection to the Lord of the sky, calling his wrath upon enemies. They say idols of thunder are inhabited by the spirits of Horned Shamans"
+
+newmonster    "Elder Horned Shaman"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Elderhornedshaman1.tga"
+spr2 "Sprites/Elderhornedshaman2.tga"
+armor                          2 
+hp                             12 
+str                            6 
+mor                            7 
+mr                             7 
+rank                          -1 # back rank.
+spellweapon                5   3 # Storm magic at level 3.
+meleeweapon                3   6 # hammer 1d6 damage
+human                            
+allitemslots                     # Has the full set of item slots.
+
+descr "Horned Shamans that comuned with the Ancestral spirits are given title of Elders, they recieve tattoo's from the Wotan as a symbol of wisdom and ancestral spirits guide their magic, allowing it to reach greater power"
+
 newweapon "Hunting Javelins" #can be thrown more than once
 range 3
 init 3
@@ -8693,6 +8906,32 @@ flysound 19
 sound -1
 reload2 #very slow reload
 reloadsnd -1
+
+newweapon "Heavy Hunting Javelins" #can be thrown more than once
+range 3
+init 2
+dmgtype 3
+dmg 9
+mundane
+arrow
+flymode 1
+flylook 1
+flysound 19
+sound -1
+reload2 #very slow reload
+reloadsnd -1
+
+newweapon "Summon Wolf"
+trgrank              7 # Target: any square in range.
+range                3
+init                 8
+dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
+dmg                  0 
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+look                 1
+sound               57 # orchhit.smp (Summoning)
+oneshot
 
 newmonster "Wolf Warrior"
 spr1 "Sprites/Wolfwarrior1.tga"
@@ -8712,6 +8951,46 @@ allitemslots
 human
 descr "Wolf Warriors wear the pelts of beasts they have hunted alone, believing that strength passes from the wolf to the one who strikes the killing blow. They claim blood descent from Fenris, the first and greatest wolf, and honor him through ritual hunts and solitary trials."
 
+newmonster    "Wolf Champion"
+spr1 "Sprites/Wolfchampion1.tga"
+spr2 "Sprites/Wolfchampion2.tga"
+armor                          1 
+hp                            16
+str                            9
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweapon                3   4 #spear d7
+rangedweapon                   0 "Heavy Hunting Javelins"
+rangedweapon 				   3 "Summon Wolf"
+human                            
+shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+foreststealth
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Wolf Champions are warriors chosen among the wolf tribes for their extraordinary strenght and ailities to comand bests. They wear pealts of great bests they hunted, and move quielty trough the forest despite theyr stature. Wolf champions are always acompanied by a pack of wolfes that follow them as their leaders"
+
+newmonster    "Painted Wolf Champion"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Paintedwolfchampion1.tga"
+spr2 "Sprites/Paintedwolfchampion2.tga"
+armor                          1 
+hp                            16
+str                            9
+mor                            8 
+mr                             4 
+rank                           1 # Front rank.
+meleeweaponbonus 3                606 # Magic Spear: d6 pierce damage
+rangedweapon                   0 "Heavy Hunting Javelins"
+rangedweapon 				   4 "Summon Wolf"
+human                            
+shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+foreststealth
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "Wolf Champions who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
+
 newmonster "Wolf Chief" 
 spr1 "Sprites/Wolfchief1.tga"
 spr2 "Sprites/Wolfchief2.tga"
@@ -8729,6 +9008,42 @@ foreststealth
 allitemslots
 human
 descr "Wolf Warriors wear the pelts of beasts they have hunted alone, believing that strength passes from the wolf to the one who strikes the killing blow. They claim blood descent from Fenris, the first and greatest wolf, and honor him through ritual hunts and solitary trials."
+
+newmonster    "Wolf Shaman"
+spr1 "Sprites/Wolfshaman1.tga"
+spr2 "Sprites/Wolfshaman2.tga"
+armor                          1 
+hp                             10 
+str                            5 
+mor                            5 
+mr                             6 
+rank                           -1 # back rank.
+frontpos
+spellweapon               47   2 # Beast wards at level 2.
+meleeweapon                0   5 # Staff: d3 Blunt damage.
+foreststealth
+human                            
+allitemslots                     # Has the full set of item slots.
+descr "Wolf Shamans are spiritual guides of the Wolf tribes, they wear the pelts of beasts and call upon them in battle. They say beast idols are inhabited by spirits of Wolf shamans"
+
+newmonster    "Elder Wolf Shaman"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Elderwolfshaman1.tga"
+spr2 "Sprites/Elderwolfshaman2.tga"
+armor                          1 
+hp                             12 
+str                            6 
+mor                            6 
+mr                             7 
+rank                           -1 # back rank.
+frontpos
+spellweapon               47   3 # Beast wards at level 3.
+meleeweapon                0   5 # Staff: d3 Blunt damage.
+foreststealth
+human                            
+allitemslots                     # Has the full set of item slots.
+descr "Wolf Shamans that comuned with the Ancestral spirits are given title of Elders, they recieve tattoo's from the Wotan as a symbol of wisdom and ancestral spirits guide their magic, allowing it to reach greater power"
 
 newmonster "Steel Maiden"
 spr1 "Sprites/Steelmaiden1.tga"
@@ -8748,6 +9063,48 @@ berserker
 female
 descr "Steel Maidens are women who have taken the Oath of Erka, swearing to live by the example of the first warrior-queen. Most were given to the war-camps as children, and know no life outside them. The oath marks the end of training, not its beginning. They fight with paired weapons and rely on speed rather than strength. Though no more learned than their male counterparts, they are less easily swayed by fear or sorcery. The other warriors treat them with caution. Attempts at familiarity, especially of the lighter kind, seldom end well."
 
+newmonster "Steel Valkyrie"
+spr1 "Sprites/Steelvalkyrie1.tga"
+spr2 "Sprites/Steelvalkyrie2.tga"
+armor 2
+hp 10
+str 7
+mor 10
+mr 8 
+rank 1
+meleeweapon 3 8 		# Shortsword: d8 Slash damage.
+meleeweapon 3 8 		# Shortsword: d8 Slash damage.
+meleeweaponbonus 3 606       # Spear: d6 pierce damage
+meleeweaponbonus 3 606       # Spear: d6 pierce damage
+evasion 25
+allitemslots
+human
+berserker
+female
+descr "Steel Valkyries are champions of Erka, the best among the maidens who swore oath to her. Girls chosen to become valkyries often don't survive the ordeal, but those who do posses exeptional strenght and agility, armed with swords and spears they are capable of decimating entire groups of men in combat, while sorcery and fear holds little power over them. Other champions treat them with caution while lesser men are to afraid to aproach them. Attempts at familiarity, especially of the lighter kind, should sommone be stupid enough to try, never end well."
+
+newmonster    "Painted Valkyrie"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Paintedvalkyrie1.tga"
+spr2 "Sprites/Paintedvalkyrie2.tga"
+armor 2
+hp 10
+str 7
+mor 10
+mr 8 
+rank 1
+meleeweapon 3 8 		# Shortsword: d8 Slash damage.
+meleeweapon 3 8 		# Shortsword: d8 Slash damage.
+meleeweaponbonus 3 606       # Magic Spear: d6 pierce damage
+meleeweaponbonus 3 606       # Magic Spear: d6 pierce damage
+evasion 25
+allitemslots
+human
+berserker
+female
+descr "Valkyries who proven themselfs in the eyes of the Wotan priests somtimes recieve the highest of honors. tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
+
 newmonster "Steel Mother"
 spr1 "Sprites/Steelmother1.tga"
 spr2 "Sprites/Steelmother2.tga"
@@ -8766,41 +9123,50 @@ berserker
 female
 descr "A Steel Mother leads the Steel Maidens. She does not ask for the role, and there is no ceremony to mark the moment it becomes hers. She is obeyed because she has endured more than most and shows no hesitation when giving orders. Punishments are swift, and disputes are settled on the training ground. Many of the younger Maidens were taken as children and raised in the camp. For them, the Steel Mother is the only figure of authority they have ever known."
 
-newmonster "Painted Warrior"
-copystats "Painted Crystal Amazon"
-clearweapons
-spr1 "Sprites/Paintedwarrior1.tga"
-spr2 "Sprites/Paintedwarrior2.tga"
-armor                          1 
-hp                             7 
-str                            5 
-mor                            5 
-mr                             6 
-rank                           1 # Front rank.
-meleeweapon                1   2 # Broadsword d7 Slash damage.
-human                            
-shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP
-descr "Painted Warriors are tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
-
-newmonster "Painted Archer"
-copystats "Painted Crystal Amazon"
-clearweapons
-spr1 "Sprites/Paintedarcher1.tga"
-spr2 "Sprites/Paintedarcher2.tga"
+newmonster    "Maiden Priestes"
+spr1 "Sprites/Maidenpriestes1.tga"
+spr2 "Sprites/Maidenpreistes2.tga"
 armor                          1 
 hp                             6 
-str                            4 
-mor                            5 
-mr                             6 
-rank                           0 # Mid rank.
-rangedweapon               0   7 # Bow: d3 Pierce damage.
-meleeweapon                0   1 # Dagger: d3 Pierce damage.
+str                            5 
+mor                            6 
+mr                             8 
+rank                           -1 # back rank.
+frontpos
+spellweapon               46   2 # Maladies at level 2.
+meleeweapon                0   5 # Staff: d3 Blunt damage.
 human                            
-shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
-descr "Painted Warriors are tattooed by the Wotan, who inscribe sacred runes using ink prepared with ash and elk fat. Each mark is a binding - a record of an ancestor's deed or a call to a spirit of war. The Wotan do not grant these lightly. Many seek the power the tattoos are said to bring, but few are willing to accept what the marks demand. Those who bear them fight with unnatural fervor, as if driven by the voices of those who came before them. Death holds no claim on them until their story is complete."
+female
+descr "Maiden Priestes are spiritual leaders of Steel Maiden tribes teaching ways of the Oath of Erka, they say spirits called to idols of maladies belonged to Maiden Priesteses"
+
+newmonster    "Elder Maiden Priestes"
+copystats "Painted Crystal Amazon"
+clearweapons
+spr1 "Sprites/Eldermaidenpriestes1.tga"
+spr2 "Sprites/Eldermaidenpreistes2.tga"
+armor                          1 
+hp                             8 
+str                            6 
+mor                            7 
+mr                             9 
+rank                           -1 # back rank.
+frontpos
+spellweapon               46   3 # Maladies at level 3.
+meleeweapon                0   5 # Staff: d3 Blunt damage.
+human                            
+allitemslots                     # Has the full set of item slots.
+female
+descr "Maiden Priestes that comuned with the Ancestral spirits are given title of Elders, they recieve tattoo's from the Wotan as a symbol of wisdom and ancestral spirits guide their magic, allowing it to reach greater power"
+
+newmonster "Barbarian Chief"
+copystats "Barbarian leader"
+spr1 "Sprites/Barbarianchief1.tga"
+spr2 "Sprites/Barbarianchief2.tga"
+clearweapons
+armor							1
+meleeweapon                1 21 # Greatsword: d10 Slash damage.
+descr "Barbarian tribes have little to no semblence of military leadership, those who lead the bands of barbarians are usualy strongest warriors around, with a vague of idea about organization and\or leadership, wich makes them cream of the crop in terms of inteligence among barbarian tribes. Their "military campain" usualy consist to raiding unprotected villages, slaughtering pesants and ocassionaly distributing stolen land among warriors, until in thieir reckless overconfidance they throw themselfs on some fortification, or get killed by first patrol that comes trough. As long as the cheif keeps the the band coontent by pillaging and robing good people of elysium they will stick together, but the bands are fickle and if the so called chief crosses to many of his warriors, or fails to deliver on the victories, he may find himself left behind to feed the crows"
 
 newmonster "Barbarian Warlord"
 spr1 "Sprites/Barbarianwarlord1.tga"
@@ -8830,13 +9196,14 @@ spr2 "Sprites/Barbarianking2.tga"
 clearweapons
 armor                          1 
 hp                            24 
-str                            6 
-mor                            9 
-mr                             7 
+str                            7 
+mor                            10 
+mr                             8 
 rank                           1 # Front rank.
 rearpos
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+meleeweapon                6 907 # Magic Axe: d14 Slash damage.
+meleeweapon                6 907 # Magic Axe: d14 Slash damage.
+meleeweapon                6 907 # Magic Axe: d14 Slash damage.
 human                            
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
@@ -8963,7 +9330,9 @@ cost 2 300
 terr -1102
 promotion 1 
 addstring "Barbarian Warlord"
-addstring "Barbarian King" 
+addstring "Barbarian King"
+nomonworldreq 1
+addstring "(-)Barbarian King"
 aialways 999
 forgetcurrit
 descr "With bribes, offerings and promises of conquest, the Warlord gains the loyalty of the chiefs and favor of the spirits. Will promote the Warlord to Barbarian King."  
@@ -8973,34 +9342,61 @@ descr "With bribes, offerings and promises of conquest, the Warlord gains the lo
 newritual "Raid"  
 level 1
 free
-terr -64 # farms and hamlets
+terr -64 # farm or hamlet
 cost 0 -25
-apcost 1
+apcost 0
 reducetown
 soundfx               57 
 aialways 50
 ainotnearhome          10
-descr "Raid a farm or hamlet for supplies and gold. This will destroy the settlement."
+descr "Raid a small settlment for supplies and gold. This will damage or destroy settlements."
 
 newritual "Resettle" 
 level 1
 free
 terr 184 #house ruins
+cost 0 10
 apcost 1
-montarg 1
+montarg 2
 killtarg 9999
 airare -1
-minmonreq 1
+minmonreq 2
 addstring "Barbarian Swordsman"
-addstring "Barbarian Archer"
 addstring "Barbarian Warrior"
 addstring "(&)Barbarian Swordsman"
-addstring "(&)Barbarian Archer"
 addstring "(&)Barbarian Warrior"
-alterloc 5
+addstring "Barbarian Archer"
+addstring "(&)Barbarian Archer"
+alterloc 109
 soundfx               57 
 aialways 50
-descr "The Barbarians regularly retire their aged warriors to farm the land. They largely rely on reoccupying raided settlements and starting simple farms on the abandoned fields. Destroys 1 friendly barbarian warrior, swordsman, or archer to create a farm on any house ruins."
+descr "The Barbarians regularly give their people opportunity to retire and live on the land they conquered. They largely rely on reoccupying raided settlements, and after a belssing is given by the chief ritual they build yurts on the abandoned fields. Destroys 2 friendly barbarians to create a tent village on any house ruins."
+
+newritual "Pillage"  
+level 2
+free
+terr -32 # village or larger settlement
+cost 0 -50
+cost 1 -10
+apcost 2
+reducetown
+soundfx               57 
+aialways 25
+ainotnearhome          5
+descr "Warlord sends his horde to pillage and burn a town or village. This will damage or destroy settlements."
+
+newritual "Set Camp"
+level 2
+free
+terr 109 #Tent village
+cost 0 50
+cost 1 25
+apcost 2
+alterloc 113
+soundfx               57 
+aialways 50
+ainotnearhome          10
+descr "Barbarian warlord sets up military camp in a tent village."
 
 selectmonster "Barbarian Leader"
 power 0 1
@@ -9009,12 +9405,50 @@ selectmonster "Barbarian Warlord"
 power 0 2 
 
 selectmonster "Barbarian King"
-power 0 2 
+power 0 3
+
+newritpow #Barbarian chief
+
+newritual "Raid"  
+level 1
+free
+terr -64 # farm or hamlet
+cost 0 -25
+apcost 0
+reducetown
+soundfx               57 
+aialways 50
+ainotnearhome          10
+descr "Raid a small settlment for supplies and gold. This will damage or destroy settlements."
+
+newritual "Resettle" 
+level 1
+free
+terr 184 #house ruins
+cost 0 10
+apcost 1
+montarg 2
+killtarg 9999
+airare -1
+minmonreq 2
+addstring "Barbarian Swordsman"
+addstring "Barbarian Warrior"
+addstring "(&)Barbarian Swordsman"
+addstring "(&)Barbarian Warrior"
+addstring "Barbarian Archer"
+addstring "(&)Barbarian Archer"
+alterloc 109
+soundfx               57 
+aialways 50
+descr "The Barbarians regularly give their people opportunity to retire and live on the conquered land. They largely rely on reoccupying raided settlements, and after a belssing is given by the chief ritual they build yurts on the abandoned fields. Destroys 2 friendly barbarians to create a tent village on any house ruins."
+
+selectmonster "Barbarian chief"
+power 0 1
 
 newritpow #Wotan
 
 newritual "Lesser Ritual of Mastery"   
-level 1 
+level 9
 cost              2  50 # 50 Herbs
 newrit                 1 # Caster will learn a new ritual of level 1.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -9045,71 +9479,116 @@ descr "This ritual grants the caster a new third level ritual.  If the caster is
 
 newritual "Design Bear Tattoo"
 copyritual "Design Lion Tattoo"
-cost 2 0
+cost 2 25
+apcost 5
 level 1
-descr "..."
+terr					 2 # Forest
+free
+descr "Trough deep meditation and comunion with the forest spirits, wotan learns how to inscribe symbol of the Bear, symbol of strenght and bravery"
 
 newritual "Design Aurochs Tattoo"
 copyritual "Design Badger Tattoo"
-cost 2 0
+cost 2 25
+apcost 5
 level 1
-descr "..."
+terr					 0 # Plain
+free
+descr "Trough deep meditation and comunion with the spirits of the plains, wotan learns how to inscribe symbol of the Aurochs, symbol of endurance"
 
-newritual "Design Tattoo of Hunting"
+newritual "Design Hawk Tattoo"
 copyritual "Design Eagle Tattoo"
-cost 2 0
+cost 2 25
+apcost 5
 level 1
-descr "..."
+terr					 73 # Hills
+free
+descr "Trough deep meditation and comunion with the highland spirits, wotan learns how to inscribe symbol of the Hawk, symbol of perception and accuracy"
 
 newritual "Design Moon Tattoo"
 copyritual "Design Serpent Tattoo" 
-cost 2 0
-descr "..."
+cost 2 50
+apcost 8
+level 2
+terr					 44 # Tundra
+free
+descr "Trough pilgrimage trough the north, and meditating in the long dark of the winter nights, wotan learns how to inscribe symbol of the Moon, to fortify the immunity of body and resiliance of the mind"
 
 newritual "Design Sun Tattoo"
 copyritual "Design Gryphon Tattoo"
-cost 2 0 
+cost 2 50 
+apcost 8
 level 2
-descr "..."
+terr					 117 # Desert
+free
+descr "Trough pilgrimage trough the South, and meditating in the scorching dessert heat, wotan learns how to inscribe symbol of the Sun, to strenghten the body and fortify against fire"
 
-newritual "Design Skull Tattoo" 
+newritual "Design Tattoo of the Dead" 
 copyritual "Design Skull Tattoo"
-cost 2 0 
+cost 2 100
+cost             14    50 # 5 Corpses (humanoid)
+apcost 11
 level 3
-descr "..."
+free
+descr "Trough listening the voices of the dead, wotan learns how to inscribe symbol of the Dead, inscribed on the skin of the warrior will grant them resiliance against wounds"
 
 newritual "Design Tattoo of Rebirth"
 copyritual "Design Hydra Tattoo"
-cost 2 0 
+cost 2 100
+apcost 11
 level 3
-descr "..."
+terr					 834 # Irminsul
+minmonreq 12
+addstring "Barbarian Werebear"
+free
+descr "Trough deep comunion with at least dozen werebears at the Irminsul, wotan learns how to inscribe symbol of Rebirth, upon being inscribed on a warriors skin it grants the ability to recover from any wound"
 
 newritual "Design Tattoo of Travels" 
 copyritual "Design Pegasus Tattoo"
-cost 3 0
+cost 3 100
+apcost 17
 level 3
-descr "..."
+terr					 12 # Mountains
+free
+descr "Trough long pilgrimage trough the mountains of elysium, wotan learns how to inscribe symbol of travel, it will allow painted warriors to travel quickly and tirelessly"
 
 newritual "Paint Enchanted Tattoos" 
-cost 2 75 
-level 1 
-promotion 3  
-addstring "Barbarian Warrior"
+cost 2 25 
+level 1
+promotion 1  
+addstring "Horned Champion"
+addstring "Painted Horned Champion"
+addstring "Steel Valkyrie"
+addstring "Painted Valkyrie"
+addstring "Wolf Champion"
+addstring "Painted Wolf Champion"
+addstring "Swordsman Champion"
+addstring "Painted Swordsman"
+addstring "Champion Warrior"
 addstring "Painted Warrior"
-addstring "Barbarian Swordsman"
-addstring "Painted Warrior"
-addstring "Barbarian Archer"
-addstring "Painted Archer"
-addstring "Barbarian Bowman"
+addstring "Champion Archer"
 addstring "Painted Archer"
 free
-descr "A Wotan paints a group of chosen warriors with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones."
+descr "A Wotan paints chosen warrior with enchanted tattoos. The tattoos give the warriors increased morale, but additional designs that give other powers can be invented. Once tattooed all available tattoos are applied to the painted ones. Wotan will prioritize stronger champions first"
+
+newritual "Spirit Guidance" 
+cost 2 500
+apcost 2
+level 3
+promotion 1  
+addstring "Horned Shaman"
+addstring "Elder Horned Shaman"
+addstring "Wolf Shaman"
+addstring "Elder Wolf Shaman"
+addstring "Maiden Priestes"
+addstring "Elder Maiden Priestes"
+free
+descr "Oldest of ther Wotan, who heard and told stories from generations of warriors and traveleres have errie ability to let spirits speak directly trough them, their words is heeded even by the Shamans of the tribes who seldom listen to others. By inscribing tattoos and ofering prayers and advice to them Wotan can elavate shamans connection to the spirits, greatly empowering them in battle"
 
 selectmonster "Warpriest"
 power 0 1
 
 selectmonster "Painted Priest"
-power 0 2 
+power 0 2
 
 selectmonster "Wotan"
 power 0 3
@@ -9117,15 +9596,15 @@ power 0 3
 newritpow #Soothsayer
 
 newritual "Omens"
+cost 2 10
 level                  1
-cost 0 10
-apcost -1
+apcost 0
 chooseloc 1
 multiplane 0
 scatterscry           3 # Scry (broken up) at target location, totaling 3 squares.
 soundfx               70 # Sound effect when the ritual is cast: echo.wav.
 airare                 5 # Only 5% of normal chance that AI will cast this ritual.
-descr "The Soothsayer inspects freshly spilled animal entrails, interpreting the patterns and signs within. Through the arrangement of organs and blood, he may divine distant events, or glimpse future outcomes. Will reveal a small area at target location".  
+descr "The Soothsayer inhales herb incense and inspects freshly spilled animal entrails, interpreting the patterns and signs within. Through the arrangement of organs and blood, he may divine distant events, or glimpse future outcomes. Will reveal a small area at target location".  
 
 selectmonster "Soothsayer"
 power 0 1
@@ -9150,7 +9629,7 @@ newritual     "Carve Idol"                                           # Name + a 
 ritpow                13 # Spirit Summons
 level                  2
 cost              2  200 # 200 Herbs
-terr -95 #Citadels and settlements
+terr                 -95 # Citadels and settlements
 apcost                 2 # Actual AP cost: 3.
 summoning                # The ritual will summon the monsters specified in a random string.
 # fx1100               2 # Likely an undocumented AI tip related to stationary defenses.
@@ -9169,6 +9648,24 @@ selectritual  "Summon Heroes of Old"
 level 9
 free
 
+newritual     "Ritual of Beast"
+ritpow                13 # Spirit Summons
+level                  2
+cost              2  200 # 200 Herbs
+terr                 -1102 # Required terrain: ancient forest, old battlefield or irminsul.
+montarg 12
+killtarg 9999
+minmonreq 12
+addstring "Barbarian Warrior"
+addstring "Barbarian Swordsman"
+addstring "(&)Barbarian Warrior"
+addstring "(&)Barbarian Swordsman"
+summoning     # The ritual will summon the monsters specified in a random string.
+addstring     "2d4+1*Barbarian Werebear"
+rebateterr20  834
+
+descr "The Spirit Guide performs a dangerous ritual of the beast in a place where spirits manifest easly, during wich a dozen warriors get ritualisticly tattoed and scarified, then crawl into fresh bearskins. After that the Spirit guide burns large amount of herbs, and utters ancient spells in an attenmpt to merge spirits man and beast into one being. During the ritual the spirit of the bear must be subdued by the warrior. If it suceeds warriors gains the ability to transform into a werebear in combat. However subduing the spirit of the bear is no easy task and if the warrior fails, his body will die and his spirit will get devoured by the beast"
+
 newritual     "Summon Heroes of Old "                                      # 335
 ritpow                13 # Spirit Summons
 level                  2
@@ -9176,11 +9673,12 @@ cost              2  200 # 200 Herbs
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 terrboost              4 # Adds 1 to the number of monsters summoned in this terrain: Ancient Forest.
+terrboost            834 # Adds 1 to the number of monsters summoned in this terrain: Irminsul
 terrscale50           19 # 50% more monsters summoned in this terrain: Old Battlefield.
 addstring     "(4)c*Ancestor Guide"     # This string will only be included in terrain: Ancient Forest.
-addstring     "c*Ancestral Hero"
-addstring     "c*Ancestral Chief & 1d2+1*Ancestral Lancer"
-addstring     "1d2+1*Ancestral Warrior & 1d2+1*Ancestral Archer"
+addstring     "c*Ancestral Hero & 1d2*Ancestral Warrior"
+addstring     "c*Ancestral Chief & 1d2*Ancestral Lancer"
+addstring     "1d3+1*Ancestral Warrior & 1d2+1*Ancestral Archer"
 addstring     "2d2+2*Ancestral Warrior"
 addstring     "2d2*Ancestral Lancer"
 rebateterr20  834
@@ -9205,7 +9703,7 @@ selectritual     "Promise of the Ancestors"
 addstring "Barbarian Warlord"
 addstring "Barbarian King"
 
-# ---------------------------Barbarian Class and Recruitment -------------------------------------------# 
+# ---------------------------Barbarian Class and Recruitment-------------------------------------------# 
 
 selectclass  7 # Barbarian
 classdescr "Since ancient times, Barbarian hordes have plundered the lands of Elysium.  Of unknown origin, their sudden arrival at the fringes of civilization sends tremors throughout the realms.  Some speculate that they hail from small villages in secluded regions while others say they come from the Netherworld.  The Barbarian threat is always present and only with a united show of force can the tide be turned. ^Barbarians are physically more powerful than normal men, but they are also more vulnerable to magic.  The Barbarian Warlord cannot buy advanced weapons like siege engines, but may sometimes recruit werebears or fierce warriors from independent warbands.  Werebears look just like ordinary Barbarians until they reveal themselves in combat, where their strength and rage make them far more powerful than a common Barbarian warrior.  Barbarians also have access to Spirit Guides who use magical herbs to contact ancestral spirits and summon them to join the armies of Barbarians again.  More powerful Spirit Guides are called Enaries."
@@ -9215,6 +9713,7 @@ classcitterr 834
 clearstartunits
 addstartunits          "Barbarian Warrior"        20
 addstartunits          "Warrior Idol"              1
+addstartunits          "Effigy"                    2
 addstartunits          "Barbarian Archer"          5
 addstartcom            "Mounted Chief"
 addstartunits          "Barbarian Cavalry"         5
@@ -9226,11 +9725,33 @@ addunitrec  "Barbarian Archer"                	100  7   50   0    0
 addunitrec  "Barbarian Swordsman"             	100  7   50   0   10
 addunitrec  "Barbarian Cavalry"               	100  4   50   0    0
 addunitrec  "Barbarian Lancer"                	100  4   50   0   10
-addunitrec  "Battering Ram"			100  1   25   0   25
-addunitrec  "Barbarian Werebear"               	30   1   25   0    0 
+addunitrec  "Battering Ram"			            100  1   25   0   25
+addmercrec  "Barbarian Champion"               	15   1   20   0    0 #Leader
+	reclimiter "+Barbarian Leader"
+addmercrec  "Champion Swordsman"               	15   1   25   0    0 #Leader
+	reclimiter "+Barbarian Leader"
+addmercrec  "Champion Archer"               	20   1   20   0    0 #Leader
+	reclimiter "+Barbarian Leader"
+addmercrec  "Barbarian Champion"               	30   1   20   0    0 #Warlord
+	reclimiter "+Barbarian Warlord"
+addmercrec  "CHampion Swordsman"               	30   1   25   0    0 #Warlord
+	reclimiter "+Barbarian Warlord"
+addmercrec  "Champion Archer"               	35   1   20   0    0 #Warlord
+	reclimiter "+Barbarian Warlord"
+addmercrec  "Barbarian Champion"               	45   1   20   0    0 #King
+	reclimiter "+Barbarian King"
+addmercrec  "CHampion Swordsman"               	45   1   25   0    0 #King
+	reclimiter "+Barbarian King"
+addmercrec  "Champion Archer"               	50   1   20   0    0 #King
+	reclimiter "+Barbarian King"
+addmercrec  "Barbarian Werebear"               	75   1   25   0    0 
+	recterr 834
+addmercrec  "Barbarian Werebear"               	50   1   25   0    0 
+	recterr 834
+addmercrec  "Barbarian Werebear"               	25   1   25   0    0 
 	recterr 834
 addcomrec   "Spirit Guide"                      8 75 20 0 
-templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
+    templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Soothsayer"                        8 40 20 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec "Warpriest"							8 40 20 0 
@@ -9239,26 +9760,39 @@ addcomrec   "Barbarian Leader"                	100 25 10 0
 	reclimiter "-Barbarian Leader"               # Owning a Barbarian Leader prevents the preceding offer.
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King"
-addcomrec   "Mounted Chief"                    	10 25 10 0 
+addcomrec   "Barbarian Chief"                   10 40 5 0 
+addcomrec   "Mounted Chief"                    	10 50 5 0 
 addmercrec  "Mounted Scout"                    	15 1 15 10 0 
-addmercrec "Horned Warrior" 			10 7 65 10 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
-addcomrec "Horned Chief"   			 -1 1 25 5 
+addunitrec "Horned Warrior" 			100 7 50 0 10
+    reclimiter "+Horned Chief"
+addunitrec "Horned Champion" 			25 1 25 0 10
+    reclimiter "+Horned Chief"
+addcomrec "Horned Chief"   			 10 1 55 10 10
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King" 
-addmercrec "Wolf Warrior"       		10 7 65 10 0
+addcomrec   "Horned Shaman"          8 1 60 20 0
+	reclimiter "+Horned Chief"
+	templerec
+addunitrec "Wolf Warrior"       		100 7 60 0 0
+    reclimiter "+Wolf Chief"
+addunitrec "Wolf Champion"       		25 1 35 0 0
+    reclimiter "+Wolf Chief"
+addcomrec "Wolf Chief"				 10 1 60 5 5 
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-addcomrec "Wolf Chief"				 -1 1 25 5 0 
+addcomrec   "Wolf Shaman"          8 1 60 20 0
+	reclimiter "+Wolf Chief"
+	templerec
+addunitrec "Steel Maiden"       		100 7 55 0 5
+    reclimiter "+Steel Mother"
+addunitrec "Steel Valkyrie"       		25 2 30 0 5
+    reclimiter "+Steel Mother"
+addcomrec "Steel Mother"			10 1 60 5 5 
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-addmercrec "Steel Maiden"       		10 7 65 10 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
-addcomrec "Steel Mother"			-1 1 25 5 0 
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
+addcomrec  "Maiden Priestes"          8 1 60 20 0
+	reclimiter "+Steel Mother"
+	templerec
 
 selectclass 8 # necessary for some reason to keep the barbarian from getting the senators gold bonus. 
 ################################## Senator ################################################## 
