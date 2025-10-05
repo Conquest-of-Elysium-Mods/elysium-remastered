@@ -9337,17 +9337,6 @@ aialways 999
 forgetcurrit
 descr "With bribes, offerings and promises of conquest, the Warlord gains the loyalty of the chiefs and favor of the spirits. Will promote the Warlord to Barbarian King."  
 
-newritual "Assign Warlord"
-level 3
-cost 0 50 
-promotion 1 
-addstring "Barbarian Chief"
-nomonplayerreq 3
-addstring "(-)Barbarian Warlord"
-aialways 999
-forgetcurrit
-descr "Barbarian king has the authority to assign the title of a Warlord to any upcoming barbarian chief as he sees fit. But he must be careful while doing this, as assigning more than a few Warlords would spark animosity amongst other clan chiefs"
-
 # Raid + resettlement is a neat mechanic, which is taken straight from Alexthebeetrayer's Large overhaul mod.
 
 newritual "Raid"  
@@ -9739,40 +9728,22 @@ addunitrec  "Barbarian Lancer"                	100  4   50   0   10
 addunitrec  "Battering Ram"			            100  1   25   0   25
 addmercrec  "Barbarian Champion"               	15   1   20   0    0 #Leader
 	reclimiter "+Barbarian Leader"
-	reclimiter "-Barbarian Warlord"
-	reclimiter "-Barbarian King"
 addmercrec  "Champion Swordsman"               	15   1   25   0    0 #Leader
 	reclimiter "+Barbarian Leader"
-	reclimiter "-Barbarian Warlord"
-	reclimiter "-Barbarian King"
 addmercrec  "Champion Archer"               	20   1   20   0    0 #Leader
 	reclimiter "+Barbarian Leader"
-	reclimiter "-Barbarian Warlord"
-	reclimiter "-Barbarian King"
 addmercrec  "Barbarian Champion"               	30   1   20   0    0 #Warlord
 	reclimiter "+Barbarian Warlord"
-	reclimiter "-Barbarian Leader"
-	reclimiter "-Barbarian King"
 addmercrec  "CHampion Swordsman"               	30   1   25   0    0 #Warlord
 	reclimiter "+Barbarian Warlord"
-	reclimiter "-Barbarian Leader"
-	reclimiter "-Barbarian King"
 addmercrec  "Champion Archer"               	35   1   20   0    0 #Warlord
 	reclimiter "+Barbarian Warlord"
-	reclimiter "-Barbarian Leader"
-	reclimiter "-Barbarian King"
 addmercrec  "Barbarian Champion"               	45   1   20   0    0 #King
 	reclimiter "+Barbarian King"
-	reclimiter "-Barbarian Leader"
-	reclimiter "-Barbarian Warlord"
 addmercrec  "CHampion Swordsman"               	45   1   25   0    0 #King
 	reclimiter "+Barbarian King"
-	reclimiter "-Barbarian Leader"
-	reclimiter "-Barbarian Warlord"
 addmercrec  "Champion Archer"               	50   1   20   0    0 #King
 	reclimiter "+Barbarian King"
-	reclimiter "-Barbarian Leader"
-	reclimiter "-Barbarian Warlord"
 addmercrec  "Barbarian Werebear"               	75   1   25   0    0 
 	recterr 834
 addmercrec  "Barbarian Werebear"               	50   1   25   0    0 
