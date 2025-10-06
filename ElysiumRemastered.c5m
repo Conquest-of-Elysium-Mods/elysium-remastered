@@ -974,7 +974,7 @@ hp                            11 # Hit Points.
 str                            5 # Strength.
 mor                            6 # Morale.
 mr                             8 # Magic Resistance.
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweaponspec           13 834 # Golden Lance Charge: d13 Pierce damage.
 meleeweapon                1 474 # Magic Sword: d8 Slash damage.
 meleeweapon                5  95 # Hoof: d5 Blunt damage.
@@ -997,7 +997,7 @@ hp                            8 # Hit Points.
 str                            5 # Strength.
 mor                            6 # Morale.
 mr                             7 # Magic Resistance.
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon                1 474 # Magic Sword: d8 Slash damage.
 awe 1
 evasion 50 
@@ -2133,7 +2133,7 @@ selectritual "Mummification"
 level 9 
 free 
 
-newritual "Stygian invocation"
+newritual "Stygian Invocation"
 ritpow                 1 # Necromancy
 level                  1
 cost              5   10 # 10 Hands
@@ -2313,6 +2313,7 @@ addunitrec  "Catapult"                        		100  1   25   0   50
 addunitrec "Forlorn Hope"               		100 4 50 0 5
 addunitrec "Villain"                    		100 5 50 0 0 
 addunitrec  "Wretch"                    		100 5 25 0 0
+addmercrec  "Scout"                            	10 1 15 10 0 
 addunitrec  "Soulless Soldier"               	100 5 0 0 5
 	reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
 addunitrec  "Armored Soulless"                	100 5 0 0 10
@@ -4009,6 +4010,8 @@ newritual "Enter Soul Contract "
 copyritual "Enter Soul Contract"
 ritpow                 3 # Demonology
 gainrit 1 
+nodemon
+descr "By doing a sizable sacrifice it is possible for a brave Demonologist to contact one of the 7 Demon Lords and try to bargain. The price is well known and quite high, servitude in Inferno for all eternity. But in return the Demonologist will get protection in this life and a demon will always appear to protect him if his life is in danger. After this deal, the Demonologist will become a devil and serve the demon lord in Inferno after his death."
 
 selectritual "Enter Soul Contract"
 level 9
@@ -4099,7 +4102,6 @@ addstring     "c*Prince of Death"     	# Unique (Orcus).
 addstring     "c*Goat Sun"     		# Unique (Buer).
 addstring     "c*Lord of Corruption"    # Unique (Belial).
 addstring     "c*Monster of Fraud"     	# Unique (Geryon).
-afterprev
 airare -1
 descr "With this ritual the Demonologist will summon one of the seven demon lords and try to control it. This is usually a very bad idea. If the caster is determined in his course, the more human sacrifices used, the greater the chance of success. The Demon lords are extremely powerful and failure to bind it is likely to be fatal for the Demonologist."
 
@@ -6977,7 +6979,7 @@ addstring     "1*Nightmare Spinner"
 free
 descr "The Night Hag draws a figment of the dream realm and shapes it into a physical form. This ritual summons one or a few nightmare spirits that obey the Hag's commands."
 
-newritual "Create Soul stone"
+newritual "Create Soul Stone"
 level                  1
 cost             13  200 # 200 Lifeforce
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -8358,6 +8360,10 @@ selectritual "Summon Greater Beings"
 level 9 
 free
 
+selectritual "Summon King"
+level 9 
+free
+
 newritual "Summon Lesser Oni " 
 ritpow                 7 # Bakemono Rituals
 level                  1
@@ -9047,48 +9053,48 @@ newritual "Design Bear Tattoo"
 copyritual "Design Lion Tattoo"
 cost 2 0
 level 1
-descr "..."
+descr "The Warpriest designs a Bear Tattoo that grants painted barbarians increased Strength and Morale."
 
 newritual "Design Aurochs Tattoo"
 copyritual "Design Badger Tattoo"
 cost 2 0
 level 1
-descr "..."
+descr "The Warpriest designs an Aurochs Tattoo that grants painted barbarians increased Toughness."
 
 newritual "Design Tattoo of Hunting"
 copyritual "Design Eagle Tattoo"
 cost 2 0
 level 1
-descr "..."
+descr "The Warpriest designs a Tattoo of Hunting that grants painted barbarians increased archery skills."
 
 newritual "Design Moon Tattoo"
 copyritual "Design Serpent Tattoo" 
 cost 2 0
-descr "..."
+descr "The Warpriest designs a Moon Tattoo that grants painted barbarians increased Resistance against Magic and Poisons."
 
 newritual "Design Sun Tattoo"
 copyritual "Design Gryphon Tattoo"
 cost 2 0 
 level 2
-descr "..."
+descr "The Painted Priest designs a Sun Tattoo that grants painted barbarians increased Strength and Fire Resistance."
 
 newritual "Design Skull Tattoo" 
 copyritual "Design Skull Tattoo"
 cost 2 0 
 level 3
-descr "..."
+descr "The Wotan designs a Skull Tattoo that grants painted barbarians flesh almost impervious to physical damage. Only clubs and hammers that crush the bones of barbarians will cause severe wounds."
 
 newritual "Design Tattoo of Rebirth"
 copyritual "Design Hydra Tattoo"
 cost 2 0 
 level 3
-descr "..."
+descr "The Wotan designs a Tattoo of Rebirth that grants painted barbarians the ability to Regenerate wounds."
 
 newritual "Design Tattoo of Travels" 
 copyritual "Design Pegasus Tattoo"
 cost 3 0
 level 3
-descr "..."
+descr "The Wotan designs a Tattoo of Travels that grants painted barbarians the ability to run like the wind."
 
 newritual "Paint Enchanted Tattoos" 
 cost 2 75 
@@ -9570,6 +9576,7 @@ dmgtype              9 # poison.
 dmg                  0 
 aoe                  0 # Area: single target.
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+an
 sound                1 # spear.smp (Spear)
 next             
 nextdmg             2 # d2 snake
@@ -11573,7 +11580,7 @@ addcomrec   "Horologist"                        0      75  10    0
 	reclimiter "+High Gardener"
 addcomrec   "Horticulturist"                    0      75  10    0 
 	templerec    	# +2% to chance per temple owned, to a max of +10% for 5+ temples.
-	reclimiter "-Steel Chancellor"
+	reclimiter "+Steel Chancellor"
 addcomrec   "Horologist"                        6      75  10    0 
 	libraryrec     	# +1% to chance per library point owned, to a max of +10% for 10+ library points.
 	reclimiter "+Steel Chancellor"
@@ -16513,6 +16520,7 @@ init                 5
 dmgtype              1 # Slash.
 dmg                 14 
 aoe                  0 # Area: single target.
+an
 sound                8 # sword.wav (Sword)
 holykill
 
@@ -17010,8 +17018,8 @@ addstartunits          "Gilded Crossbowman"                	5
 addunitrec "Gilded Spearman" 								100 5 50 0 0
 addunitrec  "Gilded Crossbowman"           					100 5 60 0 0   
 addunitrec  "Gilded Swordsman"        						100 5 70 0 0 
-addunitrec  "Gilded Cavalry"            					100 3 100 0 0
-addcomrec   "Gilded Captain"               					2 60 10 0  
+addunitrec  "Gilded Cavalryman"            					100 3 100 0 0
+addcomrec   "Gilded Captain"               					15 60 10 0  
 addmercrec  "Scout"                            				10 1 15 10 0 
 addunitrec  "Winged Monkey"                   				100 5 25 0 0
 	recxcost 15 2 #Extra cost 2 gems 
@@ -17644,7 +17652,7 @@ hp                             4
 str                            4 
 mor                            4 
 meleeweapon               -1   8 # Short Sword: d4 Pierce damage.
-assassinweapon            -1   8 # Short Sword: d4 Pierce damage.
+assassinweapon            -1   377 # Short Sword: d4 Pierce damage.
 stealth
 descr "Status among the outlaws is often determined by readiness to draw the knife. Murderers tend to be at the very top of this dubious hierarchy, and are often employed to keep the Markgrafs other thugs in line."
 
