@@ -1,12 +1,7 @@
 
-
-icon "Smallbanner.tga"
-description "An overhaul mod. Flavor, balance and content." 
-modprio 1 # Will be overwritten by other mods in case of conflict.
-
 # terrains used 800 to 842
 # terrain groups used -1099 to -1122
-# Event variables used 1-6
+# Event variables used 1-7
 
 ############################ General changes ################################### 
 
@@ -3516,6 +3511,7 @@ dmgtype              4 # Fire.
 dmg                  0 
 aoe                 -3 # Area: 3 strikes.
 scatter
+an
 flymode              5 # Line, one for each strike or square hit.
 flylook            172
 flysound            54 # whip.smp
@@ -3541,23 +3537,42 @@ human
 drawsize 
 descr "This unholy altar is portable, allowing cultists to bring it to the battlefield. Once in place, it serves as a focus for their dark rituals, unleashing infernal magic upon their enemies."
 
-newmonster "Fanatic"
+newmonster "Fervent"
 spr1 "Sprites/Fanatic1.tga"
 spr2 "Sprites/Fanatic2.tga"
 armor                          0 
-hp                             7 
+hp                             8 
 str                            4 
 mor                            6 
 mr                             5 
 rank                           1 # Front rank.
 meleeweapon                2  25 # Flail: d8 Blunt damage.
 human                            
-berserker
 allitemslots                     # Has the full set of item slots.
 fireres 50
 coldres 50
 poisonres 50
-descr "Some cultists surrender so completely to their dark faith that they lose all grip on sanity. They throw themselves into battle with reckless abandon. On rare occasions, their fervor earns them brief blessings of strength from their demonic masters."
+shrinkhp 2
+descr "Some cultists surrender so completely to their dark faith that they lose all grip on sanity. They throw themselves into battle with reckless abandon, and at times their devotion earns them brief blessings of strength from their demonic masters."
+
+newmonster "Fervent "
+spr1 "Sprites/Fanatic1.tga"
+spr2 "Sprites/Fanatic2.tga"
+armor                          0 
+hp                             8
+str                            6 
+mor                            8 
+mr                             7 
+rank                           1 # Front rank.
+meleeweapon                4  25 # Flail: d10 Blunt damage.
+human                            
+allitemslots                     # Has the full set of item slots.
+fireres 100
+coldres 100
+poisonres 100
+lucky
+growhp 3
+descr "Some cultists surrender so completely to their dark faith that they lose all grip on sanity. They throw themselves into battle with reckless abandon, and at times their devotion earns them brief blessings of strength from their demonic masters."
 
 newmonster "Covert Agent"
 copystats "Scout"
@@ -3606,8 +3621,9 @@ meleeweapon               9  12 # Claw: d10 Slash damage.
 meleeweapon               9  12 # Claw: d10 Slash damage.
 diseaseres                      # Disease immunity.
 poisonres 50
-fireres 25
-coldres 25
+fireres 50
+coldres 50
+shockres 50 
 demonic                          # Demonic, Banishable.
 miscslots                        # Only has 2 misc slots.
 banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
@@ -3728,7 +3744,7 @@ descr "The heretic has been converted to devil worship by a False Prophet. He is
 
 newweapon "Spiked Chain"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
-range                1
+range                2
 init                 5
 dmgtype              1 # Slash.
 dmg                  0 
@@ -3736,6 +3752,7 @@ aoe                  1 # Aoe 2.
 sweep
 shieldneg
 sound               54 # whip.smp
+mundane
 nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
 nextdmg             64 # Stun
 
@@ -3747,11 +3764,10 @@ hp                            65
 str                            7 
 mor                            9 
 mr                             8 
-rank                           0 # Mid rank.
+rank                           0 # Mid rank. 
 spellweapon                1   1 # Infernal Magic at level 1.
 meleeweapon                15 "Spiked Chain" 
-flying  
-fast                        
+flying                         
 diseaseres                       # Disease immunity.
 fireres 100
 demonic                          # Demonic; affected by banishment.
@@ -4133,7 +4149,7 @@ addunitrec  "Swordsman"                       	100  5 50 0 10
 addunitrec  "Crossbowman"                     100  5 50 0 5
 addunitrec  "Heavy Infantry"                  	100  5 50 0 25
 addunitrec  "Acolyte"                 				100 3 50 0 0
-addunitrec  "Fanatic"                 					100 5 50 0 0 
+addunitrec  "Fervent"                 				100 5 50 0 0 
 	recxcost 	4 5
 addunitrec  "Catapult"                        		100 1 25 0 50
 addunitrec  "Unholy Altar"            			100 1 50 0 50
@@ -4652,6 +4668,7 @@ stationary
 poisoncloud 2
 growtime 20
 human
+allitemslots
 descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls are not in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."  
 
 newmonster " Yellow Musk Thrall"
@@ -4684,6 +4701,7 @@ poisoncloud 2
 dmgonterr -1
 dmgonterrbonus 2
 human
+allitemslots
 descr "While they may appear quite similar to the soulless, the Yellow Musk Thralls are not in fact undead. Quite the contrary, they are best thought of as walking saplings of the Yellow Musk Creeper, and as such very much alive."  
 
 newmonster "Yellow Musk Thrall"
@@ -4988,7 +5006,8 @@ dmg                  0
 aoe                  0 # Area: single target.
 an                     # Armor negating.
 large                   # Doesn't affect large (size 2x2 and up) units.
-strresist              
+strresist          
+mundane    
 sound               18 # drain.smp (Life Drain)
 
 newmonster "Evolved Shambling Mound"
@@ -5588,6 +5607,7 @@ dmgtype              9 # Poison.
 dmg                  0 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
 an                     # Armor negating.
+mundane
 sound                1 # spear.smp (Spear)
 next
 nextdmg 20
@@ -9611,6 +9631,22 @@ poisonres 100
 noleader
 descr "The Anguifer are initiates of the Serpent Cult, trained to handle the most dangerous vipers. They are frequently employed as assassins. Many senators make a point to stay in the cult's favor, to avoid the appearance of deadly serpents in their private chambers."
  
+newmonster "Serpent Hoplite"
+spr1 "Serpenthoplite1.tga"
+spr2 "Serpenthoplite2.tga"
+armor                          1 # Armor.
+hp                             7 # Hit Points.
+str                            4 # Strength.
+mor                            3 # Morale.
+mr                             4 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                0   4 # Spear: d4 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+largeshield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+poisonres 75
+allitemslots                     # Has the full set of item slots.
+descr "The Serpent Hoplites are remnants from the glory days of the Serpent Cult during the Old Empire, when the Serpent was the chief deity of the state and wars were fought as part of religious festivals. Their equipment, made of bronze and decorated with coiling serpent motifs, is considered outdated by modern standards but remains serviceable. Long exposure to sacred oils and minor doses of venom used in their initiations has made them resistant to poison. They are less disciplined than their counterparts in the imperial legions, but they display an almost lethargic endurance to pain and hardship. Their current duties mostly involve guarding temples and escorting Serpent Priests during processions. On such occasions, they are known to strike the ground with their spears in rhythm, which is said to please the Serpent."
+
  newweapon "Dark Bronze Blade"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
@@ -9618,27 +9654,27 @@ init                 4
 dmgtype              1 # slash.
 dmg                  5 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
-mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+mundane             # Non-magic. Ethereal units have a 75% chance to be unaffected.
 sound                1 # spear.smp (Spear)
 nextwep             35 # Extra effect if target is affected: 35: Poison.
-nextdmg             3 # d3 Poison damage.
+nextdmg             5 # d5 Poison damage.
 
 newmonster "Custodes Serpentis"
 spr1 "Sprites/Custodesserpentis1.tga"
 spr2 "Sprites/Custodesserpentis2.tga"
-armor                          1 # Armor.
-hp                             8 # Hit Points.
+armor                          2 # Armor.
+hp                             9 # Hit Points.
 str                            5 # Strength.
-mor                            5 # Morale.
+mor                            7 # Morale.
 mr                             4 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon                   0 "Dark Bronze Blade" # d5 Slash damage + d3 poison.
+rank                           -1 # Front rank.
+meleeweapon                   1 "Dark Bronze Blade" # d6 Slash damage + d5 poison.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 largeshield                      # Reduces damage from most weapons by 0-2; 0-4 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
 poisonres 75 
-descr "The Serpent Cult keeps a retinue of retired veterans. These men are well protected against poison through antivenoms drawn from the cult's own supplies. They are a common sight in the background of senatorial courts, or hired as expensive bodyguards by senators anxious about assassination. Critics point out that, since most poisonings are carried out by the Serpent Cult itself, the arrangement bears a distinct resemblance to a protection racket."
- 
+descr "The Serpent Cult offers tinctures said to cure ailments of both the body and the soul. These potions are particularly valued among veterans of the gladiatorial arenas, whose wounds are often as much of the mind as of the flesh. Many of these men find in the cult a continued measure of peace and purpose, and in return they serve as loyal enforcers and bodyguards. Their services are offered at considerable cost, and they are a common sight in the background of senatorial courts, employed by senators anxious about assassination. Critics have noted that, since most poisonings are believed to be carried out by the Serpent Cult itself, the arrangement bears a distinct resemblance to a protection racket."
+
 newmonster "Legatus Legionis"
 spr1 "Sprites/Legatuslegionis1.tga"
 spr2 "Sprites/Legatuslegionis2.tga"
@@ -10185,8 +10221,10 @@ addcomrec  "Anguifer"							3 50 20 0
 	reclimiter "+Serpent Acolyte"
 	reclimiter "+Serpent Priest"
 	templerec                                     # +2% to chance per temple owned, to a max of +10%
-addunitrec  "Custodes Serpentis"                	100 5 65 0 10
-	reclimiter  "+Serpent Priest"           
+addunitrec  "Custodes Serpentis"     10 2 40 0 10
+	reclimiter  "+Serpent Priest" 
+addunitrec  "Serpent Hoplite"        100 5 55 0 10
+	reclimiter  "+Serpent Priest"	
 addcomrec   "Augur"                             4 60 20 0 
 addcomrec "Thaumaturg"							3 90 20 0 
 	libraryrec				# +1% to chance per library point owned, to a max of +10%
@@ -10210,15 +10248,23 @@ addcomrec   "Renatus"                           2 110 20 0
 addunitrec "Longdead Velite" 					100 5 0 0 0
 	recxcost 13 25
 	recterr -1103
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
 addunitrec "Longdead Hastatus" 					100 5 0 0 5
 	recxcost 13 25
 	recterr -1103
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
 addunitrec "Longdead Principe" 					100 5 0 0 10
 	recxcost 13 25
 	recterr -1103
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
 addunitrec "Longdead Triarius" 					100 5 0 0 20
 	recxcost 13 25
 	recterr -1103
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
 addunitrec "Ashen Behemoth"						4 1 90 20 15
 	recxcost 13 50
 	recterr -27
@@ -10233,13 +10279,13 @@ addcomrec "Underworld Priest" 					3 90 20 0
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
 addcomrec "Shadow Tribune" 						3 0 0 0 
-	reclimiter "+God Emperor of the Underworld"
 	recterr 135
 	recxcost 13 25
-addcomrec "Shadow Centurion" 					10 0 0 0 
 	reclimiter "+God Emperor of the Underworld"
+addcomrec "Shadow Centurion" 					10 0 0 0 
 	recxcost 13 25
 	recterr -1103  
+	reclimiter "+God Emperor of the Underworld"
 
 ############################ Pale Ones #################################### 
 
@@ -11934,6 +11980,9 @@ healonterr -44
 descr "Elementals are beings of pure elemental energy given life through magical rituals.  Sometimes the elemental energies used to create the elemental are diluted and impure.  This results in one or several elemental shards or lesser elementals.  The energies used to create an elemental fade when it is damaged and it will never heal."
 
 selectmonster "Fire Elemental"
+hp 32
+clearweapons 
+meleeweapon               27  81 # Flame Strike: d27 Fire damage.
 affres 100
 healonterr -44
 
@@ -12495,15 +12544,17 @@ descr "Elementals are beings of pure elemental energy given life through magical
 selectmonster "Air Elemental"
 spr1 "Sprites/Airelemental1.tga"
 spr2 "Sprites/Airelemental2.tga"
-hp 24
+hp 30
 clearweapons
-meleeweapon                6 177 # Gusts of Winds: d6 Blunt damage.
+meleeweapon                5 177 # Gusts of Winds: d5 Blunt damage.
+meleeweapon                9 844 # Pummeling Winds d9 Blunt damage.
 rank 1
 fast
 trample 2
 tramplexsize 1 #trample same size creatures
 affres 100
 healonterr -46
+
 
 # ------------- Warlock Rituals ----------------------------#
 
@@ -14028,6 +14079,7 @@ swamp
 
 selectmonster "Goblin King"
 swamp
+gold 2
 
 selectmonster "Goblin Hero"
 swamp
@@ -14104,11 +14156,6 @@ spr1 "Sprites/Wolfkinreaver1.tga"
 spr2 "Sprites/Wolfkinreaver2.tga"
 hp 7 #From 6
 shield
-swamp
-
-selectmonster "Goblin King"
-gold                     2 # 2 bonus to all gold income for the player that owns this unit while it exists.
-unique 1
 swamp
 
 # Carrion from troll forests will eventually disappear if they leave the forests 
@@ -14227,6 +14274,24 @@ spellweapon50                3   2 # Pyromancy at level 2.
 spellweapon50                27   2 # Frost Magic at level 2.
 startinsanity                     25
 descr "Though Trolls and Giants are not known as deep thinkers, the Ettin Wyrd hold a strange place of reverence among them. With two heads and opposing temperaments, they speak in riddles, contradictions, and ambiguities, a tendency not unknown among the faculty of this College. One head, it is said, always tells the truth; the other lies without end. The challenge, of course, is telling which is which. They have been observed channeling opposed magical forces, one aligned with stillness, the other with storm, though in a rather chaotic fashion while they bicker over whose turn it is to hold the staff. Some scholars argue the entire duality is a fiction, and that both heads are equally mad. This, all things considered, remains the safest assumption."
+
+newmonster " Goblin King " #Troll King Version 
+copyspr "Goblin King"
+armor                          1 
+hp                             4 
+str                            3 
+mor                            5 
+mr                             4 
+rank                          -1 # Back rank.
+meleeweapon                0   8 # Shortsword: d5 Slash damage.
+allitemslots                     # Has the full set of item slots.
+foreststealth                    # When in a forest or jungle, can only be seen by units with Acute Senses or Spirit Sight.
+swamp 
+startitem  "Crown of Intimidation"
+greedy 1
+gold                     2 # 2 bonus to all gold income for the player that owns this unit while it exists.
+descr "King of Goblins, that is a title of dubious value.  Maybe it will add up to something if you are king of really many Goblins.  Still, Goblins are of a very low intellect and it is unlikely they will get organized enough to form a large kingdom."
+
 #---------------------- Troll King Ritual Edits ---------------------------------#
 
 selectritual "Wither Wood" #complete rework, dead forest now gives no herbs, so its a short term buff at a price down the road. 
@@ -14263,25 +14328,6 @@ aialways               100 # Will always cast if able
 free
 descr "Appoints a troll to hide under a bridge and rob travelers."
 
-newritpow "Goblin King"
-
-newritual     "Goblin Castle Construction"                    
-level                  1
-cost             0   100 # 100 Gold
-terr                  38 # 
-alterloc             836 # 
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-aialways             999 # AI will always try to cast this ritual, and make long term plans to do so.
-free                     # Always start with this ritual in addition to the others.
-aialways 999
-maxcast 1
-forgetcurrit
-descr "The Goblin King establishes his royal castle in an old ruin, attracting more goblins to join his newly declared kingdom. He remains loyal to the Troll King, for now. Only one Goblin Castle can be constructed."
-
-selectmonster "Goblin King" 
-power 0 1 
-greedy 1
-
 newitem "Mother's Embrace"
 copyspr "Wreath of the Arch Druid"
 rarity 	3
@@ -14313,71 +14359,85 @@ descr "Mum has noticed her sons attention wandering. She crafts him a necklace o
 selectmonster "Ancient Troll"
 power 0 2
 
+
+# ------------- Troll King Events ------------------------------------#
+
+playerevent
++minturnnbr 36
++varlesser 7 1
++class -2 "Troll King"
++chance 15
++ownsloctarg -2 38
+newunits -2 "c*Goblin King  & 3d6*Goblin Spearman & 3d6*Goblin Archer & 2d3*Wolf King & 1d6*Wolf Kin Reaver"
+alterterrain 836
+setvar 7 1 
+message -2 "An ambitious Goblin warlord has moved into the Old Castle Ruins, and declared himself King of the Goblins. For what it is worth, he appears loyal to your cause."
++aiplayer -2
++hasunithere -2 "Goblin King "
+makestationary
+endevent
+
 #------------- Troll King Class & Recruitment --------------------------#
 
 selectclass 14
-addunitrec  "Rock Troll"                       20 1 50 0 60 
-addunitrec  "Troll"                            30 1 50 0 20 
-addunitrec  "Forest Troll"                     30 1 40 0 10 
-addunitrec  "Lake Troll"                       30 1 50 0 10 
+addunitrec  "Rock Troll"                      		20 1 50 0 60 
+addunitrec  "Troll"                           	 		30 1 50 0 20 
+addunitrec  "Forest Troll"                    		30 1 40 0 10 
+addunitrec  "Lake Troll"                       		30 1 50 0 10 
 	recterr     -102                              # The preceding offer can only be recruited in terrain: near fresh water.
 addunitrec  "Lake Troll Warrior"               20  1   50   0   30 
 	reclimiter  "+Lake Troll King"                # Owning a Lake Troll King enables the preceding offer.
 	recterr     -102                              # The preceding offer can only be recruited in terrain: near fresh water.
-addunitrec  "Hill Giant"                        5 1 100 0 0 
-addunitrec  "Ettin"                             8 1 50 0 0 
-addcomrec   "Goblin Chieftain"                  7 25 20 0 
-addcomrec   "Ogre Chief"                        3 35 20 0 
-addcomrec   "Forest Giant"                      5 70 20 0 
+addunitrec  "Hill Giant"                        		7 1 100 0 0 
+addunitrec  "Ettin"                             			10 1 50 0 0 
+addcomrec   "Goblin Chieftain"                  	7 25 20 0 
+addcomrec   "Ogre Chief"                        		3 35 20 0 
+addcomrec   "Forest Giant"                      	7 70 20 0 
 addcomrec   "Goblin Shaman"                     4 35 20 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
-addcomrec   "Troll Shaman"                      2 75 50 0 
+addcomrec   "Troll Shaman"                      	2 75 50 0 
 	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
-addcomrec   "Lake Troll King"                   1 75 50 0 
+addcomrec   "Lake Troll King"                   	1 75 50 0 
 	libraryrec                                    # +1% to chance per library point owned, to a max of +10% for 10+ library points.
 	recterr     -102                              # The preceding offer can only be recruited in terrain: near fresh water.
-addcomrec   "Ettin Wyrd"                   1     145 40   0
+addcomrec   "Ettin Wyrd"                   			1 145 40   0
 	libraryrec                                    # +1% to chance per library point owned, to a max of +10% for 10+ library points.
-addmercrec  "Goblin Murderer"                   3 1 10 40 0 
-addcomrec   "Goblin Hero"                       3 10 50 0 
-addcomrec	"New Troll King"					3 100 80 50
+addmercrec  "Goblin Murderer"               	3 1 10 40 0 
+addcomrec   "Goblin Hero"                       	3 10 50 0 
+addcomrec	"New Troll King"						3 100 80 50
 	reclimiter "-Troll King"
 	reclimiter "-New Troll King"
-addcomrec 	"Old Troll"							3 120 80 25 #Mum
+addcomrec 	"Old Troll"									3 120 80 25 #Mum
 	reclimiter "+New Troll King"
 	reclimiter "-Old Troll"
 	reclimiter "-Ancient Troll"
-addcomrec "Goblin King"                       	3 50 50 0
-	recterr 38
-	reclimiter "-AI"
-	reclimiter "-Late AI"
-addunitrec  "Goblin Spearman"                  	100 15 50 0 0 
+addunitrec  "Goblin Spearman"            	100 15 50 0 0 
 	recterr 836
-	reclimiter "+Goblin King"
+	reclimiter "+Goblin King "
 addunitrec  "Goblin Archer"                    	100 10 50 0 0 
 	recterr 836
-	reclimiter "+Goblin King"
-addunitrec  "Wolf Kin"                         	100 10 50 0 0 
+	reclimiter "+Goblin King "
+addunitrec  "Wolf Kin"                         		100 10 50 0 0 
 	recterr 836
-	reclimiter "+Goblin King"
-addunitrec  "Wolf Kin Reaver"                  	100 7 50 0 10 
+	reclimiter "+Goblin King "
+addunitrec  "Wolf Kin Reaver"                  100 7 50 0 10 
 	recterr 836
-	reclimiter "+Goblin King"
+	reclimiter "+Goblin King "
 addunitrec  "Moose Riders"                     	20 2 50 0 0 
 	recterr 836
-	reclimiter "+Goblin King"
-addmercrec  "Goblin Murderer"                   3 1 10 40 0 
+	reclimiter "+Goblin King "
+addmercrec  "Goblin Murderer"                3 1 10 40 0 
 	recterr 836
-	reclimiter "+Goblin King"
-addcomrec   "Goblin Hero"                       3 10 50 0
+	reclimiter "+Goblin King "
+addcomrec   "Goblin Hero"                       	3 10 50 0
 	recterr 836 
 	reclimiter "+Goblin King"
-addcomrec   "Goblin Shaman"                    	5 35 20 0 
+addcomrec   "Goblin Shaman"                    5 35 20 0 
 	recterr 836
-	reclimiter "+Goblin King"
+	reclimiter "+Goblin King "
 addcomrec "Wolf Kin Chieftain"                 	10 35 10 0                     
 	recterr 836
-	reclimiter "+Goblin King"
+	reclimiter "+Goblin King "
 
 # -----  Goblin King Class & recruitment ---------------#  
 
@@ -14388,7 +14448,7 @@ addstartcom "Goblin Chieftain"
 addstartcom "Wolf Kin Chieftain"
 addunitrec "Moose Riders"                     	20 2 50 0 0 
 addcomrec "Wolf Kin Chieftain"                  10 35 10 0 
-addcomrec   "Ettin Wyrd"                   2     145 40   0                    
+addcomrec   "Ettin Wyrd"                   3     145 40   0                    
 
 ##################################### Enchanter ############################################### 
 
@@ -14672,6 +14732,17 @@ drawsize  -15
 poisoncloud 1 
 descr "Mercury is surprisingly easy to animate, being an inherently magical substance associated with change, fluidity and perfection. Apart from being surrounded by noxious fumes, the living mercury is quite similar to a water elemental. If damaged it may split into smaller parts."
 
+newweapon     "Giant Sword"                                               
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              1 # Slash.
+dmg                 30 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+sweep                  # Can continue to kill multiple targets.
+mundane 
+sound                8 # sword.wav (Sword)
+
 newmonster "Bronze Colossus"
 spr1 "Sprites/Bronzecolossus1.tga"
 spr2 "Sprites/Bronzecolossus2.tga"
@@ -14681,7 +14752,7 @@ str                           12
 mor                           99 
 mr                             6 
 rank                           1 # Front rank.
-meleeweapon               20 507 #Large Sword
+meleeweapon               0 "Giant Sword" #d30 slash
 huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
 water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
 poisonres                    100 # Poison immunity.
@@ -14706,8 +14777,8 @@ dmgtype             12 # Special.
 dmg                  0 
 aoe                  0 # Area: single target.
 an                     # Armor negating.
+mundane 
 sound                0 # swosh.smp
-#nextalwayswep 447        
 next
 nextdmg             10  # Swallow.
 
@@ -14779,11 +14850,11 @@ sound               66 # windshort.wav (Wind)
 nextwep            488 # Extra effect if target is affected: 488: aff (mr+huge).
 nextdmg       67108864 # Blindness
 
-newweapon "Glass Sword"
+newweapon "Glass Spear"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
 init                 5
-dmgtype              1 # Slash.
+dmgtype              3 # pierce.
 dmg                  25 
 aoe                  1 # Area: single target.
 holykill               # Double damage against undead and demons.
@@ -14799,7 +14870,7 @@ mor 99
 mr 9
 rank 1 
 rearpos
-meleeweapon 0 "Glass Sword"
+meleeweapon 0 "Glass Spear"
 rangedweaponbonus 1 "Prismatic Light "  #Prismatic Light
 awe 1 
 size2x2
@@ -16814,23 +16885,32 @@ mor 4
 mr 5
 descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
 
-newmonster "Gilded Captain"
+newmonster "Gilded Lord"
 copystats "Knight"
+spr1 "Sprites/Gildedlord1.tga"
+spr2 "Sprites/Gildedlord2.tga"
+rank 0 
+mor 5
+mr 5 
+descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
+
+newmonster "Gilded Captain"
+copystats "Captain"
 spr1 "Sprites/Gildedcaptain1.tga"
 spr2 "Sprites/Gildedcaptain2.tga"
-rank 0 
-descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
+mor 4
+mr 5
 
 newmonster "False Giant"
 spr1 "Sprites/Falsegiant1.tga"
 spr2 "Sprites/Falsegiant2.tga"
 armor                          2 
-hp                            10 
-str                            5 
+hp                            	10 
+str                            	5 
 mor                            6 
-mr                             6 
+mr                             	6 
 rank                           1 # Front rank.
-meleeweapon                1   2 # Broadsword: d7 Slash damage.
+meleeweapon         1   2 # Broadsword: d7 Slash damage.
 human                            
 magicshield                      # Reduces damage from most weapons by 0-2; 0-3 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
@@ -16844,12 +16924,12 @@ descr "The Crystal Tower is guarded by towering giants clad in mesmerizing, mirr
 newmonster "Mirror Guard"
 spr1 "Sprites/Mirrorguard1.tga"
 spr2 "Sprites/Mirrorguard2.tga"
-armor                          2 
-hp                            10 
-str                            5 
+armor                        2 
+hp                            	10 
+str                            	5 
 mor                            6 
-mr                             6 
-rank                           1 # Front rank.
+mr                            	 6 
+rank                            1 # Front rank.
 meleeweapon                1   2 # Broadsword: d7 Slash damage.
 human                            
 magicshield                           # Reduces damage from most weapons by 0-2; 0-3 against ranged weapons.
@@ -17016,15 +17096,16 @@ addstartcom            "Illusionist's Apprentice"
 addstartunits          "Gilded Spearman"                   	10
 addstartunits          "Gilded Crossbowman"                	5
 addunitrec "Gilded Spearman" 								100 5 50 0 0
-addunitrec  "Gilded Crossbowman"           					100 5 60 0 0   
+addunitrec  "Gilded Crossbowman"           				100 5 60 0 0   
 addunitrec  "Gilded Swordsman"        						100 5 70 0 0 
-addunitrec  "Gilded Cavalryman"            					100 3 100 0 0
-addcomrec   "Gilded Captain"               					15 60 10 0  
-addmercrec  "Scout"                            				10 1 15 10 0 
+addunitrec  "Gilded Cavalryman"            					15 3 100 0 0
+addcomrec    "Gilded Lord"                                          3 60 10 0 
+addcomrec   "Gilded Captain"               					    17 45 10 0  
+addmercrec  "Scout"                            				        10 1 15 10 0 
 addunitrec  "Winged Monkey"                   				100 5 25 0 0
 	recxcost 15 2 #Extra cost 2 gems 
 	reclimiter "+Master Illusionist"
-addunitrec  "Mirror Guard"                    				100 3 75 0 15
+addunitrec  "Mirror Guard"                    				    100 3 75 0 15
 	recxcost 15 10 #Extra cost 10 gems 
 	reclimiter "+Master Illusionist"
 
@@ -17061,7 +17142,7 @@ mr                             3 # Magic Resistance.
 rank                           1 # Front rank.
 meleeweapon                0   0 # Fist: d1 Blunt damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-noslots  
+allitemslots  
 dmgonterr -1 
 noheal 
 stationary 
@@ -17079,7 +17160,7 @@ mr                             3 # Magic Resistance.
 rank                           1 # Front rank.
 meleeweapon                0   0 # Fist: d1 Blunt damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-noslots  
+allitemslots  
 dmgonterr -1 
 noheal 
 stationary 
@@ -17598,6 +17679,7 @@ clearweapons
 meleeweapon               -1  88 # Pitchfork: d3 Pierce damage.
 stationary
 limitgold 1
+rank -1
 descr "While being one of the basic units in the undead army, the Soulless were also the original workers in the necromantic manufacturies of the Markgraf.  Though slow and sluggish, they worked both day and night, thus earning good money for their proprietor.  Among the first batches it was noted however, that the undead Hoburgher would still stop for second or third breakfasts even without needing to eat more than the occasional brain."
 
 newmonster "Little Soulless Miner"
@@ -17628,6 +17710,7 @@ meleeweapon -4 441 #pick axe d3
 stationary
 limitiron 1
 limitgold 1 
+rank -1 
 descr "According to necromantic economic theory, Longdead are by far the most advantageous form of undead. Though more brittle than the Soulless, the resources required to make them are almost limitless. Longdead also retain a degree of anatomical nimbleness, making them better suited for tasks that demand dexterity or precision, an advantage in many industrial operations."
 
 newmonster "Hobmark Bandit" 
@@ -18343,6 +18426,7 @@ dmgtype              9 # Poison.
 dmg                  0 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
 an                     # Armor negating.
+mundane
 sound                1 # spear.smp (Spear)
 
 newmonster "Corpse Wasps"
@@ -19016,7 +19100,7 @@ minospawn 					1	# From 1
 selectmonster "Hierophant"				
 centspawn 					5	# From 3
 selectmonster "Grand Hierophant"			
-centspawn 					4	# From 6
+centspawn 					6	# From 4
 selectmonster "Centaur Sage"			
 centspawn 					1	# From 1
 selectmonster "Hierophantide"			
@@ -19024,7 +19108,7 @@ centspawn 					5	# From 3
 selectmonster "Grand Hierophantide"		
 centspawn 					6	# From 4
 selectmonster "Harpy Queen"			
-harpyspawn 					4	# From 6
+harpyspawn 					6	# From 4
 selectmonster "Pan"			
 satyrspawn 					3	# From 2
 harpyspawn					1	# From 1
@@ -19318,6 +19402,23 @@ lifeforce 1
 selectterr 69 
 lifeforce 2
 
+selectterr 257
+name "Spire of Ruin"
+spr "Sprites/Spireofruin1.tga"
+lifeforce        -4 # Drains Lifeforce from all squares within radius: 5.
+
+selectterr 842
+name "Spire of Ruin "
+spr "Sprites/Spireofruin2.tga"
+apcost            3 # Action Point cost for moving through the terrain: 3
+mountain            # The terrain counts as a mountain for the purposes of abilities like Mountain Move.
+nostart             # This type of terrain cannot be overwritten by a start citadel from a player.
+farsight            # The terrain gives increased vision range when there are units present there.
+voidret             # If placed when the map is generated, this terrain will have a one-way portal from the Void.
+desertok            # The terrain can appear in the southern portion of the map.
+farvis              # Can be seen from far away (3 squares?).
+ownable 
+
 #---------------------- Scourge Lord Monster Descriptions --------------
 
 # Many descriptions rewritten. No references to breeding pits, and the writing is cleaner. 
@@ -19378,12 +19479,82 @@ descr "The Scourge Lord seems intent on mastering all elements, though only thro
 
 # --------------------------- Scourge Lord Monster Edits ---------------------------------------#
 
+selectmonster "Scourge Herald"
+name "Disabled Scourge Herald"
+
+newmonster "Scourge Herald"
+copystats "Disabled Scourge Herald"
+armor 1 		# from 2. Yet another attempt to encourage building something besides heralds. 
+desert
+female
+mastery 1
+descr "Though the Scourge Lord is fickle and paranoid, he will often surround himself with sycophantic assistants who will lead his troops and help spread his influence.^These assistants are the Scourge Heralds. Not only do they engage in the crimes of more common villains, such as robing merchants, taking over villages and mines, harassing the local population and killing the innocent, they are also the main instrument by which the Scourge Lord depletes the landscape of Elysium. The Heralds will erect pillars and steles whose surfaces are inscribed with glyphs of power. Through these pillars the Scourge Lord drains the surrounding lands of all their lifeforce, leaving a withered desert behind them."
+
+newmonster "Scourge Votary"
+copystats "Scourge Lord"
+desert
+female 
+mastery 2
+descr "Though the Scourge Lord is fickle and paranoid, he will often surround himself with sycophantic assistants who will lead his troops and help spread his influence.^The most powerful of these servants are the Scourge Votaries. They act as his hands and voice across Elysium, draining the land and binding the faithless to his cause. Should the Scourge Lord himself fall, it is said that one among them will claim the Golden Mask and continue his dreadful legacy."
+
+selectmonster "Scourge Lord"
+name "Disabled Scourge Lord"
+
+newmonster "Scourge Lord"
+copystats "Disabled Scourge Lord"
+spr1 "Sprites/Scourgelord1.tga" 
+spr2 "Sprites/Scourgelord2.tga"
+hp 24
+armor 1
+clearweapons
+spellweapon 62 2
+meleeweapon 2 "Scourge Sword"
+desert
+mastery 1
+descr "Once every few generations, the Scourge Lord rises again to spread chaos and ruin. Clad in spiked armor and a golden mask, he gathers destructive forces under his banner, leaving entire realms in devastation. The source of his power remains a mystery, though many believe it lies within the mask itself. Some say the Scourge Lord is not one man but many-that whenever a hapless adventurer or lowly farmer stumbles upon the mask, their doom is already written. It is easy to imagine how the future Scourge Lord dons the mask, ignoring the scraps of withered flesh still clinging to its edges. And with that single act, the cycle begins anew, as the mask and its new host drain the land, leaving ash and desolation behind."
+
+selectmonster "Scourge King"
+name "Disabled Scourge King"
+
+newmonster "Scourge King"
+copystats "Disabled Scourge King"
+spr1 "Sprites/Scourgeking1.tga"
+spr2 "Sprites/Scourgeking2.tga"
+armor 1
+hp 28
+desert
+clearweapons
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+spellweapon               62   3 # Defilement at level 3.
+descr "At times the Scourge Lord will assume so much power and land, albeit withering at this point, that he will call himself a King, and thus is often mentioned in the journals as a Scourge King. ^This, however, is a faulty view as the title of king requires both a bloodline and a righteous claim on the throne, as is true with the most noble benefactor of our university. The Scourge king ought rather to be called a Scourge Usurper, Despot or Tyrant. I would personally choose to use the title of Scourge Usurper. ^In order to appear more majestic, the Scourge King often uses magic and simple tricks to enhance that in which nature has failed him. Special shoes will make him look taller, golden dye and skillful combing will cover any grey hairs or bald patches, and through illusory magic any blotches on his skin are covered. The blessings he bestows on his minions are likewise a mocking facsimile of true divinity, and certainly also just another deception."
+
+newmonster "Scourge King "
+copystats "Scourge King" 
+spr1 "Sprites/Scourgeking1_1.tga"
+spr2 "Sprites/Scourgeking1_2.tga"
+clearweapons
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+spellweapon               62   5 # Defilement at level 5.
+defiler                        10 # Lifeforce Spellcasting (range 6): Needs to drain lifeforce to cast spells.
+
+newmonster "Weakened Scourge King"
+copystats "Scourge King" 
+clearweapons
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+spellweapon               62   2 # Defilement at level 2.
+slow 
+growtime 4
+growoffs -2
+ritpow 48 0
+
 selectmonster "Desert Warrior"
 desertstealth
+rearpos
 descr "The desert warriors are nomads often seen serving the dark powers of the southern deserts, their skill of traveling quickly and unseen through the sands is uncanny. They rarely stay together for longer than one raid, unless some great warlord is paying them, usually a Scourge Lord or Rakshasa. They are a cowardly sort and prefer to stay back and let the unholy monsters take the frontline."
 	
 selectmonster "Camel Rider"
 desertstealth
+rearpos 
 hp 10
 descr "The desert warriors are nomads often seen serving the dark powers of the southern deserts, their skill of traveling quickly and unseen through the sands is uncanny. Rarely do they stay together for longer than one raid unless some great warlord is paying them, usually a Scourge Lord or Rakshasa. Some tribes have managed to tame the most fearsome of mounts, the camel. The sheer amount of fingers lost to this must be unfathomable."
 
@@ -19396,86 +19567,158 @@ mor 15
 desert 
 sensedead 0
 
-selectmonster "Scourge King"
-spr1 "Sprites/Scourgeking1.tga"
-spr2 "Sprites/Scourgeking2.tga"
-hp 28
-lifeforce 10
-desert
-descr "At times the Scourge Lord will assume so much power and land, albeit withering at this point, that he will call himself a King, and thus is often mentioned in the journals as a Scourge King. ^This, however, is a faulty view as the title of king requires both a bloodline and a righteous claim on the throne, as is true with the most noble benefactor of our university. The Scourge king ought rather to be called a Scourge Usurper, Despot or Tyrant. I would personally choose to use the title of Scourge Usurper. ^In order to appear more majestic, the Scourge King often uses magic and simple tricks to enhance that in which nature has failed him. Special shoes will make him look taller, golden dye and skillful combing will cover any grey hairs or bald patches, and through illusory magic any blotches on his skin are covered. The blessings he bestows on his minions are likewise a mocking facsimile of true divinity, and certainly also just another deception."
+selectmonster "Little Ghoul"
+mor 15
+desert 
+sensedead 0
 
-selectmonster "Scourge Herald"
-hp 22 #from 18
-lifeforce 1
-desert
-descr "Though the Scourge Lord is fickle and paranoid, he will often surround himself with sycophantic assistants who will lead his troops and help spread his influence.^These assistants are the Scourge Heralds. Not only do they engage in the crimes of more common villains, such as robing merchants, taking over villages and mines, harassing the local population and killing the innocent, they are also the main instrument by which the Scourge Lord depletes the landscape of Elysium. The Heralds will erect pillars and steles whose surfaces are inscribed with inscriptions of power. Through these pillars the Scourge Lord drains the surrounding lands of all their lifeforce, leaving a withered desert behind them."
+newweapon "Paralytic Poison Bite"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 2
+dmgtype              1 # Slash.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+next             
+nextdmg             5 # d5 Poison damage.
 
-selectmonster "Scourge Lord"
-hp 24
-lifeforce 5 #slowly builds LF regardless of the enviroment
-desert
-descr "A few times each century, the menace that is the Scourge Lord reemerges to plague the realms. Hidden behind spiky armor and a golden mask, he gathers other destructive forces and begins a reign of chaos and ruin. The source of the Scourge Lord's powers remains unknown and a topic of much debate. It has been suggested that the secret lies within the mask and the armor, and that the Scourge Lord arises whenever a simple adventurer or farmer of low nature unearths the golden mask. It is easy to imagine how the future Scourge Lord dons the mask, disregarding any pieces of crumbling flesh still clinging to it. Within the mask, and now its host, lies the power to drain the lands, leaving them desolate in the wake of the Dark Ones passing."
+newweapon     "Paralytic Poison"                                                    #  35
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 4
+dmgtype              9 # Poison.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+large 					#No effect on large or huge monsters
+nextdmg             16 # Paralyze 
 
-newmonster "Scourge King" #for mastery
-copystats "Scourge King" -1
-desert
-descr "At times the Scourge Lord will assume so much power and land, albeit withering at this point, that he will call himself a King, and thus is often mentioned in the journals as a Scourge King. ^This, however, is a faulty view as the title of king requires both a bloodline and a righteous claim on the throne, as is true with the most noble benefactor of our university. The Scourge king ought rather to be called a Scourge Usurper, Despot or Tyrant. I would personally choose to use the title of Scourge Usurper. ^In order to appear more majestic, the Scourge King often uses magic and simple tricks to enhance that in which nature has failed him. Special shoes will make him look taller, golden dye and skillful combing will cover any grey hairs or bald patches, and through illusory magic any blotches on his skin are covered. The blessings he bestows on his minions are likewise a mocking facsimile of true divinity, and certainly also just another deception."
-	
-# Lore accurate sprites
-	
-newmonster "Scourge Lord" 
-copystats "Scourge Lord" -1
-spr1 "Sprites/Scourgelord1.tga" 
-spr2 "Sprites/Scourgelord2.tga"
-armor 1
-lifeforce 10 #more passive LF than normal
+newweapon "Strong Paralytic Poison Bite"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 2
+dmgtype              1 # Slash.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+next             
+nextdmg            15 # d15 Poison damage.
+
+newweapon     "Strong Paralytic Poison"                                                    #  35
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 4
+dmgtype              9 # Poison.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+nextdmg             16 # Paralyze 
+
+selectmonster "Dark Centipede"
 clearweapons
-spellweapon 62 2
-meleeweapon 2 "Scourge Sword"
-desert
-descr "Once every few generations, the Scourge Lord rises again to spread chaos and ruin. Clad in spiked armor and a golden mask, he gathers destructive forces under his banner, leaving entire realms in devastation. The source of his power remains a mystery, though many believe it lies within the mask itself. Some say the Scourge Lord is not one man but many-that whenever a hapless adventurer or lowly farmer stumbles upon the mask, their doom is already written. It is easy to imagine how the future Scourge Lord dons the mask, ignoring the scraps of withered flesh still clinging to its edges. And with that single act, the cycle begins anew, as the mask and its new host drain the land, leaving ash and desolation behind."
+meleeweapon 3 "Paralytic Poison Bite" #d3 slash + d5 poison + str resist paralyze 
 
-# Verbatim from CoExp: "OG one gets a mask and sword. I assume you want to know how this works? Okay, the vanilla one can only be gotten via mastery which shifts the ID -1 to the old SL sprite version. This one is defined here and can be referenced with "1:Scourge Lord" like in the maincom definition and the 'get back in the game' recruit. Therefore, this new sprite is found via those means, the old one by mastery only."
+selectmonster "Scourge Worm"
+hp 44
+clearweapons 
+meleeweapon 7 "Strong Paralytic Poison Bite" #d7 slash + d15 poison + str resist paralyze 
 
 selectmonster "Guardian Statue"
 spr1 "Sprites/Guardian1.tga"
 spr2 "Sprites/Guardian1.tga"
-rank -1 #fits better in pyramids, where you will likely place it
 affres 100
 water
 	
 selectmonster "Scourge Flame"
-darkbless 1
 affres 100
-diseaseres
+coldres -50
 fireaura 3
 burnforest 3
-noheal
+clearweapons 
+meleeweapon               27 776 # Scourge Flames: d27 Magic damage.
 
 selectmonster "Scourge Wind"
+str 9
+hp 85
 affres 100
 diseaseres
-darkbless 1
-noheal
+clearweapons 
+meleeweapon 10 177 # Gusts of Winds: d10 Blunt damage.
+meleeweapon 9 "Pummeling Winds"
+meleeweapon 9 "Pummeling Winds"
 
 selectmonster "Monster Scarab"
-hp 88
+hp 115
+slashres 
+clearweapons 
+affres 75
+meleeweapon               28  11 # Bite: d28 Slash damage.
 
-selectmonster "Scourge Worm"
-hp 44
 
 # ---------------------------Scourge Lord New Monsters ----------------------------------------------#
+
+newmonster "Scourge Fanatic" 
+spr1 "Sprites/Scourgefanatic1.tga"
+spr2 "Sprites/Scourgefanatic2.tga"
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             4 # Magic Resistance.
+rank                           1 # Front rank.
+frontpos
+meleeweapon                0   2 # Broadsword: d6 Slash damage.
+desert                           # Desert Move: AP cost to enter a desert square is reduced by 1.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+charmres 
+descr "Although most of the Scourge Lords minions are simple opportunists, he does have a following of true believers. Their minds are touched by his dark powers and they regard him as a god. They claim that he will cleanse the world and rebuild it anew, better than before. To those of us living in it, this sounds like nothing more than a promise of ruin."
+
+newweapon "Sword Whirl"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 4
+dmgtype              1 # Slash.
+dmg                  7 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                8 # sword.wav (Sword)
+fullsweep
+
+newmonster "Scourge Dervish" 
+spr1 "Sprites/Scourgedervish1.tga"
+spr2 "Sprites/Scourgedervish2.tga"
+armor                          0 # Armor.
+hp                            8 # Hit Points.
+str                            4 # Strength.
+mor                            9 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+frontpos 
+meleeweapon                0   "Sword Whirl".
+desert                           # Desert Move: AP cost to enter a desert square is reduced by 1.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+nametype                      56 # Scourge Lord.
+darkbless                      1 # Has the dark blessing of a scourge lord.
+spread 1 
+descr "The Dervishes are an ascetic order that arose among the desert tribes who first came under the influence of the Scourge Lord. They devote themselves entirely to his promise of purification through destruction. Their rituals consist of prolonged fasting, chanting, and whirling dances performed beneath the burning sun, by which they claim to glimpse the coming renewal of the world."
 
 newmonster "Brass Man"
 spr1 "Sprites/Brassman1.tga"
 spr2 "Sprites/Brassman2.tga" 
 armor                          3 
-hp                            16 
+hp                            12 
 str                            5 
 mor                           99 
 mr                             6 
 rank                           1 # Front rank.
-meleeweapon                1  2 # broadsword: d7 Slash damage.
+meleeweapon             0  "Draining Touch" #d6 life drain 
 fireres                      100 # Fire immunity.
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
@@ -19565,7 +19808,7 @@ mor                           99
 mr                             5 
 rank                           1 # Front rank.
 meleeweapon               4 493 # Crush: d4 Blunt damage.
-slow                             # The monster only has 2 AP.
+battleslow                             
 desert
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
@@ -19612,40 +19855,18 @@ meleeweapon 4 849 #Touch of the Fallen d4
 spellweapon 67 1 #Destruction at level 1 
 spellweapon 67 1 #Destruction at level 1
 drawsize -35
-descr "Desert Wraiths are vengeful demons born from the scorching sirocco. They thrive on madness and isolation, and can be be heard howling during sandstorms." 
-
-newmonster "Slaver"
-spr1 "Sprites/Slaver1.tga"
-spr2 "Sprites/Slaver2.tga"
-armor                          0 
-hp                            15 
-str                            5 
-mor                            5 
-mr                             5 
-rank                           1 # Front rank.
-meleeweapon       4294967296 125 # Net: Special damage: Stuck in Net.
-meleeweapon                1   2 # Broadsword: d7 Slash damage.
-fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
-desert                           # Desert Move: AP cost to enter a desert square is reduced by 1.
-desert2                          # Likes deserts (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
-human                            
-allitemslots                     # Has the full set of item slots.
-nobootslots                      # Has no boot slots.
-nametype                      56 # Scourge Lord.
-slavehunt 2
-size1x1
-descr descr "The barbaric slavers of the southern tribes were nearly extinct after the Fourth Southern Imperial Expedition. Now, under the Scourge Lord's shadow, they have reemerged, resuming their cruel trade to provide his army with thralls for labor and sacrifices for dark rituals."
+descr "Desert Wraiths are vengeful demons born from the scorching sirocco. They and thrive on madness and isolation, and can be be heard howling during sandstorms." 
 
 selectmonster "Sellsoul"
 descr "It is widely known that mercenaries will sell anything or anyone if just paid enough. it is also a common fact that they should not be paid before an executed job as their loyalties are fickle. However, the Scourge Lord offers almost anything the mercenaries will ask for if they just sell their soul and take part of the dark life force collected by the Scourge Lord. Though many eagerly accept, hoping for loads of gold, few are aware of the cost. After they have undergone the transformation they will become stronger, but find themselves craving human flesh, rather than gold or the items once precious to them."
 
-newmonster "Scourge Giant"
-spr1 "Sprites/Scourgegiant1.tga"
-spr2 "Sprites/Scourgegiant2.tga"
+newmonster "Defiled Giant"
+spr1 "Sprites/defiledgiant1.tga"
+spr2 "Sprites/defiledgiant2.tga"
 rank 1
-hp 26
-mr 2
-mor 4
+hp 22
+mr 5
+mor 5
 str 6
 armor 2
 human
@@ -19654,15 +19875,15 @@ allitemslots
 shield
 desert
 affres 50
-meleeweapon 9 2 #Broad Sword d15
+meleeweapon 7 2 #Broad Sword d13
 darkbless 1
-descr "Once members of a Ba'alite desert tribe, the Scourge Giants turned to new masters after the imprisonment of the Dark God. Some were corrupted by the magic of the first Scourge Lord. When a new bearer of the Golden Mask rises, these giants eagerly rally to his sinister cause."
+descr "After the imprisonment of the Dark God, certain tribes of the Ba’alite giants, being less steadfast than their kin, sought new masters to serve. Some were later corrupted by the first Scourge Lord, who found in them a convenient mixture of strength and credulity. These defiled tribes still dwell in the deserts, and when a new bearer of the Golden Mask arises, they rally to his cause, claiming to recognize in him the divine spark of their ancient patron." 
 
 newmonster "Kaftar"  
 spr1 "Sprites/Kaftar1.tga"
 spr2 "Sprites/Kaftar2.tga" 
 armor                          0 
-hp                            13 
+hp                            13
 str                            5 
 mor                            4 
 mr                             5 
@@ -19673,13 +19894,12 @@ meleeweapon 		   0 1 # dagger d3 Slash damage
 desert
 human                            
 allitemslots                     # Has the full set of item slots.
-darkbless 1
-descr "Vampiric half-men, Kaftar were once humans who succumbed to greed and cruelty, cursed to roam the land in the twisted form of hyenas. They are known for their unnerving ability to mimic human voices, luring unsuspecting travelers into traps or ambushes. They are drawn to the service of the Scourge Lords by the promise of life-force.".  
+descr "Kaftar were once humans who succumbed to greed and cruelty. In a classic demonstration of the degenerative effects of vice upon the human frame, they are now cursed to roam the land in the twisted form of hyenas. These creatures are known for their unnerving ability to mimic human voices, which they use to lure unsuspecting travelers into traps or ambushes. They are lured to the service of the Scourge Lord by the promise of stolen life-force and serve him with the slavering devotion of starved dogs".  
 
-newmonster "Black Djinn"
-spr1 "Sprites/Blackdjinn1.tga"
-spr2 "Sprites/Blackdjinn2.tga"
-hp		    	55
+newmonster "Desolation Djinn"
+spr1 "Sprites/Desolationdjinn1.tga"
+spr2 "Sprites/Desolationdjinn2.tga"
+hp		    	32
 str		    	9
 mor			10
 mr			9
@@ -19698,15 +19918,17 @@ desert
 spiritsight
 sleepres
 meleeweapon 10 849 #Touch of the Fallen d4
-spellweaponbonus   8   2 # Unlife at level 2.
-spellweaponbonus 43 2 #Illusionism at level 2
-descr "Black Djinn are evil spirits of the desert sands. They have slept beneath the dunes for centuries, awaiting the end of the world. With the rise of the Scourge Lord, they have awakened, drawn to his power and the promise of ruin."
+spellweapon                  37   2 # Black Magic at level 2.
+spellweapon                    67 1 #Destruction at level 1 
+spellweapon                    43 1 #Illusionism at level 1
+descr "The Djinn of Desolation are ancient spirits said to dwell beneath the sands of ruined empires. They are drawn to places where the wind carries the dust of the dead and the memory of forgotten cities. Their presence dries the wells, blights the oases, and fills the air with a stifling heat. The rise of the Scourge Lord has disturbed their rest, and many now serve him, drawn to his power and the promise of ruin."
+
 
 newmonster "Faceless"
 spr1 "Sprites/Faceless1.tga"
 spr2 "Sprites/Faceless2.tga"
 armor                          1 
-hp                            36 
+hp                            39 
 str                            5 
 mor                           10 
 mr                             7 
@@ -19725,12 +19947,12 @@ spr2 "Sprites/Greatghoul2.tga"
 armor                          1 
 hp                            110 
 str                            10 
-mor                           10 
+mor                           15 
 mr                             6 
 rank                           1 # Front rank.
 meleeweapon                15 297 # Ghoul Claw: d15 Slash damage.
 meleeweapon		   15 297 
-meleeweapon                10 "Leeching Bite"	
+meleeweapon                12 "Leeching Bite"	
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
 undead
@@ -19741,68 +19963,104 @@ pierceres
 allitemslots                     # Has the full set of item slots.
 huge
 desert
+affres 75
+drawsize 10
 descr "Sometimes something particularly vile arises from the sands."
 
-newmonster "Orb of Anti-Life" 
-spr1 "Sprites/Orbofantilife1.tga"
-spr2 "Sprites/Orbofantilife2.tga"
+newweapon "Impossible Riddle"
+trgrank              9 # Target: any enemy in range.
+range                8
+init                 4
+dmgtype             12 # Special damage (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                 -3 # Area: 3 strikes.
+hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
+mind                   # Doesn't affect mindless units.
+onlyenemy              # Only affects enemy units.
+flysound            70 # echo.wav
+nextwep 303 #affliction vs hard MR
+nextdmg 33554432 #feeblemind 
+
+newmonster "Black Sphinx" 
+spr1 "Sprites/Blacksphinx1.tga"
+spr2 "Sprites/Blacksphinx2.tga"
+armor                          2 # Armor.
+hp                           98 # Hit Points.
+str                            9 # Strength.
+mor                            6 # Morale.
+mr                            10 # Magic Resistance.
+rank                           1 # Front rank.
+rangedweaponbonus 262144 "Impossible Riddle" # confusion 
+meleeweapon               15  12 # Claw: d15 Slash damage.
+meleeweapon               15  12 # Claw: d15 Slash damage.
+flying                          
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+desert                           # Desert Move: AP cost to enter a desert square is reduced by 1.
+desert2                          # Likes deserts (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
+spiritsight
+noeyes
+affres 50
+descr "The Scourge Lord stole the eyes of a noble sphinx and corrupted it into an instrument of his will. The Black Sphinx now dwells among the ruined temples and burned libraries of his realm, a depraved mockery of the knowledge it once guarded. It still asks riddles, as sphinxes do, but its questions have lost all meaning. Those who try to answer are either devoured or lose their sanity in the attempt. (This author would note that a similar effect may be experienced by debating the precise number of known paradoxes with my colleague Professor Naphanides, though the outcome is less immediately fatal.)"
+
+newweapon "Touch of Annihilation"
+trgrank              9 # Target: any enemy in range.
+range                1
+init                 4
+dmgtype              7 # Magic.
+dmg                  25 # Base damage (added to dmg value where this weapon is used).
+sweep
+hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
+an                     # Armor negating.
+sound               95 #  
+next 
+nextdmg             9999 # autokill.
+
+newweapon     "Annihilate"                                             
+trgrank              9 # Target: any enemy in range.
+range                1
+init                 4
+dmgtype              7 # Magic.
+mr                 
+dmg                  0 
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+
+newmonster "Orb of Annihilation" 
+copystats "Messenger Crows"
+clearspec
+clearweapons
+spr1 "Sprites/Orbofannihilation1.tga"
+spr2 "Sprites/Orbofannihilation2.tga"
 armor 0 
-hp 40
-str 10
+hp 100
+str 15
 mor 99
 mr 4 
 rank 1
 frontpos 
-meleeweapon 40 10 
-desolcloud 4
-desolator 20
-lifeforce 20
+meleeweapon "Touch of Annihilation" 0 #aoe 2  
+desolator 50
 huge
 nonmaginvul
 inanimate
-fireres 75
-coldres 75
+fireres 100
+coldres 100
 poisonres 100
-acidres 75
+acidres 100
 diseaseres
 affres 100
 unaging
-ethereal
+slow
 float
+flying
 charmres
 sleepres
-stupid 
-loner 
-nonruin1
 aggressive
-demonic
-descr "This is anti-life; the dark at the end of everything."
+noslots
+dmgonterr -1
+dmgonterrbonus 25
+descr "A sphere of perfect darkness, without reflection or surface. Whatever it touches is unmade. It cannot be moved by ordinary force, though concentrated magic will gradually erode it. It appears less a thing than an absence, as if a portion of the world has been excised and set adrift."
 
-newmonster "Dark One"
-spr1 "Sprites/Darkone1.tga"
-spr2 "Sprites/Darkone2.tga"
-armor                          0 
-hp                            32 
-str                            7 
-mor                           10 
-mr                             10 
-rank                          -1 # Back rank.
-spellweapon               62   4 # Defilement at level 4.
-meleeweapon                0   5 # Staff: d3 Blunt damage.
-desert                           # Desert Move: AP cost to enter a desert square is reduced by 1.
-human                            
-allitemslots                     # Has the full set of item slots.
-nametype                      56 # Scourge Lord.
-power                      48  4 # Scourge Lord, level 4.
-indepitem                    100 # 100% chance to spawn with a random magic item, but only if owned by the independents.
-darkbless                      1 # Has the dark blessing of a scourge lord.
-defiler                        8 # Lifeforce Spellcasting (range 6): Needs to drain lifeforce to cast spells.
-charmres
-sleepres
-fastheal
-unaging
-lifeforce 12
-descr "The Scourge King has fully succumbed to the powers of the mask, becoming something other than a man. His followers call him a god, proclaiming that he will cleanse the world and rebuild it anew, better than before. But to those of us living in it, this sounds like nothing more than a promise of doom."
 
 #------------------------------ Scourge Lord Rituals Edit ----------------------------------# 
 
@@ -19834,17 +20092,17 @@ selectritual "Construct Pyramid of Power"
 level 9
 free
 
-selectritual "Construct Mountain of Power" #useless ritual and bad sprite. Now removed. 
+selectritual "Pyramid Gate"
 level 9
 free
 
-# A cap on the number of heralds (12) and scourge lords (3) that can be created. That should be plenty for most needs, but not enough to for a commander-only endgame army.  
+selectritual "Construct Mountain of Power" #not worth it for the iron cost. Now remade into something much more interesting. 
+level 9
+free
 
 selectritual "Appoint Herald"
 apcost 2 #limit spam
-nomonplayerreq 12
-addstring "(-)Scourge Herald"
-addstring "(-)Scourge Lord"
+nofemale
 descr "The Scourge Lord imbues an ordinary, but ambitious and unscrupulous, human with stolen life force, creating a Herald of the Scourge. The Herald gains physical strength as well as magical powers. All Heralds have the power to create Pillars of Power for their master. The Scourge Lord will only keep twelve heralds. Perhaps this is the limit of his power, or perhaps it is simply the paranoia of one who hords it."
 
 selectritual "Construct Pillar of Power" #always learn critical rituals. 
@@ -19864,10 +20122,6 @@ ainotclose3         -109 # AI will not cast ritual within a 3 square radius of t
 ainothere            117 # AI will not cast ritual on this terrain: Desert.
 start                    # Start with this ritual instead of the others.
 descr "A Herald, or the Scourge Lord himself, constructs a huge stone pillar and inscribes it with runes of power, creating a Pillar of Power that drains life force from the surrounding lands. The life force is channeled to the Scourge Lord who will use it to empower his agents or summon beings of manifest destruction. Forests and settlements give more life force than plains. Mountains and hills give very little life force and deserts are devoid of life force. With time the surrounding terrains will wither and eventually turn into deserts. Oceans have less life force available, but cannot wither away. A settlement that is under the influence of an active Pillar of Power will produce ghouls that gather at the pillar, awaiting their master's call. The Pillar can drain up to 15 points of life force from the surrounding lands. If there is more life force available the excess will not be drained until some lands have withered away."
-
-selectritual "Pyramid Gate"
-level 9
-free
 
 newmonster "Pyramid of Power"
 copystats "Large Mirror"
@@ -19951,12 +20205,18 @@ descr "This ritual allows the caster to immediately transport himself and his ar
 selectritual "Construct Guardian"
 cost 1 0
 cost 0 20
+cost             13  100 # 100 Lifeforce
 descr "The Scourge Lord constructs a statue of a brass gryphon and enchants it with dark spells to give it false life and magical powers. The statue is immobile, but very difficult to harm. It is often seen adorning the walls of the Lord's Pyramids."
 
 selectritual "Dark Blessing" #higher level, more expensive. 
 level 3
 cost             13  150 # 150 Lifeforce
 aimaxcast 10
+
+selectritual "Ritual of Scourge Mastery"
+addstring     "(+)Scourge King "     # This string will only be used by nomon[...] commands, to disable all following "(-)" strings if this monster satisfies the command's condition.
+addstring     "(+)Weakened Scourge King"   
+
 
 #------------------------------ Scourge Lord New Rituals --------------------------------------#
 
@@ -19981,12 +20241,13 @@ addstring     "1*Dark Centipede"
 addstring     "1d4*Black Ant & 1d2*Black Soldier Ant & 1d1-1 Scourge Ant"
 addstring     "1d2*Black Spider & 2d2*Spiderling"
 addstring     "2d2*Vulture"
+addstring    "1*Kaftar"
 descr "The Scourge Lord, or one of his Heralds, casts a spell of summoning to attract a host of vermin."
 
 newritual "Dark Summoning" 
 ritpow                48 # Scourge Lord
 level                  2
-cost             13  150 # 100 Lifeforce
+cost             13  150 # 150 Lifeforce
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 5
 sum1chance 20
@@ -19995,95 +20256,214 @@ addstring "1*Desert Wraith"
 addstring "1d2*Dark Serpent"
 addstring "1*Scourge Worm"
 addstring "1*Foul Sand"
+addstring    "1*Scourge Flame"
 addstring  "1d2*Scarab Swarm"
-descr "The Scourge Lord stirs the sands of his desolate domain, and one or a few beings creep forth to serve him".  
+descr "The Scourge Lord, or one of his Votaries, stirs the sands of his desolate domain, and one or a few beings creep forth to serve him".  
 
 newritual "Black Summoning"
 ritpow                48 # Scourge Lord
 level                  3
-cost             13  750 # 750 Lifeforce
+cost             13  600 # 600 Lifeforce
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "1d2*Scourge Flame"
+sum0chance 7
+sum0chance 9
+addstring     "1*Black Sphinx"
+addstring     "1*Apophis"
 addstring     "1*Great Ghoul"
-addstring     "Apophis"
-addstring     "Monster Scarab"
-addstring     "1d2*Scourge Wind"
-addstring     "1*Black Djinn"
+addstring     "1*Monster Scarab"
+addstring     "1*Scourge Wind"
+addstring     "1*Desolation Djinn"
 addstring     "1d2*Faceless"
 descr "The Scourge Lord channels the life force drained from the world to summon a monstrous being of manifest destruction."
 
-newritual "Summon Anti-Life"
+newritual "Memories of the Mask I"
+free
 ritpow                48 # Scourge Lord
-level                  3
-cost             13  500 # 500 Lifeforce
+level                  1
+cost             13  50 # 50 Lifeforce, increasing cost
 terr                 -42 # Required terrain: any land.
-summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "c*Orb of Anti-life"
+newspell1 62 
+nofemale
+gainrit 1
+forgetcurrit
+descr "The Scourge Lord claims the forgotten knowledge of those who bore the mask before him. Each casting of this ritual grants a new first level combat spell."
+
+newritual "Memories of the Mask I"
+ritpow                48 # Scourge Lord
+level                  1
+cost             13  75 # 75 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell1 62 
+nofemale
 nostart
-airare 25
-descr "The Dark One manifests Anti-Life. It will slowly consume the world, while adding to his power."
+gainrit 1
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new first level combat spell."
 
-newritual "Transcend the Flesh"
-ritpow 		       48
-level                  3
-cost              13  1200 # 1200 Life Force
-promotion -1
-addstring "Scourge King"
-addstring "Dark One"
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-gainrit -1
-descr "The Scourge King abandons his mortal shell, and becomes something else. This will grant the caster a new fourth level ritual."  
-
-selectritual     "Lesser Ritual of Scourge Mastery"                           # 426
-level 9
-free
-
-selectritual     "Ritual of Scourge Mastery"                                 # 426
-level 9
-free
-
-selectritual "Grand Ritual of Scourge Mastery"
-level 9 
-free
-
-newritual     "Lesser Ritual of Scourge Mastery"                          # 425
+newritual "Memories of the Mask I"
 ritpow                48 # Scourge Lord
 level                  1
-cost             13   25 # 25 Lifeforce
-newrit                 1 # Caster will learn a new ritual of level 1.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-free                     # Always start with this ritual in addition to the others.
-descr "This ritual grants the caster a new first level ritual."
+cost             13  100 # 100 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell1 62 
+nofemale
+nostart
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new first level combat spell."
 
-newritual     "Ritual of Scourge Mastery"                                 # 426
-ritpow                48 # Scourge Lord
-level                  1
-cost             13  200 # 200 Lifeforce
-newrit                 2 # Caster will learn a new ritual of level 2.
-levelup                2 # Level up to new monster (determined by mastery command on monster) if below level 2.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-rebatelvl              2 # Ritual can be cast for half price if caster's power level is greater than or equal to 2.
-nomonplayerreq 4
-nomonmasteryreq          # If a monster in a string beginning with "(-)" is in the world and owned by the current player, this ritual cannot be cast unless caster's level is higher than ritual requires. However, if a monster in a string beginning with "(+)" is in the world and owned by the current player, it will disable all "(-)" strings after it.
-free                     # Always start with this ritual in addition to the others.
-addstring     "(+)Scourge King"     # This string will only be used by nomon[...] commands, to disable all following "(-)" strings if this monster satisfies the command's condition.
-addstring     "(-)Scourge Lord"     # This string will only be used by nomon[...] commands.
-descr "This ritual grants the Scourge Lord a new second level ritual. If cast by a Herald he will be leveled up and become a full fledged Scourge Lord. There can only be one Scourge Lord, unless there is a Scourge King."
-
-newritual     "Grand Ritual of Scourge Mastery"                           # 427
+newritual "Memories of the Mask II"
 ritpow                48 # Scourge Lord
 level                  2
-cost             13  800 # 800 Lifeforce
-newrit                 3 # Caster will learn a new ritual of level 3.
-levelup                3 # Level up to new monster (determined by mastery command on monster) if below level 3.
+cost             13  150 # 150 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell2 62 
+nofemale
+free
+gainrit 1
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new second level combat spell."
+
+newritual "Memories of the Mask II"
+ritpow                48 # Scourge Lord
+level                  2
+cost             13  225 # 225 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell2 62 
+nofemale
+nostart
+gainrit 1
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new second level combat spell."
+
+newritual "Memories of the Mask II"
+ritpow                48 # Scourge Lord
+level                  2
+cost             13  300 # 300 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell2 62 
+nofemale
+nostart
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new second level combat spell."
+
+newritual "Memories of the Mask III"
+ritpow                48 # Scourge Lord
+level                  3
+cost             13  400 # 400 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell3 62 
+nofemale
+free
+gainrit 1
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
+
+newritual "Memories of the Mask III"
+ritpow                48 # Scourge Lord
+level                  3
+cost             13  600 # 600 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell3 62 
+nofemale
+nostart
+gainrit 1
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
+
+newritual "Memories of the Mask III"
+ritpow                48 # Scourge Lord
+level                  3
+cost             13  800 # 800 Lifeforce, increasing cost
+terr                 -42 # Required terrain: any land.
+newspell3 62 
+nofemale
+nostart
+forgetcurrit
+descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
+
+newritual "Spire of Ruin"
+ritpow                48 # Scourge Lord
+level                  3
+cost              0  300 # 300 Gold
+cost              1  300 # 300 Iron
+cost             13  1500 # 1500 Lifeforce
+terr                  -5 # Required terrain: mounts.
+alterloc             257 # Change target location's terrain to: Spire of Ruin.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-rebatelvl              3 # Ritual can be cast for half price if caster's power level is greater than or equal to 3.
-nomonmasteryreq          # If a monster in a string beginning with "(-)" is in the world and owned by the current player, this ritual cannot be cast unless caster's level is higher than ritual requires. However, if a monster in a string beginning with "(+)" is in the world and owned by the current player, it will disable all "(-)" strings after it.
-free                     # Always start with this ritual in addition to the others.
-addstring     "(-)Scourge King"     # This string will only be used by nomon[...] commands.
-addstring     "(-)Dark One"
-descr "The Scourge Lord imbues himself with vast amounts of stolen life force and transforms himself into a Scourge King, a being of almost divine power. Scourge Kings allow their heralds to become Scourge Lords, but there can never be more than one Scourge King. If cast by the Scourge King this ritual will give him a new third level ritual."
+apcost                 8 # Actual AP cost: 9.
+ainotclose1         -109 # AI will not cast ritual within a 1 square radius of this terrain: buildings of power.
+seteventvar 5
+maxcast 1
+gainrit 1
+planereq 0 #must be cast on Elysium 
+descr ""The Scourge Lord reshapes a mountain into a towering Spire of Ruin, its slopes carved with runes of hunger and domination. The spire draws life from all that surrounds it. A sickly light rises from its peak, visible across all the lands. As long as the Scourge Lord remains linked to the spire, he will feed upon its power and grow greatly in might. If his bond to the spire is broken, the released energies will turn upon him, bringing brief but terrible affliction. Only one such spire may be constructed. The spire can drain up to 100 points of life force from the surrounding lands. If there is more life force available the excess will not be drained until some lands have withered away."
+
+playerevent 
++varequal 5 1
++class -2 "Scourge Lord"
++ownsloctarg -2 257
+reveal -1 5 1
+message -1 "The Scourge Lord has raised a Spire of Ruin. Its creation has granted him terrible power, and the surrounding lands are left desolate. If the Spire is captured or destroyed, his newfound strength will fade and the corruption will cease to spread."
+setvar 6 1
+setvar 5 0 
+endevent 
+
+playerevent
++varequal 6 1
++class -2 "Scourge Lord"
++ownsloctarg -2 842
+alterterrain 257
+endevent
+
+playerevent
++varequal 6 1
++class -2 "Scourge Lord"
++ownsloc -2 257
++hasunit -2 "Scourge King"
+targetunitloc
+promoteunits -2 1 "Scourge King" "Scourge King "
+message -2 "The Scourge Lord draws power from the Spire of Ruin".
+setvar 6 2
+endevent
+
+playerevent
++varequal 6 2
++class -2 "Scourge Lord"
+-ownsloc -2 257
++hasunit -2 "Scourge King "
+makeaff 134217728
+targetunitloc
+promoteunits -2 1 "Scourge King " "Weakened Scourge King"
+message -2 "The Scourge Lord no longer draws power from the Spire of Ruin and is temporarily weakened". 
+endevent
+
+playerevent
++varequal 6 2
++class -2 "Scourge Lord"
+-ownsloc -2 257
+randloc 0 257
++terrain 257
+alterterrain 842
+setvar 6 1
+endevent
+
+newritpow #Empowered Scourge King 
+newritual "Orb of Annihilation"
+level                  3
+nostart
+cost             13  350 # 350 Lifeforce
+terr                 -42 # Required terrain: any land.
+summoning                # The ritual will summon the monsters specified in a random string.
+nomonplayerreq 3 
+addstring     "1*Orb of Annihilation"
+addstring     "(-)Orb of Annihilation"
+ainotnearhome 20
+airare 10
+descr "A sphere of unbroken darkness is summoned into the air. It drifts at a patient pace, consuming whatever it touches. The Orb roams independently and will burn out after a short time. No more than three can be maintained at once." 
+
+selectmonster "Scourge King "
+power 0 3
 
 # --------------------------- Scourge Lord Class  & Recruitment ------------------------------------------
 
@@ -20097,30 +20477,29 @@ addstartunits "Camel Rider" 4
 addstartunits "Desert Warrior" 12
 addstartcom "Scourge Herald"
 
-setmaincom "1:Scourge Lord" 	# the fancy one.
+setmaincom "Scourge Lord" 	
 nostdtroops
 clearrec
-addunitrec "Desert Warrior"			100 5 50 0 0
-addunitrec "Desert Archer"			100 5 50 0 0
-addunitrec  "Camel Rider"			100 3 50 0 5
-addmercrec  "Catapult"		   		15 1 90	30 0 
-addmercrec  "Scourge Fanatic"           	15 8 40 10 0
-addcomrec   "Slaver"                     	7 30 20 0 
-addunitrec  "Sellsoul"                  	100 2 50 0 0
+addunitrec "Desert Warrior"				100 5 50 0 0
+addunitrec "Desert Archer"					100 5 50 0 0
+addunitrec  "Camel Rider"					100 3 50 0 5
+addmercrec  "Catapult"		   					15 1 90	30 0
+addunitrec  "Scourge Fanatic"   			100 7 50 0 0
+addunitrec  "Sellsoul"                  			100 2 50 0 0
 	reclimiter "+Scourge King"
-	reclimiter "+Dark One"
-addmercrec "Kaftar"                     	10 2 40 10 0
+	reclimiter "+Scourge King "
+addunitrec "Defiled Giant"              	10 1 35 10 10
 	reclimiter "+Scourge King"
-	reclimiter "+Dark One"
-addunitrec "Scourge Giant"              	10 1 35 10 10
+	reclimiter "+Scourge King "
+addunitrec "Scourge Dervish"             10 3 75 25 10
 	reclimiter "+Scourge King"
-	reclimiter "+Dark One"
-addmercrec	"Desert Scout"			10 1 15 10 0
-addcomrec	"Sheikh"			10 40 10 0
-addcomrec	"1:Scourge Lord"		15 0 0 0        #gets you back in easily should you lose him.
+	reclimiter "+Scourge King "
+addmercrec	"Desert Scout"				10 1 15 10 0
+addcomrec	"Sheikh"							10 40 10 0
+addcomrec	"Scourge Lord"				15 0 0 0        #gets you back in easily should you lose him.
 		reclimiter "-Scourge Lord"
 		reclimiter "-Scourge King"
-		reclimiter "-Dark One"
+		reclimiter "-Scourge King "
 
 ############################# Cloud Lord ############################################## 
 
@@ -20179,25 +20558,20 @@ selectmonster "Dusk Guard"
 
 selectmonster "Cloud Lord"
 	human
-	farsight 1
 
 selectmonster "Eagle King"
 	human
-	farsight 1
 	
 selectmonster "Storm Captain"
 	human
 	shockres 50
 	fireres -25
-	farsight 1
 	
 selectmonster "Cloud Caster"
 	human
-	farsight 1
 	
 selectmonster "Airya Scout"
 	human
-	farsight
 	shockres 25
 	fireres -25
 	
@@ -20828,6 +21202,19 @@ descr "The Cloud Lord shapes clouds into a solid castle. The castle will remain 
 
 #-------------------------- Cloud Lord New Rituals---------------------------------------------------------# 
 
+newritual "Gaze Beneath" 
+ritpow                49 	# Cloud Lord
+level                  1
+cost              9   3 # 3 diamonds 
+planereq               2 # Can only be cast on this plane: Sky 
+planeloc               0 # Shift target location to same position but on this plane: Elysium.
+nearby1req 251 #open sky within 1 tile 
+scryloc               15 # Scry radius 1.5 around target location.
+closewin                 # Closes cast ritual window.
+airare                -1 # AI will never cast this ritual.
+rarestart                # Reduced chance of starting with this ritual.
+descr "Perched on the edge of a cloud or suspended in open air, the Cloud Lord turns his gaze toward the world below. The ritual allows him to observe the lands of Elysium beneath him within a limited radius."
+
 newritual     "Construct Rainbow Prism"                                      
 ritpow                49 # Cloud Lord
 level                  1
@@ -20838,37 +21225,25 @@ addstring     "Rainbow Prism"
 aiweakonly 200 
 descr "The Cloud Lord crafts a prismatic crystal that will capture sunlight and focus it into searing beams, burning and blinding enemy armies."
 
-newmonster "Invisible Placeholder"
-spr1 "Sprites/Blank64.tga"
-hp 1
-armor 0
-mr 1
-stupid
-stationary
-nocombat
-noheal 
-dmgonterr -1 
-invisible
-noslots
-descr "..."
-
 newritual "Nimbus Conclave" 
 ritpow                49 # Cloud Lord
 level                  1
-free
-cost              9   50 # 50 Diamonds
+cost              9   0 #  Diamonds
 minmonreq 3
 sum0chance 0
 sum1chance 100
-promotion 3
-addstring "Placeholder"
-addstring "c*Nimbus Conclave"
+montarg 1
+killtarg 999
+montarg 1
+killtarg 999
+montarg 1
+killtarg 9999
 addstring "Cloud Caster"
-addstring "Invisible Placeholder"
+addstring "c*Nimbus Conclave"
 addstring "(&)Cloud Caster"
 summoning
 free
-descr "Three Cloud Casters form a Nimbus Conclave - a floating assault platform formed from a living thundercloud. Much of their magic is devoted to stabilizing the cloud, limiting their ability to cast spells as usual. However, they can wield the cloud's lightning as a formidable weapon. This ritual will merge the three Cloud Casters to a single unit."
+descr "Three Cloud Casters form a Nimbus Conclave - a floating assault platform formed from a living thundercloud. Much of their magic is devoted to stabilizing the cloud, limiting their ability to cast spells as usual. However, they can wield the cloud's lightning as a formidable weapon. This ritual will merge the three Cloud Casters to a single unit. This may target any Cloud Caster on the location, including the caster."
 
 newritual "Spire Horn Summoning"
 ritpow                49 	# Cloud Lord
@@ -20928,6 +21303,8 @@ power 0 1
 
 selectclass 26
 classdescr "The Cloud Lord is the ruler of the Airya, winged humanoids living on solid clouds far above the lands of Elysium. The Airya craft armors and weapons from magical gems and their forces are both swift and deadly. From his lofty abode the Cloud Lord has observed kingdoms rise and fall in Elysium. Now he has decided to rid the lands of incompetent and malicious rulers.^The Cloud Lord can easily be mistaken for a Warlock of the Air, but where the warlock forms a pact with his chosen element, the Cloud Lord commands the beings of the sky through sheer magical power. Birds, elementals and mythical beasts of the skies are his to command, and the inhabitants of the Cloud Realm will rally to his banner."
+classabdescr "The Cloud Lord starts with a citadel in the 'Sky realm' near a mountain top.^The Airya armies can fly over difficult terrains and between clouds.^Airya elites can be recruited for an additional cost in gems, but reduced gold cost.^Conquering the Sky Realm gives access to other special recruits such as Cloudfolk or Worldroof Warriors.^Eagle Kings, Cloud Lords and Cloud Casters collect gems.
+^Air Gems can be used for magic rituals. Other gems can be converted to air gems with an alchemy ritual, or used to recruit elite units."
 
 clearstartunits
 addstartunits          "Airya Spearman"           10
@@ -24999,6 +25376,7 @@ apcost            2 # Action Point cost for moving through the terrain: 2
 desert
 seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
 visible
+port
 
 selectterr 855
 name "Reef"
@@ -28104,24 +28482,6 @@ copystats "Goblin Archer"
 aihold 1
 aimaxshop 20  
 
-newmonster " Goblin King" #Stationary version for AI trollking, so he doesnt wander off. Also has a different startitem, so no overlap with AI Goblin King
-copyspr "Goblin King"
-armor                          1 
-hp                             4 
-str                            3 
-mor                            5 
-mr                             4 
-rank                          -1 # Back rank.
-meleeweapon                0   8 # Shortsword: d5 Slash damage.
-allitemslots                     # Has the full set of item slots.
-foreststealth                    # When in a forest or jungle, can only be seen by units with Acute Senses or Spirit Sight.
-startitem  "Crown of Intimidation"
-greedy 1
-stationary
-aimaxshop 1
-unique 1 
-descr "King of Goblins, that is a title of dubious value.  Maybe it will add up to something if you are king of really many Goblins.  Still, Goblins are of a very low intellect and it is unlikely they will get organized enough to form a large kingdom."
-
 selectclass 14
 addmercrec  "Shadow Tree"                   	100 1 1 0 0 	#Troll pit garrison 
 	reclimiter "+AI"
@@ -28143,36 +28503,36 @@ addcomrec " Goblin King"                    	10 50 50 0	#Goblin Castle recruitme
 	reclimiter "+Late AI"
 addunitrec  "Goblin Spearman"			100 15 50 0 0 	# Goblin castle recruitment
 	recterr 836
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addunitrec  "Goblin Archer"                   	100 10 50 0 0 	# Goblin castle recruitment
 	recterr 836
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King  "
 addunitrec  "Wolf Kin"                         100 10 50 0 0 	# Goblin castle recruitment
 	recterr 836
 	reclimiter "+ Goblin King"
 addunitrec  "Wolf Kin Reaver"                  100 7 50 0 10 	# Goblin castle recruitment
 	recterr 836
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addunitrec  "Moose Riders"                     20 2 50 0 0 	#Goblin castle recruitment
 	recterr 836
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addmercrec  "Goblin Murderer"                   2 1 10 40 0 	# Goblin castle recruitment
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addcomrec   "Goblin Hero"                       2 10 50 0  	#Goblin castle recruitment
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addcomrec   "Goblin Shaman"                     3 35 20 0 	#Goblin castle recruitment
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addcomrec "Wolf Kin Chieftain"                  10 35 10 0      # Goblin castle recruitment               
 	recterr 836
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 addmercrec  " Goblin Archer"                    100 10 1 0 0 	#Goblin Castle garrison 
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 	recterr 836
 addmercrec  " Wolf Kin Reaver"                  100 1 1 0 0 	#Goblin Castle garrison 
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 	recterr 836
 addmercrec  "Giant Mushroom"                    100 1 1 0 0 	#Goblin Castle garrison 
-	reclimiter "+ Goblin King"
+	reclimiter "+ Goblin King "
 	recterr 836
 
 # ---------- Enchanter AI -----------------# 
@@ -29642,4 +30002,3 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
-	
