@@ -1,4 +1,9 @@
 
+
+icon "Smallbanner.tga"
+description "An overhaul mod. Flavor, balance and content." 
+modprio 1 # Will be overwritten by other mods in case of conflict.
+
 # terrains used 800 to 842
 # terrain groups used -1099 to -1122
 # Event variables used 1-7
@@ -11971,6 +11976,62 @@ spr1 "Sprites/Childofnephele1.tga"
 spr2 "Sprites/Childofnephele2.tga"
 
 #----------------- Warlock Monsters ----------------
+
+	# ----  Elemental Warrior edits ---------------------
+	
+newweapon "Molten Halberd"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 5
+dmgtype              1 # Slash.
+dmg                  9 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+nextalwayswep      174 # Extra effect if target is hit: 174: Fire.
+nextdmg              1 # d1 Fire damage.
+
+selectmonster    "Ember Warrior"                                            #  515
+hp                            11 # Hit Points.
+clearweapons
+meleeweapon                0 "Molten Halberd" #d9 Slash damage.
+
+newweapon     "Stone Cudgel"                                                    # 755
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 2
+dmgtype              2 # Blunt.
+dmg                  7 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane
+sound                1 # spear.smp (Spear)
+nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+nextdmg             64 # Stun
+
+selectmonster    "Stone Warrior"                                            #  516
+hp                            14 # Hit Points.
+clearweapons 
+meleeweapon                0 "Stone Cudgel" # d7 blunt 
+
+selectweapon "Pearl Trident"
+init 6
+dmg 10
+
+selectmonster    "Wave Warrior"                                             #  517
+hp                            12 # Hit Points.
+
+newweapon "Gale Blade"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 4
+dmgtype              1 # Slash.
+dmg                  7 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+sound                8 # sword.wav (Sword)
+nextwep            107 # Extra effect if target is affected: 107: Shock.
+nextdmg              1 # d1 Shock damage.
+
+selectmonster    "Cloud Warrior"                                            #  518
+hp                             10 # Hit Points.
+meleeweapon                0  "Gale Blade" #
 
 	# ----------- Fire Monsters ---------------------
 
