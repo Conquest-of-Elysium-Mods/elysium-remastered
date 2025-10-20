@@ -969,12 +969,12 @@ descr "Fay Folk are small fay creatures who probably do not exist. According to 
 newmonster "Fay Knight"
 spr1 "Sprites/Fayknight1.tga"
 spr2 "Sprites/Fayknight2.tga"
-armor                          3 # Armor.
+armor                     3 # Armor.
 hp                            11 # Hit Points.
 str                            5 # Strength.
-mor                            6 # Morale.
-mr                             8 # Magic Resistance.
-rank                           1 # Front rank.
+mor                         6 # Morale.
+mr                            8 # Magic Resistance.
+rank                         1 # Front rank.
 meleeweaponspec           13 834 # Golden Lance Charge: d13 Pierce damage.
 meleeweapon                1 474 # Magic Sword: d8 Slash damage.
 meleeweapon                5  95 # Hoof: d5 Blunt damage.
@@ -992,13 +992,13 @@ wander 19
 newmonster "Fay Warrior"
 spr1 "Sprites/Faywarrior1.tga"
 spr2 "Sprites/Faywarrior2.tga"
-armor                          2 # Armor.
-hp                            8 # Hit Points.
-str                            5 # Strength.
-mor                            6 # Morale.
+armor                      2 # Armor.
+hp                             8 # Hit Points.
+str                             5 # Strength.
+mor                          6 # Morale.
 mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon                1 474 # Magic Sword: d8 Slash damage.
+rank                          1 # Front rank.
+meleeweapon        1 474 # Magic Sword: d8 Slash damage.
 awe 1
 evasion 50 
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
@@ -9637,8 +9637,8 @@ noleader
 descr "The Anguifer are initiates of the Serpent Cult, trained to handle the most dangerous vipers. They are frequently employed as assassins. Many senators make a point to stay in the cult's favor, to avoid the appearance of deadly serpents in their private chambers."
  
 newmonster "Serpent Hoplite"
-spr1 "Serpenthoplite1.tga"
-spr2 "Serpenthoplite2.tga"
+spr1 "Sprites/Serpenthoplite1.tga"
+spr2 "Sprites/Serpenthoplite2.tga"
 armor                          1 # Armor.
 hp                             7 # Hit Points.
 str                            4 # Strength.
@@ -9650,7 +9650,7 @@ human                            # Vulnerable to weapons and spells that only af
 largeshield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
 poisonres 75
 allitemslots                     # Has the full set of item slots.
-descr "The Serpent Hoplites are remnants from the glory days of the Serpent Cult during the Old Empire, when the Serpent was the chief deity of the state and wars were fought as part of religious festivals. Their equipment, made of bronze and decorated with coiling serpent motifs, is considered outdated by modern standards but remains serviceable. Long exposure to sacred oils and minor doses of venom used in their initiations has made them resistant to poison. They are less disciplined than their counterparts in the imperial legions, but they display an almost lethargic endurance to pain and hardship. Their current duties mostly involve guarding temples and escorting Serpent Priests during processions. On such occasions, they are known to strike the ground with their spears in rhythm, which is said to please the Serpent."
+descr "The hoplite regiments are remnants of the glory days of the Serpent Cult during the Old Empire, when it was the preeminent faith of the state and wars were fought as part of religious festivals. Their bronze equipment, decorated with coiling motifs, is considered outdated by modern standards but remains deadly. Long exposure to sacred oils and minor doses of venom used in their initiations has made them resistant to poison. They are less disciplined than their counterparts in the imperial legions, but they display an almost lethargic endurance to pain. Their current duties mostly involve guarding temples and escorting priests during processions. On such occasions, they are known to strike the ground with their spears in rhythm, which is said to please the Serpent."
 
  newweapon "Dark Bronze Blade"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -10226,9 +10226,9 @@ addcomrec  "Anguifer"							3 50 20 0
 	reclimiter "+Serpent Acolyte"
 	reclimiter "+Serpent Priest"
 	templerec                                     # +2% to chance per temple owned, to a max of +10%
-addunitrec  "Custodes Serpentis"     10 2 40 0 10
+addunitrec  "Custodes Serpentis"     10 2 40 10 0
 	reclimiter  "+Serpent Priest" 
-addunitrec  "Serpent Hoplite"        100 5 55 0 10
+addunitrec  "Serpent Hoplite"        100 5 55 0 5
 	reclimiter  "+Serpent Priest"	
 addcomrec   "Augur"                             4 60 20 0 
 addcomrec "Thaumaturg"							3 90 20 0 
@@ -12606,6 +12606,7 @@ selectmonster "Air Elemental"
 spr1 "Sprites/Airelemental1.tga"
 spr2 "Sprites/Airelemental2.tga"
 hp 30
+str 6
 clearweapons
 meleeweapon                5 177 # Gusts of Winds: d5 Blunt damage.
 meleeweapon                9 844 # Pummeling Winds d9 Blunt damage.
@@ -12615,7 +12616,6 @@ trample 2
 tramplexsize 1 #trample same size creatures
 affres 100
 healonterr -46
-
 
 # ------------- Warlock Rituals ----------------------------#
 
@@ -14293,18 +14293,18 @@ armor                          0
 hp                            32 
 str                            6 
 mor                            3 
-mr                             2 
+mr                             3 
 rank                           1 # Front rank.
-rangedweapon              -1   7 # Bow: d2 Pierce damage.
-rangedweapon              -1   7 # Bow: d2 Pierce damage.
-meleeweapon                6  14 # Antlers: d6 Pierce damage.
-meleeweapon                4  95 # Hoof: d4 Blunt damage.
+rangedweaponbonus              	-1   7 # Bow: d2 Pierce damage.
+rangedweaponbonus        		-1   7 # Bow: d2 Pierce damage.
+meleeweapon                				6  14 # Antlers: d6 Pierce damage.
+meleeweapon                				4  95 # Hoof: d4 Blunt damage.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
 forest2                          # Likes forests (including ancient forests) (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
 animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 trample                        2 # Can trample smaller units for this amount of damage.
-descr "Inspired by the success of wolf riders in battle, some ambitious goblins set their sights on an even bigger prize-the moose, the largest creature in the forest. After much trial and (mostly) error, a few managed to befriend these massive beasts. The moose proved to be a ferocious asset in combat, charging into enemies with wild abandon. The goblins, however, quickly discovered they had little control over their mount, often clinging for dear life as the animal rampaged. To compensate, Moose Riders now carry bows, allowing them to at least fire a few shots during the rare moments when the moose decides to stay still." 
+descr "Inspired by the success of wolf riders in battle, some ambitious goblins set their sights on an even bigger prize-the moose, the largest creature in the forest. After much trial and mostly error, a few managed to befriend these massive beasts. The moose proved to be a ferocious asset in combat, charging into enemies with wild abandon. The goblins, however, quickly discovered they had little control over their mount, often clinging for dear life as the animal rampaged. To compensate, Moose Riders now carry bows, allowing them to at least fire a few shots during the rare moments when the moose decides to stay still." 
 
 newmonster "Wolf Kin Chieftain" 
 copystats "Wolf Kin Reaver"
@@ -14317,6 +14317,16 @@ clearweapons
 meleeweapon                1   4 # Spear: d5 Pierce damage.
 meleeweaponbonus           7  11 # Bite: d6 Slash damage.
 descr "The leaders of the Goblin Wolf Kin are veteran raiders who ride the largest and fiercest wolves in the pack."
+
+newmonster "Goblin Big Game Hunter"
+copystats "Goblin Archer"
+spr1 "Sprites/Goblinbiggamehunter1.tga"
+spr2 "Sprites/Goblinbiggamehunter2.tga"
+mor 4
+clearweapons 
+rangedweapon               0 626 # Small Poison Bow: d3 Pierce damage.
+meleeweapon               -1   1 # Dagger: d2 Pierce damage.
+descr "Some particularly delusional goblins have taken to calling themselves hunters of great beasts. Their prey is usually stray dogs or, on rare occasions, a deer. They coat their arrows with whatever poisonous goo they can scrape from the mushrooms of the troll forests and wait until the creature collapses, then feast on the carcass. The meat is nearly always tainted, and so are the hunters after eating it. This explains their low numbers."
 
 newmonster "New Troll King"
 copystats "Troll King"
@@ -14336,7 +14346,7 @@ spellweapon50                27   2 # Frost Magic at level 2.
 startinsanity                     25
 descr "Though Trolls and Giants are not known as deep thinkers, the Ettin Wyrd hold a strange place of reverence among them. With two heads and opposing temperaments, they speak in riddles, contradictions, and ambiguities, a tendency not unknown among the faculty of this College. One head, it is said, always tells the truth; the other lies without end. The challenge, of course, is telling which is which. They have been observed channeling opposed magical forces, one aligned with stillness, the other with storm, though in a rather chaotic fashion while they bicker over whose turn it is to hold the staff. Some scholars argue the entire duality is a fiction, and that both heads are equally mad. This, all things considered, remains the safest assumption."
 
-newmonster " Goblin King " #Troll King Version 
+newmonster "Goblin King " #Troll King Version 
 copyspr "Goblin King"
 armor                          1 
 hp                             4 
@@ -14429,7 +14439,7 @@ playerevent
 +class -2 "Troll King"
 +chance 15
 +ownsloctarg -2 38
-newunits -2 "c*Goblin King  & 3d6*Goblin Spearman & 3d6*Goblin Archer & 2d3*Wolf King & 1d6*Wolf Kin Reaver"
+newunits -2 "c*Goblin King  & 3d6*Goblin Spearman & 3d6*Goblin Archer & 1d6*Wolf Kin Reaver"
 alterterrain 836
 setvar 7 1 
 message -2 "An ambitious Goblin warlord has moved into the Old Castle Ruins, and declared himself King of the Goblins. For what it is worth, he appears loyal to your cause."
@@ -14478,6 +14488,9 @@ addunitrec  "Goblin Spearman"            	100 15 50 0 0
 addunitrec  "Goblin Archer"                    	100 10 50 0 0 
 	recterr 836
 	reclimiter "+Goblin King "
+addunitrec  "Goblin Big Game Hunter"  20 7 50 0 0 
+	recterr 836
+	reclimiter "+Goblin King "
 addunitrec  "Wolf Kin"                         		100 10 50 0 0 
 	recterr 836
 	reclimiter "+Goblin King "
@@ -14492,7 +14505,7 @@ addmercrec  "Goblin Murderer"                3 1 10 40 0
 	reclimiter "+Goblin King "
 addcomrec   "Goblin Hero"                       	3 10 50 0
 	recterr 836 
-	reclimiter "+Goblin King"
+	reclimiter "+Goblin King "
 addcomrec   "Goblin Shaman"                    5 35 20 0 
 	recterr 836
 	reclimiter "+Goblin King "
@@ -14508,8 +14521,9 @@ addstartunits "Goblin Archer" 20
 addstartcom "Goblin Chieftain"
 addstartcom "Wolf Kin Chieftain"
 addunitrec "Moose Riders"                     	20 2 50 0 0 
+addunitrec  "Goblin Big Game Hunter"  20 7 50 0 0 
 addcomrec "Wolf Kin Chieftain"                  10 35 10 0 
-addcomrec   "Ettin Wyrd"                   3     145 40   0                    
+addcomrec   "Ettin Wyrd"                   3     145 40   0    
 
 ##################################### Enchanter ############################################### 
 
@@ -16950,7 +16964,6 @@ newmonster "Gilded Lord"
 copystats "Knight"
 spr1 "Sprites/Gildedlord1.tga"
 spr2 "Sprites/Gildedlord2.tga"
-rank 0 
 mor 5
 mr 5 
 descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
@@ -17159,7 +17172,7 @@ addstartunits          "Gilded Crossbowman"                	5
 addunitrec "Gilded Spearman" 								100 5 50 0 0
 addunitrec  "Gilded Crossbowman"           				100 5 60 0 0   
 addunitrec  "Gilded Swordsman"        						100 5 70 0 0 
-addunitrec  "Gilded Cavalryman"            					15 3 100 0 0
+addunitrec  "Gilded Cavalryman"            					10 3 100 0 0
 addcomrec    "Gilded Lord"                                          3 60 10 0 
 addcomrec   "Gilded Captain"               					    17 45 10 0  
 addmercrec  "Scout"                            				        10 1 15 10 0 
@@ -19606,7 +19619,7 @@ spellweapon               62   2 # Defilement at level 2.
 slow 
 growtime 4
 growoffs -2
-ritpow 48 0
+power 48 0
 
 selectmonster "Desert Warrior"
 desertstealth
@@ -19922,11 +19935,11 @@ selectmonster "Sellsoul"
 descr "It is widely known that mercenaries will sell anything or anyone if just paid enough. it is also a common fact that they should not be paid before an executed job as their loyalties are fickle. However, the Scourge Lord offers almost anything the mercenaries will ask for if they just sell their soul and take part of the dark life force collected by the Scourge Lord. Though many eagerly accept, hoping for loads of gold, few are aware of the cost. After they have undergone the transformation they will become stronger, but find themselves craving human flesh, rather than gold or the items once precious to them."
 
 newmonster "Defiled Giant"
-spr1 "Sprites/defiledgiant1.tga"
-spr2 "Sprites/defiledgiant2.tga"
+spr1 "Sprites/Defiledgiant1.tga"
+spr2 "Sprites/Defiledgiant2.tga"
 rank 1
 hp 22
-mr 5
+mr 4
 mor 5
 str 6
 armor 2
@@ -20061,14 +20074,14 @@ desert2                          # Likes deserts (if an independent or stupid co
 spiritsight
 noeyes
 affres 50
-descr "The Scourge Lord stole the eyes of a noble sphinx and corrupted it into an instrument of his will. The Black Sphinx now dwells among the ruined temples and burned libraries of his realm, a depraved mockery of the knowledge it once guarded. It still asks riddles, as sphinxes do, but its questions have lost all meaning. Those who try to answer are either devoured or lose their sanity in the attempt. (This author would note that a similar effect may be experienced by debating the precise number of known paradoxes with my colleague Professor Naphanides, though the outcome is less immediately fatal.)"
+descr "The Scourge Lord stole the eyes of a noble sphinx and corrupted it into an instrument of his will. The Black Sphinx now dwells among the ruined temples and burned libraries of his realm, in a depraved mockery of the knowledge it once guarded. It still asks riddles, as sphinxes do, but its questions have lost all meaning. Those who try to answer are either devoured or lose their sanity in the attempt. (This author would note that a similar effect may be experienced by debating the precise number of known paradoxes with my colleague Professor Naphanides, though the outcome is less immediately fatal.)"
 
 newweapon "Touch of Annihilation"
 trgrank              9 # Target: any enemy in range.
 range                1
 init                 4
 dmgtype              7 # Magic.
-dmg                  25 # Base damage (added to dmg value where this weapon is used).
+dmg                  20 # Base damage (added to dmg value where this weapon is used).
 sweep
 hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
 an                     # Armor negating.
@@ -20076,7 +20089,7 @@ sound               95 #
 next 
 nextdmg             9999 # autokill.
 
-newweapon     "Annihilate"                                             
+newweapon     "Disintegrate"                                             
 trgrank              9 # Target: any enemy in range.
 range                1
 init                 4
@@ -20085,6 +20098,44 @@ mr
 dmg                  0 
 aoe                  0 # Area: single target.
 an                     # Armor negating.
+
+newmonster "Orb of Annihilation" 
+spr1 "Sprites/Orbofannihilation1.tga"
+spr2 "Sprites/Orbofannihilation2.tga"
+armor 0 
+hp 100
+str 15
+mor 99
+mr 4 
+rank 1
+frontpos 
+meleeweapon "Touch of Annihilation" 0 #aoe 2  
+desolator 80
+huge
+stupid 
+nonmaginvul
+inanimate
+fireres 90
+coldres 90
+shockres 90
+poisonres 100
+acidres 100
+slashres
+pierceres
+bluntres
+diseaseres
+affres 100
+unaging
+slow
+float
+flying
+charmres
+sleepres
+noslots
+dmgonterr -1
+dmgonterrbonus 25
+growtime 1
+descr "A sphere of perfect darkness, without reflection or surface. Whatever it touches is unmade. It cannot be moved by ordinary force, though magic attacks will gradually erode it. It appears less a thing than an absence, as if a portion of the world has been excised and set adrift."
 
 newmonster "Orb of Annihilation" 
 copystats "Messenger Crows"
@@ -20100,14 +20151,18 @@ mr 4
 rank 1
 frontpos 
 meleeweapon "Touch of Annihilation" 0 #aoe 2  
-desolator 50
+desolator 80
 huge
 nonmaginvul
 inanimate
-fireres 100
-coldres 100
-poisonres 100
+fireres 90
+coldres 90
+shockres 90
 acidres 100
+poisonres 100
+slashres
+pierceres
+bluntres
 diseaseres
 affres 100
 unaging
@@ -20120,8 +20175,7 @@ aggressive
 noslots
 dmgonterr -1
 dmgonterrbonus 25
-descr "A sphere of perfect darkness, without reflection or surface. Whatever it touches is unmade. It cannot be moved by ordinary force, though concentrated magic will gradually erode it. It appears less a thing than an absence, as if a portion of the world has been excised and set adrift."
-
+descr "A sphere of perfect darkness, without reflection or surface. Whatever it touches is unmade. It cannot be moved by ordinary force, though magic attacks will gradually erode it. It appears less a thing than an absence, as if a portion of the world has been excised and set adrift."
 
 #------------------------------ Scourge Lord Rituals Edit ----------------------------------# 
 
@@ -20303,6 +20357,7 @@ addstring     "1d4*Black Ant & 1d2*Black Soldier Ant & 1d1-1 Scourge Ant"
 addstring     "1d2*Black Spider & 2d2*Spiderling"
 addstring     "2d2*Vulture"
 addstring    "1*Kaftar"
+aiweakonly 600
 descr "The Scourge Lord, or one of his Heralds, casts a spell of summoning to attract a host of vermin."
 
 newritual "Dark Summoning" 
@@ -20324,7 +20379,7 @@ descr "The Scourge Lord, or one of his Votaries, stirs the sands of his desolate
 newritual "Black Summoning"
 ritpow                48 # Scourge Lord
 level                  3
-cost             13  600 # 600 Lifeforce
+cost             13  750 # 750 Lifeforce
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 7
@@ -20428,18 +20483,6 @@ terr                 -42 # Required terrain: any land.
 newspell3 62 
 nofemale
 nostart
-gainrit 1
-forgetcurrit
-descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
-
-newritual "Memories of the Mask III"
-ritpow                48 # Scourge Lord
-level                  3
-cost             13  800 # 800 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell3 62 
-nofemale
-nostart
 forgetcurrit
 descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
 
@@ -20483,7 +20526,7 @@ playerevent
 +ownsloc -2 257
 +hasunit -2 "Scourge King"
 targetunitloc
-promoteunits -2 1 "Scourge King" "Scourge King "
+promoteunits -2 1 "Scourge King" "Scourge King " 
 message -2 "The Scourge Lord draws power from the Spire of Ruin".
 setvar 6 2
 endevent
@@ -20509,22 +20552,19 @@ alterterrain 842
 setvar 6 1
 endevent
 
-newritpow #Empowered Scourge King 
 newritual "Orb of Annihilation"
 level                  3
-nostart
-cost             13  350 # 350 Lifeforce
+ritpow 48
+cost             13  400 # 400 Lifeforce
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
-nomonplayerreq 3 
+nomonmasteryreq
 addstring     "1*Orb of Annihilation"
+addstring    "(+)Scourge King "
 addstring     "(-)Orb of Annihilation"
 ainotnearhome 20
 airare 10
-descr "A sphere of unbroken darkness is summoned into the air. It drifts at a patient pace, consuming whatever it touches. The Orb roams independently and will burn out after a short time. No more than three can be maintained at once." 
-
-selectmonster "Scourge King "
-power 0 3
+descr "A sphere of unbroken darkness is summoned into the air. It drifts at a patient pace, consuming whatever it touches. The Orb roams independently and will burn out after a short time. No more than one can be maintained at once, unless a Spire of Ruin is under your control." 
 
 # --------------------------- Scourge Lord Class  & Recruitment ------------------------------------------
 
@@ -21233,6 +21273,7 @@ addstring     "3d6*Murder of Crows"
 addstring     "c*Black Hawk"
 addstring   "1d4*Pegasus"
 addstring  "1*Gryphon"
+aiweakonly 1000
 descr "This ritual will summon birds or a few supernatural beings of the sky."
 
 newritual     "Shape Clouds "                                              # test
@@ -21364,8 +21405,7 @@ power 0 1
 
 selectclass 26
 classdescr "The Cloud Lord is the ruler of the Airya, winged humanoids living on solid clouds far above the lands of Elysium. The Airya craft armors and weapons from magical gems and their forces are both swift and deadly. From his lofty abode the Cloud Lord has observed kingdoms rise and fall in Elysium. Now he has decided to rid the lands of incompetent and malicious rulers.^The Cloud Lord can easily be mistaken for a Warlock of the Air, but where the warlock forms a pact with his chosen element, the Cloud Lord commands the beings of the sky through sheer magical power. Birds, elementals and mythical beasts of the skies are his to command, and the inhabitants of the Cloud Realm will rally to his banner."
-classabdescr "The Cloud Lord starts with a citadel in the 'Sky realm' near a mountain top.^The Airya armies can fly over difficult terrains and between clouds.^Airya elites can be recruited for an additional cost in gems, but reduced gold cost.^Conquering the Sky Realm gives access to other special recruits such as Cloudfolk or Worldroof Warriors.^Eagle Kings, Cloud Lords and Cloud Casters collect gems.
-^Air Gems can be used for magic rituals. Other gems can be converted to air gems with an alchemy ritual, or used to recruit elite units."
+classabdescr "The Cloud Lord starts with a citadel in the 'Sky realm' near a mountain top.^The Airya armies can fly over difficult terrains and between clouds.^Airya elites can be recruited for an additional cost in gems, but reduced gold cost.^Conquering the Sky Realm gives access to other special recruits such as Cloudfolk or Worldroof Warriors.^Eagle Kings, Cloud Lords and Cloud Casters collect gems.^Air Gems can be used for magic rituals. Other gems can be converted to air gems with an alchemy ritual, or used to recruit elite units."
 
 clearstartunits
 addstartunits          "Airya Spearman"           10
@@ -28558,44 +28598,18 @@ addmercrec  "Giant Morel"                   	100 1 1 0 0 	#Late Troll pit garris
 addunitrec  " Orm"                          	100 1 1 0 0 	#Late Troll pit garrison 
 	reclimiter "+Late AI"
 	recterr 32
-addcomrec " Goblin King"                    	10 50 50 0	#Goblin Castle recruitment
-	recterr 38
+addmercrec  " Goblin Archer"                    100 10 1 0 0 	#Goblin Castle garrison 
+	recterr 836
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addunitrec  "Goblin Spearman"			100 15 50 0 0 	# Goblin castle recruitment
-	recterr 836
-	reclimiter "+ Goblin King "
-addunitrec  "Goblin Archer"                   	100 10 50 0 0 	# Goblin castle recruitment
-	recterr 836
-	reclimiter "+ Goblin King  "
-addunitrec  "Wolf Kin"                         100 10 50 0 0 	# Goblin castle recruitment
-	recterr 836
-	reclimiter "+ Goblin King"
-addunitrec  "Wolf Kin Reaver"                  100 7 50 0 10 	# Goblin castle recruitment
-	recterr 836
-	reclimiter "+ Goblin King "
-addunitrec  "Moose Riders"                     20 2 50 0 0 	#Goblin castle recruitment
-	recterr 836
-	reclimiter "+ Goblin King "
-addmercrec  "Goblin Murderer"                   2 1 10 40 0 	# Goblin castle recruitment
-	reclimiter "+ Goblin King "
-addcomrec   "Goblin Hero"                       2 10 50 0  	#Goblin castle recruitment
-	reclimiter "+ Goblin King "
-addcomrec   "Goblin Shaman"                     3 35 20 0 	#Goblin castle recruitment
-	reclimiter "+ Goblin King "
-addcomrec "Wolf Kin Chieftain"                  10 35 10 0      # Goblin castle recruitment               
-	recterr 836
-	reclimiter "+ Goblin King "
-addmercrec  " Goblin Archer"                    100 10 1 0 0 	#Goblin Castle garrison 
-	reclimiter "+ Goblin King "
-	recterr 836
 addmercrec  " Wolf Kin Reaver"                  100 1 1 0 0 	#Goblin Castle garrison 
-	reclimiter "+ Goblin King "
 	recterr 836
+	reclimiter "+AI"
+	reclimiter "+Late AI"
 addmercrec  "Giant Mushroom"                    100 1 1 0 0 	#Goblin Castle garrison 
-	reclimiter "+ Goblin King "
 	recterr 836
-
+	reclimiter "+AI"
+	reclimiter "+Late AI"
 # ---------- Enchanter AI -----------------# 
 
 selectmonster "Animated Tools"
@@ -29330,6 +29344,9 @@ addcomrec   "Dryad"                             	1 65 20 0 			# suicide counterm
 	reclimiter "-Anointed of Gaia"
 
 # ----------- Scourge Lord AI -----------------# 
+
+selectritual "Appoint Herald" 
+aialways 20 
 
 newmonster " Desert Warrior"
 copystats "Desert Warrior"
