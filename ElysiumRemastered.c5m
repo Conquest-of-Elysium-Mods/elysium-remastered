@@ -3129,7 +3129,7 @@ hp 7
 str                            4 # Strength.
 mor                            6 # Morale.
 mr 7
-rank                           1 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
 meleeweapon                3  10 # Life Drain: d3 Magic damage.
 ethereal
@@ -3151,7 +3151,7 @@ hp 7
 str                            4 # Strength.
 mor                            6 # Morale.
 mr 7
-rank                           1 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
 meleeweapon                3  10 # Life Drain: d3 Magic damage.
 ethereal
@@ -3446,6 +3446,7 @@ maxsinners                    10 # When owned by Inferno, will gather 10 sinners
 revertowner                   28 # Player 28: Inferno.
 twistfate 1 
 armytrainer 1
+banishsurv
 descr "A demonic instructor sent to guide mortal practitioners. He grants access to advanced rituals and arcane knowledge. Though skilled in magic, he does not lead troops and obeys only the terms of his binding."
 
 newmonster "Damned Master"
@@ -3463,6 +3464,7 @@ twistfate 1
 diseaseres 
 demonic                          # Demonic; affected by banishment.
 rebate 2
+banishsurv
 descr "A master of demonology who has traded his soul for power. He wields formidable magic and carries the Devil’s luck, but his fate is sealed. He now belongs to Hell, and will serve there for eternity upon his death."
 
 newweapon     "Pain "                                                      #  16
@@ -4360,6 +4362,7 @@ mr 8
 
 selectmonster "Swamp Ghost" 
 meleeweapon 3 "Life Drain"
+banishsurv
 
 selectweapon "Withering Gaze"
 aoe 3
@@ -7150,6 +7153,7 @@ meleeweapon               	23   474 	# Magic Sword d30 Slash damage.
 power                       1  0		# Necromancy, level 1.
 classcost                   0 			# no classcost increase, gets own ritual branch instead
 gatherhands
+banishsurv
 
 selectmonster "Ditanu"
 hp 65
@@ -7157,6 +7161,7 @@ mr 7
 darkbless 1 
 clearweapons
 meleeweapon      		20 474 			# Magic Sword: d27 Slash damage.
+banishsurv
 
 selectmonster "Nephil"
 darkbless 1
@@ -7774,6 +7779,7 @@ power                       7  2 # Bakemono Rituals, level 2.
 drawsize                      15 # Draw the unit 15% larger when shown on its unit token.
 localleadership 2
 affres 75
+firstshape 1 
 descr "Oni are ugly, wild demons with pot-bellies and unkempt hair.  They come in different colors and with different abnormalities, but red or green skin with a pair of horns or an extra eye or ear seem to be the most common variants.  Although all Oni enjoy striking people with large clubs, most of them are also capable of dealing pain using their demonic magic.  The Oni have a great appetite and consume all the food and drink they can get hold of.  However, food is also their weakness as they cannot pass a line of carefully arranged potatoes.  Putting a few potatoes on the doorstep is an effective way to keep the Oni out, but on the other hand beasts and especially Bears might be attracted by the potatoes instead."
 
 newmonster    "Spectral Oni King"                                        # 1064
@@ -7816,7 +7822,7 @@ hp                             16
 str                            5 
 mor                           15 
 mr                             7 
-rank                           1 # Mid rank.
+rank                           1 # Front rank.
 frontpos
 spellweapon50          24   1 # Kuro-do at level 1.
 fast
@@ -7987,6 +7993,7 @@ demonic                          # Demonic; affected by banishment.
 allitemslots                     # Has the full set of item slots.
 banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
 drawsize 10
+firstshape 1
 descr "Oni are ugly, wild demons with pot-bellies and unkempt hair.  They come in different colors and with different abnormalities, but red or green skin with a pair of horns or an extra eye or ear seem to be the most common variants.  Although all Oni enjoy striking people with large clubs, most of them are also capable of dealing pain using their demonic magic.  The Oni have a great appetite and consume all the food and drink they can get hold of.  However, food is also their weakness as they cannot pass a line of carefully arranged potatoes.  Putting a few potatoes on the doorstep is an effective way to keep the Oni out, but on the other hand beasts and especially Bears might be attracted by the potatoes instead."
 
 newmonster    "Spectral Ao-Oni"                                             # 1058
@@ -8038,7 +8045,7 @@ hp                             10
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -8122,7 +8129,7 @@ hp                             14
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               13 158 # Spectral Sword: 13 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 fireres                      100 # fire immunity.
@@ -8143,7 +8150,7 @@ hp                             20
 str                            7 
 mor                            6 
 mr                             8 
-rank                           1 # Front rank.
+rank                           -1 # back rank.
 spellweapon       	   67 2  # Destruction at level 2 
 meleeweapon                5   5 # Staff: d8 Blunt damage.
 diseaseres                       # Disease immunity.
@@ -8162,7 +8169,7 @@ hp                             10
 str                            7 
 mor                            6 
 mr                             8 
-rank                           0 # Front rank.
+rank                           -1 # back rank 
 spellweapon       	   67 2  # Destruction at level 2 
 meleeweapon                5   5 # Staff: d8 Blunt damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8197,6 +8204,7 @@ nametype                      34 # Japanese male.
 size2x2
 drawsize 15
 localleadership 2 
+firstshape 1
 descr "Oni are ugly, wild demons with pot-bellies and unkempt hair.  They come in different colors and with different abnormalities, but red or green skin with a pair of horns or an extra eye or ear seem to be the most common variants.  Although all Oni enjoy striking people with large clubs, most of them are also capable of dealing pain using their demonic magic.  The Oni have a great appetite and consume all the food and drink they can get hold of.  However, food is also their weakness as they cannot pass a line of carefully arranged potatoes.  Putting a few potatoes on the doorstep is an effective way to keep the Oni out, but on the other hand beasts and especially Bears might be attracted by the potatoes instead."
 
 newmonster "Spectral Oni General"
@@ -8266,7 +8274,7 @@ hp                             6
 str                            6 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               4 702 # Throw Flames: d4 Fire damage.
 meleeweapon                6 157 # Spectral Club: d6 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8295,7 +8303,7 @@ hp                             6
 str                            6 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               4 703 # Throw Frost: d4 Cold damage.
 meleeweapon                6 157 # Spectral Club: d6 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8324,7 +8332,7 @@ hp                             12
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -8352,7 +8360,7 @@ hp                             10
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -16161,6 +16169,7 @@ coldres                       100 # 100 Cold Resistance.
 shockres 		      100 # 100 shock resistance
 poisonres                    100 # Poison immunity.
 unaging
+snow
 healonterr -9 
 size2x2
 drawsize -15
@@ -18120,7 +18129,7 @@ hp                             4
 str                            3 
 mor                           99 
 mr                             1 
-rank                           1 # Front rank.
+rank                           0 # Mid rank.
 rangedweapon              0  27 # Sling: d2 Blunt damage.
 meleeweapon               0   1 # Dagger: d3 Pierce damage.
 battleslow                       
@@ -18197,7 +18206,7 @@ hp                             4
 str                            3 
 mor                           99 
 mr                             1 
-rank                           1 # Front rank.
+rank                           0 # Mid rank.
 rangedweapon              -1   9 # Crossbow: d4 Pierce damage.
 meleeweapon               -1   1 # Dagger: d1 Pierce damage.
 battleslow                       
@@ -22943,73 +22952,96 @@ likesnorth -10
 # All Rakshasa and lanka are demonic. Seems appropriate, and gives some thematic purpose to the akashic ward ritual above. 
 
 selectmonster    "Rakshasa General" 
-demonic                                       
+demonic      
+banishsurv                                 
 
 selectmonster    "Raksharaja"
-demonic                                               
+demonic    
+banishsurv                                           
 
 selectmonster    "Raksharishi" 
 demonic     
+banishsurv
 
 selectmonster     "Rakshasa"
 demonic
+banishsurv
 
 selectmonster     "Rakshasa Warrior"
 demonic
+banishsurv
 
 selectmonster     "Praghasa"
 demonic
+banishsurv
 
 selectmonster     "Asara"
 demonic
+banishsurv
 
 selectmonster     "Anusara"
 demonic
+banishsurv
 
 selectmonster     "Palankasha"
 demonic
+banishsurv
 
 selectmonster     "Asrapa"
 demonic
+banishsurv
 
 selectmonster     "Rakshasi"
 demonic
+banishsurv
 
 selectmonster     "Samanishada"
 demonic
+banishsurv
 
 selectmonster     "Sandhyabala"
 demonic
+banishsurv
 
 selectmonster     "Danava"
 demonic
+banishsurv
 
 selectmonster     "Mandeha" 
 demonic    
+banishsurv
 
 selectmonster     "Daitya"
 demonic
+banishsurv
 
 selectmonster     "Asura"
 demonic     
+banishsurv
 
 selectmonster     "Dakini"
 demonic
+banishsurv
 
 selectmonster     "Asrapa"
 demonic
+banishsurv
 
 selectmonster     "Asara"
 demonic
+banishsurv
 
 selectmonster     "Anusara"
 demonic
+banishsurv
 
 selectmonster     "Palankasha"
 demonic
+banishsurv
 
 selectmonster     "Praghasa"
 demonic
+banishsurv
 
 # Vanara longdead also battleslow only. 
 
