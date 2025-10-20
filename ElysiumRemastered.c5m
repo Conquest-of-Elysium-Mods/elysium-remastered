@@ -3422,6 +3422,7 @@ copystats "Demonologist"
 immortal
 homeplane 4
 demonic                          # Demonic; affected by banishment.
+banishsurv
 revertowner                   28 # Player 28: Inferno.
 reformloc                     60 # If killed, the monster will reform in a random instance of this terrain: Infernal Citadel.
 power                       3  0 # no ritual powers .
@@ -3441,6 +3442,7 @@ spellweaponbonus          37   1 # Black Magic at level 1.
 meleeweapon                1   0 # Fist: d2 Blunt damage.
 diseaseres                       # Disease immunity.
 demonic                          # Demonic; affected by banishment.
+banishsurv
 infwander                      6 # Will try to fulfill this objective if it is owned by Inferno: Devil.
 maxsinners                    10 # When owned by Inferno, will gather 10 sinners before returning.
 revertowner                   28 # Player 28: Inferno.
@@ -3462,6 +3464,7 @@ coldres 50
 twistfate 1 
 diseaseres 
 demonic                          # Demonic; affected by banishment.
+banishsurv
 rebate 2
 descr "A master of demonology who has traded his soul for power. He wields formidable magic and carries the Devil’s luck, but his fate is sealed. He now belongs to Hell, and will serve there for eternity upon his death."
 
@@ -4360,6 +4363,7 @@ mr 8
 
 selectmonster "Swamp Ghost" 
 meleeweapon 3 "Life Drain"
+banishsurv
 
 selectweapon "Withering Gaze"
 aoe 3
@@ -7150,6 +7154,7 @@ meleeweapon               	23   474 	# Magic Sword d30 Slash damage.
 power                       1  0		# Necromancy, level 1.
 classcost                   0 			# no classcost increase, gets own ritual branch instead
 gatherhands
+banishsurv
 
 selectmonster "Ditanu"
 hp 65
@@ -7157,6 +7162,7 @@ mr 7
 darkbless 1 
 clearweapons
 meleeweapon      		20 474 			# Magic Sword: d27 Slash damage.
+banishsurv
 
 selectmonster "Nephil"
 darkbless 1
@@ -7769,6 +7775,7 @@ fear                             # Causes Fear (1d7 vs morale) in adjacent squar
 demonic                          # Demonic; affected by banishment.
 weaponslots                      # Only has 1 weapon and 2 misc slots.
 banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
+firstshape 1
 nametype                      34 # Japanese male.
 power                       7  2 # Bakemono Rituals, level 2.
 drawsize                      15 # Draw the unit 15% larger when shown on its unit token.
@@ -7986,6 +7993,7 @@ diseaseres                       # Disease immunity.
 demonic                          # Demonic; affected by banishment.
 allitemslots                     # Has the full set of item slots.
 banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
+firstshape 1
 drawsize 10
 descr "Oni are ugly, wild demons with pot-bellies and unkempt hair.  They come in different colors and with different abnormalities, but red or green skin with a pair of horns or an extra eye or ear seem to be the most common variants.  Although all Oni enjoy striking people with large clubs, most of them are also capable of dealing pain using their demonic magic.  The Oni have a great appetite and consume all the food and drink they can get hold of.  However, food is also their weakness as they cannot pass a line of carefully arranged potatoes.  Putting a few potatoes on the doorstep is an effective way to keep the Oni out, but on the other hand beasts and especially Bears might be attracted by the potatoes instead."
 
@@ -8143,7 +8151,7 @@ hp                             20
 str                            7 
 mor                            6 
 mr                             8 
-rank                           1 # Front rank.
+rank                           -1 # Back rank.
 spellweapon       	   67 2  # Destruction at level 2 
 meleeweapon                5   5 # Staff: d8 Blunt damage.
 diseaseres                       # Disease immunity.
@@ -8162,7 +8170,7 @@ hp                             10
 str                            7 
 mor                            6 
 mr                             8 
-rank                           0 # Front rank.
+rank                           -1 # Back rank.
 spellweapon       	   67 2  # Destruction at level 2 
 meleeweapon                5   5 # Staff: d8 Blunt damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8193,6 +8201,7 @@ diseaseres                       # Disease immunity.
 demonic                          # Demonic; affected by banishment.
 allitemslots                     # Has the full set of item slots.
 banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
+firstshape 1
 nametype                      34 # Japanese male.
 size2x2
 drawsize 15
@@ -16146,6 +16155,8 @@ fireres                       100 # 100 Fire Resistance.
 coldres                       100 # 100 Cold Resistance.
 shockres 		      100 # 100 shock resistance
 poisonres                    100 # Poison immunity.
+mountain
+snow
 unaging
 healonterr -9 
 size2x2
@@ -18107,7 +18118,7 @@ hp                             4
 str                            3 
 mor                           99 
 mr                             1 
-rank                           1 # Front rank.
+rank                           0 # Mid rank.
 rangedweapon              0  27 # Sling: d2 Blunt damage.
 meleeweapon               0   1 # Dagger: d3 Pierce damage.
 battleslow                       
@@ -18184,7 +18195,7 @@ hp                             4
 str                            3 
 mor                           99 
 mr                             1 
-rank                           1 # Front rank.
+rank                           0 # Mid rank.
 rangedweapon              -1   9 # Crossbow: d4 Pierce damage.
 meleeweapon               -1   1 # Dagger: d1 Pierce damage.
 battleslow                       
@@ -19909,6 +19920,7 @@ float
 desert
 size1x1
 demonic
+banishsurv
 spiritsight
 sleepres
 desertstealth
@@ -22904,72 +22916,95 @@ likesnorth -10
 
 selectmonster    "Rakshasa General" 
 demonic                                       
+banishsurv
 
 selectmonster    "Raksharaja"
 demonic                                               
+banishsurv
 
 selectmonster    "Raksharishi" 
 demonic     
+banishsurv
 
 selectmonster     "Rakshasa"
 demonic
+banishsurv
 
 selectmonster     "Rakshasa Warrior"
 demonic
+banishsurv
 
 selectmonster     "Praghasa"
 demonic
+banishsurv
 
 selectmonster     "Asara"
 demonic
+banishsurv
 
 selectmonster     "Anusara"
 demonic
+banishsurv
 
 selectmonster     "Palankasha"
 demonic
+banishsurv
 
 selectmonster     "Asrapa"
 demonic
+banishsurv
 
 selectmonster     "Rakshasi"
 demonic
+banishsurv
 
 selectmonster     "Samanishada"
 demonic
+banishsurv
 
 selectmonster     "Sandhyabala"
 demonic
+banishsurv
 
 selectmonster     "Danava"
 demonic
+banishsurv
 
 selectmonster     "Mandeha" 
 demonic    
+banishsurv
 
 selectmonster     "Daitya"
 demonic
+banishsurv
 
 selectmonster     "Asura"
 demonic     
+banishsurv
 
 selectmonster     "Dakini"
 demonic
+banishsurv
 
 selectmonster     "Asrapa"
 demonic
+banishsurv
 
 selectmonster     "Asara"
 demonic
+banishsurv
 
 selectmonster     "Anusara"
 demonic
+banishsurv
 
 selectmonster     "Palankasha"
 demonic
+banishsurv
 
 selectmonster     "Praghasa"
 demonic
+banishsurv
 
 # Vanara longdead also battleslow only. 
 
