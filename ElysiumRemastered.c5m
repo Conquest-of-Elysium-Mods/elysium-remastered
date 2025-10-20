@@ -7962,7 +7962,7 @@ hp                             5
 str                            5 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               4 702 # Throw Flames: d4 Fire damage.
 meleeweapon                6 157 # Spectral Club: d6 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8005,7 +8005,7 @@ hp                             5
 str                            5 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               4 703 # Throw Frost: d4 Cold damage.
 meleeweapon                6 157 # Spectral Club: d6 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8046,7 +8046,7 @@ hp                             10
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -8088,7 +8088,7 @@ hp                             10
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -8130,7 +8130,7 @@ hp                             14
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               13 158 # Spectral Sword: 13 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 fireres                      100 # fire immunity.
@@ -8275,7 +8275,7 @@ hp                             6
 str                            6 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               4 702 # Throw Flames: d4 Fire damage.
 meleeweapon                6 157 # Spectral Club: d6 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8304,7 +8304,7 @@ hp                             6
 str                            6 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 rangedweapon               4 703 # Throw Frost: d4 Cold damage.
 meleeweapon                6 157 # Spectral Club: d6 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
@@ -8333,7 +8333,7 @@ hp                             12
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -8361,7 +8361,7 @@ hp                             10
 str                            7 
 mor                            3 
 mr                             6 
-rank                           0 # Mid rank.
+rank                           1 # Front rank.
 meleeweapon               12 158 # Spectral Sword: 12 Magic damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 coldres                      100 # Cold immunity.
@@ -14438,7 +14438,7 @@ playerevent
 +class -2 "Troll King"
 +chance 15
 +ownsloctarg -2 38
-newunits -2 "c*Goblin King  & 3d6*Goblin Spearman & 3d6*Goblin Archer & 2d3*Wolf King & 1d6*Wolf Kin Reaver"
+newunits -2 "c*Goblin King  & 3d6*Goblin Spearman & 3d6*Goblin Archer & 2d3*Wolf Kin & 1d6*Wolf Kin Reaver"
 alterterrain 836
 setvar 7 1 
 message -2 "An ambitious Goblin warlord has moved into the Old Castle Ruins, and declared himself King of the Goblins. For what it is worth, he appears loyal to your cause."
@@ -16155,7 +16155,7 @@ fireres                       100 # 100 Fire Resistance.
 coldres                       100 # 100 Cold Resistance.
 shockres 		      100 # 100 shock resistance
 poisonres                    100 # Poison immunity.
-mountain
+#mountain
 snow
 unaging
 healonterr -9 
