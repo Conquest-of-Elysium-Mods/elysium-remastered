@@ -5,8 +5,8 @@ description "An overhaul mod. Flavor, balance and content."
 modprio 1 # Will be overwritten by other mods in case of conflict.
 
 # terrains used 800 to 842
-# terrain groups used -1099 to -1122
-# Event variables used 1-7
+# terrain groups used -1099 to -1125
+# Event variables used 1-21
 
 ############################ General changes ################################### 
 
@@ -32,6 +32,27 @@ strresist
 
 selectmonster "Shade"
 maxsum 100 									#From 25
+
+# Healing spells are weak in combat, especially the greater versions. Targeting limits mean Greater Healing is rarely cast and typically affects only 1–3 units for 1d3 healing, making it worse than casting basic healing twice. All healing spells are therefore slightly buffed, with proportionally larger boosts to AoE versions.
+
+selectweapon "Heal"
+dmg 3
+
+selectweapon "Greater Healing"
+dmg 3
+
+selectweapon "Healing Miracle"
+dmg 3
+
+selectweapon "Healing Words"
+dmg 3
+
+selectweapon "Healing Prayer"
+dmg 3
+
+selectweapon "Laying on Hands"
+dmg 3
+
 
 	# --------------- Crossbow and archer edits -----
 
@@ -295,6 +316,17 @@ burnable
 selectterr 249 								
 burnable
 
+# Added a small hand income in Hades, mostly to give Necro a bit more of a pathway in low population eras. 
+
+selectterr 149 
+hands 2
+
+selectterr 151
+hands 1
+
+selectterr 152 
+hands 2
+
 	# ---------- Items --------------------# 
 
 selectitem "Alicorn"							# Thematic 
@@ -321,12 +353,11 @@ selectmonster "Baron" 						#low chance of afflictions to increase longevity
 affres 75
 
 selectmonster "War Dog" 					#Now a merc in recruitment so you can spam them. Moved to front position to screen before the knights hit.
-clearspec 	#resets rearpos
 rank 1
 fast
 animal
 frontpos
-	
+
 selectmonster "Tower Guard" 					#Better armored but slow, encourages using them as defense rather than general troops.
 armor 2 	#from 1, big buff
 slow
@@ -349,7 +380,10 @@ clearmove
 	
 selectmonster "Vassal Knight" 					# less prone to random death
 rank 0
-hp 14 #from 11
+hp 14 #from 13
+
+selectmonster "High Lord" 							# Seems like an oversight that High Lords do not have a hoof attack like, all other armored knights
+meleeweaponbonus           4  95 # Hoof: d4 Blunt damage.
 
 # ----------------------- Baron New Monsters ------------------------------------------------#
 
@@ -1249,7 +1283,7 @@ selectclass 1  # Baron
 	addunitrec	 "Knight"		   					100 2 60 0 20 	
 	addunitrec  "Ranger"                       		30 5 50 0 0 5
 		reclimiter  "+Ranger Captain"
-	addmercrec  "War Dog"                      		100 5 25 0 0 		#Mercrec, can now be spammed
+	addunitrec  "War Dog"                      		100 8 40 0 0
 	addunitrec  "Ballista"                     			100 2 25 0 50
 	addunitrec  "Catapult"                     		100 1 25 0 50
 	addunitrec  "Trebuchet"                    	100 1 50 0 50
@@ -1579,9 +1613,12 @@ frontpos
 fast
 	
 selectmonster "Abomination" 
-deployoutside 1 							# Deploys outside in fort battles, does not seem like something you would keep inside
+deployoutside 1 							# Deploys outside in fort battles, does not seem like something you would keep inside. Also gets the attributes of a giant blob of soulless.  
+affres 100
+inanimate 
+battleslow 
 
-selectweapon 476
+selectweapon 476						# From aoe 3, small nerf 
 aoe 2
 
 selectmonster "Carrion" 					# better suicide and scouting but stays dead longer
@@ -1645,6 +1682,7 @@ noheal                           # Does not heal naturally.
 shockres                     100 # Shock immunity.
 diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
+inanimate
 descr "The Ziz is a giant eagle that has died and been reanimated by a necromantic ritual.  The beast is much more useful in its undead form, because it can now drop rocks where the Necromancer wants instead of dropping rocks on random humans."
 
 selectmonster "Bane Lord"
@@ -1691,6 +1729,12 @@ allitemslots                     # Has the full set of item slots
 minorstartaff 20
 descr "The Forlorn Hope is a veteran of a lost war, now working for the Necromancer. He fights with little regard for his own safety, as if seeking redemption in the darkness."
 
+newmonster " Forlorn Hope"  # Needs a separate version for mercenary recruitment, since merc recruitment mechanics are wonky. 
+copystats "Forlorn Hope"
+growoffs -1 
+growtime 1 
+descr "The Forlorn Hope is a veteran of a lost war, now working for the Necromancer. He fights with little regard for his own safety, as if seeking redemption in the darkness."
+
 newmonster "Villain"
 spr1 "Sprites/Villain1.tga"
 spr2 "Sprites/Villain2.tga"
@@ -1705,6 +1749,12 @@ rangedweapon               0   7 # Bow: d3 Pierce damage.
 meleeweapon                0  20 # Mace: d5 Blunt damage.
 human                            
 allitemslots                     # Has the full set of item slots.
+descr "Few civilized men willingly join a necromancers army, but bandits and brigands are plentiful in Elysium, and they will serve whoever pays them in gold."
+
+newmonster " Villain"  # Needs a separate version for mercenary recruitment, since merc recruitment mechanics are wonky. 
+copystats "Villain"
+growoffs -1 
+growtime 1
 descr "Few civilized men willingly join a necromancers army, but bandits and brigands are plentiful in Elysium, and they will serve whoever pays them in gold."
 
 newmonster "Wretch"
@@ -1849,8 +1899,8 @@ hpoverflow 1
 terraformfrom -97
 terraformto 37
 terraformch 25
-reanimate 2
 spawnmon 100
+reanimate 2
 descr "Formed when an ancient tree is corrupted by necromantic magic, the Gulthias Tree drains life from the surrounding land, slowly transforming forests into Shadow Woods. It raises nearby corpses to serve as mindless guardians and spreads its blight outward. It is remarkably difficult to destroy without fire or divine magic. Those desperate to reach Hades claim its twisted branches point the way."
 
 newmonster "Blight"
@@ -2196,7 +2246,7 @@ descr "Corrupt an ancient oak into a Gulthias Tree, an undead sentinel that rean
 newritual "Passage to the Underworld"  
 ritpow 1 				#Necro
 level 2
-cost 5 100 				#Hands
+cost 5 75				#Hands
 terr 37 				#Shadow Wood only
 planereq 0
 planeloc 5 				#Hades, same place
@@ -2296,6 +2346,7 @@ free
 
 selectclass  2 # Necromancer
 reqterr 38
+mercboost -50
 
 clearstartunits
 setmaincom             "Necromancer"
@@ -2328,6 +2379,10 @@ addunitrec  "Bane-Bones"                      	100 5 0 0 5
 	recxcost     5   5 
 	recterr  -37                          		  				#  5 Hands additional cost. Hades citadel only
 	reclimiter  "=Longdead"  # The preceding offer can only be used to upgrade Longdead unit(s).
+addmercrec " Villain" 5 5 20 20 0 
+	recterr -28 # towns and cities
+addmercrec " Forlorn Hope" 5 4 20 20 0  
+	recterr -28 # towns and cities
 addcomrec   "Captain"                          	20 40 10 0 # once per offer; extra.
 addcomrec   "Necromancer's Apprentice"       	3 55 20 0 	
 addcomrec   "Necromancer's Apprentice"	 	10 55 20 0 	# Extra apprentice chance if you don't have any 
@@ -9396,11 +9451,11 @@ clearmove
 	
 newweapon     "Gladius Solis"                                               # 920
 trgrank              1 # Target: rear enemy (any enemy, preferring rear-most).
-range                1
-init                 5
-dmgtype              1# Slash.
-dmg                  0 
-aoe                  0 # Area: single target.
+range                	1
+init                 		3
+dmgtype          	1# Slash.
+dmg                  	0 
+aoe                  	0 # Area: single target.
 sound                1 # spear.smp (Spear)
 
 selectmonster "Princeps Solaris"	#higher fire res and non-mundane sword, more useful in the late game. 
@@ -9443,22 +9498,23 @@ affres 75
 diseaseres
 immortalap 12
 	
-selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back.  Edit: in other news, he does not. The X-bonus mod commands are broken. 
+selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back. 
 power 45 2 
 hadesres 100
-goldbonus                     50 	# 50% bonus to all gold income for the player that owns this unit while it exists. 
-tradebonus                   50  # 50% bonus to trade 
+goldbonus                     55 	# 55% bonus to all gold income for the player that owns this unit while it exists. 
+tradebonus                   55  # 55% bonus to trade 
 gatherlifeforce
 	
 selectmonster "God Emperor of the Underworld"
 immortal
 reformloc -2
-hadesres 100
+hadesres 1
 allitemslots
 unaging
 affres 75
 diseaseres
-goldbonus                     50 	# 50% bonus to all gold income for the player that owns this unit while it exists.
+goldbonus                     60 	# 60% bonus to all gold income for the player that owns this unit while it exists. 
+tradebonus                   60  # 60% bonus to trade 
 planeshift 1
 immortalap 12
 gatherlifeforce
@@ -9742,6 +9798,7 @@ huge                             # The monster is Huge (3x3 squares in size), ca
 weaponslots                      # Only has 1 weapon and 2 misc slots.
 awe                            3 # Each time a non-mindless unit tries to attack this unit in melee, the attacker must pass a morale check with a -3 penalty, or waste the attack.
 unique                         1
+hadesres 1
 affres 75
 planeshift 1
 immortalap 12
@@ -10330,12 +10387,11 @@ selectmonster "Pale One Soldier"
 affres 50
 hp 12 #+1
 	
-selectmonster "Pale One Slinger" #better slinger, weaker in melee
+selectmonster "Pale One Slinger" #better slinger
 affres 50
-hp 9 #-1
 clearweapons
-rangedweapon 1 27 #was +0
-meleeweapon 1 0 #fists, was dagger
+rangedweapon 				1 27 #was +0
+meleeweapon                	1   1 # Dagger: d4 Pierce damage.
 
 selectmonster "Cavern Guard"
 affres 50
@@ -11985,6 +12041,20 @@ spr2 "Sprites/Childofnephele2.tga"
 
 #----------------- Warlock Monsters ----------------
 
+	# ----- Wheel edits -----------------------------# 
+	
+	# Wheels were extremely strong, especially with regeneration from Strength of the Earth. They are now constructs, gaining the associated strengths and weaknesses. Most importantly, they no longer heal. Strength of the Earth no longer affects flyers, preventing self-buffing with regeneration.
+
+selectmonster "Wheel of Storm and Stone"
+inanimate 
+noheal
+affres 100
+
+selectmonster "Wheel of Frost and Flames"
+inanimate 
+noheal 
+affres 100
+
 	# ----  Elemental Warrior edits ---------------------
 	
 newweapon "Molten Halberd"
@@ -12353,7 +12423,11 @@ affres 75
 	# --------- Air Monsters ------------------# 
 
 selectmonster "Sylph"
-hp 7
+hp 8 
+airshield 50 
+clearweapons
+spellweapon                5   1 # Storm Magic at level 1.
+meleeweapon                4 177 # Gusts of Winds: d4 Blunt damage.
 
 selectmonster "Thunderbird" 
 clearweapons 
@@ -12689,7 +12763,7 @@ level 9
 newritual     "Summon Champion of Water "                                  # More powerful options, and more expensive
 ritpow                19 # Warlock of Water
 level                  2
-cost              8   100 # 80 Sapphires
+cost              8   70 # 70 Sapphires
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 85
 addstring     "c*Champion of Waves"
@@ -12833,7 +12907,7 @@ free
 newritual "Summon Champion of Air"
 ritpow                20 # Warlock of Air
 level                  2
-cost              9   100 # 100 Diamonds
+cost              9   70 # 70 Diamonds
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 85
 addstring     "c*Champion of Storms"
@@ -12915,7 +12989,7 @@ free
 newritual     "Summon Champion of Fire "                                   
 ritpow                18 # Warlock of Fire
 level                  2
-cost              7   100 # 100 Rubies
+cost              7   70 # 70 Rubies
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance            85 # % chance to summon first string instead of a random string among the others.
@@ -12983,7 +13057,7 @@ free
 newritual "Summon Champion of Earth "
 ritpow                21 # Warlock of Earth
 level                  2
-cost             10   100 # 100 Emeralds
+cost             10   70 # 70 Emeralds
 terr                 -42 # Required terrain: any land.
 sum0chance            85 # % chance to summon first string instead of a random string among the others.
 summoning                # The ritual will summon the monsters specified in a random string.
@@ -18917,6 +18991,8 @@ maxcast 1
 apcost 5
 monplayerreq 1
 addstring "(&)Grand Nekromant"
+addstring "(&)Grand Ghost Nekromant"
+addstring "(&)Wight Nekromant"
 terr                  -12 # Required terrain: Greater Mines (eller abandoned mine)
 alterloc             837 # Change target location's terrain to: Secret Laboratory.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
@@ -18925,7 +19001,7 @@ forgetcurrit
 rarestart
 noundead
 seteventvar 4
-descr "With the aid of the Nekromant, the Markgraf establishes an unsettling facility hidden within an abandoned mine. Each day, prisoners and livestock are brought in large numbers, yet none ever emerge. A black spire looms atop the mountain, surrounded by ominous flashes of lightning. Its true purpose remains a closely guarded secret, known only to the Markgraf and the Grand Nekromant."
+descr "With the aid of the Nekromant, the Markgraf establishes an unsettling facility hidden within an abandoned mine. Each day, prisoners and livestock are brought in large numbers, but none ever return. A black spire looms atop the mountain, surrounded by ominous flashes of lightning. Its true purpose remains a closely guarded secret, known only to the Markgraf and the Grand Nekromant. To perform this ritual, the player must control a Grand Nekromant or one of his undead forms."
 
 newritual     "Cunning Schemes"                                     # 288
 level                  1
@@ -20403,96 +20479,33 @@ addstring     "1d2*Faceless"
 descr "The Scourge Lord channels the life force drained from the world to summon a monstrous being of manifest destruction."
 
 newritual "Memories of the Mask I"
+ritpow                48 # Scourge Lord
+level                  1
+cost             13  100 # 100 Lifeforce
+terr                 -42 # Required terrain: any land.
+newspell1 62 
+nofemale
 free
-ritpow                48 # Scourge Lord
-level                  1
-cost             13  50 # 50 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell1 62 
-nofemale
-gainrit 1
-forgetcurrit
-descr "The Scourge Lord claims the forgotten knowledge of those who bore the mask before him. Each casting of this ritual grants a new first level combat spell."
-
-newritual "Memories of the Mask I"
-ritpow                48 # Scourge Lord
-level                  1
-cost             13  75 # 75 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell1 62 
-nofemale
-nostart
-gainrit 1
-forgetcurrit
-descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new first level combat spell."
-
-newritual "Memories of the Mask I"
-ritpow                48 # Scourge Lord
-level                  1
-cost             13  100 # 100 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell1 62 
-nofemale
-nostart
-forgetcurrit
 descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new first level combat spell."
 
 newritual "Memories of the Mask II"
 ritpow                48 # Scourge Lord
 level                  2
-cost             13  150 # 150 Lifeforce, increasing cost
+cost             13  200 # 200 Lifeforce
 terr                 -42 # Required terrain: any land.
 newspell2 62 
 nofemale
 free
-gainrit 1
-forgetcurrit
-descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new second level combat spell."
-
-newritual "Memories of the Mask II"
-ritpow                48 # Scourge Lord
-level                  2
-cost             13  225 # 225 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell2 62 
-nofemale
-nostart
-gainrit 1
-forgetcurrit
-descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new second level combat spell."
-
-newritual "Memories of the Mask II"
-ritpow                48 # Scourge Lord
-level                  2
-cost             13  300 # 300 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell2 62 
-nofemale
-nostart
-forgetcurrit
 descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new second level combat spell."
 
 newritual "Memories of the Mask III"
 ritpow                48 # Scourge Lord
 level                  3
-cost             13  400 # 400 Lifeforce, increasing cost
+cost             13  500 # 500 Lifeforce, increasing cost
 terr                 -42 # Required terrain: any land.
 newspell3 62 
 nofemale
 free
-gainrit 1
-forgetcurrit
-descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
-
-newritual "Memories of the Mask III"
-ritpow                48 # Scourge Lord
-level                  3
-cost             13  600 # 600 Lifeforce, increasing cost
-terr                 -42 # Required terrain: any land.
-newspell3 62 
-nofemale
-nostart
-forgetcurrit
 descr "The Scourge Lord claims fragments of forgotten knowledge from those who bore the mask before him. Each casting of this ritual grants a new third level combat spell."
 
 newritual "Spire of Ruin"
@@ -21087,7 +21100,6 @@ power                      49  3 # Cloud Lord level 3.
 affres 100
 #healonterr -106 #sky plane
 awe 1
-unique 1 
 descr "The Silent Kings are ancient Cloud Lords, said to have transcended the cycle of reincarnation through spiritual achievement or simply by refusing to leave. Their preserved forms sit upright on alabaster thrones in the highest spire of the Cloud Palace, where the air is thin, dry, and entirely still. Great windows open onto the cloud realm below, offering a clear view of the lands far beneath. ^Their presence is revered, and on rare occasions they are consulted by the ruling elite-typically when the matter is unusually complex, obscure, or difficult to settle by more conventional means. Answers, when given, tend to be sparse and largely symbolic. In times of great peril, a Silent King may be roused and carried forth from the tower on a ceremonial carriage. The event is regarded as both a blessing and a logistical nightmare. Should the body be lost in battle, it reappears days later in the same chair, in the same position, facing the same window." 
 
 newmonster "Silent King" 
@@ -21122,7 +21134,6 @@ power                      49  3 # Cloud Lord level 3.
 affres 100
 #healonterr -106 #sky plane
 awe 1
-unique 1 
 descr "The Silent Kings are ancient Cloud Lords, said to have transcended the cycle of reincarnation through spiritual achievement or simply by refusing to leave. Their preserved forms sit upright on alabaster thrones in the highest spire of the Cloud Palace, where the air is thin, dry, and entirely still. Great windows open onto the cloud realm below, offering a clear view of the lands far beneath. ^Their presence is revered, and on rare occasions they are consulted by the ruling elite-typically when the matter is unusually complex, obscure, or difficult to settle by more conventional means. Answers, when given, tend to be sparse and largely symbolic. In times of great peril, a Silent King may be roused and carried forth from the tower on a ceremonial carriage. The event is regarded as both a blessing and a logistical nightmare. Should the body be lost in battle, it reappears days later in the same chair, in the same position, facing the same window."  
 
 newmonster "Silent King" 
@@ -21157,7 +21168,6 @@ power                      49  3 # Cloud Lord level 3.
 affres 100
 #healonterr -106 #sky plane
 awe 1 
-unique 1
 descr "The Silent Kings are ancient Cloud Lords, said to have transcended the cycle of reincarnation through spiritual achievement or simply by refusing to leave. Their preserved forms sit upright on alabaster thrones in the highest spire of the Cloud Palace, where the air is thin, dry, and entirely still. Great windows open onto the cloud realm below, offering a clear view of the lands far beneath. ^Their presence is revered, and on rare occasions they are consulted by the ruling elite-typically when the matter is unusually complex, obscure, or difficult to settle by more conventional means. Answers, when given, tend to be sparse and largely symbolic. In times of great peril, a Silent King may be roused and carried forth from the tower on a ceremonial carriage. The event is regarded as both a blessing and a logistical nightmare. Should the body be lost in battle, it reappears days later in the same chair, in the same position, facing the same window."  
 
 newmonster "Silent King" 
@@ -21192,7 +21202,6 @@ power                      49  3 # Cloud Lord level 3.
 affres 100
 #healonterr -106 #sky plane
 awe 1 
-unique 1
 descr "The Silent Kings are ancient Cloud Lords, said to have transcended the cycle of reincarnation through spiritual achievement or simply by refusing to leave. Their preserved forms sit upright on alabaster thrones in the highest spire of the Cloud Palace, where the air is thin, dry, and entirely still. Great windows open onto the cloud realm below, offering a clear view of the lands far beneath. ^Their presence is revered, and on rare occasions they are consulted by the ruling elite-typically when the matter is unusually complex, obscure, or difficult to settle by more conventional means. Answers, when given, tend to be sparse and largely symbolic. In times of great peril, a Silent King may be roused and carried forth from the tower on a ceremonial carriage. The event is regarded as both a blessing and a logistical nightmare. Should the body be lost in battle, it reappears days later in the same chair, in the same position, facing the same window."  
 
 newmonster "Silent King" 
@@ -21227,7 +21236,6 @@ power                      49  3 # Cloud Lord level 3.
 affres 100
 #healonterr -106 #sky plane
 awe 1 
-unique 1
 descr "The Silent Kings are ancient Cloud Lords, said to have transcended the cycle of reincarnation through spiritual achievement or simply by refusing to leave. Their preserved forms sit upright on alabaster thrones in the highest spire of the Cloud Palace, where the air is thin, dry, and entirely still. Great windows open onto the cloud realm below, offering a clear view of the lands far beneath. ^Their presence is revered, and on rare occasions they are consulted by the ruling elite-typically when the matter is unusually complex, obscure, or difficult to settle by more conventional means. Answers, when given, tend to be sparse and largely symbolic. In times of great peril, a Silent King may be roused and carried forth from the tower on a ceremonial carriage. The event is regarded as both a blessing and a logistical nightmare. Should the body be lost in battle, it reappears days later in the same chair, in the same position, facing the same window." 
 
 # -------------------- Cloud Lord Ritual Edits -------------------------------------# 
@@ -30099,12 +30107,16 @@ newmonster "Netherstestguy"
 	hands 500
 	fungi 500
 	weed 500
+	herbs 500
+	lifeforce 500
 	gatherfungus
 	gathersacr
 	gatherhands
 	gatherweed
 	gathergems
 	gatherrelics
+	gatherherbs
+	gatherlifeforce 
 	fast
 	teleport
 	nametype 39
@@ -30112,3 +30124,4 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
