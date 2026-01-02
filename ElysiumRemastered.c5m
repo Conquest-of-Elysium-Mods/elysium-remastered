@@ -10622,6 +10622,8 @@ playerevent # #Spawn Leader.
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
 +plane 0 																#only on Elysium
 newunits -2 "c*Barbarian Leader"
@@ -10645,6 +10647,8 @@ message -2 "A renowned warrior has joined your host."
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
 -hasunit -2 "Barbarian Warlord"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 9 0
 endevent
 
@@ -10667,6 +10671,8 @@ setvar 11 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent 
 
@@ -10688,6 +10694,8 @@ setvar 12 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent 
 
@@ -10710,6 +10718,8 @@ setvar 13 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent 
 
@@ -10732,6 +10742,8 @@ setvar 14 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent 
 
@@ -10753,6 +10765,8 @@ setvar 15 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0 
 endevent 
 
@@ -10775,6 +10789,8 @@ setvar 16 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0 
 endevent
 
@@ -10796,6 +10812,8 @@ setvar 17 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0 
 endevent
 
@@ -10818,6 +10836,8 @@ setvar 18 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0 
 endevent
 
@@ -10840,6 +10860,8 @@ setvar 19 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0 
 endevent
 
@@ -10862,6 +10884,8 @@ setvar 20 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent
 
@@ -10884,6 +10908,8 @@ setvar 21 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent
 
@@ -10906,6 +10932,8 @@ setvar 22 1
 -hasunit -2 " Spirit-bound Barbarian King"
 -hasunit -2 "Spirit-bound Barbarian King "
 -hasunit -2 "Spirit-chosen Barbarian King"
+-hasunit -2 " Barbarian Warlord"
+-hasunit -2 " Barbarian King"
 setvar 10 0
 endevent
 
@@ -11074,21 +11102,10 @@ addunitrec "Aptrganger"									100 1 35 0 0
 		recterr 834
 addunitrec "Blackroot Eater"							100 4 40 0 0
 		recterr 834
-addunitrec "Wyrdwood Ram"							8 1 120 0 50
+addunitrec "Wyrdwood Ram"							7 1 120 0 50
 	recxcost 2 200 #200 herbs 						# costs a little more than an alchemical trebuchet + a sacred idol. Seems about fair I think.   
 	recterr 834 
-	reclimiter "+Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King"
-	reclimiter "+ Spirit-touched Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King "
-	reclimiter "+Spirit-bound Barbarian King"
-	reclimiter "+ Spirit-bound Barbarian King"
-	reclimiter "+Spirit-bound Barbarian King "
-	reclimiter "+Spirit-chosen Barbarian King"
-addunitrec "Wyrdwood Ram"							2 1 120 0 50		# some scaling with number of temples 
-	recxcost 2 200 #200 herbs 						 
-	recterr 834
-	templerec 
+	templerec 														#+3% per temple to a max of +15% 
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
