@@ -43,7 +43,9 @@ Sage
 49 Arcane Guild
 
 Units:
-Guild Mage (magic school 51 High Arcana)
+Sage Apprentice
+Sage Adept with Adept's Spell Scroll (Mages Guild)
+Initiate of the Metal Orders (Arcane Guild)
 
 Mercenary Guild
 40 Mercenaries Guild
