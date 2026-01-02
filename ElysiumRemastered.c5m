@@ -25399,6 +25399,19 @@ meleeweapon                0   1 # Dagger: d3 Pierce damage.
 descr "Not yet recognized as a true magus, the initiate cannot practice rituals or act independently. He travels with a guildmaster to prove himself to the academy and earn his place among the magi."
 
 
+newmonster "Sage Apprentice"
+copystats "Guild Mage"
+clearweapons
+spellweapon               44   1 # Sage Magic at level 1.
+meleeweapon                0   1 # Dagger: d3 Pierce damage.
+descr "Sage apprentices have only just begun their studies and are not yet trusted with grand lectures or rites. They travel with a guildmaster to learn the fundamentals of lore and the workings of libraries."
+
+newmonster "Sage Adept"
+copystats "Sage Apprentice"
+startitem "Adept's Spell Scroll"
+descr "A sage apprentice who has been entrusted with an adept's spell scroll. They still lack full guild standing, but the scroll grants them a glimpse of the power their studies promise."
+
+
 # Pegasus rider was size 2 but only 10 hp making him very weak. Regular pegasus had 19 hp, an odd inconsistency on top. Now both size 1 and 11 hp.  
 
 selectmonster "Pegasus Rider"
@@ -25567,7 +25580,19 @@ landshape -1
 # ---------------- Guildmaster Ritual Edits ----------------------------# 
 
 selectritual "Sages Guild"
-rarestart 
+summoning
+addstring "1*Sage Apprentice"
+descr "The Guildmaster establishes a Sages Guild in a settlement with trade value of 1 or more. The Guildmaster can occasionally recruit sages. Controlling at least one Sages Guild will result in all libraries yielding 1 gold income per level of the library. Building this guild will instantly reveal all libraries in Elysium. A Sage Apprentice joins the Guildmaster. Can only be cast in trade locations."
+
+selectritual "Mages Guild"
+summoning
+addstring "1*Sage Adept"
+descr "The Guildmaster upgrades a Sages Guild into a Mages Guild. The Library value of the settlement is increased by +1 and occasionally powerful wizards may be recruited. The Mages Guild retains all features of the Sages Guild. A Sage Adept bearing an Adept's Spell Scroll joins the Guildmaster. Can only be cast in trade locations."
+
+selectritual "Arcane Guild"
+summoning
+addstring "1*Initiate of the Metal Orders"
+descr "The Merchant Prince upgrades a Mages Guild into an Arcane Guild. The chance of recruiting powerful mages is increased. The Arcane Guild retains all features of the Mages Guild. An Initiate of the Metal Orders joins the Guildmaster. Can only be cast in trade locations."
 
 
 selectritual "Apothecaries Guild"
