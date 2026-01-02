@@ -1,0 +1,59 @@
+Rituals (enchantment id - name)
+
+Merchant
+31  Traders Guild
+32  Merchants Guild
+45  Bankers Guild
+
+Units:
+Caravan Guards
+
+Theives
+33 Thieves Guild
+34 Assassins Guild
+46 Shadow Stalkers Guild
+
+
+Units:
+Brigand
+Guild Stalker
+
+Ship
+35 Shipwrights Guild
+36 Cartographers Guild
+47 Void Pilots Guild
+
+Units:
+Mariners
+Galleon
+Void Ship
+
+
+Miners
+37  Miners Guild
+38  Masons Guild
+48  Engineers Guild
+
+Units:
+Guild Ballista
+
+Sage
+39 Sages Guild
+40 Mages Guild
+49 Arcane Guild
+
+Units:
+Guild Mage (magic school 51 High Arcana)
+
+Mercenary Guild
+40 Mercenaries Guild
+41 Adventurers
+50 Beastmasters Guild
+
+Units:
+Guild Mercenary
+
+Young Necromancer
+Rogue
+Questing Knight
+Fighter
