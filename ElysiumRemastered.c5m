@@ -25620,7 +25620,27 @@ rangedweapon               0   "Light Crossbow " # Crossbow: d5 Pierce damage.
 meleeweapon                0   2 # Broadsword: d6 Slash damage.
 landshape -1
 
+newmonster "Guild Trebuchet"
+copystats "Trebuchet"
+stationary
+descr "Trebuchets are technologically advanced siege engines. These guild-built versions are bolted into the city itself, taking ages to emplace but able to hurl huge boulders in volleys that can batter several foes at once—though, like all trebuchets, they are hardly precise."
+
 # ---------------- Guildmaster Ritual Edits ----------------------------# 
+
+selectritual "Traders Guild"
+summoning
+addstring "2d7*Caravan Guard"
+descr "The Guildmaster establishes a Traders Guild in a settlement with trade value of 1 or more. Income is increased by +2 and trade is increased by +1. In addition there will also be a +10% worldwide bonus to gold income and trade. Multiple traders guild will increase the worldwide bonus further. A small band of Caravan Guards musters immediately. Can only be cast in trade locations."
+
+selectritual "Merchants Guild"
+summoning
+addstring "2d14*Caravan Guard"
+descr "The Guildmaster upgrades a Traders Guild into a Merchants Guild. Income and trade is increased by an additional +1 and the worldwide trade/gold bonus is increased to +20%. Multiple traders guild will increase the worldwide bonus further. A larger caravan guard detachment assembles on completion. Can only be cast in trade locations."
+
+selectritual "Bankers Guild"
+summoning
+addstring "2d21*Caravan Guard"
+descr "The Merchant Prince upgrades a Merchants Guild into a Bankers Guild. Income and trade is increased by an additional +1 and the worldwide trade/gold bonus is increased to +30%. Multiple traders guild will increase the worldwide bonus further. A substantial escort of Caravan Guards forms at once. Can only be cast in trade locations."
 
 selectritual "Sages Guild"
 summoning
@@ -25652,6 +25672,63 @@ selectritual "Alchemist Magus Guild"
 summoning
 addstring "1*Alchemist Magus Initiate"
 descr "The Merchant Prince upgrades an Alchemists Guild into an Alchemist Magus Guild. The Guildmaster can occasionally recruit Alchemist Magi. The Alchemist Magus Guild retains all features of the Alchemists Guild. A Guild Alchemist joins the Guildmaster. Can only be cast in trade locations."
+
+selectritual "Mercenaries Guild"
+summoning
+addstring "2d3*Guild Mercenary"
+descr "The Guildmaster establishes a Mercenaries Guild in a settlement with trade value of 1 or more. Will recruit special Guild Mercenaries automatically as well as increasing the number of ordinary mercenary offers, more mercenary guilds will make them even more frequent. The Mercenaries Guild reduces the income of the settlement by two gold per month. 2d3 Guild Mercenaries rally immediately. Can only be cast in trade locations."
+
+selectritual "Adventurers Guild"
+summoning
+addstring "2d6*Guild Mercenary"
+descr "The Guildmaster upgrades a Mercenaries Guild into an Adventurers Guild. Adventurers will gather here and go out on adventures after a while. The Guildmaster can recruit heroes more often and for a lower price. The chance of receiving magic item offers is also increased. Multiple Adventurers Guilds stack their effects. The Adventurers Guild retains all features of the Mercenaries Guild. 2d6 Guild Mercenaries celebrate by joining immediately. Can only be cast in trade locations."
+
+selectritual "Beastmasters Guild"
+summoning
+addstring "2d12*Guild Mercenary"
+descr "The Merchant Prince upgrades an Adventurers Guild into a Beastmasters Guild. The beastmaster guild enables the recruitment of Pegasus Riders in Sky Cities and occasionally Gryphon Riders in the citadels of Elysium. Multiple Beastmasters Guilds increase the frequency of these offers. The Beastmasters Guild retains all features of the Adventurers Guild. 2d12 Guild Mercenaries flock to the guild at its founding. Can only be cast in trade locations."
+
+selectritual "Shipwrights Guild"
+summoning
+addstring "2d4*Mariner"
+descr "The Guildmaster establishes a Shipwrights Guild in a Port. Shipwrights Guild allows the recruitment of Galleons and Mariners. If both a Shipwrights Guild and a Sages Guild have been established Mage Pilots will occasionally be available. If combined with a thieves guild in a pirate port, the pirates will get improved ships. Gold and trade is increased by +1 and all income from sea squares is increased by 25%. A small crew of Mariners rallies immediately. Can only be cast in ports."
+
+selectritual "Cartographers Guild"
+summoning
+addstring "2d8*Mariner"
+descr "The Guildmaster upgrades a Shipwrights Guild. A port with a Cartographers Guild can recruit Chartmakers occasionally. Gold and trade is increased by an additional +1 and the income increase for sea squares becomes 50%. The Cartographers Guild further improves any pirates and retains all features of the Shipwrights Guild. A larger contingent of Mariners ships in to support the effort. Can only be cast in ports."
+
+selectritual "Void Pilots Guild"
+summoning
+addstring "2d16*Mariner"
+descr "Gold and trade is increased by an additional +1 and the income increase for sea squares becomes 75%. The Void Pilots Guild enables the construction of Void Ships that can traverse the edge of the world and explore the Void. A seasoned complement of Mariners joins as the guild opens. Can only be cast in ports."
+
+selectritual "Miners Guild"
+cost 1 -10
+descr "The Guildmaster establishes a Miners Guild in a settlement with trade value of 1 or more. Gold income is increased by +1 and all income from mines is increased by 20% (gold, iron and gems). Multiple Miners Guilds will increase the mining bonus further. Can only be cast in trade locations."
+
+selectritual "Masons Guild"
+descr "The Guildmaster upgrades a Miners Guild into a Masons Guild. The masons guild will upgrade the fortification in the current location, maybe improving the gate, or maybe even creating a wall if there was none before. Mining bonus is increased to +40%. Local gold income is increased by an additional +1. The Masons Guild retains all features of the Miners Guild. Can only be cast in trade locations."
+
+selectritual "Engineers Guild"
+summoning
+addstring "2*Guild Trebuchet"
+descr "The Merchant Prince upgrades a Masons Guild into an Engineers Guild. Income from mines is increased to +60%. Local gold income is increased by an additional +1 and fort defenses might be upgraded further. This guild enables the occasional recruitment of Mage Engineers if a Mage Guild is also owned by the Merchant Prince. More Engineers Guilds will increase this chance. The Masons Guild retains all features of the Miners Guild. A couple of Trebuchets are installed immediately. Can only be cast in trade locations."
+
+selectritual "Thieves Guild"
+summoning
+addstring "2d5*Brigand"
+descr "The Guildmaster establishes a Thieves Guild in a settlement with trade value of 1 or more. The Thieves Guild increases income by +1. If captured by an enemy faction the settlement has its income reduced by 2. The thieves guild will produce brigand units in the settlement as well as in all brigand lairs. Multiple thieves guilds will make controlled brigand lairs spawn more brigands. A pirate port with a Thieves Guild occasionally generates a pirate ship that will independently raid and plunder the coastline. A handful of Brigands gather immediately. Can only be cast in trade locations."
+
+selectritual "Assassins Guild"
+summoning
+addstring "2d10*Brigand"
+descr "The Guildmaster upgrades a Thieves Guild into an Assassins Guild. The Guildmaster can occasionally recruit assassins at a reduced price. An assassin will appear in the guild once an assassination contract is signed. The Assassins Guild retains all features of the Thieves Guild and also increases the number of brigands and pirates produced. A hardened crowd of Brigands rallies at once. Can only be cast in trade locations."
+
+selectritual "Shadow Stalkers Guild"
+summoning
+addstring "2d15*Brigand"
+descr "The Merchant Prince upgrades an Assassins Guild into a Shadow Stalkers Guild. The Shadow Stalkers Guild retains all features of the Assassins Guild and also increases the quality of the assassins and the number of brigands produced. A throng of Brigands joins the Guildmaster as the doors open. Can only be cast in trade locations."
 
 ############################## Planes ######################################## 
 
