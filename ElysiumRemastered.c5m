@@ -25625,6 +25625,11 @@ copystats "Trebuchet"
 stationary
 descr "Trebuchets are technologically advanced siege engines. These guild-built versions are bolted into the city itself, taking ages to emplace but able to hurl huge boulders in volleys that can batter several foes at once—though, like all trebuchets, they are hardly precise."
 
+newmonster "Alchemical Guild Trebuchet"
+copystats "Alchemical Trebuchet"
+stationary
+descr "Alchemists have modified these bolted-in guild trebuchets to hurl alchemical payloads. The upgraded munitions batter a slightly smaller area than ordinary stones but burst into fire on impact, and the guild mounts remain fixed in place."
+
 # ---------------- Guildmaster Ritual Edits ----------------------------# 
 
 selectritual "Traders Guild"
@@ -25714,6 +25719,11 @@ selectritual "Engineers Guild"
 summoning
 addstring "2*Guild Trebuchet"
 descr "The Merchant Prince upgrades a Masons Guild into an Engineers Guild. Income from mines is increased to +60%. Local gold income is increased by an additional +1 and fort defenses might be upgraded further. This guild enables the occasional recruitment of Mage Engineers if a Mage Guild is also owned by the Merchant Prince. More Engineers Guilds will increase this chance. The Masons Guild retains all features of the Miners Guild. A couple of Trebuchets are installed immediately. Can only be cast in trade locations."
+
+selectritual "Alchemical Trebuchet"
+addstring "Guild Trebuchet"
+addstring "Alchemical Guild Trebuchet"
+descr "Alchemists of extraordinary skills can craft trebuchets able to launch alchemical ammunition instead of ordinary boulders. The alchemical ammunition cause slightly less damage where they hits, but each of them explodes covering an area in flames. Guild-built trebuchets can also be refitted with these volatile payloads."
 
 selectritual "Thieves Guild"
 summoning
