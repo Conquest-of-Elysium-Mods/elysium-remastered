@@ -45,6 +45,12 @@ Sage
 Units:
 Guild Mage (magic school 51 High Arcana)
 
+New units:
+Sage Apprentice
+Sage Adept (with Adept's Spell Scroll) (Mages Guild) (Alchemy 55, High Arcana 51)
+Initiate of the Metal Orders (Arcane Guild)
+
+
 Mercenary Guild
 40 Mercenaries Guild
 41 Adventurers
