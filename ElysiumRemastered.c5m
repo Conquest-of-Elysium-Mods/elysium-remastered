@@ -9141,35 +9141,11 @@ drawsize -30
 descr "The Harii prepare their longships in a peculiar manner, coating the hulls in soot and pitch and scratching faint runes along the boards, which they claim will render the vessel difficult to see. The rails of the ship are fitted with small torches that can be shuttered at ease, allowing the crew to row in near total darkness. Scouts along the northern coasts report that these nightships glide close to shore without sound or light, and that a settlement often realizes their presence only when the torches are thrown open and the raiders leap ashore amid sudden fire."
 
 newmonster "Dragonship"
+copystats "Galleon"
 spr1 "Sprites/Dragonship.tga"
-armor                          0 # Armor.
-hp                           100 # Hit Points.
-str                            4 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                          -1 # Back rank.
-immobile                         # Immobile (cannot move in battle).
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-noland                           # Aquatic: The monster cannot move onto land.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-noheal                           # Does not heal naturally.
-bluntres                         # Blunt resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-noslots                          # Has no item slots at all.
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
-nozoc                            # No Zone of Control.
-unimportant                      # Battles can be won without killing this unit.
-fast
-ship 1
-shipmove 
-transport 40
 terrstealth -1123 
 drawsize -40 
-descr "One surviving sailor noted that the dragon-prowed vessel differed from any barbarian craft he had previously encountered. Its hull sat broader and deeper in the water, and its timbers were set in an unfamiliar fashion. Such knowledge must have been taken from imperial shipwrights, a conclusion we find both distasteful and difficult to dismiss."
+descr "The dragon-prowed vessel differed from any barbarian craft previously encountered. Its hull sat broader and deeper in the water, and its timbers were set in an unfamiliar fashion. Such knowledge must have been taken from imperial shipwrights, a conclusion we find both distasteful and difficult to dismiss."
 
 newmonster "Wotan"
 spr1 "Sprites/Wotan1.tga"
@@ -9773,7 +9749,7 @@ aoe                  0 # Area: single target.
 an                     # Armor negating.
 sound                1 # spear.smp (Spear)
 
-newmonster "Dragon Slayer"
+newmonster "Dragon Runner"
 copystats "Painted Crystal Amazon"
 clearweapons 
 spr1 "Sprites/Dragonslayer1.tga"
@@ -10913,7 +10889,7 @@ setvar 21 1
 setvar 10 0
 endevent
 
-playerevent # Dragon Slayer 
+playerevent # Dragon Runner
 +varequal 10 1
 +varequal 22 0  
 +chance 10
@@ -10921,8 +10897,8 @@ playerevent # Dragon Slayer
 +class -2 "Barbarian" 
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
 +plane 0 																#only on Elysium
-newunits -2 "c*Dragon Slayer & 14*Wolf Runner"
-message -2 "Whispers spread through the longhall as a hard-eyed warrior arrives, bearing a scorched spear and clad in the hide of a slain wyrm. He seeks the company of the Barbarian King, for ordinary prey no longer holds his interest."
+newunits -2 "c*Dragon Runner & 14*Wolf Runner"
+message -2 "Whispers spread through the longhall as a hard-eyed hunter arrives, bearing a scorched spear and clad in the hide of a slain wyrm. He seeks the company of the Barbarian King, for ordinary prey no longer holds his interest."
 setvar 22 1 
 -hasunit -2 "Barbarian King"
 -hasunit -2 "Spirit-touched Barbarian King"
