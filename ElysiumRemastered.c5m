@@ -25374,40 +25374,83 @@ selectmonster "Master Thief"
 affres 90
 hp 9
 
-# Guild apprentice variants
+# Guild apprentice variants rebuilt to avoid commander perks
 
 newmonster "Apothecary Apprentice"
-copystats "Apothecary"
-clearweapons
-spellweapon               69   1 # Apothecary at level 1..
-meleeweapon                0   1 # Dagger: d3 Pierce damage.
+copyspr "Apothecary"
+armor                        0
+hp                           5
+str                          4
+mor                          6
+mr                           7
+rank                        -1
+spellweapon                 69   1 # Apothecary at level 1.
+meleeweapon                  0   1 # Dagger: d3 Pierce damage.
+human
+allitemslots
+noleader
 descr "Apothecary apprentices are only beginning their journey and have not yet earned the title of apothecary. They are so busy studying remedies and poisons that they lack the time or confidence to lead armies or perform complex rituals."
 
 newmonster "Guild Alchemist Apprentice"
-copystats "Guild Alchemist"
-clearweapons
-spellweapon               55   2 # Alchemy at level 1.
-meleeweapon                0   1 # Dagger: d3 Pierce damage.
+copyspr "Guild Alchemist"
+armor                        0
+hp                           5
+str                          4
+mor                          6
+mr                           7
+rank                        -1
+spellweapon                 55   1 # Alchemy at level 1.
+meleeweapon                  0   1 # Dagger: d3 Pierce damage.
+human
+allitemslots
+noleader
 descr "A guild alchemist apprentice is just starting out, still buried in study and basic experimentation. They have not yet earned full guild standing and are too busy with their lessons to lead armies or handle complex rituals."
 
 newmonster "Alchemist Magus Initiate"
-copystats "Alchemist Magus"
-clearweapons
-spellweapon               55   1 # Alchemy at level 1.
-spellweapon               51   1 # High Arcana at level 1.
-meleeweapon                0   1 # Dagger: d3 Pierce damage.
+copyspr "Alchemist Magus"
+armor                        0
+hp                           5
+str                          4
+mor                          6
+mr                           7
+rank                        -1
+spellweapon                 55   1 # Alchemy at level 1.
+spellweapon                 51   1 # High Arcana at level 1.
+meleeweapon                  0   1 # Dagger: d3 Pierce damage.
+human
+allitemslots
+noleader
 descr "Not yet recognized as a true magus, the initiate cannot practice rituals or act independently. He travels with a guildmaster to prove himself to the academy and earn his place among the magi."
 
 
 newmonster "Sage Apprentice"
-copystats "Guild Mage"
-clearweapons
-spellweapon               44   1 # Sage Magic at level 1.
-meleeweapon                0   1 # Dagger: d3 Pierce damage.
+copyspr "Guild Mage"
+armor                        0
+hp                           5
+str                          4
+mor                          6
+mr                           7
+rank                        -1
+spellweapon                 44   1 # Sage Magic at level 1.
+meleeweapon                  0   1 # Dagger: d3 Pierce damage.
+human
+allitemslots
+noleader
 descr "Sage apprentices have only just begun their studies and are not yet trusted with grand lectures or rites. They travel with a guildmaster to learn the fundamentals of lore and the workings of libraries."
 
 newmonster "Sage Adept"
-copystats "Sage Apprentice"
+copyspr "Guild Mage"
+armor                        0
+hp                           5
+str                          4
+mor                          6
+mr                           7
+rank                        -1
+spellweapon                 44   1 # Sage Magic at level 1.
+meleeweapon                  0   1 # Dagger: d3 Pierce damage.
+human
+allitemslots
+noleader
 startitem "Adept's Spell Scroll"
 descr "A sage apprentice who has been entrusted with an adept's spell scroll. They still lack full guild standing, but the scroll grants them a glimpse of the power their studies promise."
 
