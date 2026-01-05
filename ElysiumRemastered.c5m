@@ -9262,7 +9262,7 @@ descr "Each of the larger village seems to be protected by a unique statue or de
 
 newmonster "Warrior Idol"			#Warrior spawn rate increased from 1/5 turns to 1/3 turns 
 copystats "Warrior Totem"
-spawnmon 33
+spawnmon 50
 spawnoffs 1
 descr "Each of the larger village seems to be protected by a unique statue or decoration carved from a single log of wood.  Quite often they have been standing in the village for a long time and are rotten from the inside, being attacked by mice and woodworms.  The easiest way to subdue a Barbarian village is to smash the totem, as they call it, with something heavy.  Beware of the ones depicting the heads of four different warriors as they will incite the remaining villagers to fight you."
 
@@ -10299,7 +10299,7 @@ free
 apcost 2
 #terr -64 # farms and hamlets
 terr -41 # Hamlets, Tent Villages or Villages. 
-cost 0 -13
+cost 0 -14
 ornext 33
 	reducetown
 soundfx               57 
@@ -10344,7 +10344,7 @@ free
 apcost 1
 #terr -64 # farms and hamlets
 terr -41 # Hamlets, Tent Villages or Villages. 
-cost 0 -13
+cost 0 -14
 ornext 33
 	reducetown
 soundfx               57 
@@ -10587,7 +10587,7 @@ endevent
 
 playerevent # #Spawn Leader. 
 +class -2 "Barbarian" 
-+chance 20
++chance 25
 -hasunit "Barbarian Leader"
 -hasunit -2 "Barbarian Warlord"		 
 -hasunit -2 "Barbarian King"		
@@ -11021,11 +11021,13 @@ classabdescr "Barbarian troops are cheap and strong.^Barbarian commanders can ra
 classcitterr 834
 
 clearstartunits
-addstartunits          "Barbarian Warrior"        	20
-addstartunits          "Barbarian Archer"          	5
+addstartunits          "Barbarian Warrior"        	18
+addstartunits          "Barbarian Archer"          	7
 addstartunits          "Warrior Idol"              		1
 addstartcom            	 "Mounted Chief"
 addstartunits          "Barbarian Cavalry"         	5
+addstartunits          "Barbarian Lancer"         	2
+
 
 clearrec
 #                                               % No gold die iron	
@@ -11036,7 +11038,7 @@ addunitrec  "Barbarian Archer"                		100 7 50 0 0
 addunitrec  "Barbarian Swordsman"            100 7 50 0 10
 addunitrec  "Barbarian Cavalry"               		100 4 50 0 0
 addunitrec  "Barbarian Lancer"                		100 4 50 0 10
-addunitrec "Horned Warrior" 							100 3 40 0 15
+addunitrec "Horned Warrior" 							100 3 40 0 10
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
@@ -11066,8 +11068,8 @@ addunitrec "Harii" 												100 4 50 0 5
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addunitrec "Barbarian Werebear" 				10 1 25 0 0 
-addunitrec  "Barbarian Werebear"              	 4 1 25 0 0 
+addunitrec "Barbarian Werebear" 				12 1 25 0 0 
+addunitrec  "Barbarian Werebear"              3 1 25 0 0 
 	recterr 834
 	templerec # Should be +3% per temple owned, to a max of +15% 
 addunitrec  "Battering Ram"							100 2 25 0 25
@@ -11093,8 +11095,8 @@ addunitrec "Wyrdwood Ram"							7 1 120 0 50
 addcomrec   "Spirit Guide"                      				4 75 20 0 #Same base chance as vanilla, but less scaling by temple ownage. 
 addcomrec   "Spirit Guide"                      				4 75 20 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
-addcomrec   "Mounted Chief"                    			6 25 10 0 
-addcomrec   "Barbarian Thane"							20 20 10 0 
+addcomrec   "Mounted Chief"                    			8 25 10 0 
+addcomrec   "Barbarian Thane"							25 15 15 0 
 addcomrec   "Harii Steersman"							6 35 10 0 
 	recterr -93 #ports 
 	reclimiter "+Barbarian Warlord"
@@ -11145,7 +11147,7 @@ addcomrec   "Hunt Mother"      								6 40 20 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 addmercrec  "Mounted Scout"                   			15 1 15 10 0
-addmercrec 	" Barbarian Warrior" 			 			25 7 20 20 0
+addmercrec 	" Barbarian Warrior" 			 			25 7 15 25 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
@@ -11155,7 +11157,7 @@ addmercrec 	" Barbarian Warrior" 			 			25 7 20 20 0
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addmercrec 	" Barbarian Archer" 			 				25 7 20 20 0
+addmercrec 	" Barbarian Archer" 			 				25 7 15 25 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
@@ -11165,7 +11167,7 @@ addmercrec 	" Barbarian Archer" 			 				25 7 20 20 0
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addmercrec " Horned Warrior" 									20 3 30 10 0
+addmercrec " Horned Warrior" 									20 3 25 15 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
@@ -11175,7 +11177,7 @@ addmercrec " Horned Warrior" 									20 3 30 10 0
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addmercrec 	" Wolf Runner" 			 						20 3 30 10 0
+addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
