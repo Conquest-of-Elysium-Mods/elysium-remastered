@@ -10568,8 +10568,8 @@ endevent
 
 playerevent # #Spawn Leader. 
 +class -2 "Barbarian" 
-+chance 25
--hasunit "Barbarian Leader"
++chance 20
+-hasunit -2 "Barbarian Leader"
 -hasunit -2 "Barbarian Warlord"		 
 -hasunit -2 "Barbarian King"		
 -hasunit -2 "Spirit-touched Barbarian King"
@@ -10586,8 +10586,9 @@ message -2 "An ambitious new leader has begun gathering his warriors."
 endevent
 
 playerevent # #Spawn Champion. 
++humanplayer
 +varequal 9 1
-+chance 7 
++chance 7
 +class -2 "Barbarian" 
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
 +plane 0 																#only on Elysium
@@ -10606,6 +10607,7 @@ setvar 9 0
 endevent
 
 playerevent # Spawn Black raider captain 
++humanplayer
 +varequal 10 1
 +varequal 11 0  
 +chance 10
@@ -10628,6 +10630,7 @@ setvar 10 0
 endevent 
 
 playerevent # #Spawn Son of the Northern Wind, pick various terrains 
++humanplayer
 +varequal 10 1
 +varequal 12 0  
 +chance 10
@@ -10649,6 +10652,7 @@ setvar 10 0
 endevent 
 
 playerevent # Wotan of Nine Tales 
++humanplayer
 +varequal 10 1
 +varequal 13 0  
 +chance 10
@@ -10671,6 +10675,7 @@ setvar 10 0
 endevent 
 
 playerevent # Crone 
++humanplayer
 +varequal 10 1
 +varequal 14 0  
 +chance 10
@@ -10693,6 +10698,7 @@ setvar 10 0
 endevent 
 
 playerevent # Beast Speaker  
++humanplayer
 +varequal 10 1
 +varequal 15 0  
 +chance 10
@@ -10714,6 +10720,7 @@ setvar 10 0
 endevent 
 
 playerevent # The Greedy 
++humanplayer
 +varequal 10 1
 +varequal 16 0  
 +chance 10
@@ -10736,6 +10743,7 @@ setvar 10 0
 endevent
 
 playerevent # the maker of heroes 
++humanplayer
 +varequal 10 1
 +varequal 17 0  
 +chance 10
@@ -10757,6 +10765,7 @@ setvar 10 0
 endevent
 
 playerevent # The Reaver 
++humanplayer
 +varequal 10 1
 +varequal 18 0  
 +chance 10
@@ -10779,6 +10788,7 @@ setvar 10 0
 endevent
 
 playerevent # The Ringless 
++humanplayer
 +varequal 10 1
 +varequal 19 0  
 +chance 10
@@ -10801,6 +10811,7 @@ setvar 10 0
 endevent
 
 playerevent # The Quick 
++humanplayer
 +varequal 10 1
 +varequal 20 0  
 +chance 10
@@ -10823,6 +10834,7 @@ setvar 10 0
 endevent
 
 playerevent # King of Crows 
++humanplayer
 +varequal 10 1
 +varequal 21 0  
 +chance 10
@@ -10845,6 +10857,7 @@ setvar 10 0
 endevent
 
 playerevent # Dragon Runner
++humanplayer
 +varequal 10 1
 +varequal 22 0  
 +chance 10
@@ -10867,8 +10880,11 @@ setvar 10 0
 endevent
 
 		# -- convert kings to spirit touched versions 
+		# - This could also be structured as a double ritual with king promotion-> gainrit tattoo effect, instead of being event driven. 
+
 
 playerevent 
++humanplayer
 +varequal 23 1
 +class -2 "Barbarian"
 +hasunit -2 "Barbarian King"  #ordinary 
@@ -10877,6 +10893,7 @@ promoteunits -2 1 "Barbarian King" "Spirit-touched Barbarian King" #ordinary -> 
 endevent
 
 playerevent 
++humanplayer
 +varequal 23 1
 +class -2 "Barbarian"
 +hasunit -2 "Spirit-touched Barbarian King "  #ancestor 
@@ -10885,6 +10902,7 @@ promoteunits -2 1 "Spirit-touched Barbarian King " " Spirit-bound Barbarian King
 endevent 
 
 playerevent 
++humanplayer
 +varequal 23 1
 +class -2 "Barbarian"
 +hasunit -2 " Spirit-touched Barbarian King"  #night 
@@ -10893,6 +10911,7 @@ promoteunits -2 1 " Spirit-touched Barbarian King" "Spirit-bound Barbarian King"
 endevent 
 
 playerevent 
++humanplayer
 +varequal 23 1
 +class -2 "Barbarian"
 +hasunit -2 "Spirit-bound Barbarian King "  #night + ancestor 
@@ -10901,6 +10920,7 @@ promoteunits -2 1 "Spirit-bound Barbarian King " "Spirit-chosen Barbarian King" 
 endevent 
 
 playerevent 
++humanplayer
 +varequal 24 1
 +class -2 "Barbarian"
 +hasunit -2 "Barbarian King"  #night 
@@ -10909,6 +10929,7 @@ promoteunits -2 1 "Barbarian King" " Spirit-touched Barbarian King" #ordinary ->
 endevent
 
 playerevent 
++humanplayer
 +varequal 24 1
 +class -2 "Barbarian"
 +hasunit -2 "Spirit-touched Barbarian King"  #storm 
@@ -10917,6 +10938,7 @@ promoteunits -2 1 "Spirit-touched Barbarian King" "Spirit-bound Barbarian King" 
 endevent 
 
 playerevent 
++humanplayer
 +varequal 24 1
 +class -2 "Barbarian"
 +hasunit -2 "Spirit-touched Barbarian King "  #ancestor
@@ -10925,6 +10947,7 @@ promoteunits -2 1 "Spirit-touched Barbarian King " "Spirit-bound Barbarian King 
 endevent 
 
 playerevent 
++humanplayer
 +varequal 24 1
 +class -2 "Barbarian"
 +hasunit -2 " Spirit-bound Barbarian King"  #night + ancestor 
@@ -10933,6 +10956,7 @@ promoteunits -2 1 " Spirit-bound Barbarian King" "Spirit-chosen Barbarian King" 
 endevent  
 
 playerevent 
++humanplayer
 +varequal 25 1
 +class -2 "Barbarian"
 +hasunit -2 "Barbarian King"  #ordinary
@@ -10941,6 +10965,7 @@ promoteunits -2 1 "Barbarian King" "Spirit-touched Barbarian King " #ordinary ->
 endevent
 
 playerevent 
++humanplayer
 +varequal 25 1
 +class -2 "Barbarian"
 +hasunit -2 "Spirit-touched Barbarian King"  #storm 
@@ -10949,6 +10974,7 @@ promoteunits -2 1 "Spirit-touched Barbarian King" " Spirit-bound Barbarian King"
 endevent 
 
 playerevent 
++humanplayer
 +varequal 25 1
 +class -2 "Barbarian"
 +hasunit -2 " Spirit-touched Barbarian King"  #night 
@@ -10957,6 +10983,7 @@ promoteunits -2 1 " Spirit-touched Barbarian King" "Spirit-bound Barbarian King 
 endevent 
 
 playerevent 
++humanplayer
 +varequal 25 1
 +class -2 "Barbarian"
 +hasunit -2 "Spirit-bound Barbarian King"  #storm + night 
@@ -10994,33 +11021,12 @@ addunitrec  "Barbarian Lancer"                		100 4 50 0 10
 addunitrec "Horned Warrior" 							100 3 40 0 10
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King"
-	reclimiter "+ Spirit-touched Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King "
-	reclimiter "+Spirit-bound Barbarian King"
-	reclimiter "+ Spirit-bound Barbarian King"
-	reclimiter "+Spirit-bound Barbarian King "
-	reclimiter "+Spirit-chosen Barbarian King"
 addunitrec 	"Wolf Runner" 								100 3 45 0 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King"
-	reclimiter "+ Spirit-touched Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King "
-	reclimiter "+Spirit-bound Barbarian King"
-	reclimiter "+ Spirit-bound Barbarian King"
-	reclimiter "+Spirit-bound Barbarian King "
-	reclimiter "+Spirit-chosen Barbarian King"
 addunitrec "Harii" 												100 4 40 0 5
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King"
-	reclimiter "+ Spirit-touched Barbarian King"
-	reclimiter "+Spirit-touched Barbarian King "
-	reclimiter "+Spirit-bound Barbarian King"
-	reclimiter "+ Spirit-bound Barbarian King"
-	reclimiter "+Spirit-bound Barbarian King "
-	reclimiter "+Spirit-chosen Barbarian King"
 addunitrec "Barbarian Werebear" 				12 1 25 0 0 
 addunitrec  "Barbarian Werebear"              3 1 25 0 0 
 	recterr 834
@@ -11054,6 +11060,68 @@ addcomrec   "Harii Chief"							6 35 10 0
 	recterr -93 #ports 
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
+addmercrec	"Nightship"									-1 1 20 20 0
+	recterr -93 #ports 	 
+addmercrec   "Dawn Maiden"                   			5 1 35 15 0 
+	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
+addcomrec   "Daughter of the Sun"      				2 80 20 0 # once per offer; extra.
+	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addmercrec   "War Chanter"                   				6 1 30 10 0 
+	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
+addcomrec   "Wotan"      										3 60 20 0 
+	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addcomrec   "Hunt Mother"      								6 40 20 0 
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addmercrec  "Mounted Scout"                   			15 1 15 10 0
+addmercrec 	" Barbarian Warrior" 			 			25 7 15 25 0
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addmercrec 	" Barbarian Archer" 			 				25 7 15 25 0
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addmercrec " Horned Warrior" 									20 3 25 15 0
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+addmercrec " Harii" 									 					15 4 25 15 0
+	reclimiter "+Barbarian Warlord"
+	reclimiter "+Barbarian King"
+
+# Variant King recruitment continued, since reclimiter caps at 8 entries
+
+addunitrec "Horned Warrior" 							100 3 40 0 10
+	reclimiter "+Spirit-touched Barbarian King"
+	reclimiter "+ Spirit-touched Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King "
+	reclimiter "+Spirit-bound Barbarian King"
+	reclimiter "+ Spirit-bound Barbarian King"
+	reclimiter "+Spirit-bound Barbarian King "
+	reclimiter "+Spirit-chosen Barbarian King"
+addunitrec 	"Wolf Runner" 								100 3 45 0 0
+	reclimiter "+Spirit-touched Barbarian King"
+	reclimiter "+ Spirit-touched Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King "
+	reclimiter "+Spirit-bound Barbarian King"
+	reclimiter "+ Spirit-bound Barbarian King"
+	reclimiter "+Spirit-bound Barbarian King "
+	reclimiter "+Spirit-chosen Barbarian King"
+addunitrec "Harii" 												100 4 40 0 5
+	reclimiter "+Spirit-touched Barbarian King"
+	reclimiter "+ Spirit-touched Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King "
+	reclimiter "+Spirit-bound Barbarian King"
+	reclimiter "+ Spirit-bound Barbarian King"
+	reclimiter "+Spirit-bound Barbarian King "
+	reclimiter "+Spirit-chosen Barbarian King"
+addcomrec   "Harii Chief"							6 35 10 0 
+	recterr -93 #ports 
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11063,12 +11131,8 @@ addcomrec   "Harii Chief"							6 35 10 0
 	reclimiter "+Spirit-chosen Barbarian King"
 addmercrec	"Nightship"									-1 1 20 20 0
 	recterr -93 #ports 	 
-addmercrec   "Dawn Maiden"                   			5 1 35 15 0 
-	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Daughter of the Sun"      				2 80 20 0 # once per offer; extra.
 	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11076,12 +11140,8 @@ addcomrec   "Daughter of the Sun"      				2 80 20 0 # once per offer; extra.
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addmercrec   "War Chanter"                   				6 1 30 10 0 
-	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Wotan"      										3 60 20 0 
 	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11090,8 +11150,6 @@ addcomrec   "Wotan"      										3 60 20 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 addcomrec   "Hunt Mother"      								6 40 20 0 
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11099,10 +11157,7 @@ addcomrec   "Hunt Mother"      								6 40 20 0
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addmercrec  "Mounted Scout"                   			15 1 15 10 0
 addmercrec 	" Barbarian Warrior" 			 			25 7 15 25 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11111,8 +11166,6 @@ addmercrec 	" Barbarian Warrior" 			 			25 7 15 25 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 addmercrec 	" Barbarian Archer" 			 				25 7 15 25 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11121,8 +11174,6 @@ addmercrec 	" Barbarian Archer" 			 				25 7 15 25 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 addmercrec " Horned Warrior" 									20 3 25 15 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11131,8 +11182,6 @@ addmercrec " Horned Warrior" 									20 3 25 15 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11141,8 +11190,6 @@ addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 addmercrec " Harii" 									 					15 4 25 15 0
-	reclimiter "+Barbarian Warlord"
-	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -30026,40 +30073,13 @@ addcomrec   "Barbarian Warlord"                   100 150 0 0 	# Will recruit Wa
 	reclimiter "+Late AI"
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King" 
-	reclimiter "-Barbarian King"
-	reclimiter "-Spirit-touched Barbarian King"
-	reclimiter "- Spirit-touched Barbarian King"
-	reclimiter "-Spirit-touched Barbarian King "
-	reclimiter "-Spirit-bound Barbarian King"
-	reclimiter "- Spirit-bound Barbarian King"
-	reclimiter "-Spirit-bound Barbarian King "
-	reclimiter "-Spirit-chosen Barbarian King"
 addcomrec   "Barbarian King"                   		100 250 0 0 	# Will recruit King directly
 	recterr 834
 	reclimiter "+Late AI"
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King" 
-	reclimiter "-Barbarian King"
-	reclimiter "-Spirit-touched Barbarian King"
-	reclimiter "- Spirit-touched Barbarian King"
-	reclimiter "-Spirit-touched Barbarian King "
-	reclimiter "-Spirit-bound Barbarian King"
-	reclimiter "- Spirit-bound Barbarian King"
-	reclimiter "-Spirit-bound Barbarian King "
-	reclimiter "-Spirit-chosen Barbarian King"
-addcomrec   "Barbarian Champion"                   		10 1 0 0 	# Will recruit Champions directly, to avoid event triggering for players  
-	recterr 834
+addcomrec   "Barbarian Champion"                   		10 1 0 0 	# Will recruit Champions directly, events trigger for players only   
 	reclimiter "+Late AI"
-	reclimiter "-Barbarian Warlord"
-	reclimiter "-Barbarian King" 
-	reclimiter "-Barbarian King"
-	reclimiter "-Spirit-touched Barbarian King"
-	reclimiter "- Spirit-touched Barbarian King"
-	reclimiter "-Spirit-touched Barbarian King "
-	reclimiter "-Spirit-bound Barbarian King"
-	reclimiter "- Spirit-bound Barbarian King"
-	reclimiter "-Spirit-bound Barbarian King "
-	reclimiter "-Spirit-chosen Barbarian King"
 addmercrec  " Barbarian Werebear"           		100 1 25 0 0 	#Irminsul late game garrison
 	recterr 834
 	reclimiter "+Late AI"
