@@ -341,6 +341,303 @@ poisoncloud                                  0
 	selectweapon 493 #Crush
 	onlyenemy
 
+
+	# ------------- Income bonus monsters -------------------------# 
+	
+	# The class- and monster-specific goldbonus commands get mixed up when the game reads a mod file. A bug in other words. A pragmatic fix is to define all relevant monsters before any class editing. 
+
+			# -------- Barbarian Warlord & King -------
+
+newmonster "Barbarian Warlord"
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianwarlord1.tga"
+spr2 "Sprites/Barbarianwarlord2.tga"
+armor                          1 
+hp                            20 
+str                            6 
+mor                            7 
+mr                             5 
+rank                           1 # Front rank.
+rearpos
+meleeweapon                5 3 # Axe: d12 Slash damage.
+meleeweapon                5 3 # Axe: d12 Slash damage.
+human                            
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+goldbonus                     15 # 10% bonus to all gold income for the player that owns this unit while it exists.
+ironbonus                     15 # 10% bonus to all iron income for the player that owns this unit while it exists.
+ainofollower
+affres 85
+descr "A warlord is a chieftain who has risen through conquest, for he commands not only his own clan but also those whom fear or the promise of spoils has drawn beneath his banner. Many first gain renown by seizing some neglected imperial holding, and when the plunder is divided the neighboring clans sometimes choose to follow, though such loyalty rarely holds for long. Tribute is pledged more readily than it is paid, and each alliance must be maintained through gifts, threats or the memory of what befell the last chief who withheld obedience."
+
+newweapon "Gift of the Storms" #damage 32 (shockres) + 2048 (airshield) + 8589934592 (wind guide)
+trgrank             -9 # Target: friendly unit (any friendly unit in range).
+range                0
+init                 4
+dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                998 # Area: all friendly units.
+onlyfriend             # Only affects friendly units.
+flysound            29 # godlat.smp (Blessing)
+
+newweapon "Shroud of the Silent Ones" #damage 16 (poisonres) + 64 (magic res) 
+trgrank             -9 # Target: friendly unit (any friendly unit in range).
+range                0
+init                 4
+dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
+dmg                 0 # Base damage (added to dmg value where this weapon is used).
+aoe                998 # Area: all friendly units.
+onlyfriend             # Only affects friendly units.
+flysound            29 # godlat.smp (Blessing)
+
+newweapon "Strength of the Fallen" #damage 512 (strength) + 1073741824(quickness) + 17179869184 (lucky strike) 
+trgrank             -9 # Target: friendly unit (any friendly unit in range).
+range                0
+init                 4
+dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                998 # Area: all friendly units.
+onlyfriend             # Only affects friendly units.
+flysound            29 # godlat.smp (Blessing)
+
+newmonster "Barbarian King"
+copystats "Painted Crystal Amazon"
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+clearweapons
+armor                          1 
+hp                            24 
+str                            6 
+mor                            9 
+mr                             7 
+rank                           1 # Front rank.
+rearpos
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+human                            
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster "Spirit-touched Barbarian King" #  							storm blessed
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          1 # Armor.
+hp                            24 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos
+prebatweapon   8589934592 "Gift of the Storms"
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+airshield 50
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster " Spirit-touched Barbarian King" # Night blessed 							
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          1 # Armor.
+hp                            24 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             8 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos
+prebatweapon 64 "Shroud of the Silent Ones"
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+fastheal 
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster "Spirit-touched Barbarian King " #Ancestor Blessed 						
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          2 # Armor.
+hp                            24 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos
+prebatweapon  			 512  "Strength of the Fallen"
+meleeweapon                7 907 # Magic Axe: d15 Slash damage.
+meleeweapon                7 907 # Magic Axe: d15 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster "Spirit-bound Barbarian King" #Storm and Night Blessed 			 
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          1 # Armor.
+hp                            24 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             8 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos
+prebatweapon 64 "Shroud of the Silent Ones"
+prebatweapon   8589934592 "Gift of the Storms"
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+meleeweapon                5 907 # Magic Axe: d13 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+fastheal 
+airshield 50 
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster " Spirit-bound Barbarian King" #Storm and Ancestor Blessed 	
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          2 # Armor.
+hp                            24 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos
+prebatweapon    512 "Strength of the Fallen"
+prebatweapon   8589934592 "Gift of the Storms"
+meleeweapon                7 907 # Magic Axe: d15 Slash damage.
+meleeweapon                7 907 # Magic Axe: d15 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+airshield 50 
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster "Spirit-bound Barbarian King " #Night and Ancestor Blessed 6
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          2 # Armor.
+hp                            24 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             8 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos
+prebatweapon   512 "Strength of the Fallen"
+prebatweapon 64 "Shroud of the Silent Ones"
+meleeweapon                7 907 # Magic Axe: d15 Slash damage.
+meleeweapon                7 907 # Magic Axe: d15 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+fastheal 
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+newmonster "Spirit-chosen Barbarian King" #All Blessings 									7	
+copystats "Painted Crystal Amazon"
+clearweapons 	
+spr1 "Sprites/Barbarianking1.tga"
+spr2 "Sprites/Barbarianking2.tga"
+armor                          		2 # Armor.
+hp                            			24 # Hit Points.
+str                            			6 # Strength.
+mor                            		9 # Morale.
+mr                             			8 # Magic Resistance.
+rank                           		1 # Front rank.
+rearpos
+prebatweapon  			 512 "Strength of the Fallen"
+prebatweapon 				64 "Shroud of the Silent Ones"
+prebatweapon   			8589934592 "Gift of the Storms"
+meleeweapon                	7 907 # Magic Axe: d15 Slash damage.
+meleeweapon                	7 907 # Magic Axe: d15 Slash damage.
+human                            	# Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                3 # +3 Morale for allied units within two squares of this unit.
+ainofollower
+fastheal 
+airshield 50 
+goldbonus 25
+ironbonus 25
+affres 85
+descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+
+	# ----- Senator Gold bonus monsters ----- 
+	
+	selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back. 
+power 45 2 
+hadesres 100
+goldbonus                     55 	# 55% bonus to all gold income for the player that owns this unit while it exists. 
+tradebonus                   55  # 55% bonus to trade 
+gatherlifeforce
+	
+selectmonster "God Emperor of the Underworld"
+immortal
+reformloc -2
+hadesres 1
+allitemslots
+unaging
+affres 75
+diseaseres
+goldbonus                     60 	# 60% bonus to all gold income for the player that owns this unit while it exists. 
+tradebonus                   60  # 60% bonus to trade 
+planeshift 1
+immortalap 12
+gatherlifeforce
+lifeforce 10
+
 ################################ Baron #####################################
 
 
@@ -604,8 +901,6 @@ allitemslots
 affres 100
 nametype 43 #Gaelic
 power 6 1 #baron level powers
-goldbonus                     10 # 10% bonus to all gold income for the player that owns this unit while it exists.
-ironbonus                     10 # 10% bonus to all iron income for the player that owns this unit while it exists.
 aipowcom3 6
 descr "It is easy to assume the King is the sole ruler of the kingdom. But as any married man knows, even maintaining authority in the household can be a challenge. The royal marriage is no exception. Though the King holds the formal title, the Queen may well be the true power behind the throne. Our Queen is said to be an enchantress of great power, and commands immense respect among the commoners. Since her arrival, the forests have grown wilder, and sightings of unicorns have become strangely frequent."
 
@@ -8791,7 +9086,6 @@ str                            5 # Strength.
 mor                            6 # Morale.
 mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
-rearpos
 meleeweapon                2   "Broadsword" # d8 Slash damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 largeshield                      # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
@@ -8960,7 +9254,7 @@ sound                1 # spear.smp (Spear)
 newweapon     "Fire Pot"                                                      # 885
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                4
-init                 2
+init                 3
 dmgtype           4 # Fire.
 dmg                  	3 # Base damage (added to dmg value where this weapon is used).
 aoe                  	1 # Area: burst 1.
@@ -8975,24 +9269,42 @@ look 						165
 flysound            	15 # sling.sw (Sling)
 sound                	68 # small fire
 
-newmonster "Harii"
-spr1 "Sprites/Harii_sword1.tga"
-spr2 "Sprites/Harii_sword2.tga"
-armor                          0 # Armor.
-hp                             8 # Hit Points.
-str                            5 # Strength.
-mor                            4 # Morale.
-mr                             3 # Magic Resistance.
-rank                           1 # 
-rearpos 
-meleeweapon                1   "Broadsword" # d7 Slash damage.
-rangedweapon               0 "Fire Pot" #d3 fire, armor negating  
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-shield 
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-terrstealth -1123
-descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
+newweapon     "Fire Pot "                                                      # 885
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                4
+init                 3
+dmgtype           4 # Fire.
+dmg                  	3 # Base damage (added to dmg value where this weapon is used).
+aoe                  	1 # Area: burst 1.
+nostr
+lob
+arrow                  # Can be negated by air shield.
+an
+reload1
+flymode              	1 # Missile sprite, one for each strike or square hit.
+flylook              	2 
+look 						165
+flysound            	15 # sling.sw (Sling)
+sound                	68 # small fire
+
+#newmonster "Harii"
+#spr1 "Sprites/Harii_sword1.tga"
+#spr2 "Sprites/Harii_sword2.tga"
+#armor                          0 # Armor.
+#hp                             8 # Hit Points.
+#str                            5 # Strength.
+#mor                            4 # Morale.
+#mr                             3 # Magic Resistance.
+#rank                           1 # 
+#rearpos 
+#meleeweapon                1   "Broadsword" # d7 Slash damage.
+#rangedweapon               0 "Fire Pot" #d3 fire, armor negating  
+#human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+#shield 
+#allitemslots                     # Has the full set of item slots.
+#berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+#terrstealth -1123
+#descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
 newmonster "Harii"
 spr1 "Sprites/Harii_fire1.tga"
@@ -9013,35 +9325,34 @@ allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
-newmonster " Harii" # This one is for merc purposes 
-copystats "Harii" 
-growoffs -2
-growtime 1 
-descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
-
-newmonster " Harii" # This one is for merc purposes 
-copystats "Harii" 
-growoffs -2
-growtime 1 
-descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
-
-newmonster "Harii Chief"
-spr1 "Sprites/Hariichief1.tga"
-spr2 "Sprites/Hariichief2.tga"
-armor                          1 # Armor.
-hp                             11 # Hit Points.
+newmonster "  Harii"
+spr1 "Sprites/Harii_fire1.tga"
+spr2 "Sprites/Harii_fire2.tga"
+armor                          0 # Armor.
+hp                             8 # Hit Points.
 str                            5 # Strength.
-mor                            4 # Morale.
-mr                             5 # Magic Resistance.
-rank                           0 # Mid rank 
-meleeweapon                2 "Broadsword" 
-rangedweapon               0 "Fire Pot"
+mor                            5 # Morale.
+mr                             3 # Magic Resistance.
+rank                           1 # front rank. 
+frontpos 
+meleeweapon                1   "Broadsword" # d7 Slash damage.  	
+rangedweapon               0    "Fire Pot "	#d3 fire, armor negating         
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-farsightsea 1 
+shield
+slow
+battlefast 
 terrstealth -1123
-descr "The Harii Chiefs command the Nightships. They are expected to know every inlet and shoal along the northern coasts and to navigate through waters that most pilots refuse even in daylight. Several reports tell of their vessels slipping between rocks where only seals are thought able to pass, guided by nothing more than the feel of the surf upon the prow."
+allitemslots                     # Has the full set of item slots.
+growtime 1
+growoffs -1
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
+
+newmonster " Harii" # This one is for merc purposes 
+copystats "Harii" 
+growoffs -2
+growtime 1 
+descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
 newmonster "Longship"
 spr1 "Sprites/Longship.tga"
@@ -9456,7 +9767,53 @@ affres 85
 noleader 
 descr "The tribes make little distinction between men or women of noble birth and those who have risen by sheer ability, and a warrior of great prowess is granted high honor. Such individuals are marked with spirals and knots of ink so that, as they claim, the watching spirits may recognize them in the press of battle. When a warrior gains new renown the patterns are extended by the Spirit Guides. Those of remarkable fortune or ferocity are remembered in feasts where the Wotan recite their deeds, and some names are spoken with such reverence that it is unclear whether the men lived or were shaped from older tales."
 
+selectmonster "Barbarian Leader"
+name "Disabled Barbarian Leader"
+
+newmonster "Barbarian Leader"
+copystats "Painted Crystal Amazon"
+clearweapons 
+copyspr "Disabled Barbarian Leader"
+armor                          0 # Armor.
+hp                            14 # Hit Points.
+str                            6 # Strength.
+mor                            6 # Morale.
+mr                             3 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3 142 # Great Maul: d11 Blunt damage.
+meleeweapon                3 142 # Great Maul: d11 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                2 # +2 Morale for allied units within two squares of this unit.
+descr "The Barbarians originate in previously unknown areas where dwell kings and tribes, whose existence has only been recently revealed to us by war.  Their original countries are still unknown to most civilized people but descriptions by adventurous explorers of Barbaricum, with its uninviting lands and unpleasant climate, its dreary aspect and its social gloom do not invite travels into those areas.  The many tribes claim to all originate from one of the many sons their deities are supposed to have birthed.  Still to this day some of these tribes quarrel over the birthright of these ancient gods. Notwithstanding considerable local diversities, their land as a rule consists of tangled forests and dismal swamps, the rainfall being greater on the side towards the larger mountains.  They choose their kings for their noble birth and their generals for their prowess.  The king's power is neither unlimited nor arbitrary, because as in most of the simpler nations, it is tangled in tradition."
+
+selectmonster "Mounted Chief"
+name "Disabled Mounted Chief"
+
+newmonster "Mounted Chief"
+copystats "Painted Crystal Amazon"
+clearweapons 
+copyspr "Disabled Mounted Chief"
+armor                          1 # Armor.
+hp                            11 # Hit Points.
+str                            5 # Strength.
+mor                            6 # Morale.
+mr                             4 # Magic Resistance.
+rank                           0 # Mid rank.
+meleeweaponspec           12  13 # Lance Charge: d12 Pierce damage.
+meleeweapon                1   4 # Spear: d5 Pierce damage.
+fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+allitemslots                     # Has the full set of item slots.
+nobootslots                      # Has no boot slots.
+size1x1                          # Only takes up a single square on the battlefield (overrides sprite size).
+descr "The generals owe their authority less to their military rank than to their example and the admiration they engender by it, if they are dashing, if they are conspicuous, if they charge ahead of the line.  This has often led to foolish onslaughts in which several groups charge ahead against the enemy at the same time.  A general who does not panic in the face of such an onslaught can use that very trait against them, and instead provoke the differing enemy units to fight one another for the chance to reach the enemy first.  As each chief only leads troops of his own kin, they are loyal to the chief, but have nothing against slaughtering allied troops, which is why old battlefields of Barbarian wars are the joy of any scavenging Necromancer."
+
 newmonster "Barbarian Thane"
+copystats "Painted Crystal Amazon"
+clearweapons 
 spr1 "Sprites/Barbarianthane1.tga"
 spr2 "Sprites/Barbarianthane2.tga"
 armor                          1 # Armor.
@@ -9472,9 +9829,30 @@ shield                           # Reduces damage from most weapons by 0-1; 0-2 
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 nametype                      31 # early germanic male 
-descr "A Thane is a trusted retainer appointed by the chief to maintain order within a warband. He stands above the common warriors but below the household nobles and demonstrates this by fighting in the foremost rank. The Barbarians say a warband follows the courage of its Thane, and so he must be the first to strike and the last to yield. Outside battle he assigns watches, settles quarrels and ensures the chief's share of plunder is taken before the rest is divided. These duties seldom win affection, yet those who serve capably are sometimes granted a place at the chief's hearth, which the tribes regard as a mark of rising fortune."
+descr "A Thane is a household noble set over the warband by the chief. He stands apart from the common warriors, a distinction proven by his place in the foremost rank of battle and by the authority he bears in camp. Outside battle he adjudicates disputes and ensures the chief's share of plunder is taken before the rest is divided. These duties seldom win affection, yet those who serve capably are sometimes granted seats at the chiefs table, which the tribes regard as a mark of rising fortune."
+
+newmonster "Harii Chief"
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Hariichief1.tga"
+spr2 "Sprites/Hariichief2.tga"
+armor                          1 # Armor.
+hp                             11 # Hit Points.
+str                            5 # Strength.
+mor                            4 # Morale.
+mr                             5 # Magic Resistance.
+rank                           0 # Mid rank 
+meleeweapon                2 "Broadsword" 
+rangedweapon               0 "Fire Pot"
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+terrstealth -1123
+descr "The Harii Chiefs command the Nightships. They are expected to know every inlet and shoal along the northern coasts and to navigate through waters that most pilots refuse even in daylight. Several reports tell of their vessels slipping between rocks where only seals are thought able to pass, guided by nothing more than the feel of the surf upon the prow."
 
 newmonster "Hunt Mother"
+copystats "Painted Crystal Amazon"
+clearweapons 
 spr1 "Sprites/Huntmother1.tga"
 spr2 "Sprites/Huntmother2.tga"
 armor                          0 # Armor.
@@ -9517,6 +9895,8 @@ mastery                       -1 # A mastery effect will change this monster to 
 descr "When sickness arises in a household, the family seeks the young women they call Dawn Maidens, known by their white robes embroidered with the rising sun. They tend the common ailments with mild herbs, but they also keep jars of rarer plants whose powders, when burned or steeped, can leave a man confused or weak of limb. These they claim are meant only for foes, yet the tribes speak softly in their presence, aware that the line between remedy and affliction lies chiefly in the hand of the one who prepares it."
 
 newmonster "Daughter of the Sun"
+copystats "Painted Crystal Amazon"
+clearweapons 
 spr1 "Sprites/Daughterofthesun1.tga"
 spr2 "Sprites/Daughterofthesun2.tga"
 armor                          0 # Armor.
@@ -9533,85 +9913,6 @@ female                           # Female.
 nametype                      32 # Germanic female 
 mastery                       -1 # A mastery effect will change this monster to the type defined 1 before this one; i.e. monster #524: Witch.
 descr "From among the Dawn Maidens, a few attain such standing that they are thereafter known as Daughters of the Sun, and they are given finer robes embroidered with golden thread. They conduct the great rites of the solstices, during which large bonfires are raised and kept burning through the hours of the midnight sun, around which feasting, dancing, and the open pairing of men and women are permitted until the fires burn low. Chiefs often seek the counsel of these women before a campaign, as disputes within the camp are more readily settled when one of the Daughters speaks."
-
-newmonster "Quick" 
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Quick1.tga"
-spr2 "Sprites/Quick2.tga"
-armor                          1 # Armor.
-hp                            22 # Hit Points.
-str                            5 # Strength.
-mor                            7 # Morale.
-mr                             6 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon               3 "Shortsword " 	#higher initiative 
-meleeweapon               3 "Shortsword "
-meleeweapon                3 "Shortsword" 	# regular    
-meleeweapon                3 "Shortsword" 	# regular 
-evasion 1 
-fast 
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                2 # +2 Morale for allied units within two squares of this unit.
-affres 85
-nametype 32 
-descr "Battle reports from several districts mention a red-haired woman who moves with unusual agility. One account describes her breaking through a momentary gap during a contested withdrawal, striking down a standard bearer and carrying off the banner before the surrounding line could close. In a later report, a centurion remarked upon her manner with some bemusement. As she withdrew, she laughed openly and called out to him in rough, accented speech, complimenting his uniform and inviting him to join the winning side. The remark was delivered without interrupting her advance and appears to have been intended less as persuasion than mockery. The centurion added that several men attempted pursuit immediately afterward, against orders. She carries no sign of authority, yet young warriors frequently abandon their own bands to follow her from one conflict to the next. This attachment appears to persist despite hardship and offers no evident reward beyond proximity. Most of these followers are not recorded as surviving long, and none are credited with deeds of note."
-
-newweapon "Greataxe"
-trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
-range                1
-init                 3
-dmgtype              1 # Slash.
-dmg                  8 # Base damage (added to dmg value where this weapon is used).
-aoe                  0 # Area: single target.
-mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
-sound                8 # sword.wav (Sword)
-sweep 
-
-newmonster "Reaver"
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Reaver1.tga"
-spr2 "Sprites/Reaver2.tga"
-armor                          3 # Armor.
-hp                            31 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon                9 "Greataxe" #d17 Slash damage.
-meleeweapon                9 "Greataxe" #d17 Slash damage.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership 1
-affres 85
-nametype                       31 # early germanic male.
-descr "Over several decades, frontier records have noted the appearance of a large, white-bearded warrior leading some of the most destructive raids of a given season. Descriptions are consistent in stature and armament, most often noting a broad axe carried in both hands and heavy furs worn even in milder weather. ^An older chronicle describes a man of the same appearance left for dead after a failed assault, bearing a deep wound to the brow. Later reports from a different district mention a leader matching the description and carrying a similar scar. It cannot be determined whether these accounts concern a single warrior who has survived beyond expectation, or whether the resemblance reflects the limited variation in the appearance and habits of barbarian fighters."
-
-newmonster "Ringless" 
-copystats "Painted Crystal Amazon"
-spr1 "Sprites/Ringless1.tga"
-spr2 "Sprites/Ringless2.tga"
-clearweapons 
-#spr 
-armor                          1 # Armor.
-hp                            27 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweapon                5   2 # Broadsword: d11 Slash damage.
-meleeweapon                5   2 # Broadsword: d11 Slash damage.
-meleeweapon                5  2 # Broadsword: d11 Slash damage.
-magicshield 
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership 4
-affres 85
-nametype                       31 # early germanic male.
-descr "There is a tall warrior known among the tribes as the Ringless, identified by the scar encircling his right hand where a chieftain's band once rested. The loss of the ring is variously attributed to a domestic dispute, an inheritance quarrel, or a sentence imposed by his own kin, though all versions agree that he left his hall alive and alone. Since then he has operated independently, attaching himself to warbands only briefly and gathering around him men who have likewise been displaced or cast out. These followers display unusual discipline. During a border campaign he was employed as a hired fighter under senatorial command, where he was credited with holding a breached palisade and restoring order among auxiliary troops. He accepted pay, but refused issued weapons and armor, fighting instead with his own shield and sword, and departed when pressed to swear formal oaths, returning the remaining coin."
 
 newmonster "Crone" 
 copystats "Painted Crystal Amazon"
@@ -9722,13 +10023,13 @@ copystats "Painted Crystal Amazon"
 clearweapons 
 spr1 "Sprites/Dragonslayer1.tga"
 spr2 "Sprites/Dragonslayer2.tga"
-armor                          1 # Armor.
-hp                            22 # Hit Points.
+armor                          2 # Armor.
+hp                            25 # Hit Points.
 str                            6 # Strength.
 mor                            8 # Morale.
 mr                             7 # Magic Resistance.
 rank                           1 # Front rank.
-frontpos
+rearpos 
 meleeweapon                0 "Wyrmbane"
 meleeweapon                0 "Wyrmbane"
 rangedweapon50s      4 "Javelin"
@@ -9741,8 +10042,10 @@ swamp
 mountain
 snow 
 acutesenses 
+foreststealth
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
+shield 
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 affres 85
 nametype                      31 # Early Germanic male. 
@@ -9938,274 +10241,128 @@ secondshape                    1 # When fully healed, change form to the previou
 affres 85
 descr "Among the northern tribes lives a chieftain who openly names himself the Son of the Northern Wind. He claims no human lineage, and when questioned on his origin it is recounted that he walked into a camp following a great blizzard. No one present recognized his clan markings, but his skin bore pale birth marks in the shape of the Wind's Knot, a northern star sign associated with the turning of storms. He displays this openly and names it as proof of his claim. He is regarded as a capable warrior and is followed without dispute. Reports from several campaigns note that his warbands move readily in foul weather and appear less troubled by cold and exposure than others. When wounded, he withdraws without explanation and returns days later, continuing as before. Barbarian accounts insist that, when pressed beyond endurance, he takes the form of a great white bear, though no such transformation has been witnessed by imperial forces."
 
+newweapon "Shortsword "
+trgrank              8 # Target: rear enemy (any enemy, preferring rear-most).
+range                1
+init                 5
+dmgtype              1 # Slash.
+dmg                  5 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+
+newmonster "Quick" 
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Quick1.tga"
+spr2 "Sprites/Quick2.tga"
+armor                          1 # Armor.
+hp                            22 # Hit Points.
+str                            5 # Strength.
+mor                            7 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon               3 "Shortsword " 	#higher initiative 
+meleeweapon               3 "Shortsword "
+meleeweapon                3 "Shortsword" 	# regular    
+meleeweapon                3 "Shortsword" 	# regular 
+evasion 1 
+fast 
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership                2 # +2 Morale for allied units within two squares of this unit.
+affres 85
+startitem "Enchanted Chainmail"
+nametype 32 
+spawnmon 50
+spawnoffs 3
+descr "Battle reports from several districts mention a red-haired woman who moves with unusual agility. One account describes her breaking through a momentary gap during a contested withdrawal, striking down a standard bearer and carrying off the banner before the surrounding line could close. In a later report, a centurion remarked upon her manner with some bemusement. As she withdrew, she laughed openly and called out to him in rough, accented speech, complimenting his uniform and inviting him to join the winning side. The remark was delivered without interrupting her advance and appears to have been intended less as persuasion than mockery. The centurion added that several men attempted pursuit immediately afterward, against orders. She carries no sign of authority, yet young warriors frequently abandon their own bands to follow her from one conflict to the next. This attachment appears to persist despite hardship and offers no evident reward beyond proximity. Most of these followers are not recorded as surviving long, and none are credited with deeds of note."
+
+newweapon "Greataxe"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 3
+dmgtype              1 # Slash.
+dmg                  8 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                8 # sword.wav (Sword)
+sweep 
+
+newmonster "Reaver"
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Reaver1.tga"
+spr2 "Sprites/Reaver2.tga"
+armor                          3 # Armor.
+hp                            36 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                9 "Greataxe" #d17 Slash damage.
+meleeweapon                9 "Greataxe" #d17 Slash damage.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+localleadership 1
+affres 85
+nametype                       31 # early germanic male.
+spawnmon 40
+spawnoffs 2
+descr "Over several decades, frontier records have noted the appearance of a large, white-bearded warrior leading some of the most destructive raids of a given season. Descriptions are consistent in stature and armament, most often noting a broad axe carried in both hands and heavy furs worn even in milder weather. ^An older chronicle describes a man of the same appearance left for dead after a failed assault, bearing a deep wound to the brow. Later reports from a different district mention a leader matching the description and carrying a similar scar. It cannot be determined whether these accounts concern a single warrior who has survived beyond expectation, or whether the resemblance reflects the limited variation in the appearance and habits of barbarian fighters."
+
+newmonster "Ringless" 
+copystats "Painted Crystal Amazon"
+spr1 "Sprites/Ringless1.tga"
+spr2 "Sprites/Ringless2.tga"
+clearweapons 
+#spr 
+armor                          1 # Armor.
+hp                            27 # Hit Points.
+str                            6 # Strength.
+mor                            9 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+rearpos 
+meleeweapon                5   2 # Broadsword: d11 Slash damage.
+meleeweapon                5   2 # Broadsword: d11 Slash damage.
+meleeweapon                5  2 # Broadsword: d11 Slash damage.
+magicshield 
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+leadership 2 
+affres 85
+nametype                       31 # early germanic male.
+spawnmon 60
+descr "There is a tall warrior known among the tribes as the Ringless, identified by the scar encircling his right hand where a chieftain's band once rested. The loss of the ring is variously attributed to a domestic dispute, an inheritance quarrel, or a sentence imposed by his own kin, though all versions agree that he left his hall alive and alone. Since then he has operated independently, attaching himself to warbands only briefly and gathering around him men who have likewise been displaced or cast out. These followers display unusual discipline. During a border campaign he was employed as a hired fighter under senatorial command, where he was credited with holding a breached palisade and restoring order among auxiliary troops. He accepted pay, but refused issued weapons and armor, fighting instead with his own shield and sword, and departed when pressed to swear formal oaths, returning the remaining coin."
+
+newmonster "Follower"
+copystats "Barbarian Warrior"
+growtime 1
+growoffs 3
+
+newmonster "Follower"
+copystats "Barbarian Archer"
+growtime 1
+growoffs 3
+
+newmonster "Follower"
+copystats "Barbarian Swordsman" 
+growtime 1
+growoffs 3
+
+newmonster "Barbarian Warrior"
+copystats "Barbarian Warrior"
+
+newmonster "Barbarian Archer"
+copystats "Barbarian Archer"
+
+newmonster "Barbarian Swordsman"
+copystats "Barbarian Swordsman"
 
 		# -------- Barbarian Warlord & King -------
-
-newmonster "Barbarian Warlord"
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianwarlord1.tga"
-spr2 "Sprites/Barbarianwarlord2.tga"
-armor                          1 
-hp                            20 
-str                            6 
-mor                            7 
-mr                             5 
-rank                           1 # Front rank.
-rearpos
-meleeweapon                5 3 # Axe: d12 Slash damage.
-meleeweapon                5 3 # Axe: d12 Slash damage.
-human                            
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-goldbonus                     15 # 10% bonus to all gold income for the player that owns this unit while it exists.
-ironbonus                     15 # 10% bonus to all iron income for the player that owns this unit while it exists.
-ainofollower
-affres 85
-descr "A warlord is a chieftain who has risen through conquest, for he commands not only his own clan but also those whom fear or the promise of spoils has drawn beneath his banner. Many first gain renown by seizing some neglected imperial holding, and when the plunder is divided the neighboring clans sometimes choose to follow, though such loyalty rarely holds for long. Tribute is pledged more readily than it is paid, and each alliance must be maintained through gifts, threats or the memory of what befell the last chief who withheld obedience."
-
-newweapon "Gift of the Storms" #damage 32 (shockres) + 2048 (airshield) + 8589934592 (wind guide)
-trgrank             -9 # Target: friendly unit (any friendly unit in range).
-range                0
-init                 4
-dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
-dmg                  0 # Base damage (added to dmg value where this weapon is used).
-aoe                998 # Area: all friendly units.
-onlyfriend             # Only affects friendly units.
-flysound            29 # godlat.smp (Blessing)
-
-newweapon "Shroud of the Silent Ones" #damage 16 (poisonres) + 64 (magic res) 
-trgrank             -9 # Target: friendly unit (any friendly unit in range).
-range                0
-init                 4
-dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
-dmg                 0 # Base damage (added to dmg value where this weapon is used).
-aoe                998 # Area: all friendly units.
-onlyfriend             # Only affects friendly units.
-flysound            29 # godlat.smp (Blessing)
-
-newweapon "Strength of the Fallen" #damage 512 (strength) + 1073741824(quickness) + 17179869184 (lucky strike) 
-trgrank             -9 # Target: friendly unit (any friendly unit in range).
-range                0
-init                 4
-dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
-dmg                  0 # Base damage (added to dmg value where this weapon is used).
-aoe                998 # Area: all friendly units.
-onlyfriend             # Only affects friendly units.
-flysound            29 # godlat.smp (Blessing)
-
-newmonster "Barbarian King"
-copystats "Painted Crystal Amazon"
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-clearweapons
-armor                          1 
-hp                            24 
-str                            6 
-mor                            9 
-mr                             7 
-rank                           1 # Front rank.
-rearpos
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-human                            
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster "Spirit-touched Barbarian King" #  							storm blessed
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          1 # Armor.
-hp                            24 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-rearpos
-prebatweapon   8589934592 "Gift of the Storms"
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-airshield 50
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster " Spirit-touched Barbarian King" # Night blessed 							
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          1 # Armor.
-hp                            24 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             8 # Magic Resistance.
-rank                           1 # Front rank.
-rearpos
-prebatweapon 64 "Shroud of the Silent Ones"
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-fastheal 
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster "Spirit-touched Barbarian King " #Ancestor Blessed 						
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          2 # Armor.
-hp                            24 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-rearpos
-prebatweapon  			 512  "Strength of the Fallen"
-meleeweapon                7 907 # Magic Axe: d15 Slash damage.
-meleeweapon                7 907 # Magic Axe: d15 Slash damage.
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster "Spirit-bound Barbarian King" #Storm and Night Blessed 			 
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          1 # Armor.
-hp                            24 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             8 # Magic Resistance.
-rank                           1 # Front rank.
-rearpos
-prebatweapon 64 "Shroud of the Silent Ones"
-prebatweapon   8589934592 "Gift of the Storms"
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-meleeweapon                5 907 # Magic Axe: d13 Slash damage.
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-fastheal 
-airshield 50 
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster " Spirit-bound Barbarian King" #Storm and Ancestor Blessed 	
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          2 # Armor.
-hp                            24 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             7 # Magic Resistance.
-rank                           1 # Front rank.
-rearpos
-prebatweapon    512 "Strength of the Fallen"
-prebatweapon   8589934592 "Gift of the Storms"
-meleeweapon                7 907 # Magic Axe: d15 Slash damage.
-meleeweapon                7 907 # Magic Axe: d15 Slash damage.
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-airshield 50 
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster "Spirit-bound Barbarian King " #Night and Ancestor Blessed 6
-copystats "Painted Crystal Amazon"
-clearweapons 
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          2 # Armor.
-hp                            24 # Hit Points.
-str                            6 # Strength.
-mor                            9 # Morale.
-mr                             8 # Magic Resistance.
-rank                           1 # Front rank.
-rearpos
-prebatweapon   512 "Strength of the Fallen"
-prebatweapon 64 "Shroud of the Silent Ones"
-meleeweapon                7 907 # Magic Axe: d15 Slash damage.
-meleeweapon                7 907 # Magic Axe: d15 Slash damage.
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-fastheal 
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
-
-newmonster "Spirit-chosen Barbarian King" #All Blessings 									7	
-copystats "Painted Crystal Amazon"
-clearweapons 	
-spr1 "Sprites/Barbarianking1.tga"
-spr2 "Sprites/Barbarianking2.tga"
-armor                          		2 # Armor.
-hp                            			24 # Hit Points.
-str                            			6 # Strength.
-mor                            		9 # Morale.
-mr                             			8 # Magic Resistance.
-rank                           		1 # Front rank.
-rearpos
-prebatweapon  			 512 "Strength of the Fallen"
-prebatweapon 				64 "Shroud of the Silent Ones"
-prebatweapon   			8589934592 "Gift of the Storms"
-meleeweapon                	7 907 # Magic Axe: d15 Slash damage.
-meleeweapon                	7 907 # Magic Axe: d15 Slash damage.
-human                            	# Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-localleadership                3 # +3 Morale for allied units within two squares of this unit.
-ainofollower
-fastheal 
-airshield 50 
-goldbonus 25
-ironbonus 25
-affres 85
-descr "A Barbarian King is a figure of rare appearance, for the tribes believe that such men rise only when the spirits consent to it. Their bodies are marked with patterns of ink recounting old victories, and their weapons are hung with charms and colored stones. Before any claimant may be hailed as king, the Enaries must speak his name in trance; if they utter another, the matter is settled without appeal. Though a king holds no fixed seat of rule, he may summon councils, settle quarrels between distant clans and demand oaths binding his followers for more than a single battle. Some reign for many years, while others vanish within a season. The tribes do not take this as disgrace but merely as a sign that the spirits have grown silent once more."
+# Defined at start of the document, as a workaround for a bug in the modding tools 
 
 #------------------------------ Barbarian Rituals -----------------------------------------------------# 
 
@@ -10307,6 +10464,15 @@ soundfx               57
 airare -1 					#AI opponents get significant multipliers to fixed income, but not to effects of this ritual. It is rarely in their economic interest to use the raid rituals
 descr "Raid a hamlet or village for supplies and gold. This may reduce or destroy the settlement."
 
+newritual "Prepare Night Assault"
+level 1
+free 
+promotion 99
+addstring "Harii"
+addstring "  Harii"
+closewin 
+descr "The Harii Chief prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively."
+
 selectmonster "Harii Chief"
 power 0 1 
 
@@ -10382,7 +10548,6 @@ terr -28 #Towns or cities
 promotion 1
 addstring "Barbarian Leader"
 addstring "Barbarian Warlord"
-seteventvar 9
 forgetcurrit
 airare -1 						# Associated event triggers for players as well. AI recruits Warlord directly instead. Also more likely to actually happen.				
 descr "Atop the battlements of a conquered city, the Barbarian Leader calls the clans to witness his dominion. The chieftains bring tribute as in elder days, and the spirits stir to acknowledge his rise. He is hailed as Warlord, and word of his deeds will draw strong warriors and independent warbands to his banner."  
@@ -10395,6 +10560,7 @@ promotion 1
 terr 834 #irminsuls 
 addstring "Barbarian Warlord"
 addstring "Barbarian King" 
+seteventvar 9
 seteventvar 10
 airare -1 						# Associated event triggers for players as well. AI recruits King directly instead. Also much more likely to actually happen.				
 descr "At the roots of the Irminsul, the Barbarian Warlord lays out the spoils of conquest for the spirits to judge. If they accept his offering, he will claim the crown and rise as Barbarian King. Famed warriors will gather at his call, and the ancestors themselves will listen when he speaks."
@@ -10403,45 +10569,96 @@ newritual "Offering to the Ancestors"
 copyritual "Design Badger Tattoo"
 free
 level 2
-cost 0 100
+cost 0 75
 terr -1102 
 aialways 999
 airestrig 100
-maxcast 1
+maxcast 3
 descr "An offering of plunder is placed before the Irminsul to honor the ancestors. Their blessing flows into all warriors bearing sacred tattoos, granting them +2 HP. This can only be cast once."
 
 newritual "Petition the Storm Spirits" 
-copyritual "Design Lion Tattoo"
 level 3
 free
 cost 0 100
-apcost 2
 terr 253 #mountain spire 
-seteventvar 23
-airare -1										# Associated event triggers for players as well. Also very rare that the AI actually makes any use of this, so not much lost by just disabling it. 
-descr "Petition the storm spirits atop a mountain spire. Warriors bearing sacred tattoos are filled with the fury of the storms, gaining +1 Strength and Morale. The King and his army are buffered by the stormwinds in battle. This ritual can only be cast once."
+promotion 1
+addstring "Barbarian King" 				#basic
+addstring "Spirit-touched Barbarian King" 			#storm
+addstring " Spirit-touched Barbarian King"			#night
+addstring "Spirit-bound Barbarian King"			#night and storm
+addstring "Spirit-touched Barbarian King "			#ancestor
+addstring " Spirit-bound Barbarian King" 			#ancestor and storm
+addstring "Spirit-bound Barbarian King "			#night and ancestor
+addstring "Spirit-chosen Barbarian King" 			#all blessings 
+aialways 999
+airestrig 100
+gainrit 1
+forgetcurrit 
+descr "Petition the storm spirits atop a mountain spire.  The King and his army are buffered by the stormwinds in battle and the King learns the runes of thunder. This ritual can only be cast once."
+
+newritual "Runes of Thunder"
+copyritual "Design Lion Tattoo"
+level 3
+cost 2 0 
+nostart
+forgetcurrit
+descr "Those deemed worthy are marked with the runes of thunder. Warriors bearing sacred tattoos are filled with the fury of the storms, gaining +1 Strength and Morale."  
 
 newritual "Seek the Night Spirits" #Malady 
-copyritual "Design Serpent Tattoo"
 level 3
 free
 cost 0 100 
-apcost 2
-terr 97 # 
-seteventvar 24
-airare -1
-descr "Journey into the depths of an old bog to commune with the spirits of the night. Warriors bearing sacred tattoos are warded against plagues, poison, and ill magic, gaining poison resistance and +1 Magic Resistance. The King is spared wasting illness and lingering wounds, and his army is shielded from harmful magic. This ritual can only be cast once."
+terr 107 # swamp or 97 iron bog
+promotion 1
+addstring "Barbarian King" 				#basic
+addstring " Spirit-touched Barbarian King" 			#night
+addstring "Spirit-touched Barbarian King"			#storm 
+addstring "Spirit-bound Barbarian King"			#night and storm
+addstring "Spirit-touched Barbarian King "			#ancestor
+addstring "Spirit-bound Barbarian King " 			#ancestor and night
+addstring " Spirit-bound Barbarian King"			#storm and ancestor
+addstring "Spirit-chosen Barbarian King" 			#all blessings 
+aialways 999
+airestrig 100
+gainrit 1
+forgetcurrit 
+descr "Seek the night spirits in the depths of an old bog. Their favor shields him from wasting illness and lingering wounds, and his army is protected against harmful magic. The King learns the runes of the night. This ritual can only be cast once."
+
+newritual "Runes of the Silent Ones"
+copyritual "Design Serpent Tattoo"
+level 3
+cost 2 0 
+nostart
+forgetcurrit
+descr "Those deemed worthy are marked with the runes of the night. Warriors bearing sacred tattoos are protected against plagues, poison, and ill magic, gaining poison resistance and +1 Magic Resistance."
 
 newritual "Bargain with the Spirits of War" # 
-copyritual "Design Skull Tattoo"
 level 3
 free
 terr 19 # old battlefield
 cost 0 100
-apcost 2
-seteventvar 25
-airare -1
-descr "Bargain with the spirits of war upon an old battlefield. Warriors bearing sacred tattoos are warded against bodily harm, gaining resistance to piercing and slashing damage. The King and his army fight with the strength of the fallen. This ritual can only be cast once."
+promotion 1
+addstring "Barbarian King" 				#basic
+addstring "Spirit-touched Barbarian King " 			#ancestor 
+addstring "Spirit-touched Barbarian King"			#storm 
+addstring " Spirit-bound Barbarian King"			#storm and ancestor 
+addstring " Spirit-touched Barbarian King"			#night 
+addstring "Spirit-bound Barbarian King " 			#ancestor and night
+addstring "Spirit-bound Barbarian King"			#storm and night 
+addstring "Spirit-chosen Barbarian King" 			#all blessings 
+aialways 999
+airestrig 100
+gainrit 1
+forgetcurrit
+descr "Bargain with the spirits of war upon an old battlefield. The King will learn the runes of war and his army will fight with the strength of the fallen. This ritual can only be cast once."
+
+newritual "Runes of War"
+copyritual "Design Skull Tattoo"
+level 3
+cost 2 0 
+nostart
+forgetcurrit
+descr "Those deemed worthy are marked with the runes of war. Warriors bearing sacred tattoos are warded against bodily harm, gaining resistance to piercing and slashing damage."
 
 selectmonster "Barbarian Leader" 
 power 0 1
@@ -10585,10 +10802,23 @@ newunits -2 "c*Barbarian Leader"
 message -2 "An ambitious new leader has begun gathering his warriors."
 endevent
 
-playerevent # #Spawn Champion. 
+# test hvad der sker hvis man caster ritual of conquest to gange 
+
+playerevent # Spawn Champion, Warlord 
++humanplayer
++chance 7
++class -2 "Barbarian"
++hasunit -2 "Barbarian Warlord"
++ownsloctarg -2 -1125 											#Settlements and barbarian camps 
++plane 0 																#only on Elysium
+newunits -2 "c*Barbarian Champion"
+message -2 "A renowned warrior has joined your host."
+endevent
+
+playerevent # #Spawn Champion, King. This one needs to run off an event trigger to work.  
 +humanplayer
 +varequal 9 1
-+chance 7
++chance 4
 +class -2 "Barbarian" 
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
 +plane 0 																#only on Elysium
@@ -10820,7 +11050,7 @@ playerevent # The Quick
  +ownsloctarg -2 -23
  +plane 0 
 newunits -2 "c*Quick & 7*Barbarian Cavalry & 7*Barbarian Lancer"
-message -2 "With a light step, a red-haired warrior approaches and looks you over with a grin. She offers her blades and nothing else."
+message -2 "With a light step, a red-haired warrior approaches and looks you over with a grin. She offers her blades for as long as you hold her interest."
 setvar 20 1 
 -hasunit -2 "Barbarian King"
 -hasunit -2 "Spirit-touched Barbarian King"
@@ -10879,118 +11109,6 @@ setvar 22 1
 setvar 10 0
 endevent
 
-		# -- convert kings to spirit touched versions 
-		# - This could also be structured as a double ritual with king promotion-> gainrit tattoo effect, instead of being event driven. 
-
-
-playerevent 
-+humanplayer
-+varequal 23 1
-+class -2 "Barbarian"
-+hasunit -2 "Barbarian King"  #ordinary 
-targetunitloc
-promoteunits -2 1 "Barbarian King" "Spirit-touched Barbarian King" #ordinary -> storm 
-endevent
-
-playerevent 
-+humanplayer
-+varequal 23 1
-+class -2 "Barbarian"
-+hasunit -2 "Spirit-touched Barbarian King "  #ancestor 
-targetunitloc
-promoteunits -2 1 "Spirit-touched Barbarian King " " Spirit-bound Barbarian King" #ancestor -> storm + ancestor
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 23 1
-+class -2 "Barbarian"
-+hasunit -2 " Spirit-touched Barbarian King"  #night 
-targetunitloc
-promoteunits -2 1 " Spirit-touched Barbarian King" "Spirit-bound Barbarian King" #night -> storm + night
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 23 1
-+class -2 "Barbarian"
-+hasunit -2 "Spirit-bound Barbarian King "  #night + ancestor 
-targetunitloc
-promoteunits -2 1 "Spirit-bound Barbarian King " "Spirit-chosen Barbarian King" #Night + Ancestor -> Chosen 
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 24 1
-+class -2 "Barbarian"
-+hasunit -2 "Barbarian King"  #night 
-targetunitloc
-promoteunits -2 1 "Barbarian King" " Spirit-touched Barbarian King" #ordinary -> night 
-endevent
-
-playerevent 
-+humanplayer
-+varequal 24 1
-+class -2 "Barbarian"
-+hasunit -2 "Spirit-touched Barbarian King"  #storm 
-targetunitloc
-promoteunits -2 1 "Spirit-touched Barbarian King" "Spirit-bound Barbarian King" # storm -> storm + night 
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 24 1
-+class -2 "Barbarian"
-+hasunit -2 "Spirit-touched Barbarian King "  #ancestor
-targetunitloc 
-promoteunits -2 1 "Spirit-touched Barbarian King " "Spirit-bound Barbarian King " #ancestor -> night + ancestor
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 24 1
-+class -2 "Barbarian"
-+hasunit -2 " Spirit-bound Barbarian King"  #night + ancestor 
-targetunitloc
-promoteunits -2 1 " Spirit-bound Barbarian King" "Spirit-chosen Barbarian King" #night + ancestor -> chosen
-endevent  
-
-playerevent 
-+humanplayer
-+varequal 25 1
-+class -2 "Barbarian"
-+hasunit -2 "Barbarian King"  #ordinary
-targetunitloc 
-promoteunits -2 1 "Barbarian King" "Spirit-touched Barbarian King " #ordinary -> ancestor 
-endevent
-
-playerevent 
-+humanplayer
-+varequal 25 1
-+class -2 "Barbarian"
-+hasunit -2 "Spirit-touched Barbarian King"  #storm 
-targetunitloc
-promoteunits -2 1 "Spirit-touched Barbarian King" " Spirit-bound Barbarian King" #storm -> storm + ancestor 
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 25 1
-+class -2 "Barbarian"
-+hasunit -2 " Spirit-touched Barbarian King"  #night 
-targetunitloc
-promoteunits -2 1 " Spirit-touched Barbarian King" "Spirit-bound Barbarian King " #night -> night + ancestor
-endevent 
-
-playerevent 
-+humanplayer
-+varequal 25 1
-+class -2 "Barbarian"
-+hasunit -2 "Spirit-bound Barbarian King"  #storm + night 
-targetunitloc
-promoteunits -2 1 "Spirit-bound Barbarian King" "Spirit-chosen Barbarian King" #storm + night -> chosen 
-endevent 
-
 # ---------------------------Barbarian Class and Recruitment -------------------------------------------# 
 
 selectclass  7 # Barbarian
@@ -11034,8 +11152,8 @@ addunitrec  "Barbarian Werebear"              3 1 25 0 0
 addunitrec  "Battering Ram"							100 2 25 0 25
 	reclimiter "-AI"																		#AI is too enamored with these 
 	reclimiter "-Late AI"
-addunitrec "Aptrganger"									100 1 30 0 0
-	recxcost 2 40 #40 herbs 
+addunitrec "Aptrganger"									100 1 25 0 0
+	recxcost 2 40 #25 herbs 
 		recterr 834
 addunitrec "Blackroot Eater"							100 4 40 0 0
 		recterr 834
@@ -11090,7 +11208,7 @@ addmercrec " Horned Warrior" 									20 3 25 15 0
 addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-addmercrec " Harii" 									 					15 4 25 15 0
+addmercrec " Harii" 									 					15 5 25 15 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 
@@ -11198,7 +11316,6 @@ addmercrec " Harii" 									 					15 4 25 15 0
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
 
-selectclass 8 # necessary for some reason to keep the barbarian from getting the senators gold bonus. 
 ################################## Senator ################################################## 
 
 # ------------ Senator Terrain ------------------------
@@ -11341,28 +11458,6 @@ unaging
 affres 75
 diseaseres
 immortalap 12
-	
-selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back. 
-power 45 2 
-hadesres 100
-goldbonus                     55 	# 55% bonus to all gold income for the player that owns this unit while it exists. 
-tradebonus                   55  # 55% bonus to trade 
-gatherlifeforce
-	
-selectmonster "God Emperor of the Underworld"
-immortal
-reformloc -2
-hadesres 1
-allitemslots
-unaging
-affres 75
-diseaseres
-goldbonus                     60 	# 60% bonus to all gold income for the player that owns this unit while it exists. 
-tradebonus                   60  # 60% bonus to trade 
-planeshift 1
-immortalap 12
-gatherlifeforce
-lifeforce 10
 	
 selectmonster "Imperial Statue" 
 gold 0 					#Limitgold instead of +gold
@@ -31961,3 +32056,5 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
+
