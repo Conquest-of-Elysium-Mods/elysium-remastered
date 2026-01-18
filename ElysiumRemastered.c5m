@@ -8931,6 +8931,24 @@ setname "Settlements and Barbarian camps"
  addallsettlements
  addterr 113 
 
+selectterrgroup -1126 
+setname "Villages or Hamlets"
+addterr 7 #hamlet 
+addterr 18 #village 
+addterr 59 #village of the damned 
+addterr 78 #coastal hamlet 
+addterr 70 #hoburg village 
+addterr 109 #tent village
+addterr 158 #spider tribe village 
+addterr 188 #hyena 
+addterr 199 #motte and bailey
+addterr 206 #market village 
+addterr 327 #lion 
+addterr 328 #serpent 
+addterr 348 #atavi 
+addterr 840 #ashram 
+addterr 841 #black market post 
+
 # ------------------------- Barbarian Monster Edits -----------------------------------# 
 
 #Cavalry was consistently better than lancers, despite being cheaper. Now lancers are advantaged until army size reaches 60+. 
@@ -10418,8 +10436,7 @@ newritual "Raid"
 level 1
 free
 apcost 2
-#terr -64 # farms and hamlets
-terr -41 # Hamlets, Tent Villages or Villages. 
+terr -1126 # Hamlet or Village-size settlements. 
 cost 0 -14
 ornext 33
 	reducetown
@@ -10451,8 +10468,7 @@ newritual "Raid"
 level 1
 free
 apcost 1
-#terr -64 # farms and hamlets
-terr -41 # Hamlets, Tent Villages or Villages. 
+terr -1126 # Hamlet or Village-size settlements. 
 cost 0 -14
 ornext 33
 	reducetown
@@ -10464,10 +10480,11 @@ newritual "Prepare Night Assault"
 level 1
 free 
 promotion 99
+terr 69 
 addstring "Harii"
 addstring "  Harii"
 closewin 
-descr "The Harii Chief prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively."
+descr "The Harii Chief slips his ship close to land, and prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively. This ritual must be cast on Shallow Sea."
 
 selectmonster "Harii Chief"
 power 0 1 
@@ -10490,8 +10507,7 @@ newritual "Raid"
 level 1
 free
 apcost 1
-#terr -64 # farms and hamlets
-terr -41 # Hamlets, Tent Villages or Villages. 
+terr -1126 # Hamlet or Village-size settlements. 
 cost 0 -14
 ornext 33
 	reducetown
@@ -10504,7 +10520,6 @@ level 2
 free
 apcost 5
 terr -28 # Towns and Cities 
-#terr -32 #Villages and Larger 
 cost 0 -75
 reducetown
 soundfx               57 
