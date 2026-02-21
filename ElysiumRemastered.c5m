@@ -286,25 +286,6 @@ deployoutside 1
 selectmonster "Shadow Tree"
 deployoutside 1
 
-# easier access to forest- and anthill burning. Red Kobolds can do it as well. Nature classes can regrow the forests. 
-
-selectmonster "Pyromancer"
-burnforest 3
-
-selectmonster "Adept of Pyriphlegeton"
-burnforest 3
-
-selectmonster "Apocalyptic Rider"
-reformloc 329
-
-selectmonster "Apocalyptic Rider" 1
-reformloc 329
-
-selectmonster "Apocalyptic Rider" 2
-reformloc 329
-
-selectmonster "Apocalyptic Rider" 3 
-reformloc 329
 
 	# ---------- Terrain ------------------#
 
@@ -327,21 +308,20 @@ hands 1
 selectterr 152 
 hands 2
 
-	# ---------- Items --------------------# 
+# Farms are settlements. Mainly relevant for Baron, can now raise a small number of levies there. 
 
-selectitem "Alicorn"							# Thematic 
-fastheal
+selectterr 5
+settlement 
+
+selectterr 6 
+settlement 
+
+	# ---------- Items --------------------# 
 
 selectitem "Hydra Bowl"							# No longer actively detrimental to carry around 
 poisonspikes                                 4 
 poisoncloud                                  0
-
-	# ------------ Misc -----------------------------# 
 	
-	selectweapon 493 #Crush
-	onlyenemy
-
-
 	# ------------- Income bonus monsters -------------------------# 
 	
 	# The class- and monster-specific goldbonus commands get mixed up when the game reads a mod file. A bug in other words. A pragmatic fix is to define all relevant monsters before any class editing. 
@@ -1548,11 +1528,11 @@ promotion 1
 addstring "High Lord"
 addstring "Knight of the Blue Rose"
 minmonreq 1 
-nomonplayerreq 9
+nomonplayerreq 12
 addstring "(&)King"
 addstring "(-)Knight of the Blue Rose"
 free
-descr "Inducts a High Lord into the Brotherhood of the Blue Rose. The King and Queen must both be present to perform the ritual. No more than nine Knights of the Blue Rose may exist at any time."
+descr "Inducts a High Lord into the Brotherhood of the Blue Rose. The King and Queen must both be present to perform the ritual. No more than twelve Knights of the Blue Rose may exist at any time."
 
 selectmonster "Queen" 
 power 0 2
@@ -1560,53 +1540,25 @@ power 0 2
 # --------------------------- Baron Class & Recruitment -------------------------------------#
 
 selectclass 1  # Baron
-	clearrec
 	mercboost 25 								                #more merc offers
 	recherochance 4
 	recasschance 3
 	recwizchance 5
-	addunitrec  "Spearman"                     	100 5 50 0 0
-	addunitrec  "Swordsman"                    	100 5 50 0 10
-	addunitrec  "Crossbowman"                 100 5 50 0 5
-	addunitrec  "Heavy Infantry"               	100 5 50 0 25 
-	addunitrec  "Longbowman"                  100 4 50 0 0
-	addunitrec  "Pikeneer"                     		100 5 50 0 5
-	addunitrec  "Halberdier"                   	100 5 50 0 5
-	addunitrec  "Zweihander"                   	100 5 50 0 10
-	addunitrec  "Tower Guard"                  	100 5 50 0 25
-	addunitrec  "Cavalryman"                   	100 3 50 0 20
-	addunitrec	 "Knight"		   					100 2 60 0 20 	
+
 	addunitrec  "Ranger"                       		30 5 50 0 0 5
 		reclimiter  "+Ranger Captain"
-	addunitrec  "War Dog"                      		100 8 40 0 0
-	addunitrec  "Ballista"                     			100 2 25 0 50
-	addunitrec  "Catapult"                     		100 1 25 0 50
-	addunitrec  "Trebuchet"                    	100 1 50 0 50
-	addunitrec  "Trebuchet"                      	10 2 75 0 75
 	addunitrec  "King's Guard"		   			100 4 75 0 30	#Kings guard requires a King
 		reclimiter "+King"
+	addunitrec	 "Knight"		   					100 2 60 0 20 	
 	addmercrec "Knight"			  					5 3 80 20 0 		#More knight offers
 		reclimiter	"+King"
-	addunitrec	"Unicorn Knight"	   			10 3 80 0 20 		#More Unicorn Knights for the late game 
+	addunitrec	"Unicorn Knight"	   			20 3 80 0 20 		#More Unicorn Knights for the late game 
 		reclimiter	"+Queen"
-		templerec
-	addmercrec  "Scout"                          		20 1 15 10 0
-	addmercrec  "Archer"                         		5 10 70 0 0
-	addmercrec  "Crossbowman"                 5 10 70 20 0
-	addmercrec  "Spearman"                       	5 10 70 0 0
-	addmercrec  "Swordsman"                     5 10 70 20 0
-	addcomrec   "Captain"                              20 40 10 0 # once per offer; extra.
 	addcomrec   "Baron"                          		35 50 20 10 
 		reclimiter  "-Baron"
 	addcomrec   "High Lord"                     		30 50 10 10
-	addcomrec   "Monk"                           		6 50 10 0
-		templerec	
-	addcomrec   "Court Mage"                     	3 60 10 0
-		libraryrec
 	addcomrec   "Court Mage"                     	3 60 10 0
 		reclimiter "+King"
-	addcomrec   "Alchemist"                      	3 60 10 0
-		libraryrec
 	addcomrec   "Alchemist"                      	3 60 10 0
 		reclimiter "+King"
 	addcomrec   "Royal Bard" 					 	3 40 10 0
@@ -1916,13 +1868,8 @@ battleslow
 selectweapon 476						# From aoe 3, small nerf 
 aoe 2
 
-selectmonster "Carrion" 					# better suicide and scouting but stays dead longer
-putridexpl 5 								#from 3
-immortalap 9								#From 6
-farsight
+selectmonster "Carrion" 					
 pierceres
-affres 50
-reformloc -9 								#citadels
 	
 selectmonster "Banshee" 					# More health + melee weapon, sentient undead morale  
 hp 12 
@@ -6287,8 +6234,8 @@ unimportant
 immortal
 water
 reformloc 1000
-terraformto 283
-terraformfrom 36
+terraformto 311
+terraformfrom 69
 spiritsight
 spawn2d6mon 8
 fear 1 
@@ -17957,7 +17904,7 @@ cost              4  400 # 400 Sacrifices
 addstring "1d3+1*Blind Piper"
 addstring "1*Shoggoth"
 addstring "(!)0*Basalt King"
-descr "This ritual calls a being of godlike powers from the Void."
+descr "This ritual calls a being of godlike powers from the Void. The dark powers are fickle, and sometimes one of their lesser servants will answer the call."
 
 selectmonster "Basalt King"
 power 0 3
@@ -18246,17 +18193,6 @@ drawsize -10
 descr "While all dwarves are skilled tunnelers, only a select few are tasked with carving passages large enough for armies to march through. These miners often strike underground reservoirs, flooding their tunnels and sometimes taking the entire squad with them. Incidents like these might explain why dwarves prefer to found their colonies on the surface."
 
 # ------------------- Dwarf Queen Ritual Edits --------------------------------------# 
-
-#selectterr 126
-#gold              1003 # Gold:  3
-#iron              1003 # Iron:  3
-#trade 30
-#gems            640 # Gems: see comments below.
-
-selectritual "Sense Mines" #Now costs gold and AP rather than diamonds.
-cost 9 0 #From 5
-cost 0 35 #From 0
-apcost 2
 	
 selectritual "Found Colony"
 airestrig 250
@@ -18405,9 +18341,11 @@ cost              1   50
 cost              9   25 # 25 Diamonds
 cost             10   25 # 25 Emeralds
 summoning
+minmonreq 1
 addstring "1*Rune Golem"
+addstring "(&)Daughter of Dvalin"
 free
-descr "The Rune Smith forges a golem of stone. The golem is very difficult to harm, but should it somehow be damaged, it may be repaired at dwarven citadels" 
+descr "The Rune Smith forges a golem of stone. The golem is very difficult to harm, but should it somehow be damaged, it may be repaired at dwarven citadels. The ritual can only be cast in fully developed Dwarven Cities, with a Daughter of Dvalin present." 
 
 # --------------------- Dwarf Queen Class & recruitment ---------------------------------------#
 
@@ -19309,13 +19247,6 @@ noheal
 stationary 
 drawsize -40
 
-playerevent
-+varequal 4 1    
-+class -2 "Markgraf"
-+ownsloctarg -2 837
-+terrain 837
-newunits -2 "1d4*Test Subject"  
-endevent 
 
 selectterr 838
 name                 "Dark Hoburg " #new version for Markgraf to disable recruitment of hoburg militias and slingers.
@@ -19762,6 +19693,7 @@ rank                           0 # Front rank.
 meleeweapon               -2   1 # Dagger: d1 Pierce damage.
 meleeweapon               0 "Torch"
 rangedweapon              0 "Aimed Shot"
+burnforest 3
 descr "The Black Hoods are the Markgraf's elite rangers, drawn from the finest hunters in Markgrafdom-a necessity in a land plagued by beasts and lacking fertile soil. Their unenviable duties include patrolling the outer woods, hunting rebellious undead, and driving off wolves with arrows and torches. Recently, they have expanded their patrols to the streets at night. Rumors quietly suggest a connection between the Black Hoods and the mysterious fire at the Free Hobmark Press, though such topics are rarely discussed openly. For the time being, the Black Hoods ensure that things remain quiet-sometimes uncomfortably so."
 
 newmonster "Contract Black Hood"
@@ -20979,14 +20911,13 @@ monplayerreq 1
 addstring "(&)Grand Nekromant"
 addstring "(&)Grand Ghost Nekromant"
 addstring "(&)Wight Nekromant"
-terr                  -12 # Required terrain: Greater Mines (eller abandoned mine)
+terr                  -12 # Required terrain: Greater Mines
 alterloc             837 # Change target location's terrain to: Secret Laboratory.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 airare -1
 forgetcurrit
 rarestart
 noundead
-seteventvar 4
 descr "With the aid of the Nekromant, the Markgraf establishes an unsettling facility hidden within an abandoned mine. Each day, prisoners and livestock are brought in large numbers, but none ever return. A black spire looms atop the mountain, surrounded by ominous flashes of lightning. Its true purpose remains a closely guarded secret, known only to the Markgraf and the Grand Nekromant. To perform this ritual, the player must control a Grand Nekromant or one of his undead forms."
 
 newritual     "Cunning Schemes"                                     # 288
@@ -21195,7 +21126,9 @@ addcomrec   "Nekromant"                         	 	6 55 10 0
 	reclimiter "-Ghost Nekromant"
 	reclimiter "-Grand Ghost Nekromant"
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
-
+addunitrec " Test Subject" 	100 3 5 0 0 	#Secret Lab corpse generator 
+	recterr 837
+	
 ############################### Dryad Queen ####################################### 
 
 # --------- Dryad Queen Terrain ----------------------------------------#
@@ -23227,9 +23160,6 @@ descr "The Silent Kings are ancient Cloud Lords, said to have transcended the cy
 
 # -------------------- Cloud Lord Ritual Edits -------------------------------------# 
 
-selectritual "Shape Clouds"
-level 9
-free
 
 selectritual "Summon Storm Giant"
 level 9
@@ -23280,25 +23210,13 @@ addstring  "1*Gryphon"
 aiweakonly 1000
 descr "This ritual will summon birds or a few supernatural beings of the sky."
 
-newritual     "Shape Clouds "                                              # test
-ritpow                49 # Cloud Lord
-level                  2
-cost              9    5 # 5 Diamonds
-cost             10    5 # 5 Emeralds
-terr                 251 # Required terrain: Sky.
-alterloc             194 # Change target location's terrain to: Clouds.
-apcost                 2 # Actual AP cost: 3.
-soundfx               52 # Sound effect when the ritual is cast: air.smp.
-closewin                 # Closes cast ritual window.
-rarestart                # Reduced chance of starting with this ritual.
-soundfx               52 # Sound effect when the ritual is cast: air.smp.
+selectritual "Shape Clouds"
 aialways 100
 ornext 80
 alterloc             194 # Change target location's terrain to: Clouds
 alterloc 	     208
 closewin                 # Closes cast ritual window.
-descr "The Cloud Lord shapes the sky itself to form solid clouds. The clouds will remain indefinitely". 
-	
+
 selectritual "Castle in the Clouds" 		# more expensive and as with other terraforming rituals no longer possible to blanket the landscape
 cost 9 150
 cost 10 50
@@ -23411,18 +23329,12 @@ selectclass 26
 classdescr "The Cloud Lord is the ruler of the Airya, winged humanoids living on solid clouds far above the lands of Elysium. The Airya craft armors and weapons from magical gems and their forces are both swift and deadly. From his lofty abode the Cloud Lord has observed kingdoms rise and fall in Elysium. Now he has decided to rid the lands of incompetent and malicious rulers.^The Cloud Lord can easily be mistaken for a Warlock of the Air, but where the warlock forms a pact with his chosen element, the Cloud Lord commands the beings of the sky through sheer magical power. Birds, elementals and mythical beasts of the skies are his to command, and the inhabitants of the Cloud Realm will rally to his banner."
 classabdescr "The Cloud Lord starts with a citadel in the 'Sky realm' near a mountain top.^The Airya armies can fly over difficult terrains and between clouds.^Airya elites can be recruited for an additional cost in gems, but reduced gold cost.^Conquering the Sky Realm gives access to other special recruits such as Cloudfolk or Worldroof Warriors.^Eagle Kings, Cloud Lords and Cloud Casters collect gems.^Air Gems can be used for magic rituals. Other gems can be converted to air gems with an alchemy ritual, or used to recruit elite units."
 
-clearstartunits
-addstartunits          "Airya Spearman"           10
-addstartunits          "Airya Archer"              8 #+3 archers
-addstartcom            "Storm Captain"
-
 clearstartterr #no start terrain but citadel has +2 gold
 clearstartunits
 addstartunits "Airya Swordsman" 10 #better units
 addstartunits "Airya Archer" 8 #from 5
 addstartcom "Cloud Caster" #apprentice instead of captain
 likessouth -5
-likesnorth 5
 
 addmercrec  "Swanherd"                    		15  2   20   0    0
 recxcost     10   5                            		#  5 Emeralds additional cost.
@@ -27858,40 +27770,16 @@ newunits 27 "1*Dracolich & 1*Dusk Elder & 2*Shade Mage & 8*Bane"
 endevent 
 
 # ------------------------ Primal Plane ------------------------------------# 
-playerevent # Smilodon Spawn 1
-+turnnbr -1
+playerevent # Smilodon Spawn 
+-minturnnbr 2
 +player 24
 randloc 7 12
 +terrain 12
 newunits 24 "3d3*Smilodon"
 endevent
 
-playerevent # Smilodon Spawn 2
-+turnnbr -1
-+player 24
-randloc 7 12
-+terrain 12
-newunits 24 "3d3*Smilodon"
-endevent
-
-playerevent # Smilodon Spawn 3
-+turnnbr -1
-+player 24
-randloc 7 12
-+terrain 12
-newunits 24 "3d3*Smilodon"
-endevent
-
-playerevent # Faery Dragon Spawn 1
-+turnnbr -1
-+player 24
-randloc 7 294
-+terrain 294 # Wild Forest
-newunits 24 "1d2*Faery Dragon"
-endevent
-
-playerevent # Faery Dragon Spawn 2
-+turnnbr -1
+playerevent # Faery Dragon Spawn 
+-minturnnbr 1
 +player 24
 randloc 7 294
 +terrain 294 # Wild Forest
@@ -28040,18 +27928,7 @@ holdit
 endevent
 
 playerevent #Tesselated Web 
-+turnnbr -1
-+player 25
-+chance 50
-randloc 9 50
-+terrain 50
-newunits 24 "5d6*Phase Spider"
-alterterrain 861
-holdit
-endevent
-
-playerevent #Tesselated Web 
-+turnnbr -1
+-minturnnbr 2
 +player 25
 +chance 50
 randloc 9 50
@@ -30589,13 +30466,6 @@ copystats "Animated Ballista"
 aihold 1
 aimaxshop 4
 
-playerevent 				# AI needs some help to get moving. Now gets an extra apprentice from start.    
-+turnnbr -1
-+aiplayer -2
-+class -2 "Enchanter"
-newunits -2 "c*Enchanter's Apprentice"
-endevent 
-
 selectclass 15 #Enchanter
 
 addmercrec "Animated Tools" 				100 1 0 0 0 	# Increase AI use of tools 
@@ -30914,14 +30784,13 @@ addcomrec   "Dwarf Commander" 						15 20 0 10 	#Commander recruitment rate redu
 	reclimiter "+Late AI"
 addcomrec "Queen's Councilor"		 				12 1 0 0 	#Commander recruitment rate reduced for AI
 	reclimiter "+AI"
-	recxcost 10 40
 	reclimiter "+Late AI"
+	recxcost 10 40
 addcomrec "Rune Smith"    							12 1 0 0	#Commander recruitment rate reduced for AI
-	reclimiter "+AI"
 	recxcost 9 40
+	reclimiter "+AI"
 	reclimiter "+Late AI"
 addcomrec " Elder Rune Smith" 						100 1 0 0 	#Stationary rune smith in dwarven cities, to force production of end game units
-	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr 126
 addcomrec "Colony Spawner" 							100 1 0 0	 #All captured mines will eventually be converted to colonies
@@ -31142,11 +31011,6 @@ copystats "Little Soulless Black Hood"
 aihold 1
 
 selectclass 23 #Markgraf
-
-addunitrec " Test Subject" 	100 3 1 0 0 	#Secret Lab corpse generator 
-	reclimiter "+AI"
-	reclimiter "+Late AI"
-	recterr 837
 	
 addmercrec " Corpse Trebuchet"		100 1 50 0 50	#Standard defense
 	reclimiter "+AI"
