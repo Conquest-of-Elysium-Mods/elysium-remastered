@@ -4739,30 +4739,11 @@ spr1 "Sprites/Doppelspawn1.tga"
 spr2 "Sprites/Doppelspawn2.tga"
 
 newmonster    "Doppelganger" 1                                           #  582
+copystats "Doppelganger Captain"
 spr1 "Sprites/Doppelganger_bow1.tga"
 spr2 "Sprites/Doppelganger_bow2.tga"
 armor                          0 
 hp                            31 
-str                            6 
-mor                            6 
-mr                             7 
-rank                           0 # mid rank.
-rangedweapon               1  34 # Poison Bow: d4 Pierce damage.
-meleeweapon                1   1 # Dagger: d4 Pierce damage.
-meleeweapon                5 296 # Mutation Tentacle: d5 Blunt damage.
-meleeweapon                5 296 # Mutation Tentacle: d5 Blunt damage.
-meleeweapon                5 296 # Mutation Tentacle: d5 Blunt damage.
-assassinweapon             7 341 # Mutation Tentacle: d7 Blunt damage.
-assassinweapon             7 341 # Mutation Tentacle: d7 Blunt damage.
-assassinweapon             7 341 # Mutation Tentacle: d7 Blunt damage.
-swamp                            # Swamp Move: only requires 1 AP to move to a swamp square.
-poisonres                    100 # Poison immunity.
-regeneration                     # Heals ~5% HP every combat round in battle. May rise from the dead if unit suffered less damage than 150% of its HP. Heals permanent battle afflictions over time.
-bluntres                         # Blunt resistance (half damage).
-shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
-weaponslots                      # Only has 1 weapon and 2 misc slots.
-lookslike                      2 # To opposing players, this monster will appear to be the type defined 2 after this one; i.e. monster #584: Androphag Spearman.
-nametype                      36 # Sauromatian.
 descr "A Doppelganger can take just about any shape, yet it seems to really like shapes with many tentacles.  The most reasonable explanation for this is that the Doppelganger is some kind of land octopus and thus using tentacles in combat comes naturally. Unlike the victims of ordinary octopuses, those killed by the Doppelganger's tentacles will transform into small heaps with many tentacles."
 
 newmonster    "Doppel Spawn" 1                                            
@@ -6433,10 +6414,10 @@ terr                 -42 # Required terrain: any land.
 varcost               50 # Can set Sacrifice Level anywhere from 50 to 150. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
 defctrl               75 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                # The ritual will summon the monsters specified in a random string.
-sum0chance 5
-sum0chance 5
+sum0chance 3
+sum0chance 3
 addstring     "(!)Black Cat Familiar"     # If a Black Cat Familiar is present, it will become a Magic Cat Familiar; otherwise, if a Magic Cat Familiar is present, it will gain a spell. If neither is present, summon a Black Cat Familiar. Actual base control chance: 100%.
-addstring 	"(!)Toad Familiar"
+addstring 	"(!)Toad Familiar & 2d6*Frog"
 addstring     "3d6*Frog"
 addstring     "2d4*Giant Snail"
 addstring     "(115)Crocodile"
@@ -6460,6 +6441,7 @@ cost 3 15 #15 mushrooms
 terr                 -10 # Required terrain: forests/jungles/swamp.
 summoning 
 sum0chance 25
+sum1chance 5
 addstring  	"1d3*Black Brambles & 1d3*Strange Mushroom & 1d2*Ghost Orchid"
 addstring 	"(!)1*Homunculus"
 addstring 	"1*Yellow Musk Creeper" 
@@ -6533,7 +6515,7 @@ varcost               50 # Can set Sacrifice Level anywhere from 50 to 150. Mult
 defctrl               55 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 aialways             999 # AI will always try to cast this ritual, and make long term plans to do so.
 summoning                # The ritual will summon the monsters specified in a random string.
-sum0chance 5
+sum0chance 3
 addstring "(!)0*Black Toad Familiar"
 addstring "1*Ancient Presence"
 addstring "1*Ancient Hydra"
@@ -7398,25 +7380,18 @@ power 0 1
 
 #-------------- Witch class & recruitment -------------------# 
 
-playerevent
-+turnnbr -1 
-+class -2 "Witch"
-alterterrain 26
-endevent
-
 selectclass 4
 classdescr classdescr "In every village, there is a wise woman, claiming knowledge of healing arts or the ability to read fortunes from the palm of a hand. Most are harmless charlatans, offering little more than superstition. Yet, a rare few possess true power-these are the Witches, feared by both men and trolls alike. Witches follow the ancient ways, communicating with the Old Ones, slumbering entities who roamed Elysium long before humanity's arrival. Shunned by civilization, they draw their power from the wilds, from the shadows and darkness. Wielding control over swarms of venomous creatures, twisted plants, and spirits of the forest, the Witch commands nature itself. Their brews, concoctions of fungi gathered from the marshes and forests, serve as offerings to lure the Old Ones and creatures of the dark. The larger the offering, the stronger the bond. Yet, summoning an Old One is no simple task-it requires careful preparation, a wealth of fungi, and an understanding of the great risk involved. Failure, of course, can awaken an ancient and vengeful force."
 classabdescr "Witches collect fungi from forests and marshes. Witches can use fungi to perform magic rituals. Poison Archers and Lizard Cavalry can be recruited by also spending fungi."
 likessouth -3
 
-
 clearrec
 #                                               % No gold die iron
 addunitrec  "Androphag Spearman"              	100  5   50   0    0
 addunitrec  "Androphag Archer"                	100  5   50   0    0
-	recxcost     3  10                            # 10 Fungus additional cost.
+	recxcost     3  25                            # 25 Fungus additional cost.
 addunitrec  "Androphag Cavalry"               	100  4   50   0    5
-	recxcost     3  20                      # 20 Fungus additional cost.
+	recxcost     3  25                      # 25 Fungus additional cost.
 addcomrec   "Androphag Lord"                   	25 50 10 0 
 addcomrec   "Manflayer"                         2 70 20 0 
 addcomrec   "Witch's Apprentice"                3 55 10 0 
