@@ -24673,76 +24673,11 @@ rebateterr20 349
 selectritual "Sapphire Summoning" #25% cheaper in enchanted lakes/jungles. To make inhabit more worth it. 
 rebateterr20 295
 
-newmonster " Steward of the Earth"
-copystats "Steward of the Earth"
-clearmove
-immortal
-reformloc 1000
-immortalap 12
-#wander 14
-#wandermaxdist 3
-#wanderrest 100
-healonterr 349
-noheal
-dmgonterr -1116
-dmgonterrbonus 4
-descr "According to the lore of the White Ones there are akashic realms beyond ours that are inhabited by beings blessed with divine splendor. Some of these beings have chosen to make Elysium their home. The Yaksha can be mistaken for a forest spirit, but is actually a semi-divine being sprung from the akashic realms. Most Yakshas live in the jungles of southern Elysium where they protect their lands from evildoers. The few that aid the monkey people sometimes return to their forest abodes turning them into places of wonder and magic. The spirit of this Yaksha is bound to its jungle. If its body should die, it will reform there. It will patrol the surrounding areas for threats. It can be forced to leave the jungle, but does so unwillingly and will not survive long outside it."
-
-newmonster " Stewardess of the Lake"
-copystats "Stewardess of the Lake"
-clearmove
-immortal
-reformloc 1000
-immortalap 12
-wander 14
-wandermaxdist 3
-wanderrest 100
-healonterr 295
-noheal
-dmgonterr -1117
-dmgonterrbonus 4
-water
-descr "According to the lore of the White Ones there are akashic realms beyond ours that are inhabited by beings blessed with divine splendor. Some of these beings have chosen to make Elysium their home. The Yaksha can be mistaken for a forest spirit, but is actually a semi-divine being sprung from the akashic realms. Most Yakshas live in the jungles of southern Elysium where they protect their lands from evildoers. The few that aid the monkey people sometimes return to their forest abodes turning them into places of wonder and magic. The spirit of this Yakshini is bound to its lake. If its body should die, it will reform there. It will patrol the surrounding areas for threats. It can be forced to leave the lake, but does so unwillingly and will not survive long outside it."
-
 selectritual "Inhabit Lake"
-free
-level 9
-nostart
+cost              8   0 # 0 Sapphires
 
 selectritual "Inhabit Jungle"
-free 
-level 9
-nostart
-
-newritual     "Inhabit Lake "                                              # 532
-ritpow                64 # Akashic, Sapphire
-level                  1
-cost              8   0 # 0 Sapphires
-terr                 -96 # Required terrain: lakes.
-promotion              1 # Promote 1 unit and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
-alterloc             295 # Change target location's terrain to: Enchanted Lake.
-soundfx               97 # Sound effect when the ritual is cast: (Sleep).
-fxreq               1267 # A monster cannot learn or use this ritual unless it has this feature: [caninhabit].
-free                     # Always start with this ritual in addition to the others.
-addstring     "Yakshini"
-addstring     " Stewardess of the Lake"
-updatehome
-descr "The Yakshasi makes a lake her home and protects it with her life. The lake will now produce sapphires as long as the Yakshasi remains."
-
-newritual     "Inhabit Jungle "                                            # 534
-ritpow                66 # Akashic, Emerald
-level                  1
 cost             10   0 # 0 Emeralds
-terr                 115 # Required terrain: Jungle.
-promotion              1 # Promote 1 unit and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
-alterloc             349 # Change target location's terrain to: Enchanted Jungle.
-soundfx               97 # Sound effect when the ritual is cast: (Sleep).
-fxreq               1267 # A monster cannot learn or use this ritual unless it has this feature: [caninhabit].
-free                     # Always start with this ritual in addition to the others.
-addstring     "Yaksha"
-addstring     " Steward of the Earth"
-updatehome
-descr "The Yaksha makes a jungle his home and protects it with his life. The jungle will now produce emeralds as long as the Yaksha remains."
 
 	# --------------- Monkey Maharaja Rituals ---------------# 
 
