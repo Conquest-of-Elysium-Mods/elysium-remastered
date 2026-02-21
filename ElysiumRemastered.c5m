@@ -6637,11 +6637,11 @@ apcost 			2 			# Actual APcost 3
 multiplane		2	 		# chooseloc and similar can select locations on: all planes.
 alterloc 2					# change first location to forest
 chooseterrloc		2 			# select another forest
-alterloc 		839			# sprouting tower
+movehome					# move home square
+alterloc 		839		# sprouting tower
 teleportloc 2					# teleport caster + army
 squarespec 65536				# generate green mist
-movehome					# move home square
-seteventvar 3 					# activate event
+seteventvar 1 					# activate event
 soundfx               23 			# Sound effect when the ritual is cast: airduct.smp.
 airare                -1 			# AI will never cast this ritual.
 closewin                 			# Closes cast ritual window.
@@ -7398,11 +7398,17 @@ power 0 1
 
 #-------------- Witch class & recruitment -------------------# 
 
+playerevent
++turnnbr -1 
++class -2 "Witch"
+alterterrain 26
+endevent
+
 selectclass 4
 classdescr classdescr "In every village, there is a wise woman, claiming knowledge of healing arts or the ability to read fortunes from the palm of a hand. Most are harmless charlatans, offering little more than superstition. Yet, a rare few possess true power-these are the Witches, feared by both men and trolls alike. Witches follow the ancient ways, communicating with the Old Ones, slumbering entities who roamed Elysium long before humanity's arrival. Shunned by civilization, they draw their power from the wilds, from the shadows and darkness. Wielding control over swarms of venomous creatures, twisted plants, and spirits of the forest, the Witch commands nature itself. Their brews, concoctions of fungi gathered from the marshes and forests, serve as offerings to lure the Old Ones and creatures of the dark. The larger the offering, the stronger the bond. Yet, summoning an Old One is no simple task-it requires careful preparation, a wealth of fungi, and an understanding of the great risk involved. Failure, of course, can awaken an ancient and vengeful force."
 classabdescr "Witches collect fungi from forests and marshes. Witches can use fungi to perform magic rituals. Poison Archers and Lizard Cavalry can be recruited by also spending fungi."
 likessouth -3
-likesnorth 3
+
 
 clearrec
 #                                               % No gold die iron
@@ -7567,7 +7573,7 @@ nonmaginvul
 noslots 
 fear 3
 mr 15
-mor 30
+mor 15
 voidsanity 20
 ainofollower
 desolator 25
@@ -7806,6 +7812,7 @@ addstring     "(-110)1d4+2*Mazzik"     # This string will only be included in te
 addstring     "(-110)Se'ir"     # This string will only be included in terrain: desert-like terrains.
 addstring     "(167)Anakite"     # This string will only be included in terrain: Ziggurat.
 addstring     "(167)1d2+1*Gibbor"     # This string will only be included in terrain: Ziggurat.
+aiweakonly 1000
 descr "The Priestess performs a ritual blood sacrifice to Baal and in return she will be granted command over some minions of the dark God.  More powerful minions can appear if the blood sacrifice is performed in a desert. If cast in a Ziggurat Giants might appear."
 
 selectritual "Ceremony to Baal"
@@ -10416,9 +10423,29 @@ addstring "Spirit-bound Barbarian King "
 addstring "Spirit-chosen Barbarian King"
 descr "The Enarie negotiates a pact between the Barbarian Chief and the spirit world. Should the Chief die in battle his ancestors will welcome him in the afterlife and give him a retinue of spectral followers."
 
-newritpow #Lesser Barbarian commanders 
+selectmonster " Sending"
+hp 4
+noheal 
+clearmove 
+float 
+flying 
+dmgonterr -1 
 
-# Raid + resettlement is a neat mechanic, which is taken straight from Alexthebeetrayer´s Large overhaul mod.
+selectritual "Sending"
+level 9
+free 
+
+newritual     "Sending"									# sending is now a short lived, controllable scout. Better for raiding purposes.  
+ritpow                13 # Spirit Summons
+free 
+level                  1
+cost              2   25 # 25 Herbs
+summoning                # The ritual will summon the monsters specified in a random string.
+airare                10 # Only 10% of normal chance that AI will cast this ritual.
+addstring     "c* Sending"
+descr "The Spirit Guide summons an ancestral spirit and sends it out to explore his surroundings. The Sending is invisible and can only be attacked by those endowed with spirit sight. The Sending can be controlled, but will dissipate after a short period."
+
+newritpow #Lesser Barbarian commanders 
 
 newritual "Forage"  
 level 1
@@ -10449,6 +10476,15 @@ power 0 1
 
 selectmonster "Barbarian Thane"
 power 0 1
+
+selectmonster "Quick"
+power 0 1
+
+selectmonster "Ringless"
+power 0 1 
+
+selectmonster "Reaver"
+power 0 1 
 
 newritpow 
 
@@ -10481,13 +10517,18 @@ level 1
 free 
 promotion 99
 terr 69 
+minmonreq 1
 addstring "Harii"
 addstring "  Harii"
+addstring "(&)Nightship"
+addstring "(&)Dragonship"
 closewin 
-descr "The Harii Chief slips his ship close to land, and prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively. This ritual must be cast on Shallow Sea."
+descr "The Harii Chief slips his ship close to land, and prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively. This ritual must be cast on a Nightship in Shallow Sea."
 
 selectmonster "Harii Chief"
 power 0 1 
+selectmonster "Black"
+power 0 1
 
 newritpow #Actual Barbarian Leader
 
@@ -13500,6 +13541,7 @@ addstring "(-27)Elephant"
 addstring "(117)1d2*Camel"
 addstring "(-20)Marsh Worm"
 addstring "(-20)Crocodile"
+aiweakonly 1000
 
 selectritual "Farm Animal Summoning" #Now summons actual farm animals.
 addstring "1d3+2*Beetle" 
@@ -13507,6 +13549,7 @@ addstring "Horse"
 addstring "1d2+1*Goat"
 addstring "1d2*Donkey"
 addstring "1d4*Dog"
+aiweakonly 1000
 
 newritpow "Burgmeister"
 
@@ -16406,28 +16449,6 @@ selectritual "Summon Orm" #Much weaker than Linnorm. Now accordingly also cheape
 cost              3  500
 
 #-------------------------- Troll King Rituals -----------------------------------------# 
-
-newmonster "Bridge Troll"
-copystats "Troll"
-stealth
-stationary
-stupid
-gold 1 
-meleeambush 1
-descr "A common troll, but this one lives under a bridge". 
-
-newritual     "Troll Toll"
-ritpow                22 # Troll Magic                 
-level                  1
-terr               -1111 # Bridges
-nomonreq
-addstring "(-)Bridge Troll"
-promotion 1
-addstring "Troll" 
-addstring "Bridge Troll"
-aialways               100 # Will always cast if able
-free
-descr "Appoints a troll to hide under a bridge and rob travelers."
 
 newitem "Mother's Embrace"
 copyspr "Wreath of the Arch Druid"
@@ -21162,23 +21183,10 @@ addcomrec   "Nekromant"                         	 	6 55 10 0
 
 # --------- Dryad Queen Terrain ----------------------------------------#
 
-#Groves of Gaia and Primal Forests count as temples. They can also be burned.
-
 selectterrgroup -1114 #dead forest or jungle
 setname "Dead forest or jungle"
 addterr 36
 addterr 116
-
-selectterr      236 # Sacred Grove 
-burnable
-
-selectterr      237 # Grove of Gaia
-burnable
-temple
-
-selectterr      238 # Primal Forest
-burnable
-temple
 
 # ------------- Dryad Queen Monster Edit ----------------------------------# 
 
@@ -21449,7 +21457,7 @@ free
 newritual "Incite Revelry" 													
 ritpow 47
 level 2
-cost 2 75
+cost 2 50
 terr -62 #ancient forests and sacred groves
 squareench 1
 soundfx 57
@@ -22272,10 +22280,12 @@ start                    # Start with this ritual instead of the others.
 descr "A Herald, or the Scourge Lord himself, constructs a huge stone pillar and inscribes it with runes of power, creating a Pillar of Power that drains life force from the surrounding lands. The life force is channeled to the Scourge Lord who will use it to empower his agents or summon beings of manifest destruction. Forests and settlements give more life force than plains. Mountains and hills give very little life force and deserts are devoid of life force. With time the surrounding terrains will wither and eventually turn into deserts. Oceans have less life force available, but cannot wither away. A settlement that is under the influence of an active Pillar of Power will produce ghouls that gather at the pillar, awaiting their master's call. The Pillar can drain up to 15 points of life force from the surrounding lands. If there is more life force available the excess will not be drained until some lands have withered away."
 
 newmonster "Pyramid of Power"
-copystats "Large Mirror"
 spr1 "Sprites/Blank64.tga"
 spr2 "Sprites/Blank64.tga"
 hp 1
+rank -1
+airshield 100
+rearpos 
 inanimate
 nocombat
 stationary
@@ -22283,7 +22293,7 @@ immobile
 stupid
 unimportant
 invisible
-	
+
 newritual "Pyramid of Power"
 ritpow                48 # Scourge Lord
 level                  2
@@ -22323,7 +22333,7 @@ ritpow                48 # Scourge Lord
 level                  2
 cost             13   50 # 50 Lifeforce
 multiplane             1 # chooseloc and similar can select locations on: all planes.
-chooseloc 3
+chooseloc 1
 montarg 1
 addstring "Pyramid of Power"
 castertarg
@@ -22364,6 +22374,10 @@ aimaxcast 10
 selectritual "Ritual of Scourge Mastery"
 addstring     "(+)Scourge King "     # This string will only be used by nomon[...] commands, to disable all following "(-)" strings if this monster satisfies the command's condition.
 addstring     "(+)Weakened Scourge King"   
+
+selectritual "Grand Ritual of Scourge Mastery"
+addstring     "(-)Scourge King "     # This string will only be used by nomon[...] commands.
+addstring     "(-)Weakened Scourge King"     # This string will only be used by nomon[...] commands.
 
 
 #------------------------------ Scourge Lord New Rituals --------------------------------------#
@@ -24665,9 +24679,9 @@ clearmove
 immortal
 reformloc 1000
 immortalap 12
-wander 14
-wandermaxdist 3
-wanderrest 100
+#wander 14
+#wandermaxdist 3
+#wanderrest 100
 healonterr 349
 noheal
 dmgonterr -1116
@@ -24731,6 +24745,9 @@ updatehome
 descr "The Yaksha makes a jungle his home and protects it with his life. The jungle will now produce emeralds as long as the Yaksha remains."
 
 	# --------------- Monkey Maharaja Rituals ---------------# 
+
+selectritual "Lesser Akashic Summoning"
+aiweakonly 1500
 
 newritpow 
 
@@ -27536,7 +27553,7 @@ playerevent #Sea Bastion
 +minterrains 1 9 0
 randloc 0 68
 +terrain 68
-newunits 24 "1*Soulless Captain & 3d6*Soulless Pirate & 1d4*Ghost & 1d4*Ballista"
+newunits 24 "4d6*Longdead & 1d4*Ghost & 1d4*Ballista"
 alterterrain 851
 holdit
 endevent
@@ -27692,19 +27709,8 @@ playerevent #Shipwreck
 +chance 8
 randloc 0 69
 +terrain 69
-newunits 24 "1*Soulless Captain & 4d6*Soulless Pirate & 1*Treasure"
+newunits 24 "4d6*Longdead & 1*Treasure"
 alterterrain 856
-holdit
-endevent
-
-playerevent #Underwater Ruins
-+turnnbr -1
-+player 25
-+chance 15
-randloc 0 68
-+terrain 68
-newunits 24 "2d6*Ichtyid & 2d4*Ichtyid Raider & 2d4*Small Shark"
-alterterrain 857
 holdit
 endevent
 
@@ -32065,7 +32071,3 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
-
-
-
-
