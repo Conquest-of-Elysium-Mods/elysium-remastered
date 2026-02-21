@@ -6027,8 +6027,8 @@ stupid
 stationary
 immobile
 nocombat
-#nozoc
-#unimportant
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 2
@@ -6271,6 +6271,49 @@ dmgonterrbonus 100
 meleeambush 1
 descr “Whatever they were before, they serve the Witch now.”
 
+newmonster "Floating Stick Figure" #Kelp Forest 
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
+poisonres 100
+fireres 100
+stealth
+stupid
+stationary
+immobile
+nocombat
+nozoc
+unimportant
+immortal
+water
+reformloc 1000
+terraformto 283
+terraformfrom 36
+spiritsight
+spawn2d6mon 8
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
+
+newmonster " Bound Thing"
+copystats "Dispossessed Spirit"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster " Bound Thing"
+copystats "Water Snake"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
 
 newweapon "Woodsman's Axe"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -6394,6 +6437,7 @@ addstring "(8)3*Stick Figure    "
 addstring "(115)3*Stick Figure     "
 addstring "(349)3*Stick Figure      "
 addstring "(283)3*Stick Figure       "
+addstring "(311)3*Floating Stick Figure"
 airare -1 #never cast
 nomonreq
 addstring "(-)Stick Figure"
@@ -6404,6 +6448,7 @@ addstring "(-)Stick Figure    "
 addstring "(-)Stick Figure     "
 addstring "(-)Stick Figure      "
 addstring "(-)Stick Figure       "
+addstring "(-)Floating Stick Figure"
 descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees. ^^Summons a stealthy ward that maintains control of the forest until revealed. It also prevents terrain destruction and grants scouting of adjacent tiles."
 
 newritual "Stir the Hollows" 
@@ -8985,9 +9030,6 @@ spr1 "Sprites/Ancestralleader1.tga"
 spr2 "Sprites/Ancestralleader2.tga"
 hp 24
 allitemslots
-	
-selectmonster "Sending"
-float
 
 # ------------------------------ Barbarian New Monsters ---------------------------------------# 
 
@@ -10398,7 +10440,7 @@ addstring "Spirit-bound Barbarian King "
 addstring "Spirit-chosen Barbarian King"
 descr "The Enarie negotiates a pact between the Barbarian Chief and the spirit world. Should the Chief die in battle his ancestors will welcome him in the afterlife and give him a retinue of spectral followers."
 
-selectmonster " Sending"
+selectmonster "Sending"
 hp 4
 noheal 
 clearmove 
@@ -21888,6 +21930,18 @@ meleeweapon 0 "Scarab Bites"
 drawsize 15
 descr "The Scarab Swarm consists of countless beetles that move as a unified mass, consuming everything in their path. They seem drawn to decomposing material, and are often seen scurrying beneath the feet of the Scourge Lords armies."
 
+newweapon "Sand Crush"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 7
+dmgtype              2 # Blunt.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  3 # Area: burst 3.
+sound                1 # spear.smp (Spear)
+onlyenemy
+nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+nextdmg             64 # Stun
+
 newmonster "Foul Sand"  
 spr1 "Sprites/Foulsand1.tga"
 spr2 "Sprites/Foulsand2.tga"
@@ -21897,7 +21951,7 @@ str                            7
 mor                           99 
 mr                             5 
 rank                           1 # Front rank.
-meleeweapon               4 493 # Crush: d4 Blunt damage.
+meleeweapon               7 "Sand Crush" # Crush: d7 Blunt damage.
 battleslow                             
 desert
 poisonres                    100 # Poison immunity.
@@ -21920,10 +21974,10 @@ descr "In a twisted mockery of nature, this being is created by the Scourge Lord
 newmonster "Desert Wraith" 
 spr1 "Sprites/Desertwraith1.tga"
 spr2 "Sprites/Desertwraith2.tga"
-hp		    	13
-str		    	6
+hp		    	7
+str		    	5
 mor			7
-mr			9
+mr			7
 armor		    	0
 rank		    	0
 fireres			100
@@ -21943,7 +21997,6 @@ sleepres
 desertstealth
 meleeweapon 4 849 #Touch of the Fallen d4
 spellweapon 67 1 #Destruction at level 1 
-spellweapon 67 1 #Destruction at level 1
 drawsize -35
 descr "Desert Wraiths are vengeful demons born from the scorching sirocco. They and thrive on madness and isolation, and can be be heard howling during sandstorms." 
 
@@ -21986,17 +22039,16 @@ human
 allitemslots                     # Has the full set of item slots.
 descr "Kaftar were once humans who succumbed to greed and cruelty. In a classic demonstration of the degenerative effects of vice upon the human frame, they are now cursed to roam the land in the twisted form of hyenas. These creatures are known for their unnerving ability to mimic human voices, which they use to lure unsuspecting travelers into traps or ambushes. They are lured to the service of the Scourge Lord by the promise of stolen life-force and serve him with the slavering devotion of starved dogs".  
 
+
 newmonster "Desolation Djinn"
 spr1 "Sprites/Desolationdjinn1.tga"
 spr2 "Sprites/Desolationdjinn2.tga"
-hp		    	32
-str		    	9
-mor			10
+hp		    	17
+str		    	6
+mor			8
 mr			9
 armor		    	0
 rank		    	0
-fireres			100
-shockres		50	
 poisonres		100
 diseaseres
 ethereal
@@ -22008,11 +22060,9 @@ desert
 spiritsight
 sleepres
 meleeweapon 10 849 #Touch of the Fallen d4
-spellweapon                  37   2 # Black Magic at level 2.
-spellweapon                    67 1 #Destruction at level 1 
-spellweapon                    43 1 #Illusionism at level 1
+spellweaponbonus           8   2 # Unlife at level 2.
+spellweaponbonus           43 2 #Illusionism at level 2
 descr "The Djinn of Desolation are ancient spirits said to dwell beneath the sands of ruined empires. They are drawn to places where the wind carries the dust of the dead and the memory of forgotten cities. Their presence dries the wells, blights the oases, and fills the air with a stifling heat. The rise of the Scourge Lord has disturbed their rest, and many now serve him, drawn to his power and the promise of ruin."
-
 
 newmonster "Faceless"
 spr1 "Sprites/Faceless1.tga"
@@ -24545,7 +24595,7 @@ addmercrec "Black Kobold Spider Rider"         15 2 20 0 5 # only where Emerald 
 recxcost    16   5  
 	reclimiter  "$Dusk Dragon"                    # +1% chance per Dusk Dragon owned.
 	reclimiter  "$Elder Dragon"                   # +1% chance per Elder Dragon owned.
-	recterr -84
+#	recterr -84
 	reclimiter "+Black Kobold Slayer Shaman"
 	reclimiter "+Black Kobold Slayer Prophet"
 addcomrec   "Black Kobold Slayer Shaman"        2      40  20    0 # 
