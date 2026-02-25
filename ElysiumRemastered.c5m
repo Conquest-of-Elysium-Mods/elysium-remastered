@@ -346,8 +346,8 @@ human
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 localleadership                3 # +3 Morale for allied units within two squares of this unit.
-goldbonus                     15 # 10% bonus to all gold income for the player that owns this unit while it exists.
-ironbonus                     15 # 10% bonus to all iron income for the player that owns this unit while it exists.
+goldbonus                     10 # 10% bonus to all gold income for the player that owns this unit while it exists.
+ironbonus                     10 # 10% bonus to all iron income for the player that owns this unit while it exists.
 ainofollower
 affres 85
 descr "A warlord is a chieftain who has risen through conquest, for he commands not only his own clan but also those whom fear or the promise of spoils has drawn beneath his banner. Many first gain renown by seizing some neglected imperial holding, and when the plunder is divided the neighboring clans sometimes choose to follow, though such loyalty rarely holds for long. Tribute is pledged more readily than it is paid, and each alliance must be maintained through gifts, threats or the memory of what befell the last chief who withheld obedience."
@@ -4460,9 +4460,11 @@ addunitrec  "Unholy Altar"            			100 1 50 0 50
 	recxcost	4 10
 addmercrec  "Covert Agent"             			5 1 25 10 0
 addcomrec "Captain"									20 40 10 0  
-addunitrec  "Demon Knight"	      		100 2 170 25 0
+addunitrec  "Demon Knight"	      				100 2 170 25 0
 	recterr -36
-addunitrec  "Infernal Soldier"        		100 4 170 25 0  
+addunitrec  "Infernal Soldier"        			100 4 170 25 0  
+	recterr -36
+addunitrec  "Catapult"                        		100 1 25 0 50
 	recterr -36
 addunitrec     "Frost Fiend" 25 1 45 20 0
 	recterr -36
@@ -9276,7 +9278,7 @@ look 						165
 flysound            	15 # sling.sw (Sling)
 sound                	68 # small fire
 
-#newmonster "Harii"
+#newmonster "Night Raider"
 #spr1 "Sprites/Harii_sword1.tga"
 #spr2 "Sprites/Harii_sword2.tga"
 #armor                          0 # Armor.
@@ -9293,9 +9295,9 @@ sound                	68 # small fire
 #allitemslots                     # Has the full set of item slots.
 #berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 #terrstealth -1123
-#descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
+#descr "Some raiders wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
-newmonster "Harii"
+newmonster "Night Raider"
 spr1 "Sprites/Harii_fire1.tga"
 spr2 "Sprites/Harii_fire2.tga"
 armor                          0 # Armor.
@@ -9312,9 +9314,9 @@ shield
 terrstealth -1123
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
+descr "Some raiders wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
-newmonster "  Harii"
+newmonster "  Night Raider"
 spr1 "Sprites/Harii_fire1.tga"
 spr2 "Sprites/Harii_fire2.tga"
 armor                          0 # Armor.
@@ -9330,18 +9332,19 @@ human                            # Vulnerable to weapons and spells that only af
 shield
 slow
 battlefast 
+evasion 1
 terrstealth -1123
 allitemslots                     # Has the full set of item slots.
 growtime 1
 growoffs -1
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
+descr "Some raiders wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
-newmonster " Harii" # This one is for merc purposes 
-copystats "Harii" 
+newmonster " Night Raider" # This one is for merc purposes 
+copystats "Night Raider" 
 growoffs -2
 growtime 1 
-descr "They wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. These raiders call themselves the Harii. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
+descr "Some raiders wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
 
 newmonster "Longship"
 spr1 "Sprites/Longship.tga"
@@ -9400,7 +9403,7 @@ shipmove
 transport 20
 terrstealth -1123 
 drawsize -30 
-descr "The Harii prepare their longships in a peculiar manner, coating the hulls in soot and pitch and scratching faint runes along the boards, which they claim will render the vessel difficult to see. The rails of the ship are fitted with small torches that can be shuttered at ease, allowing the crew to row in near total darkness. Scouts along the northern coasts report that these nightships glide close to shore without sound or light, and that a settlement often realizes their presence only when the torches are thrown open and the raiders leap ashore amid sudden fire."
+descr "The Night Raiders prepare their longships in a peculiar manner, coating the hulls in soot and pitch and scratching faint runes along the boards, which they claim will render the vessel difficult to see. The rails of the ship are fitted with small torches that can be shuttered at ease, allowing the crew to row in near total darkness. Scouts along the northern coasts report that these nightships glide close to shore without sound or light, and that a settlement often realizes their presence only when the torches are thrown open and the raiders leap ashore amid sudden fire."
 
 newmonster "Dragonship"
 copystats "Galleon"
@@ -9432,7 +9435,7 @@ armor                          0 # Armor.
 hp                             7 # Hit Points.
 str                            5 # Strength.
 mor                            5 # Morale.
-mr                             8 # Magic Resistance.
+mr                             7 # Magic Resistance.
 rank                          0 # Mid rank.
 frontpos
 spellweaponbonus          48   1 # warrior wards at level 1.
@@ -9573,6 +9576,23 @@ descr "When a tribe prepares for a difficult battle, a single warrior may be cho
 newmonster " Aptrganger"
 spr1 "Sprites/Aptrganger1_2.tga"
 spr2 "Sprites/Aptrganger2_2.tga" 
+armor                          1 # Armor.
+hp                            13 # Hit Points.
+str                            5 # Strength.
+mor                            8 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                3  21 # Greatsword: d12 Slash damage.
+charmres
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+firstshape 1 
+descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
+
+newmonster " Aptrganger"
+spr1 "Sprites/Aptrganger1_3.tga"
+spr2 "Sprites/Aptrganger2_3.tga" 
 armor                          1 # Armor.
 hp                            13 # Hit Points.
 str                            5 # Strength.
@@ -9818,7 +9838,7 @@ berserker                        # Can go berserk if hit in combat.  Berserk: +1
 nametype                      31 # early germanic male 
 descr "A Thane is a household noble set over the warband by the chief. He stands apart from the common warriors, a distinction proven by his place in the foremost rank of battle and by the authority he bears in camp. Outside battle he adjudicates disputes and ensures the chief's share of plunder is taken before the rest is divided. These duties seldom win affection, yet those who serve capably are sometimes granted seats at the chiefs table, which the tribes regard as a mark of rising fortune."
 
-newmonster "Harii Chief"
+newmonster "Raider Chief"
 copystats "Painted Crystal Amazon"
 clearweapons 
 spr1 "Sprites/Hariichief1.tga"
@@ -9835,7 +9855,7 @@ human                            # Vulnerable to weapons and spells that only af
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 terrstealth -1123
-descr "The Harii Chiefs command the Nightships. They are expected to know every inlet and shoal along the northern coasts and to navigate through waters that most pilots refuse even in daylight. Several reports tell of their vessels slipping between rocks where only seals are thought able to pass, guided by nothing more than the feel of the surf upon the prow."
+descr "The raider chiefs display some naval skills, which are probably more attributed to primitive instincts than any real education in seamanship. Nonetheless they appear to know the inlet and shoals along the northern coasts well, and have been known to navigate through waters that most pilots refuse even in daylight. Several reports tell of their vessels slipping between rocks where only seals are thought able to pass, guided by nothing more than the feel of the surf upon the prow."
 
 newmonster "Hunt Mother"
 copystats "Painted Crystal Amazon"
@@ -10030,7 +10050,7 @@ acutesenses
 foreststealth
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
-shield 
+largeshield 
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 affres 85
 nametype                      31 # Early Germanic male. 
@@ -10055,7 +10075,7 @@ armor                          2 # Armor.
 hp                            20 # Hit Points.
 str                            5 # Strength.
 mor                            6 # Morale.
-mr                             6 # Magic Resistance.
+mr                             8 # Magic Resistance.
 rank                           0 # Mid rank 
 meleeweapon 10 2                 # Broad Sword d10
 spellweaponbonus         3   2 # Pyromancy at level 2.
@@ -10079,7 +10099,7 @@ armor                          2 # Armor.
 hp                            20 # Hit Points.
 str                            5 # Strength.
 mor                            7 # Morale.
-mr                             6 # Magic Resistance.
+mr                             8 # Magic Resistance.
 rank                           0 # Mid rank 
 prebatweapon 0 "Hull Breach"
 meleeweapon 10 2                 # Broad Sword d10
@@ -10106,7 +10126,7 @@ armor                          1 # Armor.
 hp                             18 # Hit Points.
 str                            5 # Strength.
 mor                            7 # Morale.
-mr                             7 # Magic Resistance.
+mr                             8 # Magic Resistance.
 rank                           0 # Mid rank.
 spellweaponbonus            17   2 # spiritism at level 2.
 meleeweapon                2   160 # Greatsword: d12 Slash damage.
@@ -10131,7 +10151,7 @@ armor                          0 # Armor.
 hp                            142 # Hit Points.
 str                            6 # Strength.
 mor                            6 # Morale.
-mr                             3 # Magic Resistance.
+mr                             8 # Magic Resistance.
 rank                           1 # Front rank.
 prebatweapon 1 "Wyrmshape" 
 meleeweapon                1   160 # Greatsword: d11 Slash damage.
@@ -10174,7 +10194,7 @@ armor                          0 # Armor.
 hp                            14 # Hit Points.
 str                            6 # Strength.
 mor                            6 # Morale.
-mr                             3 # Magic Resistance.
+mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
 meleeweapon                0   160 # Greatsword: d10 Slash damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
@@ -10396,17 +10416,8 @@ flying
 dmgonterr -1 
 
 selectritual "Sending"
-level 9
-free 
-
-newritual     "Sending"									# sending is now a short lived, controllable scout. Better for raiding purposes.  
-ritpow                13 # Spirit Summons
-free 
-level                  1
 cost              2   25 # 25 Herbs
-summoning                # The ritual will summon the monsters specified in a random string.
 airare                10 # Only 10% of normal chance that AI will cast this ritual.
-addstring     "c* Sending"
 descr "The Spirit Guide summons an ancestral spirit and sends it out to explore his surroundings. The Sending is invisible and can only be attacked by those endowed with spirit sight. The Sending can be controlled, but will dissipate after a short period."
 
 newritpow #Lesser Barbarian commanders 
@@ -10482,14 +10493,14 @@ free
 promotion 99
 terr 69 
 minmonreq 1
-addstring "Harii"
-addstring "  Harii"
+addstring "Night Raider"
+addstring "  Night Raider"
 addstring "(&)Nightship"
 addstring "(&)Dragonship"
 closewin 
 descr "The Harii Chief slips his ship close to land, and prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively. This ritual must be cast on a Nightship in Shallow Sea."
 
-selectmonster "Harii Chief"
+selectmonster "Raider Chief"
 power 0 1 
 selectmonster "Black"
 power 0 1
@@ -10559,7 +10570,7 @@ descr "The Barbarian King often retires veteran warriors to resettle conquered l
 newritual "Ritual of Conquest"
 start
 level 1
-cost 0 150
+cost 0 120
 terr -28 #Towns or cities
 promotion 1
 addstring "Barbarian Leader"
@@ -10585,7 +10596,7 @@ newritual "Offering to the Ancestors"
 copyritual "Design Badger Tattoo"
 free
 level 2
-cost 0 75
+cost 0 50
 terr -1102 
 aialways 999
 airestrig 100
@@ -10595,7 +10606,7 @@ descr "An offering of plunder is placed before the Irminsul to honor the ancesto
 newritual "Petition the Storm Spirits" 
 level 3
 free
-cost 0 100
+cost 0 75
 terr 253 #mountain spire 
 promotion 1
 addstring "Barbarian King" 				#basic
@@ -10623,7 +10634,7 @@ descr "Those deemed worthy are marked with the runes of thunder. Warriors bearin
 newritual "Seek the Night Spirits" #Malady 
 level 3
 free
-cost 0 100 
+cost 0 75 
 terr 107 # swamp or 97 iron bog
 promotion 1
 addstring "Barbarian King" 				#basic
@@ -10652,7 +10663,7 @@ newritual "Bargain with the Spirits of War" #
 level 3
 free
 terr 19 # old battlefield
-cost 0 100
+cost 0 75
 promotion 1
 addstring "Barbarian King" 				#basic
 addstring "Spirit-touched Barbarian King " 			#ancestor 
@@ -10832,7 +10843,7 @@ endevent
 playerevent # #Spawn Champion, King. This one needs to run off an event trigger to work.  
 +humanplayer
 +varequal 9 1
-+chance 5
++chance 4
 +class -2 "Barbarian" 
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
 +plane 0 																#only on Elysium
@@ -10972,7 +10983,7 @@ playerevent # The Greedy
 +class -2 "Barbarian" 
 +ownsloc -93 #greater mine 
  +ownsloctarg -2 -23
-newunits -2 "Greedy"
+newunits -2 "c*Greedy"
 message -2 "A raider draped in plundered finery offers to join your cause. He speaks in a hissing voice and states his price in gold before offering his name"
 setvar 16 1
 -hasunit -2 "Barbarian King"
@@ -10994,7 +11005,7 @@ playerevent # the maker of heroes
 +chance 12 
 +class -2 "Barbarian" 
 +ownsloctarg -2 834
-newunits -2 "Maker of Heroes"
+newunits -2 "c*Maker of Heroes"
 message -2 "The sacred grove is occupied this evening by an old spirit caller you do not recognize. The spirits have sent him to shape warriors, and he asks permission to begin."
 setvar 17 1
 -hasunit -2 "Barbarian King"
@@ -11156,7 +11167,7 @@ addunitrec "Horned Warrior" 							100 3 40 0 10
 addunitrec 	"Wolf Runner" 								100 3 45 0 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-addunitrec "Harii" 												100 4 40 0 5
+addunitrec "Night Raider" 												100 4 40 0 5
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 addunitrec "Barbarian Werebear" 				12 1 25 0 0 
@@ -11188,13 +11199,13 @@ addcomrec   "Spirit Guide"                      				4 75 20 0
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Mounted Chief"                    			8 25 10 0 
 addcomrec   "Barbarian Thane"							25 15 15 0 
-addcomrec   "Harii Chief"							6 35 10 0 
+addcomrec   "Raider Chief"							6 35 10 0 
 	recterr -93 #ports 
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 addmercrec	"Nightship"									-1 1 20 20 0
 	recterr -93 #ports 	 
-addmercrec   "Dawn Maiden"                   			5 1 35 15 0 
+addmercrec   "Dawn Maiden"                   			5 1 30 10 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Daughter of the Sun"      				2 80 20 0 # once per offer; extra.
 	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
@@ -11222,7 +11233,7 @@ addmercrec " Horned Warrior" 									20 3 25 15 0
 addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-addmercrec " Harii" 									 					15 5 25 15 0
+addmercrec " Night Raider" 									 					15 5 25 15 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 
@@ -11244,7 +11255,7 @@ addunitrec 	"Wolf Runner" 								100 3 45 0 0
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addunitrec "Harii" 												100 4 40 0 5
+addunitrec "Night Raider" 												100 4 40 0 5
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -11252,7 +11263,7 @@ addunitrec "Harii" 												100 4 40 0 5
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addcomrec   "Harii Chief"							6 35 10 0 
+addcomrec   "Raider Chief"							6 35 10 0 
 	recterr -93 #ports 
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
@@ -11321,7 +11332,7 @@ addmercrec 	" Wolf Runner" 			 						20 3 25 15 0
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addmercrec " Harii" 									 					15 4 25 15 0
+addmercrec " Night Raider" 									 					15 4 25 15 0
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King "
@@ -14818,7 +14829,7 @@ level 9
 
 selectritual "Perpetual Storm" 				#A single cast will no longer blanket the world, but still a powerful ritual. 
 cost              9  60 # 60 Diamonds
-ainothere -79 								#AI will only cast in siegable locations, to reduce random spam. Aiwhere command seems to do nothing, but this works. 
+aiwhere 2 #only locations it wants to defend
 
 selectritual "Lesser Air Summoning"
 level 9
@@ -16466,30 +16477,18 @@ endevent
 #------------- Troll King Class & Recruitment --------------------------#
 
 selectclass 14
-addunitrec  "Rock Troll"                      		20 1 50 0 60 
-addunitrec  "Troll"                           	 		30 1 50 0 20 
-addunitrec  "Forest Troll"                    		30 1 40 0 10 
-addunitrec  "Lake Troll"                       		30 1 50 0 10 
+addunitrec  "Rock Troll"                      		5 1 50 0 60 
+addunitrec  "Troll"                           	 		7 1 50 0 20 
+addunitrec  "Forest Troll"                    		7 1 40 0 10 
+addunitrec  "Lake Troll"                       		7 1 50 0 10 
 	recterr     -102                              # The preceding offer can only be recruited in terrain: near fresh water.
-addunitrec  "Lake Troll Warrior"               20  1   50   0   30 
+addunitrec  "Lake Troll Warrior"               5  1   50   0   30 
 	reclimiter  "+Lake Troll King"                # Owning a Lake Troll King enables the preceding offer.
 	recterr     -102                              # The preceding offer can only be recruited in terrain: near fresh water.
-addunitrec  "Hill Giant"                        		7 1 100 0 0 
-addunitrec  "Ettin"                             			10 1 50 0 0 
-addcomrec   "Goblin Chieftain"                  	7 25 20 0 
-addcomrec   "Ogre Chief"                        		3 35 20 0 
-addcomrec   "Forest Giant"                      	7 70 20 0 
-addcomrec   "Goblin Shaman"                     4 35 20 0 
-	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
-addcomrec   "Troll Shaman"                      	2 75 50 0 
-	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
-addcomrec   "Lake Troll King"                   	1 75 50 0 
-	libraryrec                                    # +1% to chance per library point owned, to a max of +10% for 10+ library points.
-	recterr     -102                              # The preceding offer can only be recruited in terrain: near fresh water.
-addcomrec   "Ettin Wyrd"                   			1 145 40   0
-	libraryrec                                    # +1% to chance per library point owned, to a max of +10% for 10+ library points.
-addmercrec  "Goblin Murderer"               	3 1 10 40 0 
-addcomrec   "Goblin Hero"                       	3 10 50 0 
+addunitrec  "Hill Giant"                        		2 1 100 0 0 
+addunitrec  "Ettin"                             			3 1 50 0 0 
+addcomrec   "Forest Giant"                      	3 70 20 0 
+addcomrec   "Ettin Wyrd"                   			3 145 40   0
 addcomrec	"New Troll King"						3 100 80 50
 	reclimiter "-Troll King"
 	reclimiter "-New Troll King"
@@ -17565,8 +17564,6 @@ clearstartunits
 	addstartunits	"Dancing Sword" 4
 	addstartunits 	"Dancing Spear" 4
 	addstartcom 	"Enchanter's Apprentice"
-	
-
 
 ########################################### High Cultist ################################################### 
 
@@ -18736,41 +18733,7 @@ addstartunits          "Spearman"                  6
 addstartunits          "Archer"                    5
 addstartcom            "Bishop"
 
-clearrec
-addunitrec  "Spearman"                        100 5 50 0 0
-addunitrec  "Swordsman"                       100 5 50 0 10
-addunitrec  "Archer"                          100 5 50 0 0
-addunitrec  "Pikeneer"                        100 5 50 0 5
-addunitrec  "Halberdier"                      100 5 50 0 5
-addunitrec  "Heavy Infantry"              	  100 5 50 0 25
-addunitrec  "Temple Guard"                    100 5 50 0 5 # Arch Bishop+.
-	recxcost    12   1                            #  1 Relics additional cost.
-	reclimiter "+Arch Bishop"
-	reclimiter "+Cardinal"
-	reclimiter "+Pontiff"
 addunitrec  "Sergeant-at-Arms"                100 5 50 0 10
-	reclimiter "+Arch Bishop"
-	reclimiter "+Cardinal"
-	reclimiter "+Pontiff"
-addunitrec  "Templar"                         100 5 50 0 35 # Cardinal+.
-	recxcost    12   5                            #  5 Relics additional cost.
-	reclimiter "+Cardinal"
-	reclimiter "+Pontiff"
-addunitrec  "Catapult"                        100 1 25 0 50
-addmercrec  "Scout"                           10 1 15 10 0 
-addcomrec   "Chaplain"                        7 30 10 0 reclimiter "+Arch Bishop"
-	recxcost    12   3                            #  1 Relics additional cost.
-	reclimiter "+Arch Bishop"
-	reclimiter "+Cardinal"
-	reclimiter "+Pontiff"
-addcomrec   "Bishop"                           4 40 10 0 reclimiter "+Arch Bishop"
-	templerec                                     # +4% to chance per temple owned, to a max of +20% for 5+ temples.
-addcomrec   "Bishop"                           10 40 10 0 reclimiter "+Arch Bishop"
-	reclimiter "-Bishop"
-	reclimiter "-Arch Bishop"
-	reclimiter "-Cardinal"
-	reclimiter "-Pontiff"
-addcomrec "Vespertine Agent"                   3 60 20 0
 	reclimiter "+Arch Bishop"
 	reclimiter "+Cardinal"
 	reclimiter "+Pontiff"
@@ -18782,6 +18745,15 @@ addmercrec "Battle Reliquary"                  4 1 50 10 0
 addmercrec "Preacher"								15	1	20 10	0
 		templerec
 		recxcost 12 5
+addcomrec   "Chaplain"                        7 30 10 0 reclimiter "+Arch Bishop"
+	recxcost    12   3                            #  1 Relics additional cost.
+	reclimiter "+Arch Bishop"
+	reclimiter "+Cardinal"
+	reclimiter "+Pontiff"
+addcomrec "Vespertine Agent"                   3 60 20 0
+	reclimiter "+Arch Bishop"
+	reclimiter "+Cardinal"
+	reclimiter "+Pontiff"
 ####################################### Illusionist #######################################################
 
 # ---------- Illusionist Monster Edits ----------------# 
@@ -19083,7 +19055,7 @@ descr "A grand bejeweled shrine, for some reason shaped like a great elephant on
 # -------------------- Illusionist Ritual Edits ---------------------------------------------------# 
 
 selectritual "Fata Morgana"
-ainothere -79				# AI will only cast in siegable locations. aiwhere command seems to do nothing, but this works. 	
+aiwhere 2 #only locations it wants to defend
 airare                50 	# Previously 25, now same casting chance as veil mine. 
 
 selectritual "Scrying" #level 2 rituals have too many niche options. Now increased chance of getting something useful on first roll. 
@@ -25191,7 +25163,7 @@ copystats "Rakshasa"
 # --------- Raksharaja Ritual Edits --------------------# 
 
 selectritual "Veil of Dreams"
-ainothere -79				# Will only cast in siegable locations. aiwhere command is bugged i think, but this works. 	
+aiwhere 2 #only locations it wants to defend
 airare                50 	# Previously 25, now same casting chance as veil mine.  
 
 selectritual "Lanka Summoning"
@@ -27434,34 +27406,13 @@ playerevent #Free City
 +turnnbr -1
 +player 25
 +chance 15
-+minterrains 1 207 0
++minterrains 2 9 0		#at least two cities on the map. to reduce probability of agricultural age spawn
+-minterrains 1 34 0  	#no gold mine, to exclude dark age spawn
+-minterrains 1 135 0 	#no haunted capital, to exclude most fallen empire spawns 
+-minterrains 1 246 0	#no barbarian district, to exclude barbarian fallen empire spawn
 randloc 0 311
 +terrain 311
 newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 2d6*Mariner & 2d6*Pirate & 1*Magus Engineer & 2*Merchant"
-alterterrain 852
-holdit
-endevent
-
-playerevent #Free City
-+turnnbr -1
-+player 25
-+chance 15
-+minterrains 1 83 0
-randloc 0 311
-+terrain 311
-newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 3d6*Pirate &  3d6*Mariner & 1*Engineer Magus & 2*Merchant"
-alterterrain 852
-holdit
-endevent
-
-playerevent #Free City
-+turnnbr -1
-+player 25
-+chance 20
-+minterrains 1 124 0
-randloc 0 311
-+terrain 311
-newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 3d6*Pirate & 3d6*Mariner & 1*Engineer Magus & 2*Merchant"
 alterterrain 852
 holdit
 endevent
@@ -29928,7 +29879,7 @@ copystats "Spectral Oni Mage"
 aihold 1
 
 selectclass 6 
-addmercrec  " Bakemono Archer"                	100 5 25 0 1 	# Standard defense
+addmercrec  " Bakemono Archer"                		100 5 25 0 1 	# Standard defense
 	recterr -98
 	reclimiter "+AI"
 	reclimiter "+Late AI"
@@ -29940,16 +29891,16 @@ addmercrec " Bakemono Bowman"                 	100 5 1 0 0		#Home Garrison
 addmercrec  " Dai Bakemono Archer"              100 5 50 0 0 	#Late Home Garrison
 	recterr 112
 	reclimiter "+Late AI"
-addmercrec  "Effigy"  				100 1 25 0 0 	#Late Home Garrison
+addmercrec  "Effigy"  											100 1 25 0 0 	#Late Home Garrison
 	recterr 112
 	reclimiter "+Late AI"
-addunitrec  " Oni Warrior"  			100 2 50 0 0 	#Late Home Garrison
+addunitrec  " Oni Warrior"  								100 2 50 0 0 	#Late Home Garrison
 	recterr 112
 	reclimiter "+Late AI"
-addunitrec  " Oni Mage"  			100 1 50 0 0 	#Late Home Garrison
+addunitrec  " Oni Mage"  									100 1 50 0 0 	#Late Home Garrison
 	recterr 112
 	reclimiter "+Late AI"
-addcomrec   "Bakemono Shaman"                   100 55 10 0 	#suicide countermeasure
+addcomrec   "Bakemono Shaman"                   	100 55 10 0 	#suicide countermeasure
 	reclimiter "-Bakemono Shaman"
 	reclimiter "-Bakemono Sorceror"
 	reclimiter "-Bakemono Great Sorceror"
@@ -30020,12 +29971,12 @@ addcomrec   "Barbarian Warlord"                   100 150 0 0 	# Will recruit Wa
 	reclimiter "+Late AI"
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King" 
-addcomrec   "Barbarian King"                   		100 250 0 0 	# Will recruit King directly
+addcomrec   "Barbarian King"                   			100 250 0 0 	# Will recruit King directly
 	recterr 834
 	reclimiter "+Late AI"
 	reclimiter "-Barbarian Warlord"
 	reclimiter "-Barbarian King" 
-addcomrec   "Barbarian Champion"                   		10 1 0 0 	# Will recruit Champions directly, events trigger for players only   
+addcomrec   "Barbarian Champion"                   10 1 0 0 	# Will recruit Champions directly, events trigger for players only   
 	reclimiter "+Late AI"
 addmercrec  " Barbarian Werebear"           		100 1 25 0 0 	#Irminsul late game garrison
 	recterr 834
@@ -30040,7 +29991,7 @@ addmercrec "Beast Idol" 										100 1 50 0 0 	#Irminsul late game garrison
 	recterr 834
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addmercrec "Thunder Idol"									100  1   50   0    0 #Irminsul late game garrison
+addmercrec "Thunder Idol"								100  1   50   0    0 #Irminsul late game garrison
 	recterr 834
 	reclimiter "+Late AI"
 addmercrec "Idol of Maladies"							100  1   50   0    0#Irminsul late game garrison
@@ -30053,7 +30004,7 @@ addmercrec "Effigy"												100  1   25   0    0 #Irminsul late game garrison
 	recterr 834
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addcomrec "Spirit Guide"										100  1   75   0    0	#Ensures AI will get spirit guide online early 
+addcomrec "Spirit Guide"										25  1   75   0    0	# A gentle nudge to get the spirit guide online early 
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	reclimiter "-Spirit Guide"
@@ -30118,32 +30069,32 @@ stationary
 aimaxshop 1
 
 selectclass 8
-addmercrec  " Archer"                           100  5   50   0    0 	# standard defense
+addmercrec  " Archer"                           		100  5   50   0    0 	# standard defense
 	recterr -98
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addmercrec  " Ballista"                       	100  2   25   0   50 	# standard defense
+addmercrec  " Ballista"                       			100  2   25   0   50 	# standard defense
 	recterr -98
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addmercrec  " Hastatus"                       	100  5   1   0   0 	#outpost garrison
+addmercrec  " Hastatus"                       		100  5   1   0   0 	#outpost garrison
 	recterr 154
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addmercrec  " Ballista"                       	100  2   25   0   10 	#Late Capital garrison
+addmercrec  " Ballista"                       			100  2   25   0   10 	#Late Capital garrison
 	recterr -22
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addmercrec  " Praetorian Guard"                 100  5   50   0   0 	#Late Capital garrison
+addmercrec  " Praetorian Guard"            	100  5   50   0   0 	#Late Capital garrison
 	recterr -22
 	reclimiter "+Late AI"
-addunitrec  " Serpent Priest"                   100  1   50   0   0 	#Late Capital garrison
+addunitrec  " Serpent Priest"                   	100  1   50   0   0 	#Late Capital garrison
 	recterr -22
 	reclimiter "+Late AI"
-addunitrec  " Thaumaturg"			100  1   50   0   0 	#Late Capital garrison
+addunitrec  " Thaumaturg"						100  1   50   0   0 	#Late Capital garrison
 	recterr -22
 	reclimiter "+Late AI"
-addunitrec  " Renatus"                	        100  1   50   0   0 	#Late Capital garrison
+addunitrec  " Renatus"                	        	100  1   50   0   0 	#Late Capital garrison
 	recterr -22
 	reclimiter "+Late AI"
 addunitrec  " Heliodromus"                      100  1   50   0   0 	#Late Capital garrison
@@ -30158,13 +30109,13 @@ addunitrec  " Heliodromus"                      100  1   50   0   0 	#Late Capit
 addunitrec  " Shadow Priest"                	100  1   50   0   0 	#Late Capital garrison
 	recterr -55
 	reclimiter "+Late AI"
-addunitrec  " Shadow Tribune"                	100  1   50   0   0 	#Late Capital garrison
+addunitrec  " Shadow Tribune"                100  1   50   0   0 	#Late Capital garrison
 	recterr -55
 	reclimiter "+Late AI"
-addcomrec  " Senator"							100  1   50   0   0 	#Make AI use coronation
+addcomrec  " Senator"									100  1   50   0   0 	#Make AI use coronation
 	recterr -22
 	reclimiter "+Late AI"
-addmercrec  " Renata"			 				100  1   50   0   0 	#Make AI use imperial wedding
+addmercrec  " Renata"			 						100  1   50   0   0 	#Make AI use imperial wedding
 	recterr -22
 	reclimiter "+Late AI"
 
@@ -30196,16 +30147,16 @@ addmercrec  "Pale One Slinger"                  100  5   1   0    0 	#Late Lair 
 	reclimiter "+AI"
 	reclimiter "+Late AI"	
 	recterr 121
-addmercrec  "Sentinel"                   		100  5   50   0    0 	#Late Lair garrison
+addmercrec  "Sentinel"                   				100  5   50   0    0 	#Late Lair garrison
 	reclimiter "+Late AI"	
 	recterr 121
-addmercrec  "Granite Guardian"                 	100  2   50   0    0 	#Late Lair garrison
+addmercrec  "Granite Guardian"                100  2   50   0    0 	#Late Lair garrison
 	reclimiter "+Late AI"	
 	recterr 121
 addmercrec  "Marble Oracle"                 	100  1   50   0    0 	#Late Lair garrison
 	reclimiter "+Late AI"	
 	recterr 121
-addmercrec  "Onyx Oracle"						100  1   75   0    0 	#Late Lair garrison
+addmercrec  "Onyx Oracle"							100  1   75   0    0 	#Late Lair garrison
 	reclimiter "+Late AI"	
 	recterr 121
 
@@ -30224,7 +30175,7 @@ addmercrec  "Barechested Slinger"             100  5   50   0    0 #Standard def
 	recterr -98
 	reclimiter "+AI"
 	reclimiter "+Late AI"	
-addmercrec  "Venus Trap"                      100  5   10   0    0 #Hut Garrison
+addmercrec  "Venus Trap"                      			100  5   10   0    0 #Hut Garrison
 	reclimiter "+AI"
 	reclimiter "+Late AI"	
 	recterr 28
@@ -30265,16 +30216,16 @@ addmercrec " Hoburg Crossbow" 					100 15   1   0   0	#Fortified Hoburg garrison
 	reclimiter "+AI"
 	reclimiter "+Late AI"	
 	recterr 1 
-addmercrec " Ferrous Wheel" 					100 1   25   0   25	#Fortified Hoburg garrison
+addmercrec " Ferrous Wheel" 						100 1   25   0   25	#Fortified Hoburg garrison
 	reclimiter "+Late AI"	
 	recterr 1
-addunitrec " Iron Fly" 						100 1   50   0    20	#Late Fortified Hoburg garrison
+addunitrec " Iron Fly" 									100 1   50   0    20	#Late Fortified Hoburg garrison
 	reclimiter "+Late AI"	
 	recterr 1 
-addunitrec " Iron Spider" 					100 1   50   0    20	#Fortified Hoburg garrison
+addunitrec " Iron Spider" 								100 1   50   0    20	#Late Fortified Hoburg garrison
 	reclimiter "+Late AI"	
 	recterr 1 
-addunitrec " Topiary Guardian" 					100 2   75   0    0	#Fortified Hoburg garrison
+addunitrec " Topiary Guardian" 					100 2   75   0    0	#Late Fortified Hoburg garrison
 	reclimiter "+Late AI"	
 	recterr 1 
 
@@ -30371,13 +30322,13 @@ addmercrec  " Tribal Warrior"                  		100 7 1 0 0 	#Early Temple City
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr 3
-addunitrec  " Sacred Idol"                     		100 1 1 0 0 	#Late temple city garrison
+addunitrec  " Sacred Idol"                     			100 1 1 0 0 	#Late temple city garrison
 	reclimiter "+Late AI"
 	recterr 3
-addunitrec  " Balam"                     		100 1 1 0 0 	#Late temple city garrison
+addunitrec  " Balam"                     					100 1 1 0 0 	#Late temple city garrison
 	reclimiter "+Late AI"
 	recterr 3
-addunitrec  " Great Macaw"            			100 1 1 0 0 	#Late temple city garrison
+addunitrec  " Great Macaw"            				100 1 1 0 0 	#Late temple city garrison
 	reclimiter "+Late AI"
 	recterr 3
 
@@ -30408,7 +30359,7 @@ aihold 1
 aimaxshop 20  
 
 selectclass 14
-addmercrec  "Shadow Tree"                   	100 1 1 0 0 	#Troll pit garrison 
+addmercrec  "Shadow Tree"                   		100 1 1 0 0 	#Troll pit garrison 
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr 32
@@ -30416,17 +30367,17 @@ addmercrec  "Giant Mushroom"                	100 1 1 0 0	#Troll pit garrison
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr 32
-addmercrec  "Giant Morel"                   	100 1 1 0 0 	#Late Troll pit garrison 
+addmercrec  "Giant Morel"                   			100 1 1 0 0 	#Late Troll pit garrison 
 	reclimiter "+Late AI"
 	recterr 32
-addunitrec  " Orm"                          	100 1 1 0 0 	#Late Troll pit garrison 
+addunitrec  " Orm"                          				100 1 1 0 0 	#Late Troll pit garrison 
 	reclimiter "+Late AI"
 	recterr 32
-addmercrec  " Goblin Archer"                    100 10 1 0 0 	#Goblin Castle garrison 
+addmercrec  " Goblin Archer"                    		100 10 1 0 0 	#Goblin Castle garrison 
 	recterr 836
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addmercrec  " Wolf Kin Reaver"                  100 1 1 0 0 	#Goblin Castle garrison 
+addmercrec  " Wolf Kin Reaver"                  	100 1 1 0 0 	#Goblin Castle garrison 
 	recterr 836
 	reclimiter "+AI"
 	reclimiter "+Late AI"
@@ -30468,34 +30419,37 @@ aimaxshop 4
 
 selectclass 15 #Enchanter
 
-addmercrec "Animated Tools" 				100 1 0 0 0 	# Increase AI use of tools 
+addmercrec "Animated Tools" 						100 1 0 0 0 	# Increase AI use of tools 
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr -111
-addmercrec "Dancing Tools" 					100 1 0 0 0 	# Increase AI use of tools 
+addmercrec "Dancing Tools" 							100 1 0 0 0 	# Increase AI use of tools 
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr -112
-addmercrec "Flying Quills and Scrolls" 		100 1 0 0 0 	# Increase AI use of tools 
+addmercrec "Flying Quills and Scrolls" 			100 1 0 0 0 	# Increase AI use of tools 
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr -92
-addmercrec " Living Bow" 					100 1 0 0 0 	# Crystal Tower Garrison 
+addmercrec " Living Bow" 								100 1 0 0 0 	# Crystal Tower Garrison 
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr -92
-addmercrec " Animated Armor" 				100 2 0 0 0 	# Late Crystal Tower Garrison 
+addmercrec " Animated Armor" 					100 2 0 0 0 	# Late Crystal Tower Garrison 
 	reclimiter "+Late AI"
 	recterr -92
-addmercrec " Animated Ballista" 			100 1 0 0 0 	# Late Crystal Tower Garrison 
+addmercrec " Animated Ballista" 					100 1 0 0 0 	# Late Crystal Tower Garrison 
 	reclimiter "+Late AI"
 	recterr -92
-addmercrec "Gargoyle" 						100 2 0 0 0 	# Late Crystal Tower Garrison 
+addmercrec "Gargoyle" 									100 2 0 0 0 	# Late Crystal Tower Garrison 
 	reclimiter "+Late AI"
 	recterr -92
-addmercrec "Guardian" 						100 1 0 0 0 	# Late Crystal Tower Garrison 
+addmercrec "Guardian" 									100 1 0 0 0 	# Late Crystal Tower Garrison 
 	reclimiter "+Late AI"
 	recterr -92
+addcomrec "Enchanter's Apprentice" 			4 60 0 0   		# more commander offers. The AI buys to few, and therefore tends to underperform 
+	reclimiter "+AI"
+	reclimiter "+Late AI"
 addcomrec "Enchanter's Apprentice" 			100 60 0 0   	#suicide countermeasure
 	reclimiter "+AI"
 	reclimiter "+Late AI"
@@ -30532,31 +30486,31 @@ addmercrec " Crossbowman" 					100 5 1 0 0 	#Deserted Port Garrison
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 	recterr 164
-addunitrec "Strange Thing" 					100 4 50 0 0 	#Late Deserted Port Garrison
+addunitrec "Strange Thing" 						100 4 50 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 161
-addunitrec "Strange Thing" 					100 4 50 0 0 	#Late Deserted Port Garrison
+addunitrec "Strange Thing" 						100 4 50 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 162
-addunitrec "Strange Thing" 					100 4 50 0 0 	#Late Deserted Port Garrison
+addunitrec "Strange Thing" 						100 4 50 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 163
-addunitrec "Strange Thing" 					100 4 50 0 0 	#Late Deserted Port Garrison
+addunitrec "Strange Thing" 						100 4 50 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 164
-addunitrec "Star Oak" 						100 1 40 0 0 	#Late Deserted Port Garrison
+addunitrec "Star Oak" 								100 1 40 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 161
-addunitrec "Star Oak" 						100 1 40 0 0	#Late Deserted Port Garrison
+addunitrec "Star Oak" 								100 1 40 0 0	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 162
-addunitrec "Star Oak" 						100 1 30 0 0 	#Late Deserted Port Garrison
+addunitrec "Star Oak" 								100 1 30 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 163
-addunitrec "Star Oak" 						100 1 30 0 0 	#Late Deserted Port Garrison
+addunitrec "Star Oak" 								100 1 30 0 0 	#Late Deserted Port Garrison
 	reclimiter "+Late AI"
 	recterr 164
-addcomrec   "Cultist of the Deep"       	100 45 20 0 	# suicide countermeasure
+addcomrec   "Cultist of the Deep"       		100 45 20 0 	# suicide countermeasure
 	reclimiter "-Cultist of the Deep"
 	reclimiter "-High Cultist"
 	reclimiter "+AI"
