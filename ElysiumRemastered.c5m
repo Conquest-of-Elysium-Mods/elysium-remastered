@@ -21187,11 +21187,11 @@ meleeweapon  6  94  # Talon (D6 slash damage)
 meleeweapon  6  94  # Talon (D6 slash damage)
 
 selectmonster "Stymphalian Bird"                  
-hp               7									#Buffed to make it more worth the iron 	
+hp               6									#Buffed to make it more worth the iron 	
 clearweapons
 meleeweapon  0 761  # Copper Feathers
-meleeweapon  4  94  # Talon (D4 slash damage)
-meleeweapon  4  94  # Talon (D4 slash damage)
+meleeweapon  3  94  # Talon (D4 slash damage)
+meleeweapon  3  94  # Talon (D4 slash damage)
 
 # Most satyrs have foreststealth, but not commanders. Probably an oversight. 
 
@@ -23336,23 +23336,34 @@ addunitrec  "Hill Giant"                        5  1  110   40    0
 
 # ---------------------- Kobold King Weapons --------------------------
 
-newweapon "Chitin Javelins"
+newweapon "Bleeding"
+trgrank              9 # Target: any enemy in range.
+range                8
+init                 4
+dmgtype             12 # Special damage (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  1 # Area: burst 1.
+strresist
+an                     # Armor negating.
+inanimate              # Doesn't affect Lifeless units.
+
+newweapon "Barbed Javelin"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                3
 init                 1
 dmgtype              3 # Pierce.
 dmg                  4 
 aoe                  0 # Area: single target.
-reload2
+oneshot
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
 arrow                  # Can be negated by air shield.
 flymode              1 # Missile sprite, one for each strike or square hit.
 flylook              1
 flysound            19 # javelin.smp (Javelin)
-nextwep            896 # Extra effect if target is affected: 896: extra bleed.
+nextwep         "Bleeding"
 nextdmg            128 # Bleeding
 
-newweapon     "Chitin Dagger"                                           # 404
+newweapon     "Barbed Dagger"                                           # 404
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
 init                 2
@@ -23361,10 +23372,10 @@ dmg                  3
 aoe                  0 # Area: single target.
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
 sound                1 # spear.smp (Spear)
-nextwep            896 # Extra effect if target is affected: 896: extra bleed.
+nextwep         "Bleeding"
 nextdmg            128 # Bleeding
 
-newweapon     "Chitin Dagger "                                           # 405
+newweapon     "Barbed Dagger "                                           # 405
 trgrank              8 # Target: a rear enemy
 range                1
 init                 2
@@ -23374,7 +23385,20 @@ aoe                  0 # Area: single target.
 an                     # Armor negating.
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
 sound                1 # spear.smp (Spear)
-nextwep            896 # Extra effect if target is affected: 896: extra bleed.
+nextwep         "Bleeding"
+nextdmg            128 # Bleeding
+
+newweapon     " Barbed Dagger "                                           # 405
+trgrank              9 # Target: any enemy
+range                1
+init                 2
+dmgtype              3 # Pierce.
+dmg                  3 
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+nextwep         "Bleeding"
 nextdmg            128 # Bleeding
 
 newweapon "Summon Red Kobold Defender"
@@ -23383,7 +23407,6 @@ range                25
 init                 4
 dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
 dmg                  0 
-aoe                  -2 # Area: 2 strikes.
 look                 211
 sound               57 # orchhit.smp (Summoning)
 reload2
@@ -23394,7 +23417,6 @@ range                25
 init                 4
 dmgtype             18 		# Summon (the monster specified in the weapon's name, after "Summon ").
 dmg                  0 		
-aoe 				-2		# Area: 2 strikes.	
 look                 211
 sound               57 		# orchhit.smp (Summoning)
 reload2
@@ -23405,7 +23427,6 @@ range                25
 init                 4
 dmgtype             18 		# Summon (the monster specified in the weapon's name, after "Summon ").
 dmg                  0 		
-aoe 				-2		# Area: 2 strikes.
 look                 211
 sound               57 		# orchhit.smp (Summoning)
 reload2
@@ -23416,7 +23437,6 @@ range                25
 init                 4
 dmgtype             18 		# Summon (the monster specified in the weapon's name, after "Summon ").
 dmg                  0 		
-aoe 				-2		# Area: 2 strikes.
 look                 211
 sound               57 		# orchhit.smp (Summoning)
 reload2
@@ -23442,30 +23462,30 @@ burnforest 3
 selectmonster "Red Kobold Prophet"
 burnforest 3
 
-# Black kobolds get bleeding attacks,
+# Black kobolds get bleeding attacks, dragon spawn gets random target assassination attack 
 
 selectmonster "Black Kobold Slayer Shaman" 
 clearweapons 
 spellweapon                9   1 # Dark Magic at level 1.
-meleeweapon                0 "Chitin Dagger" # d4 pierce + bleed.
-assassinweapon             1 "Chitin Dagger " # d4 pierce + bleed.
+meleeweapon                0 "Barbed Dagger" # d3 pierce + bleed.
+assassinweapon             2 "Barbed Dagger " # d5 pierce + bleed.
 
 selectmonster "Black Kobold Slayer Prophet" 
 clearweapons 
 spellweapon                9   2 # Dark Magic at level 2.
-meleeweapon                0 "Chitin Dagger" # d3 pierce + bleed.
-meleeweapon                0 "Chitin Dagger" # d3 pierce + bleed.
-assassinweapon             1 "Chitin Dagger " # d4 pierce + bleed.
-assassinweapon             1 "Chitin Dagger " # d4 pierce + bleed.
+meleeweapon                 1 "Barbed Dagger" # d4 pierce + bleed.
+assassinweapon          7 "Barbed Dagger " # d10 pierce + bleed.
 
 selectmonster "Black Dragon Spawn"
-rangedweapon              0 "Chitin Javelins" #d4 + bleed multiuse javelin
+clearweapons 
+meleeweapon                0 "Barbed Dagger" # d3 pierce + bleed.
+meleeweapon                0 "Barbed Dagger" # d3 pierce + bleed.
+assassinweapon         2 " Barbed Dagger " # d5 pierce + bleed.
 
 selectmonster "Black Kobold Murderer"
 clearweapons 
-meleeweapon                0 "Chitin Dagger" # d4 pierce + bleed.
-assassinweapon             1 "Chitin Dagger " # d4 pierce + bleed.
-
+meleeweapon                		0 "Barbed Dagger" # d3 pierce + bleed.
+assassinweapon             	2 "Barbed Dagger " # d5 pierce + bleed.
 
 selectmonster "Wyvern Knight"
 armor 2
@@ -23520,14 +23540,16 @@ newmonster "Black Kobold Spider Rider"
 spr1 "Sprites/Blackkoboldspiderrider1.tga"
 spr2 "Sprites/Blackkoboldspiderrider2.tga"
 armor                          1 
-hp                            28 
+hp                            24 
 str                            5 
-mor                            5 
+mor                            4 
 mr                             3 
 rank                           1 # Front rank.
-rangedweapon -1 "Chitin Javelins" # D3+bleed multi-use javelin
 meleeweapon               0   4 # Spear: d4 Pierce damage.
 meleeweapon                4  42 # Venomous Bite: d4 Slash damage.
+rangedweapon50s 	-1 "Barbed Javelin" # D3+bleed javelin
+rangedweapon 			-1 "Barbed Javelin" # D3+bleed javelin
+shield
 jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
 wall                             # Can climb walls.
 stealth
@@ -23557,14 +23579,15 @@ newmonster "Red Kobold Warren"
 spr1 "Sprites/Koboldwarren.tga"
 spr2 "Sprites/Koboldwarren.tga"
 armor                          4 
-hp                            50 
+hp                            10 
 str                            4 
 mor                           99 
 mr                             5 
-rank                           1 # 
+rank                           1 # Back Rank.
 rearpos
 immobile                         # Immobile (cannot move in battle).
 water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+immortal
 stationary                       # Cannot move on world map.
 invisible
 fireres                      100 # Fire immunity.
@@ -23582,14 +23605,14 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 swallowres                       # Immune to swallow attacks.
 nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
-rangedweapon 7 "Summon Red Kobold Defender"
+rangedweapon 11 "Summon Red Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "Blue Kobold Warren" 
 spr1 "Sprites/Koboldwarren.tga"
 spr2 "Sprites/Koboldwarren.tga"
 armor                          4 
-hp                            50 
+hp                            10 
 str                            4 
 mor                           99 
 mr                             5 
@@ -23597,6 +23620,7 @@ rank                           1 # Back Rank.
 rearpos
 immobile                         # Immobile (cannot move in battle).
 water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+immortal
 stationary                       # Cannot move on world map.
 invisible
 fireres                      100 # Fire immunity.
@@ -23614,14 +23638,14 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 swallowres                       # Immune to swallow attacks.
 nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
-rangedweapon 7 "Summon Blue Kobold Defender"
+rangedweapon 11 "Summon Blue Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "Green Kobold Warren" 
 spr1 "Sprites/Koboldwarren.tga"
 spr2 "Sprites/Koboldwarren.tga"
 armor                          4 
-hp                            50 
+hp                            10 
 str                            4 
 mor                           99 
 mr                             5 
@@ -23629,6 +23653,7 @@ rank                           1 # Back Rank.
 rearpos
 immobile                         # Immobile (cannot move in battle).
 water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+immortal
 stationary                       # Cannot move on world map.
 invisible
 fireres                      100 # Fire immunity.
@@ -23646,14 +23671,14 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 swallowres                       # Immune to swallow attacks.
 nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
-rangedweapon 7 "Summon Green Kobold Defender"
+rangedweapon 11 "Summon Green Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "White Kobold Warren" 
 spr1 "Sprites/Koboldwarren.tga"
 spr2 "Sprites/Koboldwarren.tga"
 armor                          4 
-hp                            50 
+hp                            10 
 str                            4 
 mor                           99 
 mr                             5 
@@ -23661,6 +23686,7 @@ rank                           1 # Back Rank.
 rearpos
 immobile                         # Immobile (cannot move in battle).
 water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+immortal
 stationary                       # Cannot move on world map.
 invisible
 fireres                      100 # Fire immunity.
@@ -23678,20 +23704,22 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 swallowres                       # Immune to swallow attacks.
 nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
-rangedweapon 7 "Summon White Kobold Defender"
+rangedweapon 11 "Summon White Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "Black Kobold Warren" 
 spr1 "Sprites/Koboldwarren.tga"
 spr2 "Sprites/Koboldwarren.tga"
 armor                          4 
-hp                            50 
+hp                            10 
 str                            4 
 mor                           99 
 mr                             5 
 rank                           1 # Back Rank.
 rearpos
 immobile                         # Immobile (cannot move in battle).
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+immortal
 stationary                       # Cannot move on world map.
 invisible
 fireres                      100 # Fire immunity.
@@ -23709,7 +23737,7 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 swallowres                       # Immune to swallow attacks.
 nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
-rangedweapon 7 "Summon Black Kobold Defender"
+rangedweapon 11 "Summon Black Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 # ------------------------------------ Kobold King Ritual Edits -------------------------------- 
@@ -23784,10 +23812,10 @@ addstring "(-)Blue Kobold Warren"
 addstring "(-)White Kobold Warren"
 addstring "(-)Green Kobold Warren"
 summoning
-addstring "(-81)5*Red Kobold Warren"
-addstring "(-82)5*Blue Kobold Warren"
-addstring "(-83)5*White Kobold Warren"
-addstring "(-84)5*Green Kobold Warren"
+addstring "(-81)2*Red Kobold Warren"
+addstring "(-82)2*Blue Kobold Warren"
+addstring "(-83)2*White Kobold Warren"
+addstring "(-84)2*Green Kobold Warren"
 addstring "(803)2*Black Kobold Warren"
 rarestart
 aialways 100
@@ -23810,10 +23838,10 @@ addstring "(-)Blue Kobold Warren"
 addstring "(-)White Kobold Warren"
 addstring "(-)Green Kobold Warren"
 summoning
-addstring "(-81)5*Red Kobold Warren"
-addstring "(-82)5*Blue Kobold Warren"
-addstring "(-83)5*White Kobold Warren"
-addstring "(-84)5*Green Kobold Warren"
+addstring "(-81)2*Red Kobold Warren"
+addstring "(-82)2*Blue Kobold Warren"
+addstring "(-83)2*White Kobold Warren"
+addstring "(-84)2*Green Kobold Warren"
 addstring "(803)2*Black Kobold Warren"
 rarestart
 aialways 100
@@ -23836,10 +23864,10 @@ addstring "(-)Blue Kobold Warren"
 addstring "(-)White Kobold Warren"
 addstring "(-)Green Kobold Warren"
 summoning
-addstring "(-81)5*Red Kobold Warren"
-addstring "(-82)5*Blue Kobold Warren"
-addstring "(-83)5*White Kobold Warren"
-addstring "(-84)5*Green Kobold Warren"
+addstring "(-81)2*Red Kobold Warren"
+addstring "(-82)2*Blue Kobold Warren"
+addstring "(-83)2*White Kobold Warren"
+addstring "(-84)2*Green Kobold Warren"
 addstring "(803)2*Black Kobold Warren"
 rarestart
 aialways 100
@@ -23862,10 +23890,10 @@ addstring "(-)Blue Kobold Warren"
 addstring "(-)White Kobold Warren"
 addstring "(-)Green Kobold Warren"
 summoning
-addstring "(-81)5*Red Kobold Warren"
-addstring "(-82)5*Blue Kobold Warren"
-addstring "(-83)5*White Kobold Warren"
-addstring "(-84)5*Green Kobold Warren"
+addstring "(-81)2*Red Kobold Warren"
+addstring "(-82)2*Blue Kobold Warren"
+addstring "(-83)2*White Kobold Warren"
+addstring "(-84)2*Green Kobold Warren"
 addstring "(803)2*Black Kobold Warren"
 rarestart
 aialways 100
@@ -23874,6 +23902,7 @@ descr "This ritual builds a network of defensive tunnels underneath the strongho
 newritual     "Calm Dragon"                                       
 ritpow                52 # Kobold, Red
 level                  3
+cost              7  3  # 3 Rubies
 cost             16   10 # 10 Kobolds
 nexttoo
 promotion 1
@@ -23917,7 +23946,7 @@ addstring "Frenzied Dusk Dragon"
 addstring "Dormant Dusk Dragon"
 addstring "Frenzied Elder Dragon"
 addstring "Dormant Elder Dragon"
-descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 6 turns."
+descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 10 turns."
 
 newritual     "Rouse Dragon"                                       
 ritpow                52 # Kobold, Red
@@ -23966,11 +23995,12 @@ addstring "Dormant Dusk Dragon"
 addstring "Frenzied Dusk Dragon"
 addstring "Dormant Elder Dragon"
 addstring "Frenzied Elder Dragon"
-descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 6 turns."
+descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 3 turns."
 
 newritual     "Calm Dragon"                                       
 ritpow                55 # Kobold, Green
 level                  3
+cost             10   3 # 3 Emeralds
 cost             16  10 # 10 Kobolds
 nexttoo
 promotion 1
@@ -24014,7 +24044,7 @@ addstring "Frenzied Dusk Dragon"
 addstring "Dormant Dusk Dragon"
 addstring "Frenzied Elder Dragon"
 addstring "Dormant Elder Dragon"
-descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 6 turns."
+descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 10 turns."
 
 newritual     "Rouse Dragon"                                       
 ritpow                55 # Kobold, Green
@@ -24063,11 +24093,12 @@ addstring "Dormant Dusk Dragon"
 addstring "Frenzied Dusk Dragon"
 addstring "Dormant Elder Dragon"
 addstring "Frenzied Elder Dragon"
-descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 6 turns."
+descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 3 turns."
 
 newritual     "Calm Dragon"                                       
 ritpow                53 # Kobold, Blue
 level                  3
+cost              8   3 # 3 Sapphires
 cost             16  10 # 10 Kobolds
 nexttoo
 promotion 1
@@ -24111,7 +24142,7 @@ addstring "Frenzied Dusk Dragon"
 addstring "Dormant Dusk Dragon"
 addstring "Frenzied Elder Dragon"
 addstring "Dormant Elder Dragon"
-descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 6 turns."
+descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 10 turns."
 
 newritual     "Rouse Dragon"                                       
 ritpow                53 # Kobold, Blue
@@ -24160,11 +24191,12 @@ addstring "Dormant Dusk Dragon"
 addstring "Frenzied Dusk Dragon"
 addstring "Dormant Elder Dragon"
 addstring "Frenzied Elder Dragon"
-descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 6 turns."
+descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 3 turns."
 
 newritual     "Calm Dragon"                                       
 ritpow                54 # Kobold, White
 level                  3
+cost              9   3 # 3 Diamonds
 cost             16  10 # 10 Kobolds
 nexttoo
 promotion 1
@@ -24208,7 +24240,7 @@ addstring "Frenzied Dusk Dragon"
 addstring "Dormant Dusk Dragon"
 addstring "Frenzied Elder Dragon"
 addstring "Dormant Elder Dragon"
-descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 6 turns."
+descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmuring, monotone swaying, and the burning of herbs believed to smell pleasing to dragons. If done correctly, this convinces the dragon to remain in its lair for a time. A steady supply of edible kobolds likely helps maintain the arrangement. ^This ritual causes the Dragon to stay in its lair for approximately 10 turns."
 
 newritual     "Rouse Dragon"                                       
 ritpow                54 # Kobold, White
@@ -24255,7 +24287,7 @@ addstring "Dormant Dusk Dragon"
 addstring "Frenzied Dusk Dragon"
 addstring "Dormant Elder Dragon"
 addstring "Frenzied Elder Dragon"
-descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 6 turns."
+descr "The prophet engages in a ritual of fire, drumming, and much shouting, all intended to provoke the Dragon into action. What follows is typically several days of indiscriminate destruction. This ritual causes the Dragon to leave its lair and attack the surrounding region for approximately 3 turns."
 
 newmonster "Dusk Dragon"
 copystats "Dusk Dragon"
@@ -24264,7 +24296,7 @@ newmonster "Dormant Dusk Dragon"
 copystats "Dusk Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Dusk Dragon"
@@ -24272,7 +24304,7 @@ copystats "Dusk Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Fire Dragon"
@@ -24282,7 +24314,7 @@ newmonster "Dormant Fire Dragon"
 copystats "Fire Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Fire Dragon"
@@ -24290,7 +24322,7 @@ copystats "Fire Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Arcane Fire Dragon"
@@ -24300,7 +24332,7 @@ newmonster "Dormant Arcane Fire Dragon"
 copystats "Arcane Fire Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Arcane Fire Dragon"
@@ -24308,7 +24340,7 @@ copystats "Arcane Fire Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Bile Dragon"
@@ -24318,7 +24350,7 @@ newmonster "Dormant Bile Dragon"
 copystats "Bile Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Bile Dragon"
@@ -24326,7 +24358,7 @@ copystats "Bile Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Arcane Bile Dragon"
@@ -24336,7 +24368,7 @@ newmonster "Dormant Arcane Bile Dragon"
 copystats "Arcane Bile Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Arcane Bile Dragon"
@@ -24344,7 +24376,7 @@ copystats "Arcane Bile Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Frost Dragon"
@@ -24354,7 +24386,7 @@ newmonster "Dormant Frost Dragon"
 copystats "Frost Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Frost Dragon"
@@ -24362,7 +24394,7 @@ copystats "Frost Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Arcane Frost Dragon"
@@ -24372,7 +24404,7 @@ newmonster "Dormant Arcane Frost Dragon"
 copystats "Arcane Frost Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Arcane Frost Dragon"
@@ -24380,7 +24412,7 @@ copystats "Arcane Frost Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Storm Dragon"
@@ -24390,7 +24422,7 @@ newmonster "Dormant Storm Dragon"
 copystats "Storm Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Storm Dragon"
@@ -24398,7 +24430,7 @@ copystats "Storm Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Arcane Storm Dragon"
@@ -24408,7 +24440,7 @@ newmonster "Dormant Arcane Storm Dragon"
 copystats "Arcane Storm Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1
 
 newmonster "Frenzied Arcane Storm Dragon"
@@ -24416,7 +24448,7 @@ copystats "Arcane Storm Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 newmonster "Elder Dragon" 
@@ -24426,7 +24458,7 @@ newmonster "Dormant Elder Dragon"
 copystats "Elder Dragon"
 wanderrest 100
 wandermaxdist 0
-growtime 6
+growtime 10
 growoffs -1 
 
 newmonster "Frenzied Elder Dragon" 
@@ -24434,63 +24466,55 @@ copystats "Elder Dragon"
 wanderrest 0
 wandermaxdist 15
 aggressive
-growtime 6
+growtime 3
 growoffs -2
 
 # --------------------------------- Kobold King Class and recruitment edits ----------------------------------#
 
 selectclass 27
 mercboost -100
-addcomrec   "Red Dragon Spawn Chief"           15 15 20 5 # only where Ruby income.
+addcomrec   "Red Dragon Spawn Chief"           		5 15 20 5 # only where Ruby income.
 	recxcost     7 10   
 	recterr -81
 	reclimiter  "+Red Kobold Prophet"           
 	reclimiter  "+Red Kobold King"
-addcomrec   "White Dragon Spawn Chief"         15 15  20 5 # only where Diamond income.
+addcomrec   "White Dragon Spawn Chief"        	5 15  20 5 # only where Diamond income.
 	recxcost     9 10	
 	recterr -83
 	reclimiter  "+White Kobold Prophet"           
 	reclimiter  "+White Kobold King"
-addcomrec   "Green Dragon Spawn Chief"         15 15 20 5 # only where Emerald income.
+addcomrec   "Green Dragon Spawn Chief"        	5 15 20 5 # only where Emerald income.
 	recxcost    10 10   
 	recterr -84
 	reclimiter  "+Green Kobold Prophet"            
 	reclimiter  "+Green Kobold King"
-addcomrec   "Blue Dragon Spawn Chief"          15 15 20 5 # only where Sapphire income.
+addcomrec   "Blue Dragon Spawn Chief"          		5 15 20 5 # only where Sapphire income.
 	recxcost     8 10 
 	recterr -82
 	reclimiter  "+Blue Kobold Prophet"            
 	reclimiter  "+Blue Kobold King"
-addmercrec  "Fire Drake"                       15 1 20 0 0 # only where Ruby income.
+addmercrec  "Fire Drake"                       					5 1 20 0 0 # only where Ruby income.
 recxcost    16 10 
 recterr -81
-addmercrec  "Wyvern Knight"                    15 1 20 0 0 # only where Emerald income.
+addmercrec  "Wyvern Knight"                 				5 1 20 0 0 # only where Emerald income.
 recxcost    16   5  
 recterr -84
-addmercrec  "Frost Drake"                      15 1 20 0 0 # only where Sapphire income.
+addmercrec  "Frost Drake"                      				5 1 20 0 0 # only where Sapphire income.
 recxcost    16 10 
 recterr -82
-addmercrec  "Storm Drake"                      15 1 20 0 0 # only where Diamond income.
+addmercrec  "Storm Drake"                      				5 1 20 0 0 # only where Diamond income.
 recxcost    16 10   
 recterr -83
-addmercrec  "Stone Drake"                       5 1 20 0 25 
+addmercrec  "Stone Drake"                       				3 1 20 0 25 
 recxcost    16  10    
-addmercrec "Black Kobold Spider Rider"         15 2 20 0 5 # only where Emerald income.
-recxcost    16   5  
+addmercrec "Black Kobold Spider Rider"         	15 2 30 0 0 # 
+	recxcost    16   5  
 	reclimiter  "$Dusk Dragon"                    # +1% chance per Dusk Dragon owned.
 	reclimiter  "$Elder Dragon"                   # +1% chance per Elder Dragon owned.
-#	recterr -84
 	reclimiter "+Black Kobold Slayer Shaman"
 	reclimiter "+Black Kobold Slayer Prophet"
-addcomrec   "Black Kobold Slayer Shaman"        2      40  20    0 # 
-	reclimiter  "+Red Kobold Sorcerer"                    
-	reclimiter  "+Red Kobold King"  
-	reclimiter  "+Blue Kobold Sorcerer"                    
-	reclimiter  "+Blue Kobold King"  
-	reclimiter  "+White Kobold Sorcerer"                    
-	reclimiter  "+White Kobold King"    
-	reclimiter  "+Green Kobold Sorcerer"                    
-	reclimiter  "+Green Kobold King" 	
+addcomrec   "Black Kobold Slayer Shaman"        	2 40 20 0 # 
+
 
 ################################## Monkey Maharaja ########################################### 
 
