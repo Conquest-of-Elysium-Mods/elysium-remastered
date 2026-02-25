@@ -18758,6 +18758,9 @@ addcomrec "Vespertine Agent"                   3 60 20 0
 
 # ---------- Illusionist Monster Edits ----------------# 
 
+selectmonster "Floating Eye"
+float
+
 selectmonster "Phase Spider"
 spr1 "Sprites/Phasespider1.tga"
 spr2 "Sprites/Phasespider2.tga"
@@ -18915,36 +18918,20 @@ mor 3
 mr 5
 descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
 
+newmonster "Gilded Archer"
+copystats "Spearman"
+spr1 "Sprites/Gildedarcher1.tga"
+spr2 "Sprites/Gildedarcher2.tga"
+mor 3
+mr 5
+descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
+
 newmonster "Gilded Swordsman"
 copystats "Swordsman"
 spr1 "Sprites/Gildedinfantry1.tga"
 spr2 "Sprites/Gildedinfantry1.tga"
 mor 3
 mr 5
-descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
-
-newmonster "Gilded Crossbowman"
-copystats "Crossbowman"
-spr1 "Sprites/Gildedcrossbow1.tga"
-spr2 "Sprites/Gildedcrossbow2.tga"
-mor 3
-mr 5
-descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
-
-newmonster "Gilded Cavalryman"
-copystats "Cavalryman"
-spr1 "Sprites/Gildedcavalry1.tga"
-spr2 "Sprites/Gildedcavalry2.tga"
-mor 4
-mr 5
-descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
-
-newmonster "Gilded Lord"
-copystats "Knight"
-spr1 "Sprites/Gildedlord1.tga"
-spr2 "Sprites/Gildedlord2.tga"
-mor 5
-mr 5 
 descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
 
 newmonster "Gilded Captain"
@@ -18958,37 +18945,35 @@ newmonster "False Giant"
 spr1 "Sprites/Falsegiant1.tga"
 spr2 "Sprites/Falsegiant2.tga"
 armor                          2 
-hp                            	10 
+hp                            	8 
 str                            	5 
 mor                            6 
 mr                             	6 
 rank                           1 # Front rank.
-meleeweapon         1   2 # Broadsword: d7 Slash damage.
+meleeweapon         10   2 # Broadsword: d16 Slash damage.
 human                            
-magicshield                      # Reduces damage from most weapons by 0-2; 0-3 against ranged weapons.
+magicshield                      # Reduces damage from most weapons by 0-3; 0-6 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
 size2x2
-fear 1 
 awe 1 
 charmres
-shrinkhp 9 
+shrinkhp 7 
 descr "The Crystal Tower is guarded by towering giants clad in mesmerizing, mirror-polished armor. These are elite guards veiled in illusions, making them appear three times the size of an ordinary man, both magnificent and terrifying to behold. Individually, they do not see themselves enlarged but perceive their comrades as giants, often leading to confusion within their ranks. If the illusion is broken, the knights return to their regular size, frequently finding their positions spread too thinly against the opposing army. This formidable glamour can thus become a double-edged sword in the heat of battle."
 
 newmonster "Mirror Guard"
 spr1 "Sprites/Mirrorguard1.tga"
 spr2 "Sprites/Mirrorguard2.tga"
 armor                        2 
-hp                            	10 
+hp                            	8 
 str                            	5 
 mor                            6 
 mr                            	 6 
 rank                            1 # Front rank.
-meleeweapon                1   2 # Broadsword: d7 Slash damage.
+meleeweapon                0   2 # Broadsword: d6 Slash damage.
 human                            
-magicshield                           # Reduces damage from most weapons by 0-2; 0-3 against ranged weapons.
+largeshield
 allitemslots                     # Has the full set of item slots.
-charmres
-growhp 10 
+growhp 8 
 descr "The Crystal Tower is guarded by towering giants clad in mesmerizing, mirror-polished armor. These are elite guards veiled in illusions, making them appear three times the size of an ordinary man, both magnificent and terrifying to behold. Individually, they do not see themselves enlarged but perceive their comrades as giants, often leading to confusion within their ranks. If the illusion is broken, the knights return to their regular size, frequently finding their positions spread too thinly against the opposing army. This formidable glamour can thus become a double-edged sword in the heat of battle"
 
 newweapon     "Phase Stinger"
@@ -19025,37 +19010,18 @@ float
 drawsize -20
 descr "The Ether Ray is a peculiar being of the void that resembles a giant manta ray. Its underside glows with shifting patterns, thought to serve as a means of communication. Ether Rays are believed to be filter-feeders, consuming stray motes of magical energy and smaller etheric creatures. However, if threatened, they are fully capable of defending themselves with a physical tail stinger. While their movements appear calm and elegant, their mere presence disrupts reality, causing strange phenomena to ripple through the air around them."
 
-newmonster    "False Idol"                                        
-spr1 "Sprites/Falseidol1.tga"
-spr2 "Sprites/Falseidol2.tga" 
-armor                          2 
-hp                            75 
-str                            7 
-mor                           99 
-mr                             9 
-rank                           1 # Front pos.
-battleslow
-trample 2
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-stationary                       # Cannot move on world map.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres
-noheal                           # Does not heal naturally.
-gold 3
-noslots
-slashres
-bluntres                         # Blunt resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
-confusionaura 5
-descr "A grand bejeweled shrine, for some reason shaped like a great elephant on wheels. Those who approach it experience vivid visions, and many are overwhelmed by its splendor. Pilgrims travel from the edges of the continent either from curiosity or to pray and offer tithes. All of it is merely another of the Illusionist's elaborate deceptions."
-
+newmonster    "Unassuming Beggar"                                                    #   47
+copystats "Scout"
+spr1 "Sprites/Unassumingbeggar1.tga"
+spr2 "Sprites/Unassumingbeggar2.tga"
+clearweapons 
+meleeweapon     			0 0 # Fist: d1 Blunt damage.
+rangedweapon               0 27 # Sling: d2 Blunt damage.
+descr "At first glance this figure appears to be nothing more than a harmless beggar, dressed in rags and moving slowly from place to place. Few pay it any mind, and fewer still consider it worth watching. Yet the Illusionist is never without need of eyes and ears, and even the most unremarkable presence can serve a purpose."
 # -------------------- Illusionist Ritual Edits ---------------------------------------------------# 
 
 selectritual "Fata Morgana"
-aiwhere 2 #only locations it wants to defend
+ainothere -79				# AI will only cast in siegable locations. aiwhere command seems to do nothing, but this works. 	
 airare                50 	# Previously 25, now same casting chance as veil mine. 
 
 selectritual "Scrying" #level 2 rituals have too many niche options. Now increased chance of getting something useful on first roll. 
@@ -19076,8 +19042,7 @@ selectritual "Mirror Wall"
 rarestart
 
 selectritual "Create Simulacrum"
-level 9
-free
+cost             15   150 # 150 Gems
 
 selectritual "Capture Spell"
 cost             15   2 # 20 Gems
@@ -19100,67 +19065,114 @@ selectritual "Mirror Wall"
 cost             15   20 # 20 Gems
 cost              0   50 # 50 Gold
 
-newritual     "Create Simulacrum "                                      
-ritpow                26 # Illusionist
-level                  3
-cost             15   50 # 50 Gems
-mirrortarg             2
-killtarg 999
-simulacrum               # Creates a simulacrum.
-gainrit 1
-forgetcurrit
-descr "The Illusionist creates an almost exact copy of himself called a simulacrum.  The simulacrum can command armies and cast battle spells just as well as the real Illusionist and the only difference is that it cannot perform rituals.  If anyone should kill the illusionist while a Simulacrum is alive, no harm will be done, the Illusionist will simply continue to live on as the Simulacrum instead. While creating a single Simulacrum is quite simple, mainfesting multiple Simulacrums of the same individual can become increasingly complex and most scholars argue that it is impossible for even the most talented Illusionist to exceed three Simulacrums."
 
-newritual     "Create Simulacrum" 1                                     
-ritpow                26 # Illusionist
-level                  3
-cost             15   100 # 100 Gems
-mirrortarg             3
-killtarg 999
-nostart
-simulacrum               # Creates a simulacrum.
-gainrit 1
-forgetcurrit
-descr "The Illusionist creates an almost exact copy of himself called a simulacrum.  The simulacrum can command armies and cast battle spells just as well as the real Illusionist and the only difference is that it cannot perform rituals.  If anyone should kill the illusionist while a Simulacrum is alive, no harm will be done, the Illusionist will simply continue to live on as the Simulacrum instead. While creating a single Simulacrum is quite simple, mainfesting multiple Simulacrums of the same individual can become increasingly complex and most scholars argue that it is impossible for even the most talented Illusionist to exceed 3 Simulacrums."
+# ----------------- Illusionist New Rituals -----------------------------------------------------------#
 
-newritual     "Create Simulacrum" 2                                    
-ritpow                26 # Illusionist
+newritual     "Disenchant Mirror"                                
+level                  1
+ritpow                26
+free
+apcost -1
+choosefxtarg 0
+promotion              1 # Promote 1 unit and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+fillmirror -500
+airare              -1
+addstring     "Soldier Mirror"
+addstring     "Mirror"
+addstring     "Animal Mirror"
+addstring     "Mirror"
+addstring     "Mirror of Dread"
+addstring     "Mirror"
+addstring     "Mirror of Confusion"
+addstring     "Mirror"
+addstring     "Mirror of Many Colors"
+addstring     "Mirror"
+addstring     "Large Soldier Mirror"
+addstring     "Large Mirror"
+addstring     "Large Animal Mirror"
+addstring     "Large Mirror"
+addstring     "Large Unearthly Mirror"
+addstring     "Large Mirror"
+addstring     "Large Swarm Mirror"
+addstring     "Large Mirror"
+addstring     "Large Monster Mirror"
+addstring     "Large Mirror"
+addstring     "Large Mirror of Dread"
+addstring     "Large Mirror"
+addstring     "Large Mirror of Confusion"
+addstring     "Large Mirror"
+addstring     "Large Mirror of Many Colors"
+addstring     "Large Mirror"
+descr "This ritual unbinds the spells woven into a Mirror or Large Mirror, leaving it empty and ready for future use."
+
+newritual     "Disenchant Silver Mirror"                                
+level                  2
+ritpow                26
+free
+apcost -1
+choosefxtarg 0
+promotion              1 # Promote 1 unit and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+fillmirror -500
+airare              -1
+addstring     "Silver Soldier Mirror"
+addstring     "Silver Mirror"
+addstring     "Silver Animal Mirror"
+addstring     "Silver Mirror"
+addstring     "Silver Mirror of Dread"
+addstring     "Silver Mirror"
+addstring     "Silver Mirror of Confusion"
+addstring     "Silver Mirror"
+addstring     "Silver Mirror of Many Colors"
+addstring     "Silver Mirror"
+descr "This ritual unbinds the spells woven into a Silver Mirror, leaving it empty and ready for future use."
+ 
+newritual     "Disenchant Golden Mirror"                                
 level                  3
-cost            15   200 # 200 Gems
-mirrortarg             4
-killtarg 999
-nostart
-simulacrum               # Creates a simulacrum.
-forgetcurrit
-descr "The Illusionist creates an almost exact copy of himself called a simulacrum.  The simulacrum can command armies and cast battle spells just as well as the real Illusionist and the only difference is that it cannot perform rituals.  If anyone should kill the illusionist while a Simulacrum is alive, no harm will be done, the Illusionist will simply continue to live on as the Simulacrum instead. While creating a single Simulacrum is quite simple, mainfesting multiple Simulacrums of the same individual can become increasingly complex and most scholars argue that it is impossible for even the most talented Illusionist to exceed 3 Simulacrums."
+ritpow                26
+free
+apcost -1
+choosefxtarg 0
+promotion              1 # Promote 1 unit and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+fillmirror -500
+airare              -1
+addstring     "Golden Soldier Mirror"
+addstring     "Golden Mirror"
+addstring     "Golden Animal Mirror"
+addstring     "Golden Mirror"
+addstring     "Golden Unearthly Mirror"
+addstring     "Golden Mirror"
+addstring     "Golden Swarm Mirror"
+addstring     "Golden Mirror"
+addstring     "Golden Monster Mirror"
+addstring     "Golden Mirror"
+addstring     "Golden Mirror of Dread"
+addstring     "Golden Mirror"
+addstring     "Golden Mirror of Confusion"
+addstring     "Golden Mirror"
+addstring     "Golden Mirror of Many Colors"
+addstring     "Golden Mirror"
+descr "This ritual unbinds the spells woven into a Golden Mirror, leaving it empty and ready for future use."
 
 # ----------------------------------- Illusionist Class & Recruitment -----------------------------------# 
 
 selectclass 22
-clearstartunits
-addstartunits          "Gilded Spearman"                 	10
-addstartunits          "Gilded Archer"                    	5
-addstartcom            "Illusionist's Apprentice"
 
 nostdtroops
 clearstartunits
 setmaincom             "Illusionist"
 addstartcom            "Illusionist's Apprentice"
-addstartunits          "Gilded Spearman"                   	10
-addstartunits          "Gilded Crossbowman"                	5
+addstartunits          "Gilded Spearman"                10
+addstartunits          "Gilded Archer" 			            5
 addunitrec "Gilded Spearman" 								100 5 50 0 0
-addunitrec  "Gilded Crossbowman"           				100 5 60 0 0   
-addunitrec  "Gilded Swordsman"        						100 5 70 0 0 
-addunitrec  "Gilded Cavalryman"            					10 3 100 0 0
-addcomrec    "Gilded Lord"                                          3 60 10 0 
-addcomrec   "Gilded Captain"               					    17 45 10 0  
-addmercrec  "Scout"                            				        10 1 15 10 0 
-addunitrec  "Winged Monkey"                   				100 5 25 0 0
-	recxcost 15 2 #Extra cost 2 gems 
-	reclimiter "+Master Illusionist"
-addunitrec  "Mirror Guard"                    				    100 3 75 0 15
+addunitrec  "Gilded Archer"   			        				100 5 50 0 0   
+addunitrec  "Gilded Swordsman"        						100 5 50 0 10 
+addmercrec  "Unassuming Beggar"                           10 1 15 10 0 
+addunitrec  "Winged Monkey"                   				100 8 50 0 0
+addunitrec  "Mirror Guard"                    				    100 3 30 0 15
 	recxcost 15 10 #Extra cost 10 gems 
-	reclimiter "+Master Illusionist"
+addunitrec  "Catapult"                        100  1   25   0   50
+addcomrec   "Gilded Captain"               						20 40 10 0  
+
 
 ############################### Markgraf ################################################
 
@@ -30822,21 +30834,43 @@ addcomrec   "Bishop"                          		100  40  10    0 		#suicide coun
 
 # -------------- Illusionist AI --------------# 
 
+# ----------------------------------- Illusionist Class & Recruitment -----------------------------------# 
+
+selectclass 22
+
+nostdtroops
+clearstartunits
+setmaincom             "Illusionist"
+addstartcom            "Illusionist's Apprentice"
+addstartunits          "Gilded Spearman"                10
+addstartunits          "Gilded Archer" 			            5
+addunitrec "Gilded Spearman" 								100 5 50 0 0
+addunitrec  "Gilded Archer"   			        				100 5 50 0 0   
+addunitrec  "Gilded Swordsman"        						100 5 50 0 10 
+addmercrec  "Unassuming Beggar"                           10 1 15 10 0 
+addunitrec  "Winged Monkey"                   				100 8 50 0 0
+addunitrec  "Mirror Guard"                    				    100 3 30 0 15
+	recxcost 15 10 #Extra cost 10 gems 
+addunitrec  "Catapult"                        100  1   25   0   50
+addcomrec   "Gilded Captain"               						20 40 10 0  
+
+# -------------- Illusionist AI --------------# 
+
 selectterrgroup -1119
 setname "Illusionists Palace"
 addterr 156
 addterr 271
 addterr 272
 
-newmonster " Gilded Crossbowman"
-copystats "Gilded Crossbowman"
+newmonster " Gilded Archer"
+copystats "Gilded Archer"
 aihold 1
 aimaxshop 10
 
 newmonster " Mirror Guard"
 copystats "Mirror Guard"
 aihold 1
-aimaxshop 6
+aimaxshop 10
 
 newmonster " Winged Monkey"
 copystats "Winged Monkey"
@@ -30896,11 +30930,11 @@ aihold 1
 aimaxshop 2
 
 selectclass 22
-addmercrec  " Gilded Crossbowman"           100  5  60   0 0  #Standard defense
+addmercrec  " Gilded Archer"           100  5  50   0 0  #Standard defense
 	recterr -98
 	reclimiter "+AI"
 	reclimiter "+Late AI" 
-addmercrec  " Gilded Crossbowman"           100  5  1   0 0  #Palace Garrison
+addmercrec  " Gilded Archer"           100  5  1   0 0  #Palace Garrison
 	reclimiter "+AI"
 	reclimiter "+Late AI" 
 	recterr -1119
@@ -30916,7 +30950,6 @@ addunitrec " Golden Mirror of Confusion" 100  1  100   0 0  #Late Palace Garriso
 addunitrec " Golden Mirror of Many Colors" 100  1 100   0 0  #Late Palace Garrison
 	reclimiter "+Late AI" 
 	recterr -1119
-
 addcomrec   "Illusionist's Apprentice"      100      55  20    0 # suicide counter measure
 	reclimiter "+AI"
 	reclimiter "+Late AI"
