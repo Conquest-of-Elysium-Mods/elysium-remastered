@@ -13111,7 +13111,7 @@ addterr 835
 
 newweapon     "Zap"                                         # 169
 trgrank              9 # Target: any enemy in range.
-range                6
+range                7
 init                 8
 dmgtype              6 # Shock.
 dmg                  0 
@@ -13123,7 +13123,7 @@ sound               24 # lightning
 
 selectmonster "Iron Fly" 
 clearweapons
-rangedweaponbonus         15 "Zap" # Electric discharge, d8 Shock damage.
+rangedweaponbonus         18 "Zap" # Electric discharge, d18 Shock damage.
 meleeweapon                4  11 # Bite: d4 Slash damage.
 fireres -25
 coldres -25
@@ -13167,6 +13167,29 @@ fireres -25
 coldres -25
 healonterr 129 # heals on manufactory
 
+newweapon     "Paralyzing Beam"                                                  # 171
+trgrank              9 # Target: any enemy in range.
+range                8
+init                 8
+dmgtype             17 # Paralyze.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  3 # Area: 3.
+mr                     # Resisted by rolling 2d4 < Magic Resistance.
+an                     # Armor negating.
+inanimate              # Doesn't affect Lifeless units.
+flymode              5 # Line, one for each strike or square hit.
+flylook            115
+look                 2
+sound               42 # emuller.smp
+
+selectmonster "Iron Spider"
+clearweapons 
+rangedweaponbonus        100 "Paralyzing Beam" 
+meleeweapon                4  11 # Bite: d4 Slash damage.
+
+selectweapon 232 # Sapphire Dragon breath 
+aoe 4 
+
 selectmonster "Diamond Clockwork Horror"
 fireres -25
 coldres -25
@@ -13192,6 +13215,8 @@ shockres -25
 healonterr 129 # heals on manufactory
 
 selectmonster "Emerald Iron Dragon"
+clearweapons 
+meleeweapon               35  11 # Bite: d35 Slash damage.
 hp 330
 fireres -25
 coldres -25
@@ -13247,11 +13272,12 @@ newmonster "Strangleweed"
 spr1 "Sprites/Strangleweed1.tga"
 spr2 "Sprites/Strangleweed2.tga"
 armor                          0 
-hp                            11 
+hp                            15 
 str                            4 
 mor                           99 
 mr                             1 
 rank                           1 # Front rank.
+frontpos 
 meleeweapon                2 332 # Tangle Vines: d2 Blunt damage.
 immobile                         # Immobile (cannot move in battle).
 stationary                       # Cannot move on world map.
@@ -13267,6 +13293,44 @@ reformloc 1000
 spread 3
 deployoutside
 descr "Strangleweed will protect against unwelcome visitors, and is almost impossible to get rid of."
+
+newweapon "Steel Bow"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                7
+init                 1
+dmgtype              3 # Pierce.
+dmg                 6 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+arrow                  # Can be negated by air shield.
+rangepen               # Does half damage if distance >= half range.
+flymode              1 # Missile sprite, one for each strike or square hit.
+flylook             14
+flysound            13 # crossb.smp (Crossbow)
+
+newmonster "Emerald Clockwork Archer"
+spr1 "Sprites/Emeraldclockworkarcher1.tga"
+spr2 "Sprites/Emeraldclockworkarcher2.tga"
+armor                          3 # Armor.
+hp                            18 # Hit Points.
+str                            5 # Strength.
+mor                           99 # Morale.
+mr                             5 # Magic Resistance.
+rank                           0 # Front rank.
+meleeweapon                1   8 # Shortsword: d6 Slash damage.
+rangedweapon              1   "Steel Bow" #d7 damage 
+fireres                      75 # Fire immunity.
+coldres                      75 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+shockres                     75 # Shock immunity.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+healonterr 129
+descr "It is quite easy to notice if an approaching Hoburg army contains a Horologist due to the clanking sound of his many clockwork soldiers. Though clunky and erratic, they make a very good addition to the army as they can man the first line of battle while the Hoburghers finish their pie and beer snack. The constructs are all powered by a large mainspring and a jewel imbued with a certain element. Before battle all constructs have to be wound up and the jewels have to placed in the right place, which is why it is preferable to attack the Hoburg forces by surprise.  As everyone knows, the emerald is connected with the Plane of Earth and when used in a construct will give it extra protection."
 
 newmonster    "Steel Chancellor"                                              
 spr1 "Sprites/Steelchancellor1.tga"
@@ -13333,34 +13397,69 @@ rank                           1 # Front rank.
 meleeweaponbonus          14  37 # Gore: d14 Slash damage.
 rangedweaponbonus	      -1  "Light Crossbow"
 rangedweaponbonus	      -1  "Light Crossbow"
-shield
+meleeweapon               -1  22 # Pike: d4 Pierce damage.
 human                            # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 trample 					   4
 weaponslots
 descr "Elephant Hogs are colossal swine bred under the careful supervision of Hoburg horticulturists. Captured as piglets and raised for labor, battle, and county fair competitions, these massive beasts are more docile than their wild counterparts. Despite their tempered nature, they remain immensely powerful creatures, capable of trampling foes and withstanding significant punishment in combat."
 
-newmonster    "Eagle Rider"   #Eagle Knight                              
+newweapon  "Dive Attack"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 6
+dmgtype              1 # slash.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+oneshot                # Can only be used once per battle.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound               84 # hit_impact.sw
+
+newmonster    "Bird Knight"   #Eagle Knight                              
 copystats "Bakemono Sho"
 clearweapons
-spr1 "Sprites/Eaglerider1.tga"
-spr2 "Sprites/Eaglerider2.tga"
-armor                          0 
-hp                             8 
+spr1 "Sprites/Birdknight1.tga"
+spr2 "Sprites/Birdknight2.tga"
+armor                          1 
+hp                             5 
 str                            3 
-mor                            7 
+mor                            6 
 mr                             6 
 rank                           1 # Front rank.
-rangedweapon               0   7 # Bow: d3 Pierce damage.
-meleeweapon                3  94 # Talon: d3 Slash damage.
+meleeweaponspec      10 "Dive Attack"
 meleeweapon                3  94 # Talon: d3 Slash damage.
 meleeweapon                4  93 # Beak: d4 Slash damage.
+meleeweapon                0   4 # Spear: d4 Pierce damage.
 human                            
 flying
 fast
 evasion 1
+shield
 nobootslots                      # Has no boot slots.
-descr "Hoburgs have long shared a bond with the wild eagles of Elysium. Under the guidance of the High Gardener, brave men now train to ride these majestic birds of prey into battle."
+descr "Ornithology is a popular pastime among young hoburgers. When the High Gardener unveiled a curious cache of giant eggs, which soon hatched into immense birds, the fascination swelled into a nationwide craze. It reached its improbable conclusion in the formation of a select band of bold knights who devoted themselves to mastering the creatures and riding them into battle. Chosen from among the finest in Hoburgdom, these riders enjoy great prestige. It is said they can pluck apples from treetops in mid flight and thread a lance through a ring no wider than a tankard rim. Each autumn they perform at the Harvest Festival, where synchronized flying and elaborate formations, adorned with bright banners, are displayed to the great pride and delight of the populace."
+
+newmonster "Bird Captain"
+copystats "Bakemono Sho"
+clearweapons
+spr1 "Sprites/Birdcaptain1.tga"
+spr2 "Sprites/Birdcaptain2.tga"
+armor                       1 
+hp                             6 
+str                            3 
+mor                           7 
+mr                             6 
+rank                           1 # Front rank.
+meleeweaponspec      10 "Dive Attack"
+meleeweapon                3  94 # Talon: d3 Slash damage.
+meleeweapon                4  93 # Beak: d4 Slash damage.
+meleeweapon               0   4 # Spear: d3 Pierce damage.
+human                            
+flying
+fast
+evasion 1
+shield
+nobootslots                      # Has no boot slots.
+descr "Ornithology is a popular pastime among young hoburgers. When the High Gardener unveiled a curious cache of giant eggs, which soon hatched into immense birds, the fascination swelled into a nationwide craze. It reached its improbable conclusion in the formation of a select band of bold knights who devoted themselves to mastering the creatures and riding them into battle. Chosen from among the finest in Hoburgdom, these riders enjoy great prestige. It is said they can pluck apples from treetops in mid flight and thread a lance through a ring no wider than a tankard rim. Each autumn they perform at the Harvest Festival, where synchronized flying and elaborate formations, adorned with bright banners, are displayed to the great pride and delight of the populace."
 
 newmonster    "Aeronaut Corps" 
 spr1 "Sprites/Aeronautcorps1.tga"
@@ -13385,34 +13484,93 @@ nametype                       4
 noleader                         # Even if this monster is a commander, it cannot lead other units.
 descr "The balloon is an ideal vessel for Hoburg explorers. It floats safely above most dangers on the ground, demands little effort operate and allows ample time for meal breaks."
 
-newweapon     "Shooting Thorns "                                           
+newweapon "Rainbow Flare"
 trgrank              9 # Target: any enemy in range.
-range                6
+range                12
 init                 4
-dmgtype              3 # Pierce.
-dmg                  0 
-aoe                 -4 # Area: 4 strikes.
-mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
-flymode              4 # Very fast particle effect, one for each strike or square hit.
-flylook            200
-flysound           104 # swosh2.sw (Spell Flysound)
-look                36
-sound               21 # rapid.smp
-nextwep             35 # Extra effect if target is affected: 35: Poison.
-nextdmg             10 # d10 Poison damage.
+dmgtype              7 # Magic .
+dmg                  2 # Base damage (added to dmg value where this weapon is used).
+aoe                  4 # Area: 4 targets.
+flymode              2 # Single standard particle effect, even if multiple squares are hit.
+flylook             222
+flysound            99 # 
+look                186
+sound               16 # fire.smp (Fire)
+reload1
+scatter
+nextalways
 
-newmonster "Topiary Guardian"
-spr1 "Sprites/Topiarylion1.tga"
-spr2 "Sprites/Topiarylion2.tga"
+newweapon "Emerald Explosion"
+trgrank              9 # Target: any enemy in range.
+range                3
+init                 4
+dmgtype              2 # Blunt.
+dmg                  1 # Base damage (added to dmg value where this weapon is used).
+aoe                  1 # Area: burst 1.
+look                187
+sound               16 # fire.smp (Fire)
+nextalways
+
+newweapon "Ruby Explosion"
+trgrank              9 # Target: any enemy in range.
+range                3
+init                 4
+dmgtype              4 # Fire.
+dmg                  1 # Base damage (added to dmg value where this weapon is used).
+aoe                  1 # Area: burst 2.
+look                54
+sound               16 # fire.smp (Fire)
+nextalways
+
+newweapon "Sapphire Explosion"
+trgrank              9 # Target: any enemy in range.
+range                3
+init                 4
+dmgtype              5 # Cold.
+dmg                  1 # Base damage (added to dmg value where this weapon is used).
+aoe                  1 # Area: burst 1.
+look                54
+sound               16 # fire.smp (Fire)
+nextalways
+
+newweapon "Diamond Explosion"
+trgrank              9 # Target: any enemy in range.
+range                3
+init                 4
+dmgtype              6 # Shock.
+dmg                  1 # Base damage (added to dmg value where this weapon is used).
+aoe                  1 # Area: burst 1.
+look                54
+sound               16 # fire.smp (Fire)
+
+newmonster "Rainbow Organ"
+spr1 "Sprites/Rainboworgan1.tga"
+spr1 "Sprites/Rainboworgan2.tga"
+armor                          		1 
+hp                            			6 
+str                            			3 
+mor                            		4 
+mr                             			6 
+rank                           		0
+siegeweapon 				0 "Rainbow Flare"
+rangedweapon 				0 "Rainbow Flare"
+meleeweapon                	-1   8 # Shortsword: d4 Slash damage.
+slow                             			
+battleslow2                      	
+human  
+descr "The Rainbow Organ was devised by Herr Albrecht Buntmann, a composer of unusual sensibilities who claimed to perceive music as bands of color. In an effort to let the public share in this vision, he constructed an instrument that discharged brilliant flares in carefully arranged hues to accompany his latest work. The inaugural performance was curtailed halfway through due to the explosive temperament of certain passages. While opinions on the composition remain divided, the Steel Chancellor noted the device was both loud and inspiring. It was subsequently adapted for field use, where it now serves as a small siege engine, projecting colorful bursts at the enemy while bolstering the spirits of nearby troops."
+
+newmonster "Topiary Lion"
+spr1 "Sprites/Topiarylion1_1.tga"
+spr2 "Sprites/Topiarylion1_2.tga"
 armor                          0 
-hp                            38 
+hp                            50 
 str                            8 
 mor                           99 
 mr                             3 
 rank                           1 # Front rank.
-meleeweapon               12  11 # Bite: d12 Slash damage.
-meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
+meleeweapon               10  11 # Bite: d12 Slash damage.
+meleeweapon               15  12 # Claw: d15 Slash damage.
 meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
 foreststealth
 fireres 		     -50 # Fire vulnerabillity
@@ -13423,22 +13581,22 @@ regeneration                     # Heals ~5% HP every combat round in battle. Ma
 diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
 bluntres
+tangleres
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
-drawsize -50
+drawsize -20
 descr "A living sculpture of dense greenery shaped like a fearsome animal. The sculpture even seems to possess some of the personality of the creature it resembles. These animated guardians are strong and resistant to conventional weapons but, like most plants, vulnerable to fire."
 
-newmonster "Topiary Guardian"
-spr1 "Sprites/Topiarybull1.tga"
-spr2 "Sprites/Topiarybull2.tga"
+newmonster "Topiary Elephant"
+spr1 "Sprites/Topiaryelephant1.tga"
+spr2 "Sprites/Topiaryelephant2.tga"
 armor                          0 
-hp                            47 
+hp                            58 
 str                            8 
 mor                           99 
 mr                             3 
 rank                           1 # Front rank.
-meleeweapon               14  37 # Gore: d12 Slash damage.
-meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
-meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
+meleeweapon               16  37 # Gore: d16 Slash damage.
+meleeweapon                7 332 # Tangle Vines: d7 Blunt damage.
 poisonres                     100 # Poison invulnerability.
 foreststealth
 fireres 		     -50 # Fire vulnerabillity
@@ -13448,24 +13606,40 @@ regeneration                     # Heals ~5% HP every combat round in battle. Ma
 diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
 bluntres
+tangleres
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 trample                        3 # Can trample smaller units for this amount of damage.
-drawsize -30
 descr "A living sculpture of dense greenery shaped like a fearsome animal. The sculpture even seems to possess some of the personality of the creature it resembles. These animated guardians are strong and resistant to conventional weapons but, like most plants, vulnerable to fire."
 
-newmonster "Topiary Guardian"
-spr1 "Sprites/Topiarydrake1.tga"
-spr2 "Sprites/Topiarydrake2.tga"
+newweapon     "Thorn Lash"                                           
+trgrank              9 # Target: any enemy in range.
+range                8
+init                 4
+dmgtype              3 # Pierce.
+dmg                  0 
+aoe                 3 # Area: 3 strikes.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+flymode              4 # Very fast particle effect, one for each strike or square hit.
+flylook            200
+flysound           104 # swosh2.sw (Spell Flysound)
+look                36
+sound               21 # rapid.smp
+nextwep             35 # Extra effect if target is affected: 35: Poison.
+nextdmg             10 # d10 Poison damage.
+
+newmonster "Topiary Drake"
+spr1 "Sprites/Topiarydragon1.tga"
+spr2 "Sprites/Topiarydragon2.tga"
 armor                          0 
-hp                            40 
+hp                            42 
 str                            8 
 mor                           99 
 mr                             3 
-rank                           1 # Front rank.
+rank                           0 # Mid rank.
 meleeweapon50s                10  11 # Bite: d10 Slash damage.
-meleeweapon                4 485 # Tail Sweep: d4 Blunt damage.
 meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
-rangedweapon 1 "Shooting Thorns "
+meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
+rangedweapon 			   3 "Thorn Lash"
 foreststealth
 fireres 		     -50 # Fire vulnerability
 poisonres                    100 # Poison immunity.
@@ -13475,11 +13649,41 @@ regeneration                     # Heals ~5% HP every combat round in battle. Ma
 diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
 bluntres
+tangleres
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
-drawsize -40
+descr "A living sculpture of dense greenery shaped like a fearsome animal. The sculpture even seems to possess some of the personality of the creature it resembles. These animated guardians are strong and resistant to conventional weapons but, like most plants, vulnerable to fire."
+
+newmonster "Topiary Peacock"
+spr1 "Sprites/Topiarypeacock1.tga"
+spr2 "Sprites/Topiarypeacock2.tga"
+armor                          0 
+hp                            41 
+str                            7 
+mor                           99 
+mr                             3 
+rank                           0 # mid rank.
+rangedweapon          262144 547 # Mesmerize: Special damage: Confusion.
+rangedweapon          262144 547 # Mesmerize: Special damage: Confusion.
+meleeweapon               12  93 # Beak: d12 Slash damage.
+meleeweapon                5 332 # Tangle Vines: d5 Blunt damage.
+foreststealth
+fireres 		     -50 # Fire vulnerabillity
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+regeneration                     # Heals ~5% HP every combat round in battle. May rise from the dead if unit suffered less damage than 150% of its HP. Heals permanent battle afflictions over time.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+bluntres
+tangleres 
+size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+drawsize -25
 descr "A living sculpture of dense greenery shaped like a fearsome animal. The sculpture even seems to possess some of the personality of the creature it resembles. These animated guardians are strong and resistant to conventional weapons but, like most plants, vulnerable to fire."
 
 # --------------------------- Burgmeister Rituals ----------------------------------------------# 
+
+selectritual     "Emerald Construct"                                         # 282
+addstring    "1d4*Emerald Clockwork Archer" 
 
 newritual     "Plant Strangleweed"                                     # 274
 ritpow                 9 # Hoburg Weed
@@ -13497,14 +13701,17 @@ selectritual     "Summon Guardian of the Hoburgs"                            # 2
 free
 level 9
 
-newritual "Plant Topiary Guardians"
+newritual "Animate Topiary"
 ritpow                 9 # Hoburg Weed
 level                  3
-cost              6  150 # 150 Weed
+cost              6  150 # 75 Weed
 terr                   -1107 # Required terrain: Ancient Forest or great garden.
 summoning                # The ritual will summon the monsters specified in a random string.
 aialways             999 # AI will always try to cast this ritual, and make long term plans to do so.
-addstring     "3*Topiary Guardian"
+addstring     "1*Topiary Lion"
+addstring     "1*Topiary Elephant"
+addstring     "1*Topiary Drake"
+addstring     "1*Topiary Peacock"
 descr "Topiary is considered a fine art among the Hoburgers, and their gardens are adorned with many green sculptures of beasts and trolls. The greatest Horticulturists know secret rituals to animate these bushes, turning them into formidable guardians of the villages and forests. This ritual summons three topiary guardians. They are ferocious tree-like creatures that will regenerate wounds quickly."
 	
 selectritual "Animal Summoning" #More flavorful summons.
@@ -13516,7 +13723,6 @@ addstring "(-27)Elephant"
 addstring "(117)1d2*Camel"
 addstring "(-20)Marsh Worm"
 addstring "(-20)Crocodile"
-aiweakonly 1000
 
 selectritual "Farm Animal Summoning" #Now summons actual farm animals.
 addstring "1d3+2*Beetle" 
@@ -13524,14 +13730,13 @@ addstring "Horse"
 addstring "1d2+1*Goat"
 addstring "1d2*Donkey"
 addstring "1d4*Dog"
-aiweakonly 1000
 
 newritpow "Burgmeister"
 
 newritual     "Embrace Tradition"   # Concept and ritual name from Large Overhaul. Effects a bit different. 
 free
 level                  1
-cost              6  100 # 100 Weed
+cost              6  150 # 150 Weed
 terr                   4 # Required terrain: Ancient Forest
 monplayerreq 1
 addstring "(&)Garden Master"
@@ -13615,60 +13820,35 @@ addstartunits          "Hoburg Defender"       6
 addstartunits          "Hoburg Soldier"           12
 addstartunits          "Hoburg Crossbow"      12
 
-clearrec
-addunitrec  "Hoburg Militia"                  	    100 15   40   0    0
-addunitrec  "Hobmark Slinger"                  	100 15   50   0    0
-addunitrec  "Hoburg Crossbow"                 	100 15   50   0    5
-addunitrec  "Hoburg Soldier"                  	    100 15   50   0    5
-addunitrec  "Hoburg Defender"                 	100 15   50   0   10
-addunitrec  "Hoburg Pikeneer"                 	100 10   30   0    5
-addunitrec  "Burgmeister Guard"               	100 10   40   0   10
-addunitrec  "Hog Knight"                      	100  5   50   0   10
-addunitrec  "Catapult"                        	100  1   25   0   50
-addcomrec   "Hogmeister"                       	15      25   5    0 
-addcomrec   "Burgmann"                         	20      20   5    0 
-addcomrec   "Burgmeister"                         10      30   10    0 # Replacement Burgmeister 
+addcomrec   "Burgmeister"                         10 30 10 0 # Replacement Burgmeister 
 	reclimiter "-Burgmeister"
 	reclimiter "-High Gardener"
 	reclimiter "-Steel Chancellor"
-addcomrec   "Horologist"                        2      75  10    0 
-libraryrec       	# +1% to chance per library point owned, to a max of +10% for 10+ library points.
-addcomrec   "Horticulturist"                    2      75  10    0 
-templerec      		# +2% to chance per temple owned, to a max of +10% for 5+ temples.
-addmercrec  "Hoburg Scout"                      6  1   15  10    0 
-addunitrec "Eagle Rider"						100	5	50	0	0
-		reclimiter "+High Gardener"
+addunitrec "Bird Knight"							100 5 50 0 5
 		recxcost 6 15
-addunitrec  "Elephant Hog"                 		20  1   50   0   25
+		reclimiter "+High Gardener"
+addcomrec "Bird Captain"							10 30 5 0
+		reclimiter "+High Gardener"
+addunitrec  "Elephant Hog"                 		20 1 50 0 25
 		recxcost 6 20
 		reclimiter "+High Gardener"
-addunitrec	"Hoburg Handgunner"					100	10	50	0	20
+addunitrec	"Hoburg Handgunner"		100	10 50 0 10
 		reclimiter	"+Steel Chancellor"
+addunitrec	"Rainbow Organ"					100	1 25 0 25
 		recxcost 15 10
-addcomrec   "Aeronaut Corps"               		20    40   0   20 
+		reclimiter	"+Steel Chancellor"
+addcomrec   "Aeronaut Corps"               		15 40 0 20 
 		reclimiter "+Steel Chancellor"
-		recxcost 15 10 
-addcomrec   "Horologist"                        2      75  10    0 
-	libraryrec    	# +1% to chance per library point owned, to a max of +10% for 10+ library points.
-	reclimiter "-High Gardener"
-	reclimiter "-Steel Chancellor"
-addcomrec   "Horticulturist"                    2      75  10    0 
-	templerec   	# +2% to chance per temple owned, to a max of +10% for 5+ temples.
-	reclimiter "-Steel Chancellor"
-	reclimiter "-High Gardener"
-addcomrec   "Horologist"                        0      75  10    0 
-	libraryrec    	# +1% to chance per library point owned, to a max of +10% for 10+ library points.
-	reclimiter "+High Gardener"
-addcomrec   "Horticulturist"                    0      75  10    0 
-	templerec    	# +2% to chance per temple owned, to a max of +10% for 5+ temples.
+addcomrec   "Horologist"                        		5 75 10 0 
 	reclimiter "+Steel Chancellor"
-addcomrec   "Horologist"                        6      75  10    0 
-	libraryrec     	# +1% to chance per library point owned, to a max of +10% for 10+ library points.
-	reclimiter "+Steel Chancellor"
-addcomrec   "Horticulturist"                    6      75  10    0 
-	templerec      	# +2% to chance per temple owned, to a max of +10% for 5+ temples.
+addcomrec   "Horticulturist"                    	5 75 10 0 
 	reclimiter "+High Gardener"
-
+addcomrec   "Horologist"                        		5 75 10 0		# Higher chance if you do not already have one
+	reclimiter "-Horologist"
+	reclimiter "-Clockwork Master Crafter"
+addcomrec   "Horticulturist"                        5 75 10 0		# Higher change if you do not already have one
+	reclimiter "-Horticulturist"
+	reclimiter "-Garden Master"
 ############################### Warlock #############################################
 
 # --------- Warlock Terrain --------------- 
