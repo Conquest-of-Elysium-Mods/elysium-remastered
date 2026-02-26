@@ -16774,8 +16774,6 @@ addterr 88
 selectmonster "Terracotta Soldier"
 affres 75
 rearpos
-clearweapons
-meleeweaponlong            0  22 # Pike: d5 Pierce damage.
 healonterr 110 # Crystal Tower
 	
 selectmonster "Animated Tools" 
@@ -16794,6 +16792,8 @@ noslots
 healonterr 110
 
 selectmonster "Living Bow"
+clearweapons 
+rangedweapon          0  28 # Longbow: d4 Pierce damage.
 tiny
 mr 3 
 affres 100
@@ -16815,14 +16815,24 @@ selectmonster "Animated Armor"
 hp 12
 affres 75
 allitemslots
-healonterr 110 #you can extract more value if you need to
+healonterr 110 
 
-selectmonster "Mimic" #stronger, better attack
+newweapon "Bite "
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                10
+init                 2
+dmgtype              1 # Slash.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+
+selectmonster "Mimic" #stronger and has an actual ambush weapon 
 frontpos
 affres 100
 clearweapons
 meleeambush 1
-prebatweapon 10 11
+prebatweapon 10 "Bite "
 meleeweapon 10 11
 
 selectmonster "Gargoyle"
@@ -16835,6 +16845,8 @@ affres 75
 healonterr 110
 	
 selectmonster "Wood Golem" 
+clearweapons
+meleeweapon               14 864 # Wooden Fist: d15 Blunt damage, up from d12 
 affres 75
 water
 healonterr 110
@@ -16850,6 +16862,8 @@ water
 healonterr 110
 	
 selectmonster "Oak Golem"
+clearweapons
+meleeweapon               19 864 # Wooden Fist: d20 Blunt damage, up from d16 
 affres 90
 water
 fastheal	
@@ -16949,6 +16963,18 @@ healonterr 110
 	
 # ------------ Enchanter New Monsters -----------------------------------------------# 
 
+newweapon     "Mercury Crush"                                                     # 493
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 7
+dmgtype              2 # Blunt.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  3 # Area: burst 3.
+sound                1 # spear.smp (Spear)
+onlyenemy
+nextwep            118 # Extra effect if target is affected: 118: aff (str-resistable).
+nextdmg             64 # Stun
+
 newmonster "Living Mercury"
 spr1 "Sprites/Livingmercury1.tga"
 spr2 "Sprites/Livingmercury2.tga"
@@ -16958,7 +16984,7 @@ str                            7
 mor                           99 
 mr                             4 
 rank                           1 # Front rank.
-meleeweapon               5 493 # Crush: d5 Blunt damage.
+meleeweapon               8 "Mercury Crush" #d8 Blunt damage.
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
 diseaseres                       # Disease immunity.
@@ -16984,7 +17010,7 @@ str                            5
 mor                           99 
 mr                             4 
 rank                           1 # Front rank.
-meleeweapon               5 493 # Crush: d3 Blunt damage.
+meleeweapon               4 "Mercury Crush" #d4 Blunt damage.
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
 diseaseres                       # Disease immunity.
@@ -17038,29 +17064,17 @@ healonterr 110
 affres 90
 descr "A gigantic statue of cast bronze, given life by complex rituals."
 
-newweapon     "Consume"   
+newweapon "Smoldering Fist"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
 range                1
-init                 10
-dmgtype             12 # Special.
-dmg                  0 
-aoe                  0 # Area: single target.
-an                     # Armor negating.
-mundane 
-sound                0 # swosh.smp
-next
-nextdmg             10  # Swallow.
-
-newweapon     "Consume Swallow"                                                                                                   
-trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
-range                1
-init                 10
-dmgtype             20 # Swallow.
-dmg                  0 
+init                 2
+dmgtype              2 # Blunt.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
 aoe                  0 # Area: single target.
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
-sound               18 # drain.smp (Life Drain)
-large                  #Only affects size 1 monsters
+sound                1 # spear.smp (Spear)
+nextwep            174 # Extra effect if target is affected: 174: Fire.
+nextdmg              8 # d8 Fire damage.
 
 newweapon     "Cinder Cloud"                                              # 838
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -17076,32 +17090,28 @@ look                14
 flylook 			14
 
 newmonster "Burning Man"
-spr1 "Sprites/Burningman1.tga"
-spr2 "Sprites/Burningman2.tga"
-armor                          1 
-hp                           105 
+spr1 "Sprites/Coalgolem1.tga"
+spr2 "Sprites/Coalgolem2.tga"
+armor                          2 
+hp                           110 
 str                            9 
 mor                           99 
 mr                             7 
 rank                           1 # Front rank.
-rangedweapon50s           5 "Cinder Cloud"                                              
-meleeweapon50s            32 "Consume" # d5 + swallow + burning damage.
-meleeweapon               20 864 # Wooden Fist: d12 Blunt damage.
-huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+rangedweapon50           5 "Cinder Cloud"                                              
+meleeweapon               22 "Smoldering Fist"
+huge
 noheal
 poisonres                    100 # Poison immunity.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 diseaseres                       # Disease immunity.
-bluntres                         # Blunt resistance (half damage).
 pierceres                        # Pierce resistance (half damage).
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
 fireres                      100 # Fire Resistance.
 coldres 		     -50
-fireexpl 15 #fiery explosion on death dmg 15 
 affres 75
 burnforest 3 #Like fire elemental. 
-drawsize  -20  
 healonterr 110
 descr "With a combination of enchantment and fire magic, a coal mine can be animated into a walking furnace of timber and embers, which consumes everything it comes across with a ravenous hunger."  
 
@@ -17111,7 +17121,7 @@ range                3
 init                 4
 dmgtype              7 # Magic.
 dmg                  0 
-aoe                -7 # Area: 7 strikes.
+aoe                -5 # Area: 5 strikes.
 easymr                     # Resisted by rolling 2d4 < Magic Resistance.
 an                     # Armor negating.
 look                54
@@ -17191,16 +17201,17 @@ descr "A colossal idol discovered in the ruins of an abandoned temple, brought t
 newmonster "Devout Follower " #weaker and fewer, enchanter isn't supposed to be about spamming stupid units
 copystats "Devout Follower"
 frontpos
-hp 4 #from 5
-mr 3 #from 4
-mor 3 # from 4
+hp 4 
+mr 3 
+mor 3 
 clearweapons
-meleeweapon -1 25 #flail, -1 attack to normal
+meleeweapon -1 25 #flail
 
 newmonster "Mud Golem"
 copystats "Clay Golem"
 spr1 "Sprites/Mudgolem1.tga"
-spr2 "Sprites/Mudgolem2.tga"               
+spr2 "Sprites/Mudgolem2.tga"     
+descr "Golems are powerful constructs that are just as hard to kill as the material they are made from.  The more powerful golems have special abilities that are inherent to their building material."
 
 newweapon "Clay Fist"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -17212,18 +17223,20 @@ aoe                  0 # Area: single target.
 mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
 sound 
 
-newmonster "Clay Golem "
+newmonster " Clay Golem"
 spr1 "Sprites/Claygolem1.tga"
 spr2 "Sprites/Claygolem2.tga"
 armor                          1 
 hp                            40 
 str                            8 
 mor                           99 
-mr                             7 
+mr                             4 
 rank                           1 # Front rank.
 meleeweapon               11 "Clay Fist" # d12 Blunt damage.
 poisonres                    100 # Poison immunity.
-fireres 100
+fireres 	50
+coldres 	50
+shockres 50
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 noheal                           # Does not heal naturally.
@@ -17231,10 +17244,11 @@ diseaseres                       # Disease immunity.
 slashres                         # Slash resistance
 pierceres                        # Pierce resistance (half damage).
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+water
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 healonterr 110
-drawsize -15
-descr "The simplest golem is a clay construct given life and purpose by words inscribed on a tablet inserted into its chest. It is resistant to magic and will never rout from battle". 
+drawsize -20
+descr "The simplest golem is a clay construct given life and purpose by words inscribed on a tablet inserted into its chest. It is resistant to the elements and will never rout from battle". 
 
 newweapon     "Starlight"                                                # 351
 trgrank              9 # Target: any enemy in range.
@@ -17270,10 +17284,9 @@ diseaseres                       # Disease immunity.
 slashres                         # Slash resistance (half damage).
 pierceres                        # Pierce resistance (half damage).
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-fear                           1 # Causes Fear (1d7 vs morale) within 1 square.
-fireres                       100 # 50 Fire Resistance.
-coldres                       100 # 50 Cold Resistance.
-acidres                       100
+fireres                       100 # 100 Fire Resistance.
+coldres                       100 # 100 Cold Resistance.
+acidres                          100
 healonterr 110
 descr "Golems are powerful constructs that are just as hard to kill as the material they are made from.  The more powerful golems have special abilities that are inherent to their building material."
 
@@ -17292,51 +17305,36 @@ level 9
 free
 
 selectritual "Animate Spear"
-level 9        
-free
-           
-newritual "Animate Spears"
-ritpow      11 # enchantment
-level 1
-apcost       2 # 3 ap total
-cost 0       1 # 3 gold
-terr        -9 # fortified citadels
-start          # automatically gain this ritual
-aialways    90 # chance that ai will attempt ritual if convenient
-aiweakonly 200 # ai will only attempt ritual if force is roughly weaker than 20 spearmen
-aiapprspam 100 #  chance of dedicating apprentices to ritual
-summoning
-addstring "3*Dancing Spear"
-descr "A spear that is enchanted with this ritual will become alive, almost.  It will float in the air and obey simple orders from the Enchanter or his other commanders.  The ritual can only be cast in fortresses and similar locations where there are plenty of suitable spears to enchant."
+cost 0       3 # 3 gold
+cost 1       0   
 
 selectritual "Animate Sword"
 level 9        # inaccessible
 free           # somehow prevents game generation errors for mac users
 
-newritual "Animate Swords"
+newritual "Animate Sword"
 ritpow      11 # enchantment
 level 1
 apcost       2 # 3 ap total
-cost 0       3 # 3 gold
-cost 1       1 # 3 iron
+cost 1       2 # 2 iron
 terr        -9 # fortified citadels
 start          # automatically start with this ritual
 aialways    75 # chance that ai will attempt ritual if convenient
 aiweakonly 200 # ai will only attempt ritual if force is roughly weaker than 20 spearmen
 aiapprspam 100 #  chance of dedicating apprentices to ritual
 summoning
-addstring "2*Dancing Sword"
+addstring "1*Dancing Sword"
 descr "A sword that is enchanted with this ritual will become alive, almost.  It will float in the air and obey simple orders from the Enchanter or his other commanders.  The ritual can only be cast in fortresses and similar locations where there are plenty of suitable swords to enchant."
 
 selectritual "Animate Bow"
 level 9        # inaccessible
 free           # somehow prevents game generation errors for mac users
 
-newritual "Animate Bows"
+newritual "Animate Bow"
 ritpow      11 # enchantment
 level 1
 apcost       2 # 3 ap total
-cost 0       3 # 3 gold
+cost 0       2 # 2 gold
 cost 1       1 # 1 iron
 terr        -9 # fortified citadels
 start          # always start with this ritual
@@ -17344,7 +17342,7 @@ aialways    75 # chance that ai will attempt ritual if convenient
 aiweakonly 200 # ai will only attempt ritual if force is roughly weaker than 20 spearmen
 aiapprspam 100 #  chance of dedicating apprentices to ritual
 summoning
-addstring "2*Living Bow"
+addstring "1*Living Bow"
 descr "A bow that is enchanted with this ritual will become alive, almost.  It will float in the air and obey simple orders from the Enchanter or his other commanders.  The ritual can only be cast in fortresses and similar locations where there are plenty of suitable bows to enchant."
 	
 selectritual "Animate Tools"
@@ -17359,10 +17357,10 @@ free           # somehow prevents game generation errors for mac users
 
 newritual "Animate Ballista"
 ritpow      11 # enchantment
-level        1 # apprentice work
+level        1 
 apcost       2 # 3 ap total
 cost 0      10 # 10 gold
-cost 1       5 # 5 iron
+cost 1      10 # 10 iron
 terr       -9  # fortified citadels
 aialways   80  # chance that ai will attempt ritual if convenient
 promotion   1  # promotes this many of the monsters present in the first of each pair of strings to the second
@@ -17450,25 +17448,29 @@ selectritual "Enchanted Gate"
 level 1 
 
 selectritual "Create Wood Golem" 
-free
 level 9
+free
 
-newritual "Create Wood Golem "
-ritpow                11 # Enchantment
-level                  2
-cost              0   50 # 20 Gold
-cost              1   25 # 20 Iron
-terr                 -38 # Required terrain: forest/jungle (not ancient forest).
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 2 # Actual AP cost: 3.
+newritual "Create Wood Golem"
+ritpow                	11 # Enchantment
+level                  		2
+cost              			0 30 # 25 Gold
+cost              			1 30 # 25 Iron
+terr                 		-38 # Required terrain: forest/jungle (not ancient forest).
+summoning             	# The ritual will summon the monsters specified in a random string.
+apcost                 	2 # Actual AP cost: 3.
 destroyterr          15 # % chance of destroying the terrain.
-start                    # Start with this ritual instead of the others.
+start                    		# Start with this ritual instead of the others.
 addstring     "Wood Golem"
 descr "This enchantment chops down part of a forest and builds a huge wood golem out of the best trees.  The ritual can be performed in both northern forests and southern jungles, but the ancient forests are able to resist the effect.  As with most golem creations, the process is both time consuming and expensive. If too many trees are felled the forest will eventually die."
 
 # Clay does not come from swamps! A minor nitpick, but I changed it nonetheless. Is now a Mud Golem, and new Clay Golem is a repeatable basic summon.
 
-newritual "Create Clay Golem " 
+selectritual "Create Clay Golem"  
+free 
+level 9
+
+newritual "Create Clay Golem" 
 ritpow                11 # Enchantment
 level                  2
 cost              0   20 # 20 Gold
@@ -17477,13 +17479,9 @@ terr                 -32 # Required terrain: villages or larger settlements.
 summoning                # The ritual will summon the monsters specified in a random string.
 apcost                 2 # Actual AP cost: 3.
 start                    # Start with this ritual instead of the others.
-addstring     "1*Clay Golem "
+addstring     "1* Clay Golem"
 aialways 50
 descr "The simplest golem is a clay construct given life and purpose by words inscribed on a tablet inserted into its chest. It is resistant to magic and will never rout from battle. Clay Golems can be built in all larger settlements where ample amounts of pottery clay is available."
-
-selectritual "Create Clay Golem"  
-free 
-level 9
 
 newritual "Create Mud Golem"
 ritpow                11 # Enchantment
@@ -17500,43 +17498,16 @@ descr "Contrary to common belief, clay is not found in swamps. Digging around in
 
 # Doesn't make sense that coal mines specifically turn into stone golems. May now target any mine. 
 
-newritual "Create Stone Golem "
-ritpow                11 # Enchantment
-level                  2
-cost              0   40 # 40 Gold
-cost              1   40 # 40 Iron
+selectritual "Create Stone Golem"
 terr                 -12 # Required terrain: Proper Mines.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 5 # Actual AP cost: 6.
-destroyterr          100 # % chance of destroying the terrain.
-start                    # Start with this ritual instead of the others.
-addstring     "Stone Golem"
 ainotnearhome 10
 descr "This enchantment consumes the hidden power inherent in a mine and makes the rocks rise as a Stone Golem. Stone Golems are both huge and made out of stone, which makes them almost impossible to destroy with ordinary weapons. As with most golem creations, the process is both time consuming and expensive. This ritual will destroy the mine."
-
-selectritual "Create Ice Golem"
-level 9
-free
-
-newritual     "Create Ice Golem "                                          #  57
-ritpow                11 # Enchantment
-level                  2
-cost              0   50 # 50 Gold
-cost              1   50 # 50 Iron
-terr                 132 # Required terrain: Frozen Lake.
-start
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 5 # Actual AP cost: 6.
-destroyterr          100 # % chance of destroying the terrain.
-aialways             100 # AI will always try to cast this ritual if it currently can, but it will not make long term plans to do so.
-addstring     "Ice Golem"
-descr "This ritual transforms the ice of a frozen freshwater lake into a huge Ice Golem. Ice Golems can only be made where and when it is cold, because the water must be frozen.  As with most golem creations, the process is both time consuming and expensive. When the main body of water wanders off, it will leave behind a thawing swamp."
 
 newritual "Create Living Mercury"
 ritpow                11 # Enchantment
 level                  2
-cost              0   20 # 20 Gold
-cost              1   20 # 20 Iron
+cost              0   25 # 25 Gold
+cost              1   25 # 25 Iron
 terr                 -19 # Required terrain: Gold or Silver Mines.
 summoning                # The ritual will summon the monsters specified in a random string.
 apcost                 2 # Actual AP cost: 3.
@@ -17566,11 +17537,11 @@ descr "A colossal idol discovered in the ruins of an abandoned temple is brought
 newritual "Construct Burning Man" 
 ritpow                11 # Enchantment
 level                  2
-cost              0   40 # 40 Gold
-cost              1   40 # 40 Iron
+cost              0   40 # 30 Gold
+cost              1   40 # 30 Iron
 terr                 105 # Required terrain: Coal Mine.
 summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 5 # Actual AP cost: 6.
+apcost                 4 # Actual AP cost: 5.
 destroyterr          100 # % chance of destroying the terrain.
 rarestart                    # Start with this ritual instead of the others.
 addstring     "1*Burning Man"
@@ -17591,92 +17562,16 @@ aialways 50
 descr "The Enchanter creates a gigantic statue of cast bronze, and gives it life by complex rituals."
 
 selectritual "Create Iron Golem"
-level 9
-free
-
-newritual     "Create Iron Golem"                                         #  67
-ritpow                11 # Enchantment
-level                  3
-cost              0   60 # 60 Gold
-cost              1   60 # 60 Iron
-terr                  14 # Required terrain: Iron Mine.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 8 # Actual AP cost: 9.
-destroyterr          100 # % chance of destroying the terrain.
-start                    # Start with this ritual instead of the others.
 ainotnearhome 10
-addstring     "Iron Golem"
-descr "This enchantment consumes the hidden power inherent in an iron mine and makes the mine rise as an Iron Golem.  Iron Golems are both huge and made of iron, which makes them just about impossible to destroy.  As with all powerful golem creations, the process is both time consuming and expensive. This ritual will destroy the mine."
 
 selectritual "Create Silver Golem"
-level 9
-free 
-
-newritual "Create Silver Golem "
-ritpow                11 # Enchantment
-level                  3
-cost              0   90 # 90 Gold
-cost              1   90 # 90 Iron
-terr                  15 # Required terrain: Silver Mine.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 8 # Actual AP cost: 9.
-destroyterr          100 # % chance of destroying the terrain.
-start                    # Start with this ritual instead of the others.
 ainotnearhome 10
-addstring     "Silver Golem"
-descr "This enchantment consumes the hidden power inherent in a silver mine and makes the mine rise as a Silver Golem.  Silver Golems are both huge and made of silver, which makes them just about impossible to destroy.  As with all powerful golem creations, the process is both time consuming and expensive. This ritual will destroy the mine."
 
 selectritual "Create Gold Golem" 
-level 9
-free 
-
-newritual "Create Gold Golem "
-ritpow                11 # Enchantment
-level                  3
-cost              0  100 # 100 Gold
-cost              1  100 # 100 Iron
-terr                  34 # Required terrain: Gold Mine.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 8 # Actual AP cost: 10.
-destroyterr          100 # % chance of destroying the terrain.
-start                    # Start with this ritual instead of the others.
 ainotnearhome 10
-addstring     "Gold Golem"
-descr "This enchantment consumes the hidden power inherent in a gold mine and makes the mine rise as a Gold Golem.  Gold Golems are both huge and made of gold, which makes them both nearly impossible to destroy and extremely valuable.  As with all powerful golem creations, the process is both time consuming and expensive. This ritual will destroy the mine."
 
 selectritual "Create Onyx Golem"
-level 9
-free
-
-newritual     "Create Onyx Golem "                                         
-ritpow                11 # Enchantment
-level                  3
-cost              0   70 # 70 Gold
-cost              1   70 # 70 Iron
-terr                  33 # Required terrain: Gold Stream.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 8 # Actual AP cost: 9.
-destroyterr          100 # % chance of destroying the terrain.
-addstring     "Onyx Golem"
-aialways             100 # AI will always try to cast this ritual if it currently can, but it will not make long term plans to do so.
-descr "This enchantment consumes the hidden power inherent in a gold stream and makes the surrounding mountain rise as an Onyx Golem.  Onyx Golems are huge and made of onyx, which makes them almost impossible to destroy.  As with all powerful golem creations, the process is both time consuming and expensive. This ritual will destroy the mine."
-
-selectritual "Create Crystal Golem"
-level 9
-free
-
-newritual     "Create Crystal Golem "                                      
-ritpow                11 # Enchantment
-level                  3
-cost              0   80 # 80 Gold
-cost              1   80 # 80 Iron
-terr                 -30 # Required terrain: gemdeposits/crystals.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 8 # Actual AP cost: 9.
-destroyterr          100 # % chance of destroying the terrain.
-addstring     "Crystal Golem"
-aialways             100 # AI will always try to cast this ritual if it currently can, but it will not make long term plans to do so.
-descr "This enchantment consumes the hidden power inherent in crystal deposits and makes the crystals fuse together and rise as a Crystal Golem.  Crystal Golems are huge and made of crystal, which makes them very difficult to destroy.  As with all powerful golem creations, the process is both time consuming and expensive. This ritual will destroy the crystal deposit."
+ainotnearhome 6
 
 newritual "Create Glass Golem"
 ritpow                11 # Enchantment
@@ -17690,20 +17585,9 @@ aialways 40
 descr "The stained glass used in church windows can be animated into magnificent golems, often in the shape of angels or knights. They will retain a holy spark, and be especially efficient against demons or undead. The priests are usually not too pleased with the resulting holes in their windows, and a new panel must be commissioned to stay on the good side of the clergy. " 
 
 selectritual "Brass Bull"
-level 9
-free
-
-newritual "Create Brass Bull"
-ritpow                11 # Enchantment
-level                  3
-cost              0  500 # 500 Gold
-cost              1   50 # 50 Iron
+clearritspec				# not sure if aialways can be overwritten otherwise 
+aialways              50 # reduced from 80. Otherwise a very rich enchanter simply stops moving.
 terr                 -42 # Required terrain: any land.
-summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 8 # Actual AP cost: 9.
-aialways              50 # # reduced from 80. Otherwise a very rich enchanter simply stops moving.
-addstring     "Brass Bull"
-descr "The enchanter creates a huge bull of cast brass and gives it false life. The Brass Bull is almost impervious to normal weapons and its breath is scorching flames."
 
 newritual "Create Starstone Golem"
 ritpow 11
@@ -17730,7 +17614,6 @@ clearrec
 stdtroops 1
 recherochance 1
 recasschance 0
-recwizchance 2
 addunitrec 		"Ballista"             			100 2 25 0 50 	# for animate ballista
 addcomrec   	"Enchanter's Apprentice"    	8 40 15 0 		# double apprentice rec rate  
 		libraryrec
@@ -17738,13 +17621,12 @@ addcomrec   "Enchanter's Apprentice"        	8 40 15 0 		# extra commander rec c
 		reclimiter "-Enchanter's Apprentice"
 		reclimiter "-Enchanter"
 		reclimiter "-Great Enchanter"
-
 clearstartunits
 	addstartunits 	"Living Bow" 4
 	addstartunits	"Dancing Sword" 4
 	addstartunits 	"Dancing Spear" 4
 	addstartcom 	"Enchanter's Apprentice"
-
+	
 ########################################### High Cultist ################################################### 
 
 # ---------------------------- High Cultist Monster Edits -----------------------------------# 
