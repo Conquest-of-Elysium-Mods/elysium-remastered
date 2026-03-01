@@ -1344,9 +1344,13 @@ localleadership                1 # +1 Morale for allied units within two squares
 twistfate
 power                       6  1 # Baron, level 1.
 nametype                       2 # Anglo-Saxon male.
-descr "'Ah, the Blue Rose,' they say. 'The heart of the realm. Plucked by gods and waiting to be replanted.' Then they stare wistfully into the distance. No one really knows what it means. Still, it remains the talk of the court, and to send no one in search of it would be to admit the throne has no poetry. A select brotherhood of knights now rides in its name. They are granted unicorns, wear ceremonial armor polished beyond practicality, and speak little, unless reciting vows. Though tasked with finding the fabled flower, they mostly seem content to roam the countryside, fight brigands, and question local peasants for 'clues'."
+descr "'Ah, the Blue Rose,' they say. 'The crown bloom of the realm. Plucked by gods and waiting to be replanted.' Then they stare wistfully into the distance. No one really knows what it means. Still, it remains the talk of the court, and to send no one in search of it would be to admit the throne has no poetry. A select brotherhood of knights now rides in its name. They are granted unicorns, wear ceremonial armor polished beyond practicality, and speak little, unless reciting vows. Though tasked with finding the fabled flower, they mostly seem content to roam the countryside, fight brigands, and question local peasants for 'clues'."
 
 # ------------------------ Baron Rituals -----------------------------------------------#
+
+selectritual "Raise Levies"
+addstring     "(5)3*Levy"
+addstring     "(6)3*Levy"
 
 # It felt wrong that you could turn every swamp area into a blanket of monasteries. Monasteries are now less spamable. 
 
@@ -1516,7 +1520,7 @@ seasonreq 0
 free
 maxcast 4
 castcount 4
-turncastcount 
+turncastcount -1
 summoning 
 addstring "c*Fay Lord & 3d4*Fay Knight & 4d4*Fay Warrior & 2d4*Fay Folk"
 descr "The Queen hosts a midsummer festival deep in an ancient forest. Among the guests are unfamiliar nobles with pale faces and clothes that shimmer like mother-of-pearl. They do not eat much, but seem to enjoy the music. When they learn of the King's mission to civilize Elysium, they express enthusiastic support. The next morning, they are gone, except for one lord and his strange retinue, who ride off in high spirits, singing to themselves and gleefully attacking all they decide are enemies of the crown.^^This ritual can only be cast once each summer season."
@@ -4114,6 +4118,12 @@ maxsinners                    60 # When owned by Inferno, will gather 60 sinners
 revertowner                   28 # Player 28: Inferno.
 descr "The Lord of Flies is a demon of plagues and discontent. It is a huge, feathery humanoid with four great wings, no head and the legs of a hen. They are said to create the dry wind from the east that brings disease and suffering."
 
+newmonster " Catapult" # necessary for inferno recruitment 
+copystats "Catapult"
+clearspec 
+size2x2
+aihold 1 
+aimaxshop 2 
 # ----------------------- Demonologist Rituals ------------------------------------------------------# 
 
 selectritual "Demon Summoning"
@@ -4464,7 +4474,7 @@ addunitrec  "Demon Knight"	      				100 2 170 25 0
 	recterr -36
 addunitrec  "Infernal Soldier"        			100 4 170 25 0  
 	recterr -36
-addunitrec  "Catapult"                        		100 1 25 0 50
+addunitrec  " Catapult"                        		100 1 25 0 50
 	recterr -36
 addunitrec     "Frost Fiend" 25 1 45 20 0
 	recterr -36
@@ -4546,6 +4556,7 @@ batmap 48 								#Fairy Circle
 visible 
 lifeforce 20
 destroyto 197							#Fairy Circle
+swamp
 
 selectterr 833
 name "Witchmoot"
@@ -4566,6 +4577,7 @@ visible
 smoke 
 lifeforce 20
 destroyto 197							#Fairy Circle
+swamp
 
 selectclass 4
 classcitterr 832
@@ -9278,25 +9290,6 @@ look 						165
 flysound            	15 # sling.sw (Sling)
 sound                	68 # small fire
 
-#newmonster "Night Raider"
-#spr1 "Sprites/Harii_sword1.tga"
-#spr2 "Sprites/Harii_sword2.tga"
-#armor                          0 # Armor.
-#hp                             8 # Hit Points.
-#str                            5 # Strength.
-#mor                            4 # Morale.
-#mr                             3 # Magic Resistance.
-#rank                           1 # 
-#rearpos 
-#meleeweapon                1   "Broadsword" # d7 Slash damage.
-#rangedweapon               0 "Fire Pot" #d3 fire, armor negating  
-#human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-#shield 
-#allitemslots                     # Has the full set of item slots.
-#berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-#terrstealth -1123
-#descr "Some raiders wear pelts dyed black and stain their bodies, marking their faces with pale designs so that, when seen by firelight, they resemble the dead more than the living. They favor confusion over contest and arrange their attacks to heighten the first impression. Small clay pots filled with a flammable substance are hurled ahead of the charge, bursting on impact and spreading fire among the defenders. They choose dark nights to fight, holding that in every battle the eyes are the first to be conquered."
-
 newmonster "Night Raider"
 spr1 "Sprites/Harii_fire1.tga"
 spr2 "Sprites/Harii_fire2.tga"
@@ -9371,8 +9364,9 @@ nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
 ship 1
 shipmove 
-transport 20
+transport 15
 drawsize -30 
+fast
 descr "The Barbarians put to sea in long vessels built of light timbers stitched together with cords, a method which gives the hull enough flexibility to ride the heavy northern waves. These ships are driven by many oars and a single square sail of coarse wool, and though crudely made by our standards they move with surprising speed along the coasts. The warriors sit upon chests that hold their arms and supplies, and they beach the vessels without hesitation, for the hulls are made to be dragged ashore as easily as launched. Patrol captains along the northern shores report that such ships can appear and vanish with little warning, for they draw so little water that they slip into shallow inlets where our galleys cannot follow."
 
 newmonster "Nightship"
@@ -9400,9 +9394,10 @@ nozoc                            # No Zone of Control.
 unimportant                      # Battles can be won without killing this unit.
 ship 1
 shipmove 
-transport 20
+transport 15
 terrstealth -1123 
-drawsize -30 
+drawsize -30
+fast 
 descr "The Night Raiders prepare their longships in a peculiar manner, coating the hulls in soot and pitch and scratching faint runes along the boards, which they claim will render the vessel difficult to see. The rails of the ship are fitted with small torches that can be shuttered at ease, allowing the crew to row in near total darkness. Scouts along the northern coasts report that these nightships glide close to shore without sound or light, and that a settlement often realizes their presence only when the torches are thrown open and the raiders leap ashore amid sudden fire."
 
 newmonster "Dragonship"
@@ -9523,7 +9518,7 @@ newmonster "Idol of Maladies"
 copystats "Totem of Maladies"
 descr "Each of the larger village seems to be protected by a unique statue or decoration carved from a single log of wood.  Quite often they have been standing in the village for a long time and are rotten from the inside, being attacked by mice and woodworms.  The easiest way to subdue a Barbarian village is to smash the totem, as they call it, with something heavy.  Beware of the ones depicting a smiling demon, as they will most likely afflict you with curse and plague.  Make sure that you bring a slave that can crush it for you."
 
-newmonster "Warrior Idol"			#Warrior spawn rate increased from 1/5 turns to 1/3 turns 
+newmonster "Warrior Idol"			#Warrior spawn rate increased from 1/5 turns to 1/2 turns 
 copystats "Warrior Totem"
 spawnmon 50
 spawnoffs 1
@@ -9546,9 +9541,10 @@ armor                          1 # Armor.
 hp                            13 # Hit Points.
 str                            5 # Strength.
 mor                            8 # Morale.
-mr                             5 # Magic Resistance.
+mr                             6 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                3  21 # Greatsword: d12 Slash damage.
+frontpos
+meleeweapon                4  21 # Greatsword: d12 Slash damage.
 charmres 
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
@@ -9563,9 +9559,10 @@ armor                          1 # Armor.
 hp                            13 # Hit Points.
 str                            5 # Strength.
 mor                            8 # Morale.
-mr                             5 # Magic Resistance.
+mr                             6 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                3  21 # Greatsword: d12 Slash damage.
+frontpos
+meleeweapon                4  21 # Greatsword: d12 Slash damage.
 charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
@@ -9580,9 +9577,10 @@ armor                          1 # Armor.
 hp                            13 # Hit Points.
 str                            5 # Strength.
 mor                            8 # Morale.
-mr                             5 # Magic Resistance.
+mr                             6 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                3  21 # Greatsword: d12 Slash damage.
+frontpos
+meleeweapon                4  21 # Greatsword: d12 Slash damage.
 charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
@@ -9597,9 +9595,10 @@ armor                          1 # Armor.
 hp                            13 # Hit Points.
 str                            5 # Strength.
 mor                            8 # Morale.
-mr                             5 # Magic Resistance.
+mr                             6 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                3  21 # Greatsword: d12 Slash damage.
+frontpos
+meleeweapon                4  21 # Greatsword: d12 Slash damage.
 charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
@@ -9614,9 +9613,10 @@ armor                          1 # Armor.
 hp                            13 # Hit Points.
 str                            5 # Strength.
 mor                            8 # Morale.
-mr                             5 # Magic Resistance.
+mr                             6 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                3  21 # Greatsword: d12 Slash damage.
+frontpos
+meleeweapon                4  21 # Greatsword: d12 Slash damage.
 charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
@@ -9759,8 +9759,8 @@ mor                            6 # Morale.
 mr                             6 # Magic Resistance.
 rank                           1 # Front rank.
 meleeweaponspec           14  13 # Lance Charge: d14 Pierce damage.
-rangedweapon               1   7 # Bow: d3 Pierce damage.
-rangedweapon               1   7 # Bow: d3 Pierce damage.
+rangedweapon               1   7 # Bow: d4 Pierce damage.
+rangedweapon               1   7 # Bow: d4 Pierce damage.
 meleeweapon                3   4 # Spear: d7 Pierce damage.
 meleeweapon                3   4 # Spear: d7 Pierce damage.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
@@ -9856,6 +9856,68 @@ allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
 terrstealth -1123
 descr "The raider chiefs display some naval skills, which are probably more attributed to primitive instincts than any real education in seamanship. Nonetheless they appear to know the inlet and shoals along the northern coasts well, and have been known to navigate through waters that most pilots refuse even in daylight. Several reports tell of their vessels slipping between rocks where only seals are thought able to pass, guided by nothing more than the feel of the surf upon the prow."
+
+selectmonster "Spirit Guide"
+name "Disabled Spirit Guide"
+
+selectmonster "Enarie"
+name "Disabled Enarie"
+
+selectmonster "Elder Enarie"
+name "Disabled Elder Enarie"
+
+newmonster    "Elder Enarie"                                             
+copystats "Painted Crystal Amazon"
+clearweapons 
+copyspr "Disabled Elder Enarie"
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             9 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               17   3 # Spiritism at level 3.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+power                      13  3 # Spirit Summons, level 3.
+descr "Few if any outside of the Barbarian tribes, or even within them, have ever seen the Elder Enarie.  Some stories have been told by Barbarian slaves who claim that at this point the Enarie is so addled by communicating with the spirits that they cannot see the real world anymore.  Being confined to a smelly hut, those seeking counsel are first questioned by the younger Enarie and only if the question is deemed grave enough would one be allowed in.  If the leader is fatally ill, a triad of younger Enaries will ask the spirits for names of oathbreakers in the village.  One of those names given will be summoned and thrown into the hut of the Elder Enarie.  If the villager's soul is that of an oathbreaker, the Elder Enarie will strike a brass plate and the now sleeping villager is fetched to be sacrificed for the health of the leader."
+
+newmonster    "Enarie"                                                  
+copystats "Painted Crystal Amazon"
+clearweapons 
+copyspr "Disabled Enarie"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            5 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               17   2 # Spiritism at level 2.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+power                      13  2 # Spirit Summons, level 2.
+mastery                       -1 # A mastery effect will change this monster to the type defined 1 before this one; i.e. monster #129: Elder Enarie.
+descr "Once the Spirit Guide reaches maturity they will be initiated into the deeper mysteries and are no longer forced to eat their monthly herbs.  However, some still do, because it is difficult to end such a habit.  The more powerful ancestral spirits are still driven by a greed for gaudy objects, so the Enarie needs to dress up in shiny accessories.  In order to gain the ability to see the ancient spirits, the Enarie must consume certain strong, poisonous mushrooms that grow near the Troll cesspits.  Without preparation it is far too strong to consume, and could even be fatal to the Enarie.  Instead the mushroom is ground and mixed into strong beer.  The beer is then given to the village drunk, who will readily drink it.  After degrading himself to the amusement of the village, his pee is collected in wooden jars and stored for a week before the Enarie drinks it.  The poison is now so diluted as to only give the Enarie strong visions of all the spirits around them."
+
+newmonster    "Spirit Guide"
+copystats "Painted Crystal Amazon"
+clearweapons 
+copyspr "Disabled Spirit Guide"                                           
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             7 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               17   1 # Spiritism at level 1.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+power                      13  1 # Spirit Summons, level 1.
+mastery                       -1 # A mastery effect will change this monster to the type defined 1 before this one; i.e. monster #130: Enarie.
+descr "The Barbarian priests claim that they once learned some of their powers by possessing and consuming an elderly Troll Shaman.  As it regenerated  within the bodies of the Enaries, they managed to use their ancient powers to trap the Troll within them, thus absorbing not only the strange powers of the Troll but also some of its mind.  Ever since this event, the Spirit Guides and Enaries have assumed the role as the Holy Mother of their tribe.  Others claim that the Barbarian tribes were once ruled by a group of holy priestesses that entered a sacred marriage with the Barbarian Leader.  In order to hold on to their power the Spirit Guides have to assume the role of priestesses too, which is why they are now both male and female, both Spirit Speaker and Priestess in the same person.  It is not known if they still keep the tradition of the royal marriage, though. During the full moon the Spirit Guides are given a strong concoction of bitter and poisonous herbs, which gives them sharp pains in their abdomen."
 
 newmonster "Hunt Mother"
 copystats "Painted Crystal Amazon"
@@ -10408,17 +10470,25 @@ addstring "Spirit-chosen Barbarian King"
 descr "The Enarie negotiates a pact between the Barbarian Chief and the spirit world. Should the Chief die in battle his ancestors will welcome him in the afterlife and give him a retinue of spectral followers."
 
 selectmonster "Sending"
-hp 4
+hp 3
 noheal 
 clearmove 
 float 
-flying 
 dmgonterr -1 
 
 selectritual "Sending"
-cost              2   25 # 25 Herbs
+level 9
+free
+
+newritual "Sending"
+ritpow                13 # Spirit Summons
+level                  1
+cost              2   15 # 15 Herbs
+apcost 		 8
+summoning                # The ritual will summon the monsters specified in a random string.
 airare                10 # Only 10% of normal chance that AI will cast this ritual.
-descr "The Spirit Guide summons an ancestral spirit and sends it out to explore his surroundings. The Sending is invisible and can only be attacked by those endowed with spirit sight. The Sending can be controlled, but will dissipate after a short period."
+addstring     "c*Sending"
+descr "The Spirit Guide summons an ancestral spirit to explore the surrounding lands. The caster will see through the eyes of the spirit, but remains in a trance and is unable to move for the duration of the spell. The Sending is invisible and can only be harmed by those with spirit sight. The Sending can be controlled, but will dissipate after a short period."
 
 newritpow #Lesser Barbarian commanders 
 
@@ -10498,7 +10568,7 @@ addstring "  Night Raider"
 addstring "(&)Nightship"
 addstring "(&)Dragonship"
 closewin 
-descr "The Harii Chief slips his ship close to land, and prepares his warriors for a surprise attack under cover of darkness. For the next round, all Harii units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively. This ritual must be cast on a Nightship in Shallow Sea."
+descr "The Raider Chief slips his ship close to land, and prepares his warriors for a surprise attack under cover of darkness. For the next round, all Night Raider units gain increased initiative and faster movement on the battlefield, allowing them to engage enemy fortifications before defenders can respond effectively. This ritual must be cast on a Nightship in Shallow Sea."
 
 selectmonster "Raider Chief"
 power 0 1 
@@ -10600,8 +10670,31 @@ cost 0 50
 terr -1102 
 aialways 999
 airestrig 100
-maxcast 3
 descr "An offering of plunder is placed before the Irminsul to honor the ancestors. Their blessing flows into all warriors bearing sacred tattoos, granting them +2 HP. This can only be cast once."
+
+newritual "Solstice Pyre"
+copyritual "Design Gryphon Tattoo"
+free
+level 2
+cost 0 50
+terr -32 #villages or larger 
+minmonreq 1
+aialways 999
+airestrig 100
+addstring "(&)Daughter of the Sun"
+seasonreq 0 # only summer
+descr "The Warlord sponsors a grand solstice celebration, raising a great pyre and calling the clans together. The blessing of the sun marks all units bearing enchanted tattoos, granting them +1 Strength and increased Fire Resistance. May only be cast during Summer, in a settlement of Village size or greater, and requires a Daughter of the Sun to be present. This can only be cast once."
+
+newritual "Break the Records"
+copyritual "Design Badger Tattoo"
+free
+level 2
+cost              2  0 
+terr 13 #Magic Library 
+aialways 999
+airestrig 100
+destroyterr 100
+descr "The Imperial ledgers are broken and scattered. Let the Empire count its losses instead. The spirits stir in approval. All bearers of enchanted tattoos gain +2 HP. This ritual can only target a magical Library. The location is destroyed. This can only be cast once."
 
 newritual "Petition the Storm Spirits" 
 level 3
@@ -10870,7 +10963,7 @@ playerevent # Spawn Black raider captain
 +class -2 "Barbarian" 
  +ownsloctarg -2 -93
  +plane 0
-newunits -2 "c*Black & 1*Dragonship & 30*Harii"
+newunits -2 "c*Black & 1*Dragonship & 30*Night Raider"
 message -2 "A great pitch-black longship lies moored in the harbor this morning. Its captain offers his ship and his fire to your war."
 setvar 11 1 
 -hasunit -2 "Barbarian King"
@@ -11154,7 +11247,7 @@ addstartunits          "Barbarian Lancer"         	2
 
 clearrec
 #                                               % No gold die iron	
-addunitrec "Longship"										100 1 30 0 10
+addunitrec "Longship"										100 1 25 0 10
 	recterr -93 #ports 
 addunitrec  "Barbarian Warrior"               		100 7 50 0 0
 addunitrec  "Barbarian Archer"                		100 7 50 0 0
@@ -13704,7 +13797,7 @@ level 9
 newritual "Animate Topiary"
 ritpow                 9 # Hoburg Weed
 level                  3
-cost              6  150 # 75 Weed
+cost              6  75 # 75 Weed
 terr                   -1107 # Required terrain: Ancient Forest or great garden.
 summoning                # The ritual will summon the monsters specified in a random string.
 aialways             999 # AI will always try to cast this ritual, and make long term plans to do so.
@@ -17307,6 +17400,7 @@ free
 selectritual "Animate Spear"
 cost 0       3 # 3 gold
 cost 1       0   
+start          # automatically start with this ritual
 
 selectritual "Animate Sword"
 level 9        # inaccessible
@@ -19007,17 +19101,18 @@ newmonster "False Giant"
 spr1 "Sprites/Falsegiant1.tga"
 spr2 "Sprites/Falsegiant2.tga"
 armor                          2 
-hp                            	8 
+hp                            	9 
 str                            	5 
 mor                            6 
 mr                             	6 
 rank                           1 # Front rank.
-meleeweapon         10   2 # Broadsword: d16 Slash damage.
+meleeweapon         10 551 # Phantasmal Sword: d16 Slash damage.
 human                            
-magicshield                      # Reduces damage from most weapons by 0-3; 0-6 against ranged weapons.
+largeshield                      # Reduces damage from most weapons by 0-3; 0-6 against ranged weapons.
 allitemslots                     # Has the full set of item slots.
 size2x2
-awe 1 
+ethereal
+#awe 1 
 charmres
 shrinkhp 7 
 descr "The Crystal Tower is guarded by towering giants clad in mesmerizing, mirror-polished armor. These are elite guards veiled in illusions, making them appear three times the size of an ordinary man, both magnificent and terrifying to behold. Individually, they do not see themselves enlarged but perceive their comrades as giants, often leading to confusion within their ranks. If the illusion is broken, the knights return to their regular size, frequently finding their positions spread too thinly against the opposing army. This formidable glamour can thus become a double-edged sword in the heat of battle."
@@ -19104,7 +19199,7 @@ selectritual "Mirror Wall"
 rarestart
 
 selectritual "Create Simulacrum"
-cost             15   150 # 150 Gems
+cost             15   120 # 120 Gems
 
 selectritual "Capture Spell"
 cost             15   2 # 20 Gems
@@ -20189,17 +20284,19 @@ copystats "Hoburg Militia"
 spr1 "Sprites/Hobmarkmilitia1.tga"
 spr2 "Sprites/Hobmarkmilitia2.tga"
 clearweapons
+mor 2
 meleeweapon 0 "Torch"
-descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. Hobmark is a poor land, and its people are used to hardship, but their bravery often outweighs their effectiveness. When rallied their main contribution is often simply slowing the enemy down."
+descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. When rallied their main contribution is often simply slowing the enemy down."
 
 newmonster "Contract Militia"
 copystats "Hoburg Militia"
 spr1 "Sprites/Hobmarkmilitia1.tga"
 spr2 "Sprites/Hobmarkmilitia2.tga"
 clearweapons
+mor 2
 meleeweapon 0 "Torch"
 firstshape 1
-descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. Hobmark is a poor land, and its people are used to hardship, but their bravery often outweighs their effectiveness. When rallied their main contribution is often simply slowing the enemy down. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
+descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. When rallied their main contribution is often simply slowing the enemy down. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
 
 newmonster "Little Soulless Militia"
 copystats "Hoburg Slinger"
@@ -20226,7 +20323,7 @@ diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
 clumsy                           # 50% chance to miss each attack.
-descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. Hobmark is a poor land, and its people are used to hardship, but their bravery often outweighs their effectiveness. When rallied their main contribution is often simply slowing the enemy down. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
+descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. When rallied their main contribution is often simply slowing the enemy down. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
 
 newmonster "Contract Crossbow"
 copystats "Hobmark Crossbow"
@@ -21172,7 +21269,7 @@ addcomrec   "Nekromant"                         	 	6 55 10 0
 	reclimiter "-Ghost Nekromant"
 	reclimiter "-Grand Ghost Nekromant"
 	libraryrec                                    # +2% to chance per library point owned, to a max of +20% for 10+ library points.
-addunitrec " Test Subject" 	100 3 5 0 0 	#Secret Lab corpse generator 
+addunitrec "Test Subject" 	100 5 5 0 0 	#Secret Lab corpse generator 
 	recterr 837
 	
 ############################### Dryad Queen ####################################### 
@@ -21498,6 +21595,9 @@ addcomrec   "Dryad" 10 65 20 0
 	reclimiter "-Dryad"
 	reclimiter "-Dryad Queen"
 	reclimiter "-Anointed of Gaia"
+addcomrec   "Hierophant"                    2      65  20    0 # once per offer; extra.
+addcomrec   "Hierophantide"              2     65  20    0 # once per offer; extra.
+addcomrec   "Dryad"                             2      65  20    0 # once per offer; extra.
 
 ################################### Scourge Lord ############################################### 
 
@@ -22373,6 +22473,7 @@ descr "The Scourge Lord constructs a statue of a brass gryphon and enchants it w
 selectritual "Dark Blessing" #higher level, more expensive. 
 level 3
 cost             13  150 # 150 Lifeforce
+turncastcount -1
 aimaxcast 10
 
 selectritual "Ritual of Scourge Mastery"
@@ -27503,11 +27604,9 @@ endevent
 playerevent #Free City
 +turnnbr -1
 +player 25
-+chance 15
-+minterrains 2 9 0		#at least two cities on the map. to reduce probability of agricultural age spawn
++chance 20
++minterrains -113 9 0		#at least two cities on the map. to reduce probability of agricultural age spawn
 -minterrains 1 34 0  	#no gold mine, to exclude dark age spawn
--minterrains 1 135 0 	#no haunted capital, to exclude most fallen empire spawns 
--minterrains 1 246 0	#no barbarian district, to exclude barbarian fallen empire spawn
 randloc 0 311
 +terrain 311
 newunits 24 "3d6*Guild Mercenary & 2*Liquid Fire Dispenser & 4*Storm Spool Ballista & 2d6*Mariner & 2d6*Pirate & 1*Magus Engineer & 2*Merchant"
@@ -29463,6 +29562,8 @@ aimaxshop 4
 
 newmonster " Catapult"
 copystats "Catapult"
+clearspec 
+size2x2
 aihold 1 
 aimaxshop 2 
 
@@ -29585,11 +29686,11 @@ addmercrec  " Alchemical Trebuchet"		100  1   50  0  25 	#King Castle late game 
 addmercrec  " Alchemical Trebuchet"		100  1   50  0  25 	#King Castle late game garrison
 		reclimiter "+Late AI"
 		recterr 30
-addcomrec " Master Alchemist" 			100 1 1 0 		#For production of alchemical weapons
+addcomrec " Master Alchemist" 			100 50 0 0 		#For production of alchemical weapons
 	recterr 124
 	reclimiter "+AI"
 	reclimiter "+Late AI"
-addcomrec " Master Alchemist" 			100 1 1 0 		#For production of alchemical weapons
+addcomrec " Master Alchemist" 			100 50 1 0 		#For production of alchemical weapons
 	recterr 30
 	reclimiter "+AI"
 	reclimiter "+Late AI"
@@ -30874,6 +30975,7 @@ addmercrec  " Crossbowman"                   		 100  5   50   0    5 	#standard 
 addmercrec  " Catapult"                       		100  1   25   0 50		#standard defense
 	reclimiter "+AI"
 	reclimiter "+Late AI"
+	recterr -98
 addmercrec  " Crossbowman"                    		100  5   1   0  0		#Temple of El Garrison
 	reclimiter "+AI"
 	reclimiter "+Late AI"
@@ -31968,3 +32070,4 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
