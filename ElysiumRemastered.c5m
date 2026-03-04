@@ -11766,7 +11766,7 @@ str                            4 # Strength.
 mor                            3 # Morale.
 mr                             4 # Magic Resistance.
 rank                           1 # Front rank.
-meleeweapon                0   4 # Spear: d4 Pierce damage.
+meleeweapon                1  4 # Spear: d5 Pierce damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 largeshield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
 poisonres 75
@@ -25814,29 +25814,16 @@ ug
 # ------------ Agartha Monsters -----------------------# 
 
 newmonster "Tunneling Worm"
-copyspr "Cave Grub"
-armor                          0 
+copystats "Cave Grub"
+clearweapons
 hp                            30 
-str                            6 
-mor                           99 
-mr                             1 
-rank                           1 # Front rank.
-meleeweapon                7 667 # Corrosive Bite: d7 Slash damage.
 fast
-stupid
-tunnel
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-bluntres                         # Blunt resistance (half damage).
-size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size). 
-#lovesterr 51 #cave wall
-#hatesterr 350 #moist cave wall
-hatesterr -58 #Gold income locations
+wander 1
+wanderrest 0
 noheal
 dmgonterr -1
-wander 1 
-wanderrest 0
 farsight
+nocombat
 descr "A giant worm digging tunnels across Agartha."
 
 newmonster "Spectral Bride"
@@ -32070,4 +32057,3 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
-
