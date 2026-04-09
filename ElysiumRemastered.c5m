@@ -5,7 +5,7 @@ description "An overhaul mod. Flavor, balance and content."
 modprio 1 # Will be overwritten by other mods in case of conflict.
 
 # terrains used 800 to 842
-# terrain groups used -1099 to -1125
+# terrain groups used -1099 to -1125 (-1104 and -1111 and -1116 and -1117 not used)
 # Event variables used 1-21
 
 ############################ General changes ################################### 
@@ -617,6 +617,8 @@ planeshift 1
 immortalap 12
 gatherlifeforce
 lifeforce 10
+power 46 0
+power 45 3
 
 ################################ Baron #####################################
 
@@ -1932,8 +1934,8 @@ inanimate
 descr "The Ziz is a giant eagle that has died and been reanimated by a necromantic ritual.  The beast is much more useful in its undead form, because it can now drop rocks where the Necromancer wants instead of dropping rocks on random humans."
 
 selectmonster "Bane Lord"
-spr1 "Sprites/Banelord1.tga"
-spr2 "Sprites/Banelord2.tga"
+spr1 "Sprites/Banelord1.png"
+spr2 "Sprites/Banelord2.png"
 clearweapons
 armor                          2 
 hp                            30 
@@ -2221,8 +2223,8 @@ size2x2
 descr "The Bane Giant is an undead champion given exceptional size and strength by the Prince of the Underworld. They form the the vanguard of the stygian armies, and inspire terror in lesser foes. They are sometimes stolen from their duty by necromancers who call them to Elysium and bind them as slaves to further their dark goals."
 
 newmonster "Wight Beast" 
-spr1 "Sprites/Wightbeast1.tga"
-spr2 "Sprites/Wightbeast2.tga"
+spr1 "Sprites/Wightbeast1.png"
+spr2 "Sprites/Wightbeast2.png"
 armor                          1 
 hp                            62 
 str                            8 
@@ -2654,7 +2656,7 @@ dead 3
 
 selectterr 821
 name                 "Chained Titan"
-spr "Sprites/Chainedtitan.tga"
+spr "Sprites/Chainedtitan.png"
 lifeforce        50 # 5 Lifeforce can be drained from this square per turn.
 apcost            1 # Action Point cost for moving through the terrain: 1
 desertok
@@ -4065,8 +4067,8 @@ nextwep            118 # Extra effect if target is affected: 118: aff (str-resis
 nextdmg             64 # Stun
 
 newmonster "Pit Fiend"
-spr1 "Sprites/Pitfiend1.tga"
-spr2 "Sprites/Pitfiend2.tga"
+spr1 "Sprites/Pitfiend1.png"
+spr2 "Sprites/Pitfiend2.png"
 armor                          1 
 hp                            65 
 str                            7 
@@ -4534,6 +4536,9 @@ addcomrec "Damned Demonologist" 4 60 20 0
 ################################# Witch #################################################
 #------------------- Witch Terrains -------------------------#
 
+selectterr 26
+gold 1
+
 selectterr 97   						#for atmosphere
 name "Old Bog"
 fungus 3
@@ -4717,8 +4722,8 @@ selectmonster "Creeping Doom"
 affres 100 
 
 selectmonster "Wyrm"
-spr1 "Sprites/Wyrm1.tga"
-spr2 "Sprites/Wyrm2.tga"
+spr1 "Sprites/Wyrm1.png"
+spr2 "Sprites/Wyrm2.png"
 drawsize 15
 swamp
 
@@ -4871,8 +4876,8 @@ descr "Even burning a witch may not be enough to get rid of her. Sometimes their
 newmonster "Black Dragon"  
 spr1 "Sprites/Blackdragon1.tga"
 spr2 "Sprites/Blackdragon2.tga"
-armor                          4 
-hp                           140 
+armor                          3 
+hp                           125 
 str                            10 
 mor                            8 
 mr                             10 
@@ -6760,7 +6765,7 @@ str                            6
 mor                           99 
 mr                             6 
 rank                           1 # Front rank.
-meleeweapon                5 "Burial Weapons" # Burial Blade
+meleeweapon                5 "Burial Weapons " # Burial Spear
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
 undead
@@ -7390,6 +7395,7 @@ selectclass 4
 classdescr classdescr "In every village, there is a wise woman, claiming knowledge of healing arts or the ability to read fortunes from the palm of a hand. Most are harmless charlatans, offering little more than superstition. Yet, a rare few possess true power-these are the Witches, feared by both men and trolls alike. Witches follow the ancient ways, communicating with the Old Ones, slumbering entities who roamed Elysium long before humanity's arrival. Shunned by civilization, they draw their power from the wilds, from the shadows and darkness. Wielding control over swarms of venomous creatures, twisted plants, and spirits of the forest, the Witch commands nature itself. Their brews, concoctions of fungi gathered from the marshes and forests, serve as offerings to lure the Old Ones and creatures of the dark. The larger the offering, the stronger the bond. Yet, summoning an Old One is no simple task-it requires careful preparation, a wealth of fungi, and an understanding of the great risk involved. Failure, of course, can awaken an ancient and vengeful force."
 classabdescr "Witches collect fungi from forests and marshes. Witches can use fungi to perform magic rituals. Poison Archers and Lizard Cavalry can be recruited by also spending fungi."
 likessouth -3
+addstartunits "Black Cat Familiar" 1
 
 clearrec
 #                                               % No gold die iron
@@ -7992,7 +7998,7 @@ battlefast
 rank 1
 airshield 75
 clearweapons
-rangedweapon50             1 "Blasting Wind" # d1 Blunt damage + stun.
+rangedweapon50             3 "Blasting Wind" # d3 Blunt damage + stun.
 meleeweapon                1   2 # Broadsword: d7 Slash damage.
 shockres 50
 coldres 50
@@ -8735,16 +8741,20 @@ selectritual "Summon King"
 level 9 
 free
 
+selectritual "Mountain Lair"
+free
+cost              4   20 # 20 Sacrifices
+cost              1   40 # 40 Iron
+
 newritual "Summon Lesser Oni " 
 ritpow                 7 # Bakemono Rituals
 level                  1
-cost              4   30 # 30 Sacrifices
+cost              4   25 # 25 Sacrifices
 terr                 -42 # Required terrain: any land.
 varcost              100 # Can set Sacrifice Level anywhere from 0 to 200. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
 defctrl               70 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                # The ritual will summon the monsters specified in a random string.
-sum0chance 10
-addstring     "2d5*Ko-Oni"
+addstring     "3d5*Ko Oni"
 addstring     "1d2*Shikome"
 addstring     "1d2+1*Ao-Oni"
 addstring     "1d2+1*Aka-Oni"
@@ -8755,22 +8765,22 @@ descr "Oni are evil demons and this ritual will summon them and then try to cont
 newritual     "Summon Oni "                                                
 ritpow                 7 # Bakemono Rituals
 level                  2
-cost              4  100 # 100 Sacrifices
+cost              4  75 # 75 Sacrifices
 terr                 -42 # Required terrain: any land.
 varcost              100 # Can set Sacrifice Level anywhere from 0 to 200. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
 defctrl               70 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 5 
-sum2chance 6
-sum3chance 7
+sum1chance 6
+sum2chance 7
 addstring     "1*Gozu & 1*Mezu"
 addstring     "c*Oni General"
 addstring     "1*Oni Mage"
-addstring     "2d2*Oni Warrior"
+addstring     "2d3*Oni Warrior"
 addstring     "3d4*Ao-Oni"
 addstring     "3d4*Aka-Oni"
-addstring     "2d4*Oni"
-addstring     "2d4*Kuro-Oni"
+addstring     "2d5*Oni"
+addstring     "2d5*Kuro-Oni"
 aialways 35
 descr "Oni are evil demons and this ritual will summon them and then try to control them.  The more sacrifices used the greater the chance of success."
 
@@ -8780,20 +8790,20 @@ level                  3
 cost              4  300 # 300 Sacrifices
 terr                 -42 # Required terrain: any land.
 varcost              100 # Can set Sacrifice Level anywhere from 0 to 200. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
-defctrl               70 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
+defctrl               45 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                # The ritual will summon the monsters specified in a random string.
-addstring     "c*Dai Oni & 2d6*Aka-Oni"
-addstring     "c*Dai Oni & 2d6*Ao-Oni"
-addstring     "c*Dai Oni & 2d4*Oni"
-addstring     "c*Dai Oni & 2d4*Kuro-Oni"
+addstring     "c*Dai Oni & 2d5*Aka-Oni"
+addstring     "c*Dai Oni & 2d5*Ao-Oni"
+addstring     "c*Dai Oni & 2d3*Oni"
+addstring     "c*Dai Oni & 2d3*Kuro-Oni"
 addstring     "c*Dai Oni & 2d3*Oni Warrior"
 aialways 50
-descr "This ritual will summon and try to take control over an oni king and his guards.  The more sacrifices used, the greater the chance of success."
+descr "This ritual will summon and try to take control over an oni king and his guards. These are more difficult to control than the regular oni. The more sacrifices used, the greater the chance of success."
 
 newritual "Summon Lesser Yokai" 
 ritpow                 7 	# Bakemono Rituals
 level                  1
-cost              4   40 	# 30 Sacrifices
+cost              4   25 	# 25 Sacrifices
 terr                 -42 	# Required terrain: any land.
 varcost              100 	# Can set Sacrifice Level anywhere from 0 to 200. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
 defctrl               70 	# % default control chance for summonings. Can be overridden by monster's own ctrlchance.
@@ -8802,8 +8812,8 @@ sum1chance             16 	# % chance to summon second string instead of a rando
 summoning                	# The ritual will summon the monsters specified in a random string.
 addstring     "c*Mujina"
 addstring     "1*Kappa Shaman"
-addstring     "1*Bakeneko"
 addstring     "1d4*Kappa"
+addstring     "1*Bakeneko"
 addstring     "1d4*Kojin"
 addstring     "1*Yuki-Onna"
 addstring     "1*Wanyudo"
@@ -8831,7 +8841,7 @@ descr "This ritual wil summon and try to take control over one or more magic bei
 newritual "Summon Tengu" 
 ritpow                 7 	# Bakemono Rituals
 level                  2
-cost              4  75 	# 75 Sacrifices
+cost              4  60 	# 60 Sacrifices
 terr                 -42 	# Required terrain: any land.
 varcost              100 	# Can set Sacrifice Level anywhere from 0 to 200. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
 defctrl               70 	# % default control chance for summonings. Can be overridden by monster's own ctrlchance.
@@ -8846,20 +8856,20 @@ descr "This ritual will summon and try to take control over one or more Tengu, m
 newritual     "Summon Tengu King"                                               # 370
 ritpow                 7 	# Bakemono Rituals
 level                  3
-cost              4  300 	# 300 Sacrifices
+cost              4  240 	# 240 Sacrifices
 terr                 -42 	# Required terrain: any land.
 varcost              100 	# Can set Sacrifice Level anywhere from 0 to 200. Multiplies cost and control chance, with straight scaling below 100, and diminishing benefit to control chance above 100.
-defctrl               70 	# % default control chance for summonings. Can be overridden by monster's own ctrlchance.
+defctrl               55 	# % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                	# The ritual will summon the monsters specified in a random string.
 addstring     "c*Dai Tengu & 3d6*Tengu Warrior & 3d6*Konoha Tengu"
 addstring     "c*Dai Tengu & 3d6*Tengu Warrior & 1d3*Karasu Tengu & 2d4*Konoha Tengu"
 afterprev
-descr "This ritual will summon and try to take control over a Tengu king and his guards.  The more sacrifices used, the greater the chance of success."
+descr "This ritual will summon and try to take control over a Tengu king and his guards.  These are more difficult to control than the regular tengu. The more sacrifices used, the greater the chance of success."
 
 newritual "Create Demon Gate"
 ritpow                 7 	# Bakemono Rituals
 level                  3
-cost              4  150 	# 150 Sacrifices
+cost              4  100 	# 100 Sacrifices
 terr                 -103 	# Required terrain: Plain-like terrain.
 nomonreq 
 addstring "(-)Demon Gate"
@@ -8869,7 +8879,9 @@ descr "Opens a demon gate allowing Oni to enter Elysium and ravage the nearby la
 
 # --------- Bakemono Class & recruitment ---------
 
+
 selectclass 6
+addmercrec "Bandit"						  25 5 50 0 0
 addcomrec   "Chunari"                        2 55 10 0
 
 ###################################### Barbarian ##################################################
@@ -8878,6 +8890,7 @@ addcomrec   "Chunari"                        2 55 10 0
 
 selectterr 113 #barbarian camp gold increased 1->2. Minor early game boost, and makes late game resettle mechanics worthwile. 
 gold 2
+snowok
 
 selectterr 834 
 name "Irminsul"
@@ -9482,25 +9495,23 @@ human
 animal
 
 newmonster "Battering Ram"
-spr1 "Sprites/Batteringram1.tga"
-spr2 "Sprites/Batteringram2.tga"
+spr1 "Sprites/Batteringram1.png"
+spr2 "Sprites/Batteringram2.png"
 armor 1
-hp 25
+hp 15
 str 5
 mor 4
 mr 4
 rank 1
 frontpos
-meleeweapon 45 "Ram Head"
-pierceres
+meleeweapon				 40 	"Ram Head"
+meleeweaponbonus 1 		3 # Axe: d8 Slash damage.
 slow
-trample 1
 battlefast
 human
 largeshield
 affres 75
 miscslots
-drawsize -10
 aimaxshop 4
 descr "They do not possess the means to construct engines of war such as the ballista or catapult. Instead, they rely on great battering rams to breach the gates: felled timber bound in hide, mounted on wheels where the ground allows, and screened against arrows with rough panels of wood and leather. The head is often adorned with horns and is said to carry the spirit of the beast into battle. Service with the ram is given to the boldest, and few survive, but those who fall are named in the feast that follows. Those who return are marked with red paint and not expected to fight again."
 
@@ -9539,27 +9550,30 @@ spr1 "Sprites/Aptrganger1.tga"
 spr2 "Sprites/Aptrganger2.tga"
 armor                          1 # Armor.
 hp                            13 # Hit Points.
-str                            5 # Strength.
+str                            6 # Strength.
 mor                            8 # Morale.
-mr                             6 # Magic Resistance.
+mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
+spread 4
 frontpos
-meleeweapon                4  21 # Greatsword: d12 Slash damage.
+meleeweapon                4  21 # Greatsword: d14 Slash damage.
 charmres 
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+trample 1
+tramplexsize 1 
 firstshape 1 
-descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
+descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, throwing themselves onto the enemy lines and returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
 
 newmonster " Aptrganger"
 spr1 "Sprites/Aptrganger1_1.tga"
 spr2 "Sprites/Aptrganger1_2.tga" 
 armor                          1 # Armor.
 hp                            13 # Hit Points.
-str                            5 # Strength.
+str                            6 # Strength.
 mor                            8 # Morale.
-mr                             6 # Magic Resistance.
+mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
 frontpos
 meleeweapon                4  21 # Greatsword: d12 Slash damage.
@@ -9567,17 +9581,19 @@ charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+trample 1
+tramplexsize 1 
 firstshape 1 
-descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
+descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, throwing themselves onto the enemy lines and returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
 
 newmonster " Aptrganger"
 spr1 "Sprites/Aptrganger1_2.tga"
 spr2 "Sprites/Aptrganger2_2.tga" 
 armor                          1 # Armor.
 hp                            13 # Hit Points.
-str                            5 # Strength.
+str                            6 # Strength.
 mor                            8 # Morale.
-mr                             6 # Magic Resistance.
+mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
 frontpos
 meleeweapon                4  21 # Greatsword: d12 Slash damage.
@@ -9585,17 +9601,19 @@ charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+trample 1
+tramplexsize 1 
 firstshape 1 
-descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
+descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, throwing themselves onto the enemy lines and returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
 
 newmonster " Aptrganger"
 spr1 "Sprites/Aptrganger1_3.tga"
 spr2 "Sprites/Aptrganger2_3.tga" 
 armor                          1 # Armor.
 hp                            13 # Hit Points.
-str                            5 # Strength.
+str                            6 # Strength.
 mor                            8 # Morale.
-mr                             6 # Magic Resistance.
+mr                             5 # Magic Resistance.
 rank                           1 # Front rank.
 frontpos
 meleeweapon                4  21 # Greatsword: d12 Slash damage.
@@ -9603,31 +9621,15 @@ charmres
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-firstshape 1 
-descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
-
-newmonster " Aptrganger"
-spr1 "Sprites/Aptrganger1_3.tga"
-spr2 "Sprites/Aptrganger2_3.tga" 
-armor                          1 # Armor.
-hp                            13 # Hit Points.
-str                            5 # Strength.
-mor                            8 # Morale.
-mr                             6 # Magic Resistance.
-rank                           1 # Front rank.
-frontpos
-meleeweapon                4  21 # Greatsword: d12 Slash damage.
-charmres
-human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
-allitemslots                     # Has the full set of item slots.
-berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
-descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
+trample 1
+tramplexsize 1 
+descr "When a tribe prepares for a difficult battle, a single warrior may be chosen to bear the strength of several others. A number of volunteers are bound with ropes around the neck and raised together from the branches of a sacred tree, while the Spirit Guides recite the names of their ancestors and mark their bodies with ash. Only one is cut down before death, and this survivor is thereafter called an Aptrganger, for they claim that the fate of the others now dwells within him. Such men fight with a marked disregard for injury, throwing themselves onto the enemy lines and returning to the fray again and again as though pain were of no consequence. Their will seems fixed upon a single task, and those who have faced them swear that threats or spells which sway the minds of ordinary warriors have no effect upon them. Yet should they survive the battles and return, they appear hollow and listless. They are regarded with unease, for their purpose is spent, and it is said that the lives borrowed in this manner must one day be repaid."
 
 newweapon "Eat Blackroot"
 range 0
 trgrank 0 
 dmgtype 9
-dmg 4
+dmg 3
 nostr 
 
 newweapon "Bow "
@@ -9648,12 +9650,12 @@ newmonster "Blackroot Eater"
 spr1 "Sprites/Blackrooteater1.tga"
 spr2 "Sprites/Blackrooteater2.tga"
 armor                          0 # Armor.
-hp                             8 # Hit Points.
+hp                             7 # Hit Points.
 str                            4 # Strength.
 mor                            15 # Morale.
 mr                             3 # Magic Resistance.
 rank                           0 # Mid rank.
-rangedweapon               1   "Bow " 	# Bow: d4 Pierce damage.
+rangedweapon               2   "Bow " 	# Bow: d5 Pierce damage.
 meleeweapon                	1   3 			# Axe. d8 slash
 prebatweapon 			 	0 "Eat Blackroot"
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
@@ -9667,9 +9669,9 @@ clearweapons
 clearmove 
 awe 0 
 fireres -50
-spr1 "Sprites/Wyrdwoodram1.tga"
-spr2 "Sprites/Wyrdwoodram2.tga"
-armor 3
+spr1 "Sprites/Wyrdwoodram1.png"
+spr2 "Sprites/Wyrdwoodram2.png"
+armor 2
 hp 65
 str 8
 mor 8
@@ -9677,14 +9679,15 @@ mr 8
 rank 1
 frontpos
 meleeweapon 80 "Ram Head"
+meleeweaponbonus                	1   3 			# Axe d8 slash
+meleeweaponbonus                6 222 # Spectral Weapons: d6 Magic damage.
 spellweaponbonus 17 2
 spellweaponbonus 17 2
-pierceres
 slow
 trample 2
 battlefast
 human
-largeshield
+magicshield
 miscslots
 coldres 50
 shockres 50 
@@ -9692,9 +9695,43 @@ shockres 50
 more1spells 1
 more2spells 1 
 spellrange -4
-drawsize -40
 affres 100
-descr "These rams are elaborate constructions fashioned from the trunks of ancient trees taken from sacred groves. They are carved with many faces and hung with grisly charms. The tribes treat them not merely as engines of war but as shrines, and they are assembled only under the authority of a king and with the consent of the spirits bound to the Irminsul. Before an assault, Spirit Guides mark the wood with pigments, while the warriors assigned to bear the frame are set aside and daubed in the same manner. These men are chosen from those who have already survived many battles. Observers report that, when the warriors set their shoulders to the beams, pale shapes move among them as though additional hands were lending strength to the push. Missiles and flame prove less effective against the ram than they should, and those who approach too closely describe sudden gusts of cold wind, disorienting whispers, and the brief appearance of armed, ghostlike figures emerging along its path."
+descr "These rams are elaborate constructions fashioned from the trunks of ancient trees taken from sacred groves. They are carved with many faces and hung with grisly charms. The tribes treat them not merely as engines of war but as shrines, and they are assembled only under the authority of a king and with the consent of the spirits bound to the Irminsul. Before an assault, Spirit Guides mark the wood with pigments, while the warriors assigned to bear the frame are set aside and daubed in the same manner. These men are chosen from those who have already survived many battles. Observers report that, when the warriors set their shoulders to the beams, pale shapes move among them as though additional hands were lending strength to the push. Flame prove less effective against the ram than it should, and arrows veer of course. Those who approach too closely describe sudden gusts of cold wind, disorienting whispers, and the brief appearance of armed, ghostlike figures emerging along its path."
+
+newweapon "Ride-by Shot"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                3
+init                 4
+dmgtype              3 # Pierce.
+dmg                  3 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+arrow                  # Can be negated by air shield.
+lob                    # Arcing trajectory.
+rangepen               # Does half damage if distance >= half range.
+flymode              1 # Missile sprite, one for each strike or square hit.
+flysound            14 # pil.smp (Bow)
+
+newmonster "Red Hand Rider"
+spr1 "Sprites/Redhandrider1.tga"
+spr2 "Sprites/Redhandrider2.tga"
+armor                          2 # Armor.
+hp                            15 # Hit Points.
+str                            5 # Strength.
+mor                            6 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweaponspec   12 13 # Lance Charge: d12 Pierce damage.
+meleeweapon             2 4 # Spear: d6 Pierce damage.
+rangedweapon50x	2 "Ride-by Shot"
+rangedweapon           0 7 # Bow: d3 Pierce damage.
+berserker
+fast                             	# The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+shield                          # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+allitemslots                  # Has the full set of item slots.
+nobootslots                 # Has no boot slots.
+descr "In the king's train are certain riders, which are marked by a stained red hand. They are hand picked among the most skilled of the cavalry, and granted horses of exceptional size, which they steer by their voice. They are so bound to their steeds that one seldom sees them afoot. They are use bows even in the thick of melee, loosing their arrows in passing."
 
 		# ---------- Leaders and heroes 
 
@@ -9735,6 +9772,8 @@ rank 1
 meleeweapon                3   2 # Broadsword: d9 Slash damage.
 meleeweapon                3   2 # Broadsword: d9 Slash damage.
 meleeweapon                3   3 # Axe: d10 Slash damage.
+rangedweapon50s 	   2 "Throwing Axe" #d6 slash 
+rangedweapon 			   2 "Throwing Axe" #d6 slash 
 coldres 50
 foreststealth
 snow
@@ -9757,12 +9796,11 @@ hp                            18 # Hit Points.
 str                            5 # Strength.
 mor                            6 # Morale.
 mr                             6 # Magic Resistance.
-rank                           1 # Front rank.
-meleeweaponspec           14  13 # Lance Charge: d14 Pierce damage.
-rangedweapon               1   7 # Bow: d4 Pierce damage.
-rangedweapon               1   7 # Bow: d4 Pierce damage.
-meleeweapon                3   4 # Spear: d7 Pierce damage.
-meleeweapon                3   4 # Spear: d7 Pierce damage.
+rank                           0 # Mid rank.
+meleeweaponspec     15  13 # Lance Charge: d15 Pierce damage.
+meleeweapon              5   4 # Spear: d8 Pierce damage.
+rangedweapon50x	5 "Ride-by Shot" #d7
+rangedweapon           5 7 # Bow: d5 Pierce damage.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
@@ -9857,6 +9895,30 @@ berserker                        # Can go berserk if hit in combat.  Berserk: +1
 terrstealth -1123
 descr "The raider chiefs display some naval skills, which are probably more attributed to primitive instincts than any real education in seamanship. Nonetheless they appear to know the inlet and shoals along the northern coasts well, and have been known to navigate through waters that most pilots refuse even in daylight. Several reports tell of their vessels slipping between rocks where only seals are thought able to pass, guided by nothing more than the feel of the surf upon the prow."
 
+newmonster "Red Hand Chief"
+copystats "Painted Crystal Amazon"
+clearweapons 
+spr1 "Sprites/Redhandchief1.tga"
+spr2 "Sprites/Redhandchief2.tga"
+armor                          2 # Armor.
+hp                            16 # Hit Points.
+str                            5 # Strength.
+mor                            7 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweaponspec   13 13 # Lance Charge: d13 Pierce damage.
+meleeweapon             2 4 # Spear: d6 Pierce damage.
+rangedweapon50x	2 "Ride-by Shot"
+rangedweapon           0 7 # Bow: d3 Pierce damage.
+berserker
+fast                             	# The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+shield                          # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+allitemslots                  # Has the full set of item slots.
+nobootslots                 # Has no boot slots.
+descr "In the king's train are certain chosen riders, known by a hand stained red. They are so bound to their horses that one seldom sees them afoot. They circle the fight with savage instinct, casting missiles at full speed, and even amid close struggle striking the enemy in passing."
+
+
 selectmonster "Spirit Guide"
 name "Disabled Spirit Guide"
 
@@ -9935,7 +9997,6 @@ meleeweapon                1   1 # Dagger: d4 Pierce damage.
 human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
 allitemslots                     # Has the full set of item slots.
 female                           # Female.
-gatherherbs                    1 # A commander with this ability will enable the player to gather herbs.
 swamp
 snow
 mountain 
@@ -10522,6 +10583,9 @@ power 0 1
 selectmonster "Barbarian Thane"
 power 0 1
 
+selectmonster "Red Hand Chief"
+power 0 1 
+
 selectmonster "Quick"
 power 0 1
 
@@ -10640,7 +10704,7 @@ descr "The Barbarian King often retires veteran warriors to resettle conquered l
 newritual "Ritual of Conquest"
 start
 level 1
-cost 0 120
+cost 0 100
 terr -28 #Towns or cities
 promotion 1
 addstring "Barbarian Leader"
@@ -10648,19 +10712,6 @@ addstring "Barbarian Warlord"
 forgetcurrit
 airare -1 						# Associated event triggers for players as well. AI recruits Warlord directly instead. Also more likely to actually happen.				
 descr "Atop the battlements of a conquered city, the Barbarian Leader calls the clans to witness his dominion. The chieftains bring tribute as in elder days, and the spirits stir to acknowledge his rise. He is hailed as Warlord, and word of his deeds will draw strong warriors and independent warbands to his banner."  
-
-newritual "Claim the Crown"
-start
-level 2
-cost 0 500 
-promotion 1 
-terr 834 #irminsuls 
-addstring "Barbarian Warlord"
-addstring "Barbarian King" 
-seteventvar 9
-seteventvar 10
-airare -1 						# Associated event triggers for players as well. AI recruits King directly instead. Also much more likely to actually happen.				
-descr "At the roots of the Irminsul, the Barbarian Warlord lays out the spoils of conquest for the spirits to judge. If they accept his offering, he will claim the crown and rise as Barbarian King. Famed warriors will gather at his call, and the ancestors themselves will listen when he speaks."
 
 newritual "Offering to the Ancestors"
 copyritual "Design Badger Tattoo"
@@ -10690,17 +10741,45 @@ copyritual "Design Badger Tattoo"
 free
 level 2
 cost              2  0 
+cost              0 -50
 terr 13 #Magic Library 
 aialways 999
 airestrig 100
 destroyterr 100
-descr "The Imperial ledgers are broken and scattered. Let the Empire count its losses instead. The spirits stir in approval. All bearers of enchanted tattoos gain +2 HP. This ritual can only target a magical Library. The location is destroyed. This can only be cast once."
+descr "The Imperial ledgers are broken and scattered. Let the Empire count its losses instead. The spirits stir in approval. All bearers of enchanted tattoos gain +2 HP and the location is looted for valuables. This ritual can only target a magical Library. The location is destroyed. This can only be cast once."
+
+newitem "White Bear Skin" 
+spr "Sprites/Whitebearskin.tga"
+rarity										3 
+type                                         4 # Body Armor.
+str +1
+coldres 50
+armor                                        2 # Bearer's Armor value becomes 3 if it was less.
+varregen                                     5 # +5(%) Regeneration.
+curseditem
+nodrop
+
+newritual "Claim the Crown"
+start
+level 2
+cost 0 500 
+promotion 1 
+ritequipall
+terr 834 #irminsuls 
+addstring "Barbarian Warlord"
+addstring "Barbarian King"
+addstring "|White Bear Skin" 
+seteventvar 9
+seteventvar 10
+airare -1 						# Associated event triggers for players as well. AI recruits King directly instead. Also much more likely to actually happen.				
+descr "At the roots of the Irminsul, the Barbarian Warlord lays out the spoils of conquest for the spirits to judge. If they accept his offering, he will be wrapped in the sacred white bear skin and rise as Barbarian King. Famed warriors will gather at his call, and the ancestors will listen when he speaks."
 
 newritual "Petition the Storm Spirits" 
 level 3
 free
 cost 0 75
-terr 253 #mountain spire 
+terr 68 #deep sea 
+nearby1req 50 #next to the void 
 promotion 1
 addstring "Barbarian King" 				#basic
 addstring "Spirit-touched Barbarian King" 			#storm
@@ -10714,7 +10793,7 @@ aialways 999
 airestrig 100
 gainrit 1
 forgetcurrit 
-descr "Petition the storm spirits atop a mountain spire.  The King and his army are buffered by the stormwinds in battle and the King learns the runes of thunder. This ritual can only be cast once."
+descr "Travel to the edge of the world, and petition the spirits of the storms. The King and his army are buffered by the stormwinds in battle and the King learns the runes of thunder. This ritual can only be cast once."
 
 newritual "Runes of Thunder"
 copyritual "Design Lion Tattoo"
@@ -10728,7 +10807,7 @@ newritual "Seek the Night Spirits" #Malady
 level 3
 free
 cost 0 75 
-terr 107 # swamp or 97 iron bog
+terr 97 #old bog
 promotion 1
 addstring "Barbarian King" 				#basic
 addstring " Spirit-touched Barbarian King" 			#night
@@ -10844,15 +10923,16 @@ level                  2
 cost              2  250 # 250 Herbs
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
-terrboost              4 # Adds 1 to the number of monsters summoned in this terrain: Ancient Forest.
-terrboost 			834 # irminsul. Not sure if this works twice 
-terrscale50           19 # 50% more monsters summoned in this terrain: Old Battlefield.
+terrboost              -1102 # Adds 1 to the number of monsters summoned in this terrain: Ancient Forest, Irminsul, Old Battlefield.
+sum0chance 8
+sum1chance 8
 addstring     "c*Ancestor Guide"    
-addstring     "c*Ancestral Hero"
+addstring     "c*Ancestral Hero & 2d2+1*Ancestral Warrior"
 addstring     "c*Ancestral Chief & 1d2+1*Ancestral Lancer"
-addstring     "1d2+1*Ancestral Warrior & 1d2+1*Ancestral Archer"
-addstring     "2d2+2*Ancestral Warrior"
-addstring     "2d2*Ancestral Lancer"
+addstring     "1d2+2*Ancestral Warrior & 1d2+2*Ancestral Archer"
+addstring     "1d2+2*Ancestral Warrior & 1d2+2*Ancestral Archer"
+addstring     "2d3+2*Ancestral Warrior"
+addstring     "2d2+1*Ancestral Lancer"
 descr "The Spirit Guide builds a sweat lodge and burns large amounts aromatic herbs to call the spirits of the tribe's most heroic ancestors."
 
 selectritual     "Promise of the Ancestors"
@@ -10924,7 +11004,7 @@ endevent
 
 playerevent # Spawn Champion, Warlord 
 +humanplayer
-+chance 7
++chance 10
 +class -2 "Barbarian"
 +hasunit -2 "Barbarian Warlord"
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
@@ -10936,7 +11016,7 @@ endevent
 playerevent # #Spawn Champion, King. This one needs to run off an event trigger to work.  
 +humanplayer
 +varequal 9 1
-+chance 4
++chance 10
 +class -2 "Barbarian" 
 +ownsloctarg -2 -1125 											#Settlements and barbarian camps 
 +plane 0 																#only on Elysium
@@ -10984,7 +11064,7 @@ playerevent # #Spawn Son of the Northern Wind, pick various terrains
 +chance 10
 +chance 12 
 +class -2 "Barbarian" 
-+ownsloctarg -2 -25 #the north 
++ownsloctarg -2 -101 #snow
 newunits -2 "c*Son of the Northern Wind"
 message -2 "A cold wind sweeps through the camp before a chieftain arrives from the high passes, frost still clinging to his cloak."
 setvar 12 1 
@@ -11122,7 +11202,7 @@ playerevent # The Reaver
 +ownsloctarg -2 -23 											#Citadels 
 +plane 0 															#only on Elysium
 newunits -2 "c*Reaver & 15*Horned Warrior"
-message -2 "Without ceremony, a huge white-bearded warrior joins your camp. There will be hard fighting in the months ahead, and he intends to be part of it."
+message -2 "A huge white-bearded warrior unceremoniously joins your camp. There will be hard fighting in the months ahead, and he intends to be part of it."
 setvar 18 1
 -hasunit -2 "Barbarian King"
 -hasunit -2 "Spirit-touched Barbarian King"
@@ -11145,7 +11225,7 @@ playerevent # The Ringless
 +ownsloctarg -2 -23	#Citadels
 +plane 0						#only Elysium
 newunits -2 "c*Ringless & 5*Horned Warrior & 7*Barbarian Swordsman & 6*Barbarian Archer & 3*Barbarian Cavalry & 2*Barbarian Lancer"
-message -2 "A warband enters the longhall, led by a tall warrior with a calm, commanding presence. They ask for a place to stand and a leader worth following."
+message -2 "A warband enters the longhall, led by a tall warrior with a calm, commanding presence. They ask to enter your service."
 setvar 19 1
 -hasunit -2 "Barbarian King"
 -hasunit -2 "Spirit-touched Barbarian King"
@@ -11267,18 +11347,14 @@ addunitrec "Barbarian Werebear" 				12 1 25 0 0
 addunitrec  "Barbarian Werebear"              3 1 25 0 0 
 	recterr 834
 	templerec # Should be +3% per temple owned, to a max of +15% 
-addunitrec  "Battering Ram"							100 2 25 0 25
+addunitrec  "Battering Ram"							100 2 25 0 10
 	reclimiter "-AI"																		#AI is too enamored with these 
 	reclimiter "-Late AI"
 addunitrec "Aptrganger"									100 1 25 0 0
-	recxcost 2 40 #25 herbs 
 		recterr 834
 addunitrec "Blackroot Eater"							100 4 40 0 0
 		recterr 834
-addunitrec "Wyrdwood Ram"							7 1 120 0 50
-	recxcost 2 200 #200 herbs 						# costs a little more than an alchemical trebuchet + a sacred idol. Seems about fair I think.   
-	recterr 834 
-	templerec 														#+3% per temple to a max of +15% 
+addunitrec "Red Hand Rider"							100 2 40 0 10
 	reclimiter "+Barbarian King"
 	reclimiter "+Spirit-touched Barbarian King"
 	reclimiter "+ Spirit-touched Barbarian King"
@@ -11287,24 +11363,44 @@ addunitrec "Wyrdwood Ram"							7 1 120 0 50
 	reclimiter "+ Spirit-bound Barbarian King"
 	reclimiter "+Spirit-bound Barbarian King "
 	reclimiter "+Spirit-chosen Barbarian King"
-addcomrec   "Spirit Guide"                      				4 75 20 0 #Same base chance as vanilla, but less scaling by temple ownage. 
-addcomrec   "Spirit Guide"                      				4 75 20 0 
+addunitrec "Wyrdwood Ram"						12 1 150 0 30
+	recxcost 2 200 #200 herbs 						# costs a little more than an alchemical trebuchet + a sacred idol. Seems about fair I think.   
+	recterr 834 
+	reclimiter "+Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King"
+	reclimiter "+ Spirit-touched Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King "
+	reclimiter "+Spirit-bound Barbarian King"
+	reclimiter "+ Spirit-bound Barbarian King"
+	reclimiter "+Spirit-bound Barbarian King "
+	reclimiter "+Spirit-chosen Barbarian King"
+addcomrec   "Spirit Guide"                      				4 40 20 0 #Same base chance as vanilla, but less scaling by temple ownage. 
+addcomrec   "Spirit Guide"                      				4 40 20 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Mounted Chief"                    			8 25 10 0 
 addcomrec   "Barbarian Thane"							25 15 15 0 
-addcomrec   "Raider Chief"							6 35 10 0 
+addcomrec   "Raider Chief"							6 30 10 0 
 	recterr -93 #ports 
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 addmercrec	"Nightship"									-1 1 20 20 0
 	recterr -93 #ports 	 
-addmercrec   "Dawn Maiden"                   			5 1 30 10 0 
+addcomrec "Red Hand Chief"						 6 30 10 0
+	reclimiter "+Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King"
+	reclimiter "+ Spirit-touched Barbarian King"
+	reclimiter "+Spirit-touched Barbarian King "
+	reclimiter "+Spirit-bound Barbarian King"
+	reclimiter "+ Spirit-bound Barbarian King"
+	reclimiter "+Spirit-bound Barbarian King "
+	reclimiter "+Spirit-chosen Barbarian King"
+addmercrec   "Dawn Maiden"                   			4 1 30 10 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Daughter of the Sun"      				2 80 20 0 # once per offer; extra.
 	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
-addmercrec   "War Chanter"                   				6 1 30 10 0 
+addmercrec   "War Chanter"                   			6 1 30 10 0 
 	templerec                                     # +3% to chance per temple owned, to a max of +15% for 5+ temples.
 addcomrec   "Wotan"      										3 60 20 0 
 	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
@@ -11473,42 +11569,6 @@ addterr 326
 addterr 331
 addterr 551
 
-selectterrgroup -1104
-setname "Not Haunted Lands"
-addterr 16
-addterr 19
-addterr 37
-addterr 38
-addterr 87
-addterr 135
-addterr 136
-addterr 137
-addterr 138
-addterr 144
-addterr 145
-addterr 146
-addterr 147
-addterr 148
-addterr 149
-addterr 150
-addterr 151
-addterr 153
-addterr 165
-addterr 180
-addterr 181
-addterr 182
-addterr 183
-addterr 248
-addterr 292
-addterr 310
-addterr 323
-addterr 324
-addterr 325
-addterr 326
-addterr 331
-addterr 551
-invert
-
 selectterrgroup -1105
 setname "Haunted cities and Haunted Capitoleum"
 addterr 87
@@ -11521,6 +11581,15 @@ selectterr 135
 nostdrec
 
 #------------------------ Senator Monster Edits -------------------------------#
+
+selectmonster "Longdead Hastatus"
+armor 1
+
+selectmonster "Longdead Principe"
+armor 1
+
+selectmonster "Longdead Triarius"
+armor 2 
 
 selectmonster "Standard" 		#Standard has a stronger aura
 localleadership 2 #from 1
@@ -11578,12 +11647,9 @@ diseaseres
 immortalap 12
 	
 selectmonster "Imperial Statue" 
-gold 0 					#Limitgold instead of +gold
-limitgold 2
 	
 selectmonster "Statue of the Underworld"
-gold 0 
-limitgold 1
+gold 1
 lifeforce 5 
 descr "In ancient times the Emperor would have put up statues of himself in any major settlement.  This has often been described as an act of vanity by many historians.  However, a few opposing theories have been put forth.  By sharing his image in both statues and coins, the Emperor would be present in the mind of every citizen.  When such an awareness reaches a certain level, it would give the Emperor a sort of divine focus or divine aegis if he so desires.  This can then be redirected and focused through the statues and there has been speculation that it would keep the citizens calm, giving them a sense of being watched at all times - which would explain the elaborate eyes in many statues. Another more sinister theory states the statues erected by Vasilis the Putrid somehow siphoned power from the living population to sustain his undead legions."
 
@@ -11591,6 +11657,7 @@ selectmonster "Renatus"
 spr1 "Sprites/Renatus1.tga"
 spr2 "Sprites/Renatus2.tga"
 spiritsight
+spellrange 1
 descr "The first Renatus was the eldest member of the Renatae, a keeper of records, and the last in a bloodline bred for magical aptitude. Though his magic was unremarkable compared to other mages of the realm, he somehow stumbled upon the secret to immortality. He passed this knowledge to a select group of apprentices, though, curiously, only male members of the order succeeded in following his method. The path to immortality, as devised by the first Renatus, involves a peculiar mix: alchemical residues, a strong magical affinity, a strict frugal diet, and absolute celibacy. Unsurprisingly, the latter two have dissuaded most alchemists from attempting this route, grumbling that there must be an easier-or at least more enjoyable-way. Hieronyma the Clouded, a prominent skeptic, insists that a Renatus isn't truly immortal. Instead, she claims the order has perfected a method of creating body and mind duplicates of each Renatus, stored in ancient basins beneath their main palace. According to her, when one "Renatus" dies, another copy simply takes his place. Although the male Renati are regarded as the order's public leaders, rumors persist of a secret cabal of old Renatae pulling strings from the shadows with the lofty aim of creating the perfect human. While there's no evidence to support such claims, many heroes boast of their success in seducing a local Renata."
 
 selectmonster    "Flamen"                                                   #  159
@@ -11652,17 +11719,8 @@ goldcarrier 75
 descr "Issued under proper authority by senatorial charter, the caravan's current members, selected for their optimism and their willingness to sign comprehensive indemnity waivers, embark with the full confidence of the Senate and a modest travel stipend, payable in advance. The Imperial Trade Caravan is tasked with the circulation of goods, the collection of minor duties, and the promotion of economic virtue across the provinces. Lightly guarded to avoid confusion with military activity, the caravan is nevertheless equipped to repel casual banditry and, under ideal conditions, discourage attention from small to medium-sized wildlife. Reports from the countryside confirm that the sight of a well-supplied caravan has a stabilizing effect on local markets and encourages compliance with provincial taxation. A petition is currently underway to name a future caravan after our archivist, who has recently completed a full inventory of the College's ink reserves."
 
 newmonster "Funditore"
-copyspr "Limitane Slinger"
-armor                          0 
-hp                             4 
-str                            4 
-mor                            3 
-mr                             4 
-rank                           0 # Mid rank.
-rangedweapon               0  27 # Sling: d2 Blunt damage.
-meleeweapon                0   1 # Dagger: d3 Pierce damage.
-human                            
-allitemslots                     # Has the full set of item slots.
+copystats "Limitane Slinger"
+clearmove 
 descr "The slingers are most often gleaned from the rural commoners or those deeply in debt enlisting in the Legions for a chance at escaping poverty. Unable to afford arms of their own, they are instead equipped with slings and instructed to fire stones at the enemy, while letting the better-equipped legionaries do the actual fighting."
 
 newmonster "Imperial War Elephant"
@@ -11818,6 +11876,128 @@ armytrainer 1
 leadership 1
 descr "The Legatus is a high-ranking commander of the imperial legion. Only the most able commanders are chosen for this task. Units under their command are well organized, well trained and highly motivated." 
 
+newweapon "Consecrated Sword"
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 4
+dmgtype              1 # Slash.
+dmg                  8 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+sound                8 # sword.wav (Sword)
+
+newmonster "Palatine"
+spr1 "Sprites/Palatine1.tga"
+spr2 "Sprites/Palatine2.tga"
+armor                       2 # Armor.
+hp                              10 # Hit Points.
+str                              5 # Strength.
+mor                           8 # Morale.
+mr                              6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon         0 "Consecrated Sword" 
+human                        # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+magicshield              # Reduces damage from most weapons by 0-2; 0-4 against ranged weapons.
+allitemslots               # Has the full set of item slots.
+descr ""The Praetorian Guard has historically shown an unhealthy talent for deciding which side they ought to be guarding. For this reason, the current Emperor, being of a more cautious disposition than some of his predecessors, has ordained a smaller and more select household corps drawn from the most proven soldiers of the realm. These Palatines are charged with the protection of the Emperor alone. Their blades are consecrated by the Flamens in solemn rites invoking the divine genius of the Empire, and the Palatines are taught that in guarding the Emperor they serve as its living hands. Thus even creatures ordinarily indifferent to mortal steel may be forced to acknowledge the dominion of Empire."
+
+newweapon "Blessing of the Serpent" 
+trgrank             0 # Target: friendly unit (any friendly unit in range).
+range                1
+init                 6
+dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  5 # Area: 5
+inanimate              # Doesn't affect Lifeless units.
+reload2
+onlyfriend             # Only affects friendly units.
+
+newweapon "Blessing of the Conquering Sun" 
+trgrank             0 # Target: friendly unit (any friendly unit in range).
+range                1
+init                 6
+dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  5 # Area: 5
+inanimate              # Doesn't affect Lifeless units.
+reload2
+onlyfriend             # Only affects friendly units.
+
+newweapon "Blessing of Empire" 
+trgrank             0 # Target: friendly unit (any friendly unit in range).
+range                1
+init                 6
+dmgtype             13 # Special benefit (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  5 # Area: 5
+inanimate              # Doesn't affect Lifeless units.
+reload2
+onlyfriend             # Only affects friendly units.
+
+newmonster "Serpent Signifer"
+spr1 "Sprites/Serpentsignifer1.png"
+spr2 "Sprites/Serpentsignifer2.png" 
+hp                            8
+armor 					 1
+str                            4 
+mor                         6 
+mr                            4  
+rank 						1
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+size1x1                          # Only takes up a single square on the battlefield (overrides sprite size).
+spread                         4 # Unit will attempt not to stand too close to other units sharing this command. Exact mechanics are undocumented.
+localleadership 1
+prebatweapon 16 "Blessing of the Serpent"
+rangedweaponbonus 16 "Blessing of the Serpent"
+meleeweapon                1   8 # Shortsword: d6 Slash damage.
+rangedweapon               0  24 # Javelin: d4 Pierce damage.
+poisonres 75 
+descr "Among the standards still judged acceptable for use in the Senatorial armies is that of the Serpent Cult, whose legal standing, though challenged repeatedly, remains difficult to abolish entirely. Soldiers nearby are said to enjoy the Serpent's blessing, and many become markedly calmer under its folds. It is further claimed that venoms trouble them less, though the physicians continue to object to the methods by which this is demonstrated."
+
+newmonster "Signifer Solaris" 
+spr1 "Sprites/Solarsignifer1.png"
+spr2 "Sprites/Solarsignifer2.png"
+hp                            8
+armor 					 1
+str                            4 
+mor                         6 
+mr                            4 
+rank 						1
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+size1x1                          # Only takes up a single square on the battlefield (overrides sprite size).
+spread                         4 # Unit will attempt not to stand too close to other units sharing this command. Exact mechanics are undocumented.
+localleadership 1 
+prebatweapon 4 "Blessing of the Conquering Sun"
+rangedweaponbonus 4 "Blessing of the Conquering Sun"
+meleeweapon 				6 "Gladius Solis" 
+rangedweapon               0  24 # Javelin: d4 Pierce damage.
+fireres 75 
+descr "The standards of the Conquering Sun have become increasingly common in the armies, owing both to several fortunate campaigns and to the considerable energy with which the cult promotes its own importance. It is held that those fighting beneath such a banner receive the Sun's blessing. At the very least, it informs the Heliodromi where not to aim their incendiary spells, and thus nearby soldiers stand a somewhat better chance of avoiding blindness or immolation."
+
+newmonster "Imperial Signifer" 
+copyspr "Standard"
+spr1 "Sprites/Imperialsignifer1.png"
+spr2 "Sprites/Imperialsignifer2.png"
+hp                             	8
+armor 						1
+str                           	4 
+mor                            6 
+mr                             	5 
+rank 							1
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+size1x1                          # Only takes up a single square on the battlefield (overrides sprite size).
+spread                         4 # Unit will attempt not to stand too close to other units sharing this command. Exact mechanics are undocumented.
+localleadership 1 
+prebatweapon 65536 "Blessing of Empire"
+rangedweaponbonus 65536 "Blessing of Empire"
+meleeweapon                1   8 # Shortsword: d6 Slash damage. 
+rangedweapon               0  24 # Javelin: d4 Pierce damage.
+descr "Learned opinion now increasingly holds that the Empire itself possesses a sacred genius, and that this higher principle is, for practical purposes, embodied in the reigning Emperor. Troops assembled beneath the Emperor's personal standard are said to partake of the Empire's blessing, which is plainly a most desirable arrangement."
+
+	# -------------- Dark Senator Monsters ------------------------------# 
+
 newmonster "Dark Empress"
 spr1 "Sprites/Darkempress1.tga"
 spr2 "Sprites/Darkempress2.tga"
@@ -11863,8 +12043,6 @@ gatherlifeforce
 lifeforce 5
 descr "Some suggest that achieving divine status has always been the Empress's ultimate goal, a pursuit of her magical order for generations. However, those claiming to have evidence of this have curiously departed the Empire, on solitary quests to defeat the Troll King, or grand journeys to the edge of the world. The Empress is, however, a notable patron of the sciences, generously funding the College's pursuit of knowledge. It is widely understood that the Empress herself is not an acceptable topic of study."
 
-	# -------------- Dark Senator Monsters ------------------------------# 
-
 newmonster "Shadow Tribune"
 spr1 "Sprites/Shadowtribune1.tga"
 spr2 "Sprites/Shadowtribune2.tga"  
@@ -11894,12 +12072,12 @@ newmonster "Shadow Centurion"
 spr1 "Sprites/Shadowcenturion1.tga"
 spr2 "Sprites/Shadowcenturion2.tga"
 rank 0
-hp 10
+hp 9
 armor 1
 mr 6
 mor 15
 str 5
-meleeweapon 8 222
+meleeweapon 0 700 # Bane Blade: d6 Slash damage.
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
 undead
@@ -11913,6 +12091,31 @@ planeshift 1
 ethereal
 nametype 6
 descr "The shadow of a soldier from a long-fallen empire, still bound by loyalty to the Empire. Clad in the armor of a bygone Centurion, he returns to command armies of both the living and the dead."
+
+newmonster "Shadow Praetorian"
+spr1 "Sprites/Shadowpraetorian1.tga"
+spr2 "Sprites/Shadowpraetorian2.tga"
+rank 1
+hp 10
+armor 2
+mr 6
+mor 15
+str 5
+meleeweapon 1 700 # Bane Blade: d7 Slash damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+diseaseres                       # Disease immunity.
+float
+planeshift 1
+ethereal
+largeshield 
+nametype 6
+descr "Since the rise of our current Emperor, shadows have been seen standing watch at the inner courts of the palace. It appears that the spectres of long-dead Praetorians have taken up their former duties again. In light of the fate of Dentatus III, it may be supposed that some are settling old accounts. The official position, however, is that they remain bound by an eternal loyalty to the Empire." 
 
 newmonster "Underworld Cultist"
 spr1 "Sprites/Underworldcultist1.tga"
@@ -11929,7 +12132,7 @@ human
 allitemslots                     # Has the full set of item slots.
 mastery                        1 # A mastery effect will change this monster to the type defined 1 after this one
 libmastery                     2 # Can level up in a level 2 library.
-descr "Worship of the Underworld was mostly in performed in secrecy or as an eccentric pastime for certain nobles. Now, with direct sponsorship from the Emperor, the shadow priests are rising to challenge the solar and serpent cults for dominance."
+descr "Worship of the Underworld was once practiced in secrecy, or as an eccentric pastime among certain nobles. Now, with the Emperor's direct patronage, the shadow priests are gaining influence, challenging the solar and serpent cults for dominance."
 
 newmonster "Underworld Priest"
 spr1 "Sprites/Underworldpriest1.tga"
@@ -11947,7 +12150,7 @@ allitemslots                     # Has the full set of item slots.
 randomitem                    25 # 25% chance to spawn with a random magic item of any type.
 mastery                        1 # A mastery effect will change this monster to the type defined 1 after this one; i.e. monster #54: Master of Darkness.
 libmastery                     3 # Can level up for 600 Gold in a level 3 library.
-descr "Worship of the Underworld was mostly in performed in secrecy or as an eccentric pastime for certain nobles. Now, with direct sponsorship from the Emperor, the shadow priests are rising to challenge the solar and serpent cults for dominance."
+descr "Worship of the Underworld was once practiced in secrecy, or as an eccentric pastime among certain nobles. Now, with the Emperor's direct patronage, the shadow priests are gaining influence, challenging the solar and serpent cults for dominance."
 
 newmonster    "Pontifex Inferi" 
 spr1 "Sprites/Pontifexinferi1.tga"                                      #   54
@@ -11966,7 +12169,7 @@ allitemslots                     # Has the full set of item slots.
 randomrare                    20 # 20% chance to spawn with a random rare magic item.
 randomitem                   100 # 100% chance to spawn with a random magic item of any type.
 sensedead 1
-descr "Worship of the Underworld was mostly in performed in secrecy or as an eccentric pastime for certain nobles. Now, with direct sponsorship from the Emperor, the shadow priests are rising to challenge the solar and serpent cults for dominance."
+descr "Worship of the Underworld was once practiced in secrecy, or as an eccentric pastime among certain nobles. Now, with the Emperor's direct patronage, the shadow priests are gaining influence, challenging the solar and serpent cults for dominance."
 
 newmonster "Ashen Behemoth"
 spr1 "Sprites/Ashenbehemoth1.tga"
@@ -11976,7 +12179,7 @@ hp                            85
 str                            9 
 mor                            99 
 mr                             10 
-rank                           0 # Front rank.
+rank                           0 # Mid rank.
 meleeweapon                9  37 # Gore: d9 Slash damage.
 spellweaponbonus               59   2 # Death at level 2.
 undead
@@ -12035,6 +12238,12 @@ selectritual "Apotheosis"
 aialways 999
 airestrig 1000
 
+selectritual "Erect Statue" 
+gainbless 25
+
+selectritual "Erect Statue" 1 
+gainbless 25
+
 # ----------- Dark Emperor Powers ---------------------# 
 
 newritual     "Imperial Wedding"                                          
@@ -12053,65 +12262,13 @@ addstring     "(-)Dark Empress"     # This string will only be used by nomon[...
 addstring     "(-)God Empress of the Underworld"     # This string will only be used by nomon[...] commands.
 descr "The Emperor is married to the Empress to be.  The Emperor's bride is a Renata carefully selected by her order to become the future Empress.  Both the Emperor and a Renata must be present in the capital to perform the wedding ceremony."
 
-newritual     "Appoint Governor"                                          # 503
-descr "The Emperor appoints a governor to rule and raise imperial statues in distant lands."
-ritpow                45 # Dark Emperor
-level                  2
-cost              0  100 # 100 Gold
-terr                 -28 # Required terrain: towns+.
-summoning                # The ritual will summon the monsters specified in a random string.
-start                    # Start with this ritual instead of the others.
-addstring     "c*Magistratus"
-
-		# ------- God Emperor of the Underworld Version 
-
 selectritual "Planar Swap" 1
 free
 level 9
 
-newritual     "Erect Statue"                                              # 311
-ritpow                46 # Dark Emperor
-level                  2
-cost              0  100 # 100 Gold
-terr                -115 # Required terrain: settlements and former settlements.
-apcost                 3 # Actual AP cost: 4.
-summoning                # The ritual will summon the monsters specified in a random string.
-nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
-free                     # Always start with this ritual in addition to the others.
-addstring     "(-)Statue of the Underworld"     # This string will only be used by nomon[...] commands.
-addstring     "Statue of the Underworld"
-gainbless 10
-descr "No major settlement is complete without its own gigantic statue of the Emperor.  The statue will guard the village from beasts and brigands and in return the villagers will be fully loyal to the Emperor and nothing will be withheld from the tax collection.  There can only be one statue of the Emperor in a single settlement.  After all, there is only one Emperor."
-
-newritual     "Appoint Governor"                                          # 503
-ritpow                46 # Dark Emperor
-level                  2
-cost              0  100 # 100 Gold
-terr                 -28 # Required terrain: towns+.
-summoning                # The ritual will summon the monsters specified in a random string.
-start                    # Start with this ritual instead of the others.
-addstring     "c*Magistratus"
-descr "The Emperor appoints a governor to rule and raise imperial statues in distant lands."
-
-newritual     "Imperial Wedding"                                          
-ritpow                46 # Dark Emperor
-level                  2
-cost              0  400 # 400 Gold
-terr                 -22 # Required terrain: a capital.
-promotion             -1 # Promote 1 unit to a commander and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
-nomonworldreq          1 # Monsters in strings beginning with "(-)" in the world must be fewer than 1.
-free                     # Always start with this ritual in addition to the others.
-addstring     "Renata"
-addstring     "Dark Empress"     # Unique.
-addstring     " Renata"
-addstring     "Dark Empress"     # Unique.
-addstring     "(-)Dark Empress"     # This string will only be used by nomon[...] commands.
-addstring     "(-)God Empress of the Underworld"     # This string will only be used by nomon[...] commands.
-descr "The Emperor is married to the Empress to be.  The Emperor's bride is a Renata carefully selected by her order to become the future Empress.  Both the Emperor and a Renata must be present in the capital to perform the wedding ceremony."
-
 newritual "Undying Loyalty"
-ritpow                46 # God Emperor of the Underworld 
-level 2
+ritpow                45 # God Emperor of the Underworld 
+level 3
 free
 apcost -1
 cost 14 10
@@ -12121,13 +12278,13 @@ addstring "5*Longdead Triarius & 5*Longdead Principe"
 addstring "10*Longdead Hastatus"
 addstring "4*Longdead Triarius & 6*Longdead Hastatus"
 addstring "3*Longdead Principe & 7*Longdead Hastatus"
-descr "When our current Emperor was coronated he decreed that all citizens would serve him in both life and death. The bones of the dead gladly rise to fight His enemies once more. ^This ritual raises a number of principe, hastati or triarii who are equipped with their respective armaments."
+descr "When our current Emperor was coronated he decreed that all citizens would serve him in both life and death. The bones of the dead gladly rise to fight his enemies once more. ^This ritual raises a number of principe, hastati or triarii who are equipped with their respective armaments."
 
 newritual "Gates of Perdition"
-ritpow                46 # God Emperor of the Underworld
+ritpow                45 # God Emperor of the Underworld
 level 3
 free
-cost 13 500
+cost 13 100
 terr -28 #Towns or cities
 planereq 0
 alterloc 87 #Haunted City 
@@ -12137,7 +12294,21 @@ soundfx 57
 makeportal 1000
 centerloc
 descr "The Emperor's ambitions extend beyond the limits of Elysium, and he wishes to rule both the realms of the living and the dead. This ritual opens a permanent gateway into Hades. The ritual demands the sacrifice of an entire city's populace to tear the boundary between the worlds. Restless spirits will cross over to populate the city, transforming it into a haunted ruin."
-	
+
+newritual "Unchain the Titan"
+ritpow                45 # God Emperor of the Underworld
+level                  3
+free
+cost 13 75
+terr 821 # Chained Titan 
+destroyterr 100
+summoning                # The ritual will summon the monsters specified in a random string.
+sum0chance 100
+addstring "c*Tartarian Spirit"
+aialways 999
+ainosimul
+descr "The God Emperor breaks the chains of a dead Titan in Hades and calls its spirit to serve its rightful master."
+
 newritpow #Dark Empress
 
 newritual     "Apotheosis"                                                
@@ -12253,6 +12424,7 @@ addstring     "(-)Imperial Statue"     # This string will only be used by nomon[
 addstring     "Imperial Statue"
 addstring     "(&)Emperor"     # This string will only be used by minmonreq, monworldreq, or monplayerreq commands.
 addstring     "(&)God Emperor"     # This string will only be used by minmonreq, monworldreq, or monplayerreq commands.
+gainbless 25
 descr "No major settlement is complete without its own gigantic statue of the Emperor, ceremonially inaugurated by his loyal Flamen. The statue will guard the village from beasts and brigands and in return the villagers will be fully loyal to the Emperor and nothing will be withheld from the tax collection.  There can only be one statue of the Emperor in a single settlement.  After all, there is only one Emperor. ^^The player must control an Emperor for this ritual to be cast."
 
 newritual     "Inaugurate Statue of the Underworld"                            # 506
@@ -12268,7 +12440,7 @@ addstring     "(-)Statue of the Underworld"     # This string will only be used 
 addstring     "Statue of the Underworld"
 addstring     "(&)Dark Emperor"     # This string will only be used by minmonreq, monworldreq, or monplayerreq commands.
 addstring     "(&)God Emperor of the Underworld"     # This string will only be used by minmonreq, monworldreq, or monplayerreq commands.
-gainbless 10
+gainbless 25
 descr "No major settlement is complete without its own gigantic statue of the Emperor, ceremonially inaugurated by his loyal Flamen. The statue will guard the village from beasts and brigands and in return the villagers will be fully loyal to the Emperor and nothing will be withheld from the tax collection.  There can only be one statue of the Emperor in a single settlement.  After all, there is only one Emperor. ^^The player must control a Dark Emperor for this ritual to be cast."
 
 selectmonster "Flamen"
@@ -12301,26 +12473,33 @@ classcitterr -1105 # haunted cities and haunted capitoleum are citadels, relevan
 
 clearrec
 #                                             % No gold die iron
-addunitrec  "Veles"                           	100 5 40 0 0
+addunitrec  "Veles"                           		100 5 40 0 0
 addunitrec "Funditore"	              	      	100 5 40 0 0
 addunitrec  "Hastatus"                        	100 5 45 0 5
 addunitrec  "Princeps"                        	100 5 50 0 10
-addunitrec  "Princeps Solaris"                	100 5 55 0 10
+addunitrec  "Princeps Solaris"              100 5 55 0 10
 	reclimiter  "+Leo"                   
-addunitrec  "Triarius"                        	100 5 55 0 20
-addunitrec  "Praetorian Guard"                	100 5 60 0 20
+addunitrec  "Triarius"                        		100 5 55 0 20
+addunitrec  "Praetorian Guard"           	100 5 60 0 20
 	reclimiter  "+Emperor"                
 	reclimiter  "+God Emperor"                 
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addunitrec  "Ballista"                        	100 2 25 0 50
-addunitrec  "Hastatus"                          5 10 65 0 5 
-addunitrec  "Imperial War Elephant" 			15 1 50 0 25
+addunitrec  "Ballista"                        		100 2 25 0 50
+addunitrec  "Hastatus"                          	5 10 65 0 5 
+addunitrec  "Imperial War Elephant" 	15 1 50 0 25
 	recterr -27
-addunitrec "Behemoth Solaris"					4 1 100 20 15
+addunitrec "Behemoth Solaris"			4 1 100 20 15
 	recterr -27
-	reclimiter "+Leo"
 	reclimiter "+Heliodromus"
+addmercrec  "Signifer Solaris"               100  1   30   0    0 # once per offer; extra.
+	reclimiter "+Heliodromus"
+addmercrec "Hydra Hatchling"				6 2 50 10 0
+	reclimiter "$Serpent Priest"
+addmercrec "Hydra"									3 1 150 50 0
+	reclimiter "+Serpent Priest"
+addmercrec  "Serpent Signifer"             100  1   30   0    0 # once per offer; extra.
+	reclimiter "+Serpent Priest"
 addmercrec  "Standard"                        	100 1 20 0 0 
 addmercrec  "Archer"                           	20 5 50 0 0 
 addmercrec  "Gladiator"                        	20 2 25 0 0 
@@ -12332,33 +12511,33 @@ addcomrec   "Senator"                          	10 50 10 0
 	reclimiter  "-Dark Emperor"                   # -- prevents the preceding offer.
 	reclimiter  "-God Emperor of the Underworld"  # -- prevents the preceding offer.
 addcomrec "Legatus Legionis"					2 60 10 0
-addcomrec "Flamen"								5 40 20 0				
+addcomrec "Flamen"									5 40 20 0				
 addcomrec  "Centurion"                       	25 35 10 0 
-addcomrec  "Leo"                               	5 50 20 0 
-addcomrec  "Heliodromus"                       	2 90 20 0 
+addcomrec  "Leo"                               		5 50 20 0 
+addcomrec  "Heliodromus"                      4 90 20 0 
 	templerec                                    # +2% to chance per temple owned, to a max of +10%
-addcomrec   "Renata"                            6 50 20 0 
-addcomrec   "Renatus"                           2 110 20 0 
+addcomrec   "Renata"                            	7 50 20 0 
+addcomrec   "Renatus"                           	4 110 20 0 
 	libraryrec                                    # +1% to chance per library point owned, to a max of +10%
-addcomrec   "Serpent Acolyte"                   6 50 20 0 
+addcomrec   "Serpent Acolyte"               7 50 20 0 
 	templerec                                     # +3% to chance per temple owned
-addcomrec   "Serpent Priest"                    3 90 20 0 
+addcomrec   "Serpent Priest"                 	5 90 20 0 
 	templerec                                     # +2% to chance per temple owned, to a max of +10%
-addcomrec  "Anguifer"							3 50 20 0
+addcomrec  "Anguifer"								5 50 20 0
 	reclimiter "+Serpent Acolyte"
 	reclimiter "+Serpent Priest"
 	templerec                                     # +2% to chance per temple owned, to a max of +10%
-addunitrec  "Custodes Serpentis"     10 2 40 10 0
+addunitrec  "Custodes Serpentis"     	10 2 40 10 0
 	reclimiter  "+Serpent Priest" 
-addunitrec  "Serpent Hoplite"        100 5 55 0 5
+addunitrec  "Serpent Hoplite"        		100 5 55 0 5
 	reclimiter  "+Serpent Priest"	
-addcomrec   "Augur"                             4 60 20 0 
-addcomrec "Thaumaturg"							3 90 20 0 
+addcomrec   "Augur"                             	6 60 20 0 
+addcomrec "Thaumaturg"						5 90 20 0 
 	libraryrec				# +1% to chance per library point owned, to a max of +10%
 addmercrec  "Scout"                            	10 1 15 10 0 
 
-	# -------- Light Emperor extra chance of solar cult and Renatus offers 
-addcomrec   "Leo"                               5 50 20 0 
+	# -------- Light Emperor recruitment --------------------- # 
+addcomrec   "Leo"                               		5 50 20 0 
 	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
 	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
 addcomrec   "Heliodromus"                       2 90 20 0 
@@ -12370,47 +12549,59 @@ addcomrec   "Renata"                            5 50 20 0
 addcomrec   "Renatus"                           2 110 20 0 
 	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
 	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
-
-	# ------------ Dark Emperor gets underworld cultists, and eventually undead ------------- 
-addunitrec "Longdead Velite" 					100 5 0 0 0
-	recxcost 13 25
+addmercrec  "Imperial Signifer"                        100  1   30   0    0 # once per offer; extra.
+	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
+	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
+addunitrec "Palatine"							100 5 70 0 20
+	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
+	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
+	recterr -22 #Capital Locations 
+	
+	# ------------ Dark Emperor gets underworld cultists and undead legionaires ------------- 
+addunitrec "Longdead Velite" 				100 5 0 0 0
+	recxcost 13 10
 	recterr -1103
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addunitrec "Longdead Hastatus" 					100 5 0 0 5
-	recxcost 13 25
+addunitrec "Longdead Hastatus" 		100 5 0 0 5
+	recxcost 13 10
 	recterr -1103
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addunitrec "Longdead Principe" 					100 5 0 0 10
-	recxcost 13 25
+addunitrec "Longdead Principe" 			100 5 0 0 10
+	recxcost 13 10
 	recterr -1103
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addunitrec "Longdead Triarius" 					100 5 0 0 20
-	recxcost 13 25
+addunitrec "Longdead Triarius" 			100 5 0 0 20
+	recxcost 13 10
 	recterr -1103
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addunitrec "Ashen Behemoth"						4 1 90 20 15
+addunitrec "Shadow Praetorian" 	30 5 0 0 20
+	recxcost 13 20
+	recterr -1103
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
+addunitrec "Ashen Behemoth"			6 1 90 20 15
 	recxcost 13 50
 	recterr -27
 	recterr -1103
 	reclimiter "+God Emperor of the Underworld"
-addcomrec "Underworld Cultist" 					6 90 20 0 
+addcomrec "Underworld Cultist" 			10 50 20 0 
 	templerec
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addcomrec "Underworld Priest" 					3 90 20 0 
+addcomrec "Underworld Priest" 			5 90 20 0 
 	templerec
 	reclimiter "+Dark Emperor"
 	reclimiter "+God Emperor of the Underworld"
-addcomrec "Shadow Tribune" 						3 0 0 0 
+addcomrec "Shadow Tribune" 				5 0 0 0 
 	recterr 135
-	recxcost 13 25
+	recxcost 13 15
 	reclimiter "+God Emperor of the Underworld"
-addcomrec "Shadow Centurion" 					10 0 0 0 
-	recxcost 13 25
+addcomrec "Shadow Centurion" 			10 0 0 0 
+	recxcost 13 15
 	recterr -1103  
 	reclimiter "+God Emperor of the Underworld"
 
@@ -12901,9 +13092,6 @@ selectmonster "Wyvern"
 animal
 hp 36
 armor 2
-clearweapons
-meleeweapon  8 143  # Stinger (value 8: D8 pierce damage)
-meleeweapon  8  11  # Bite (value 8: D8 slash damage)
 meleeweapon  4  94  # Talon 
 
 selectmonster "Cockatrice"
@@ -13601,7 +13789,6 @@ dmgtype              2 # Blunt.
 dmg                  1 # Base damage (added to dmg value where this weapon is used).
 aoe                  1 # Area: burst 1.
 look                187
-sound               16 # fire.smp (Fire)
 nextalways
 
 newweapon "Ruby Explosion"
@@ -13612,7 +13799,6 @@ dmgtype              4 # Fire.
 dmg                  1 # Base damage (added to dmg value where this weapon is used).
 aoe                  1 # Area: burst 2.
 look                54
-sound               16 # fire.smp (Fire)
 nextalways
 
 newweapon "Sapphire Explosion"
@@ -13623,7 +13809,6 @@ dmgtype              5 # Cold.
 dmg                  1 # Base damage (added to dmg value where this weapon is used).
 aoe                  1 # Area: burst 1.
 look                54
-sound               16 # fire.smp (Fire)
 nextalways
 
 newweapon "Diamond Explosion"
@@ -15017,7 +15202,7 @@ selectritual "Summon Queen of Water"
 cost              8  375 # 300 Sapphires after rebate
 
 newritual     "Call Giants"                                               # 259
-ritpow                19 # Warlock of Earth
+ritpow                19 # Warlock of Water
 level                  3
 cost             8   125 # 100 sapphires
 summoning                # The ritual will summon the monsters specified in a random string.
@@ -15025,8 +15210,7 @@ sum0chance 5
 sum1chance 5
 addstring     "(-101)c*Frost Giant Jarl"     # This string will only be included in terrain: snowy locations.
 addstring     "(-43)c*Sea Giant Lord"     # This string will only be included in terrain: any sea.
-addstring     "1d2+1*Frost Giant"
-addstring     "(-43)c*Sea Giant Lord"     # This string will only be included in terrain: any sea.
+addstring     "(-42)1d2+1*Frost Giant"
 addstring     "(-43)1d2+1*Sea Giant"
 descr "The warlock summons a group of giants.  Giants are powerful beings that are attuned to their element."
 
@@ -16443,10 +16627,6 @@ visible
 forestcitadel       # The terrain functions as a citadel when owned.
 farsight            # The terrain gives increased vision range when there are units present there.
 
-selectterrgroup -1111
-setname "Bridges"
-addterr 48
-addterr 49 
 
 # --------------------------- Troll King Monster Edits -------------------------# 
 
@@ -17911,8 +18091,8 @@ affres 50
 descr "His mind is now fully consumed by an ancient power, and his body serves as its conduit to this world. His strength ebbs and flows with the tides, as if the moon itself calls to him."
 
 newmonster "Shoggoth" 
-spr1 "Sprites/Shoggoth1.tga"
-spr2 "Sprites/Shoggoth2.tga" 
+spr1 "Sprites/Shoggoth1.png"
+spr2 "Sprites/Shoggoth2.png" 
 armor                          1 
 hp                           116 
 str                           10 
@@ -17982,7 +18162,7 @@ sound              111 # windshort2.sw
 
 newmonster "Blind Piper" 
 spr1 "Sprites/Blindpiper1.tga"
-spr2 "Sprites/Blindpiper2.tga"
+spr2 "Sprites/Blindpiper2.png"
 armor                          0 
 hp                            22 
 str                            5 
@@ -18918,8 +19098,8 @@ selectmonster "Floating Eye"
 float
 
 selectmonster "Phase Spider"
-spr1 "Sprites/Phasespider1.tga"
-spr2 "Sprites/Phasespider2.tga"
+spr1 "Sprites/Phasespider1.png"
+spr2 "Sprites/Phasespider2.png"
 size1x1
 drawsize -20
 
@@ -19075,7 +19255,7 @@ mr 5
 descr "The illusionist commands no standing army and as such the majority of their armed forces consists of mercenaries attracted by money and empty promises. These sellswords are cloaked in the illusion of magnificent golden armor, but in reality, their gear is ordinary, worn and patched from countless battles." 
 
 newmonster "Gilded Archer"
-copystats "Spearman"
+copystats "Archer"
 spr1 "Sprites/Gildedarcher1.tga"
 spr2 "Sprites/Gildedarcher2.tga"
 mor 3
@@ -19616,6 +19796,9 @@ battleslow
 
 selectmonster "Little Ghoul"
 hp 4
+
+selectweapon "Lucerne Hammer"
+dmgtype 2 #Blunt instead of piercing. Debatable if this is thematically correct. But more useful and in line with lore text of Hammerers. 
 
 selectmonster "Ghoul Baron"
 spr1 "Sprites/Ghoulbaron1.tga"
@@ -20292,9 +20475,6 @@ newmonster "Contract Militia"
 copystats "Hoburg Militia"
 spr1 "Sprites/Hobmarkmilitia1.tga"
 spr2 "Sprites/Hobmarkmilitia2.tga"
-clearweapons
-mor 2
-meleeweapon 0 "Torch"
 firstshape 1
 descr "The Hobmark militia is less an army and more a desperate gathering of farmers and laborers, often riled into action by rumors of undead in the countryside. Poorly equipped, they wield whatever tools are at hand-forks, sickles, and torches. When rallied their main contribution is often simply slowing the enemy down. ^This one has signed an Extended Service Contract and will continue his employment with the Markgraf beyond death."
 
@@ -21014,7 +21194,7 @@ promotion 15
 addstring "Hoburg Slinger"
 addstring "Contract Slinger"
 addstring "Hobmark Militia"
-addstring "Contract Milita"
+addstring "Contract Militia"
 addstring "Hobmark Crossbow"
 addstring "Contract Crossbow"
 addstring "Hobmark Soldier"
@@ -21287,6 +21467,8 @@ addterr 116
 
 selectmonster "Hamadryad"
 harpyspawn 					5	# From 3
+satyrspawn 					1	# From 0
+centspawn					1	# From 0
 selectmonster "Dryad"
 satyrspawn 					5	# From 3
 selectmonster "Dryad Queen"
@@ -21441,6 +21623,27 @@ nobootslots
 selectmonster    "Panic Apostate"
 nobootslots
 
+selectmonster "Grove Guard" # more MR, like other white versions
+mr 5
+
+# Dryad Hoplites underperformed. Now get a minor magical attack as well 
+
+newweapon     "Entangling Growth"                                               
+trgrank              9 # Target: any enemy in range.
+range               2
+init                 4
+dmgtype             12 # Special damage (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+an                     # Armor negating.
+strresist              # Resisted by rolling 2d4 < Strength.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+flymode              3 # Fast particle effect, one for each strike or square hit.
+look               198
+sound               74 # fswish.wav
+
+selectmonster "Dryad Hoplite"
+rangedweaponbonus 512 "Entangling Growth" 
+
 #------------------------- Dryad Queen New Monsters ----------------------------------------# 
 
 newmonster "Recuperating Forest"
@@ -21479,6 +21682,29 @@ terraformto 115
 drawsize -50
 descr "The Dryad carefully nurtures a dead forest or jungle back to life. The ritual takes considerable time to perform."
 
+newmonster "Nomophylax" 
+spr1 "Sprites/Nomophylax1.tga"
+spr2 "Sprites/Nomophylax2.tga"
+armor                          1 # Armor.
+hp                            41 # Hit Points.
+str                            8 # Strength.
+mor                            8 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon               13 258 # Battle Axe: d22 Slash damage.
+meleeweapon                10  37 # Gore: d10 Slash damage.
+battlefast                       # Can move 2 squares per turn in combat.
+fastheal                         # Heals all wounds in two months at most. Also heals permanent afflictions over time, but not as quickly as with regeneration.
+allitemslots 
+nobootslots                     # Has the full set of item slots.
+berserker                        # Can go berserk if hit in combat.  Berserk: +1 Strength, +10 Morale, fight to -20% HP.
+trample                        2 # Can trample smaller units for this amount of damage.
+tramplexsize                   1 # Can also trample units the same size as itself.
+nametype                       9 # Pangaea male.
+minospawn 4
+descr "Among the white minotaurs there are some to whom the dryads entrust the custody of their sacred laws. These they call Nomophylakes, pretending that memory and ceremony may elevate such creatures above their nature. Even so, the beasts bear this burden with almost comical gravity."
+
+
 # ------------------------- Dryad Queen Rituals Edit ------------------------------------------# 
 
 selectritual "Blood Orgy" 												
@@ -21487,6 +21713,10 @@ ornext2 15
 	summoning
 	reducetown 
 descr "A good blood orgy can be had with the very small sacrifice of only a single villager.  After the sacrifice, many of the women in the village will go wild and participate in the orgy.  Afterwards they will never be as before and they will be known as maenads and fight fiercely for their new master. This ritual has a chance of destroying the settlement."
+
+selectritual "Plant Hamadryad" # No longer relevant, since Hamadryads are gained for free from Incite Revelry
+level 9 
+free 
 
 selectritual "Call of Gaia"
 level 9 
@@ -21542,7 +21772,6 @@ free
 selectritual "Create Primal Forest"
 free
 
-
 #---------------------Dryad Queen New rituals -------------------------------------------------------# 
 
 # Incite revelry moved to Dryad Queen. More thematic and helps her with forest capping. No longer spawns a hamadryad, she can do that with a separate ritual. Reveling Satyrs will disappear when they leave the forests. Maenads can still roam, as per lore.
@@ -21550,7 +21779,7 @@ free
 newritual "Incite Revelry" 													
 ritpow 47
 level 2
-cost 2 50
+cost 2 75
 terr -62 #ancient forests and sacred groves
 squareench 1
 soundfx 57
@@ -21598,7 +21827,9 @@ addcomrec   "Dryad" 10 65 20 0
 addcomrec   "Hierophant"                    2      65  20    0 # once per offer; extra.
 addcomrec   "Hierophantide"              2     65  20    0 # once per offer; extra.
 addcomrec   "Dryad"                             2      65  20    0 # once per offer; extra.
-
+addcomrec "Nomophylax"                2      65  20    0 # once per offer; extra.
+	templerec                                     # +2% to chance per temple owned, to a max of +10% for 5+ temples.
+	recterr -66 #Groves of Gaia or Primal Forests 
 ################################### Scourge Lord ############################################### 
 
 # ----------------------------- Scourge Lord Terrain -----------------------------------------#
@@ -22051,8 +22282,8 @@ diseaseshield 1
 descr "In a twisted mockery of nature, this being is created by the Scourge Lord from tainted sand and dark magic. Unlike pure elemental spirits, it spreads corruption and decay wherever it goes. That said, if someone managed to capture one and scatter it thinly over the academy lawn, it might finally put those pesky weeds in their place"   
 
 newmonster "Desert Wraith" 
-spr1 "Sprites/Desertwraith1.tga"
-spr2 "Sprites/Desertwraith2.tga"
+spr1 "Sprites/Desertwraith1.png"
+spr2 "Sprites/Desertwraith2.png"
 hp		    	7
 str		    	5
 mor			7
@@ -22120,8 +22351,8 @@ descr "Kaftar were once humans who succumbed to greed and cruelty. In a classic 
 
 
 newmonster "Desolation Djinn"
-spr1 "Sprites/Desolationdjinn1.tga"
-spr2 "Sprites/Desolationdjinn2.tga"
+spr1 "Sprites/Desolationdjinn1.png"
+spr2 "Sprites/Desolationdjinn2.png"
 hp		    	17
 str		    	6
 mor			8
@@ -22473,7 +22704,6 @@ descr "The Scourge Lord constructs a statue of a brass gryphon and enchants it w
 selectritual "Dark Blessing" #higher level, more expensive. 
 level 3
 cost             13  150 # 150 Lifeforce
-turncastcount -1
 aimaxcast 10
 
 selectritual "Ritual of Scourge Mastery"
@@ -22519,9 +22749,9 @@ cost             13  150 # 150 Lifeforce
 summoning                # The ritual will summon the monsters specified in a random string.
 sum0chance 5
 sum1chance 20
-addstring "c*Scourge Ant Queen & 1d6*Black Soldier Ant"
+addstring "c*Scourge Ant Queen & 2d3*Black Soldier Ant"
 addstring "1*Desert Wraith"
-addstring "1d2*Dark Serpent"
+addstring "1d2+1*Dark Serpent"
 addstring "1*Scourge Worm"
 addstring "1*Foul Sand"
 addstring    "1*Scourge Flame"
@@ -22538,11 +22768,11 @@ sum0chance 7
 sum0chance 9
 addstring     "1*Black Sphinx"
 addstring     "1*Apophis"
-addstring     "1*Great Ghoul"
+addstring     "1d2*Great Ghoul"
 addstring     "1*Monster Scarab"
-addstring     "1*Scourge Wind"
+addstring     "1d2*Scourge Wind"
 addstring     "1*Desolation Djinn"
-addstring     "1d2*Faceless"
+addstring     "1d2+1*Faceless"
 descr "The Scourge Lord channels the life force drained from the world to summon a monstrous being of manifest destruction."
 
 newritual "Memories of the Mask I"
@@ -22819,7 +23049,7 @@ mor                            5
 mr                             2 
 rank                           1 # Front rank.
 meleeweapon                7  37 # Gore: d7 Slash damage.
-fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
+snow
 trample                        4 # Can trample smaller units for this amount of damage.
 coldres 50
 descr "The mammoth is a stronger, woolly relative of the elephant, adapted to the icy valleys of the mountain spires. Its massive size and thick fur provide excellent resistance to the cold. Unlike its southern cousin, the elephant, the mammoth primarily feeds on roots and grasses. However, mammoths still trample smaller animals whenever they can, though this behavior appears to be more for fun than necessity."   
@@ -22866,9 +23096,14 @@ drawsize -20
 healonterr -46
 descr "Elementals are beings of pure elemental energy given life through magical rituals.  The energies used to create the Elemental fade when it is damaged and it will never heal."
 
+selectmonster "Swan"
+rank 1
+frontpos 
+fast
+
 newweapon "Summon Swan"
 trgrank              7 # Target: anywhere.
-range                4
+range                6
 init                 4
 dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
 dmg                  0 
@@ -23628,14 +23863,103 @@ reload2
 
 # ---------------------- Kobold King Monster Edits -------------------------------------------
 
-selectmonster "Red Kobold Sorcerer"
-burnforest 3
+# All Kobolds and their drakes get mountainwalk
 
-selectmonster "Red Kobold King"
-burnforest 3
+selectmonster    "Red Kobold Sorcerer"                                      # 1327
+mountain
 
-selectmonster "Red Kobold Prophet"
-burnforest 3
+selectmonster    "Green Kobold Sorcerer"                                    # 1329
+mountain
+
+selectmonster    "Blue Kobold Sorcerer"                                     # 1331
+mountain
+
+selectmonster    "White Kobold Sorcerer"                                    # 1333
+mountain
+
+selectmonster    "Red Kobold Shaman"                                        # 1335
+mountain
+
+selectmonster    "Green Kobold Shaman"                                      # 1337
+mountain
+
+selectmonster    "Blue Kobold Shaman"                                       # 1339
+mountain
+
+selectmonster    "White Kobold Shaman"                                      # 1341
+mountain
+
+selectmonster    "Red Kobold Chief"                                         # 1343
+mountain
+
+selectmonster    "Green Kobold Chief"                                       # 1344
+mountain
+
+selectmonster    "Blue Kobold Chief"                                        # 1345
+mountain
+
+selectmonster    "Black Kobold Chief"                                       # 1347
+mountain
+
+selectmonster    "Red Kobold"                                               # 1348
+mountain
+
+selectmonster    "Green Kobold"                                             # 1349
+mountain
+
+selectmonster    "Blue Kobold"                                              # 1350
+mountain
+
+selectmonster    "White Kobold"                                             # 1351
+mountain
+
+selectmonster    "Red Kobold Slinger"                                       # 1352
+mountain
+
+selectmonster    "Green Kobold Archer"                                      # 1353
+mountain
+
+selectmonster    "Blue Kobold Slinger"                                      # 1354
+mountain
+
+selectmonster    "White Kobold Archer"                                      # 1355
+mountain
+
+selectmonster    "Red Kobold Warrior"                                       # 1356
+mountain
+
+selectmonster    "Green Kobold Warrior"                                     # 1357
+mountain
+
+selectmonster    "Blue Kobold Warrior"                                      # 1358
+mountain
+
+selectmonster    "White Kobold Warrior"                                     # 1359
+mountain
+
+selectmonster    "Blue Dragon Spawn"                                        # 1364
+mountain
+
+selectmonster    "Black Kobold"                                             # 1366
+mountain
+
+selectmonster    "Black Kobold Scout"                                       # 1367
+mountain
+
+selectmonster    "Black Kobold Murderer"                                    # 1368
+mountain
+
+selectmonster    "Black Kobold Slayer Shaman"                               # 1369
+mountain
+
+selectmonster    "Fire Drake"                                               # 1372
+mountain
+
+selectmonster "Frost Drake"
+mountain
+
+selectmonster "Stone Drake"
+mountain
 
 # Black kobolds get bleeding attacks, dragon spawn gets random target assassination attack 
 
@@ -23662,7 +23986,7 @@ clearweapons
 meleeweapon                		0 "Barbed Dagger" # d3 pierce + bleed.
 assassinweapon             	2 "Barbed Dagger " # d5 pierce + bleed.
 
-selectmonster "Wyvern Knight"
+selectmonster "Wyvern Knight"					#Needed a name change to remove iron cost, see recruitment table
 armor 2
 
 selectmonster    "Frost Drake"
@@ -23725,10 +24049,27 @@ meleeweapon                4  42 # Venomous Bite: d4 Slash damage.
 rangedweapon50s 	-1 "Barbed Javelin" # D3+bleed javelin
 rangedweapon 			-1 "Barbed Javelin" # D3+bleed javelin
 shield
-jungle2                          # Likes jungles (if an independent or stupid commander, will not move more than 1 square away from its liked terrains).
+mountain
 wall                             # Can climb walls.
 stealth
 descr "The Black Kobolds exhibit notable deviations from the typical behaviors of their kind. Whereas most Kobolds show little interest in wildlife beyond the draconic beasts they revere, the Black Kobolds display an unusual affinity for large spiders. Indeed, they are occasionally observed riding these arachnoids into battle. However, let us not mistake this behavior for courage or strategic . Rather, it is a reflection of their inherently craven nature and insect-like disposition, which aligns them more closely with the lesser creatures of Elysium." 
+
+newmonster "Tatzelwurm" 
+spr1 "Sprites/Tatzelwurm1.tga"
+spr2 "Sprites/Tatzelwurm2.tga"
+armor                          1 # Armor.
+hp                            22 # Hit Points.
+str                            5 # Strength.
+mor                            6 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon          12  41 # Strong Venomous Bite: d12 Slash damage.
+regeneration 
+foreststealth
+mountain 
+poisonres                    100 # Poison immunity.
+poisonspikes                   2 # Poison (2): Any enemy attacking this unit in melee will take some armor-negating poison damage.
+descr "Among the lesser worm-kind of the forests is the Tatzelwurm, which some hold to be a degenerate descendant of the Linnorms. It has the twisted body of a serpent, and dwells in shadowy woods where it may hide in the undergrowth or among the branches. It appears curiously fond of hazel, and such trees are therefore best approached only after the boughs have been struck with a stick, to see what may fall out."
 
 newmonster "Red Kobold Defender" 
 copystats "Red Kobold Warrior"
@@ -23784,301 +24125,158 @@ rangedweapon 11 "Summon Red Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "Blue Kobold Warren" 
-spr1 "Sprites/Koboldwarren.tga"
-spr2 "Sprites/Koboldwarren.tga"
-armor                          4 
-hp                            10 
-str                            4 
-mor                           99 
-mr                             5 
-rank                           1 # Back Rank.
-rearpos
-immobile                         # Immobile (cannot move in battle).
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-immortal
-stationary                       # Cannot move on world map.
-invisible
-fireres                      100 # Fire immunity.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-shockres                     100 # Shock immunity.
-diseaseres                       # Disease immunity.
-bluntres                         # Blunt resistance (half damage).
-slashres                         # Slash resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-noslots                          # Has no item slots at all.
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-swallowres                       # Immune to swallow attacks.
-nozoc                            # No Zone of Control.
-unimportant                      # Battles can be won without killing this unit.
+copystats "Red Kobold Warren"
+clearweapons 
 rangedweapon 11 "Summon Blue Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "Green Kobold Warren" 
-spr1 "Sprites/Koboldwarren.tga"
-spr2 "Sprites/Koboldwarren.tga"
-armor                          4 
-hp                            10 
-str                            4 
-mor                           99 
-mr                             5 
-rank                           1 # Back Rank.
-rearpos
-immobile                         # Immobile (cannot move in battle).
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-immortal
-stationary                       # Cannot move on world map.
-invisible
-fireres                      100 # Fire immunity.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-shockres                     100 # Shock immunity.
-diseaseres                       # Disease immunity.
-bluntres                         # Blunt resistance (half damage).
-slashres                         # Slash resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-noslots                          # Has no item slots at all.
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-swallowres                       # Immune to swallow attacks.
-nozoc                            # No Zone of Control.
-unimportant                      # Battles can be won without killing this unit.
+copystats "Red Kobold Warren"
+clearweapons 
 rangedweapon 11 "Summon Green Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "White Kobold Warren" 
-spr1 "Sprites/Koboldwarren.tga"
-spr2 "Sprites/Koboldwarren.tga"
-armor                          4 
-hp                            10 
-str                            4 
-mor                           99 
-mr                             5 
-rank                           1 # Back Rank.
-rearpos
-immobile                         # Immobile (cannot move in battle).
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-immortal
-stationary                       # Cannot move on world map.
-invisible
-fireres                      100 # Fire immunity.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-shockres                     100 # Shock immunity.
-diseaseres                       # Disease immunity.
-bluntres                         # Blunt resistance (half damage).
-slashres                         # Slash resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-noslots                          # Has no item slots at all.
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-swallowres                       # Immune to swallow attacks.
-nozoc                            # No Zone of Control.
-unimportant                      # Battles can be won without killing this unit.
+copystats "Red Kobold Warren"
+clearweapons 
 rangedweapon 11 "Summon White Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 newmonster "Black Kobold Warren" 
-spr1 "Sprites/Koboldwarren.tga"
-spr2 "Sprites/Koboldwarren.tga"
-armor                          4 
-hp                            10 
-str                            4 
-mor                           99 
-mr                             5 
-rank                           1 # Back Rank.
-rearpos
-immobile                         # Immobile (cannot move in battle).
-water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
-immortal
-stationary                       # Cannot move on world map.
-invisible
-fireres                      100 # Fire immunity.
-coldres                      100 # Cold immunity.
-poisonres                    100 # Poison immunity.
-sleepres                         # Sleep immunity.
-charmres                         # Charm immunity.
-shockres                     100 # Shock immunity.
-diseaseres                       # Disease immunity.
-bluntres                         # Blunt resistance (half damage).
-slashres                         # Slash resistance (half damage).
-pierceres                        # Pierce resistance (half damage).
-noslots                          # Has no item slots at all.
-inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-swallowres                       # Immune to swallow attacks.
-nozoc                            # No Zone of Control.
-unimportant                      # Battles can be won without killing this unit.
+copystats "Red Kobold Warren"
+clearweapons 
 rangedweapon 11 "Summon Black Kobold Defender"
 descr "A network of defensive tunnels underneath the stronghold. Kobold defenders use the tunnels to attack besieging armies from the rear."  
 
 # ------------------------------------ Kobold King Ritual Edits -------------------------------- 
 
-selectritual "Ritual of Mastery" 26
-cost 7 40
-
-selectritual "Ritual of Mastery" 27
-cost 10 40
-
-selectritual "Ritual of Mastery" 28
-cost 8 40
-
-selectritual "Ritual of Mastery" 29
-cost 9 40
-
 selectritual "Ritual of Grand Mastery" 22
-cost 7 160
+cost 7 150
 
 selectritual "Ritual of Grand Mastery" 23
-cost 10 160
+cost 10 150
 
 selectritual "Ritual of Grand Mastery" 24
-cost 8 160
+cost 8 150
 
 selectritual "Ritual of Grand Mastery" 25
-cost 9 160
+cost 9 150
+
+selectritual "Foretelling"
+level 1
+
+selectritual "Foretelling" 1
+level 1
+
+selectritual "Foretelling" 2
+level 1
+
+selectritual "Foretelling" 3
+level 1
+
+selectritual "Foretelling" 4
+level 1
 
 # --------------------------- Kobold King New Rituals ----------------------------------# 
+
+newritual "Kobold Stronghold" 			# redefined to make afterprev possible for kobold warrens
+copyritual "Kobold Stronghold" 
+ritpow 51 #black 
+descr "This ritual upgrades a Kobold Hatchery into a Stronghold with improved defense as well as increased kobold production.  A Kobold Stronghold also produces elite kobolds of its corresponding color type."
 
 newritual "Defensive Warren" 
 ritpow                51 # Kobold, Black
 level                  2
-cost              0   50 # 50 Gold
-cost             16   25 # 25 Kobolds
+cost              0   25 # 25 Gold
+cost             16   10 # 10 Kobolds
 terr                 -12 # Required terrain: proper mines.
 enchherereq           20 # Ritual can only be cast if this type of enchantment is already active in the square: Kobold Hatchery.
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 apcost                 2 # Actual AP cost: 3.
 ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
 aialways 999
+nomonreq 
+addstring "(-)Red Kobold Warren"
+addstring "(-)Blue Kobold Warren"
+addstring "(-)White Kobold Warren"
+addstring "(-)Green Kobold Warren"
+addstring "(-)Black Kobold Warren"
+summoning
+addstring "(-81)2*Red Kobold Warren"
+addstring "(-82)2*Blue Kobold Warren"
+addstring "(-83)2*White Kobold Warren"
+addstring "(-84)2*Green Kobold Warren"
+addstring "(803)2*Black Kobold Warren"
 afterprev
-nomonreq 
-addstring "(-)Red Kobold Warren"
-addstring "(-)Blue Kobold Warren"
-addstring "(-)White Kobold Warren"
-addstring "(-)Green Kobold Warren"
-summoning
-addstring "(-81)2*Red Kobold Warren"
-addstring "(-82)2*Blue Kobold Warren"
-addstring "(-83)2*White Kobold Warren"
-addstring "(-84)2*Green Kobold Warren"
-addstring "(803)2*Black Kobold Warren"
-rarestart
 aialways 100
 descr "This ritual builds a network of defensive tunnels underneath the stronghold. Kobold defenders can use the tunnels to attack besieging armies from the rear."
 
+newritual "Kobold Stronghold"
+copyritual "Kobold Stronghold" 
+ritpow 52 #red 
+descr "This ritual upgrades a Kobold Hatchery into a Stronghold with improved defense as well as increased kobold production.  A Kobold Stronghold also produces elite kobolds of its corresponding color type."
+
 newritual "Defensive Warren" 
+copyritual "Defensive Warren"
 ritpow                52 # Kobold, Red
-level                  2
-cost              0   50 # 50 Gold
-cost             16   25 # 25 Kobolds
-terr                 -12 # Required terrain: proper mines.
-enchherereq           20 # Ritual can only be cast if this type of enchantment is already active in the square: Kobold Hatchery.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-apcost                 2 # Actual AP cost: 3.
-ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
-aialways 999
-nomonreq 
-addstring "(-)Red Kobold Warren"
-addstring "(-)Blue Kobold Warren"
-addstring "(-)White Kobold Warren"
-addstring "(-)Green Kobold Warren"
-summoning
-addstring "(-81)2*Red Kobold Warren"
-addstring "(-82)2*Blue Kobold Warren"
-addstring "(-83)2*White Kobold Warren"
-addstring "(-84)2*Green Kobold Warren"
-addstring "(803)2*Black Kobold Warren"
-rarestart
-aialways 100
 descr "This ritual builds a network of defensive tunnels underneath the stronghold. Kobold defenders can use the tunnels to attack besieging armies from the rear."
 
+newritual "Kobold Stronghold"
+copyritual "Kobold Stronghold" 
+ritpow 53 #blue 
+descr "This ritual upgrades a Kobold Hatchery into a Stronghold with improved defense as well as increased kobold production.  A Kobold Stronghold also produces elite kobolds of its corresponding color type."
+
 newritual "Defensive Warren" 
+copyritual "Defensive Warren"
 ritpow                53 # Kobold, Blue
-level                  2
-cost              0   50 # 50 Gold
-cost             16   25 # 25 Kobolds
-terr                 -12 # Required terrain: proper mines.
-enchherereq           20 # Ritual can only be cast if this type of enchantment is already active in the square: Kobold Hatchery.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-apcost                 2 # Actual AP cost: 3.
-ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
-aialways 999
-nomonreq 
-addstring "(-)Red Kobold Warren"
-addstring "(-)Blue Kobold Warren"
-addstring "(-)White Kobold Warren"
-addstring "(-)Green Kobold Warren"
-summoning
-addstring "(-81)2*Red Kobold Warren"
-addstring "(-82)2*Blue Kobold Warren"
-addstring "(-83)2*White Kobold Warren"
-addstring "(-84)2*Green Kobold Warren"
-addstring "(803)2*Black Kobold Warren"
-rarestart
-aialways 100
 descr "This ritual builds a network of defensive tunnels underneath the stronghold. Kobold defenders can use the tunnels to attack besieging armies from the rear."
 
+newritual "Kobold Stronghold"
+copyritual "Kobold Stronghold" 
+ritpow 54 #white
+descr "This ritual upgrades a Kobold Hatchery into a Stronghold with improved defense as well as increased kobold production.  A Kobold Stronghold also produces elite kobolds of its corresponding color type."
+
 newritual "Defensive Warren" 
+copyritual "Defensive Warren"
 ritpow                54 # Kobold, White
-level                  2
-cost              0   50 # 50 Gold
-cost             16   25 # 25 Kobolds
-terr                 -12 # Required terrain: proper mines.
-enchherereq           20 # Ritual can only be cast if this type of enchantment is already active in the square: Kobold Hatchery.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-apcost                 2 # Actual AP cost: 3.
-ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
-aialways 999
-nomonreq 
-addstring "(-)Red Kobold Warren"
-addstring "(-)Blue Kobold Warren"
-addstring "(-)White Kobold Warren"
-addstring "(-)Green Kobold Warren"
-summoning
-addstring "(-81)2*Red Kobold Warren"
-addstring "(-82)2*Blue Kobold Warren"
-addstring "(-83)2*White Kobold Warren"
-addstring "(-84)2*Green Kobold Warren"
-addstring "(803)2*Black Kobold Warren"
-rarestart
-aialways 100
 descr "This ritual builds a network of defensive tunnels underneath the stronghold. Kobold defenders can use the tunnels to attack besieging armies from the rear."
 
-newritual "Defensive Warren" 
+newritual "Kobold Stronghold"
+copyritual "Kobold Stronghold" 
+ritpow 55 # Green
+descr "This ritual upgrades a Kobold Hatchery into a Stronghold with improved defense as well as increased kobold production.  A Kobold Stronghold also produces elite kobolds of its corresponding color type."
+
+newritual "Defensive Warren"
+copyritual "Defensive Warren" 
 ritpow                55 # Kobold, Green
-level                  2
-cost              0   50 # 50 Gold
-cost             16   25 # 25 Kobolds
-terr                 -12 # Required terrain: proper mines.
-enchherereq           20 # Ritual can only be cast if this type of enchantment is already active in the square: Kobold Hatchery.
-soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
-apcost                 2 # Actual AP cost: 3.
-ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
-aialways 999
-nomonreq 
-addstring "(-)Red Kobold Warren"
-addstring "(-)Blue Kobold Warren"
-addstring "(-)White Kobold Warren"
-addstring "(-)Green Kobold Warren"
-summoning
-addstring "(-81)2*Red Kobold Warren"
-addstring "(-82)2*Blue Kobold Warren"
-addstring "(-83)2*White Kobold Warren"
-addstring "(-84)2*Green Kobold Warren"
-addstring "(803)2*Black Kobold Warren"
-rarestart
-aialways 100
 descr "This ritual builds a network of defensive tunnels underneath the stronghold. Kobold defenders can use the tunnels to attack besieging armies from the rear."
+
+selectritual "Kobold Stronghold"
+free 
+level 9
+
+selectritual "Kobold Stronghold" 1
+free 
+level 9
+
+selectritual "Kobold Stronghold" 2
+free 
+level 9
+
+selectritual "Kobold Stronghold" 3
+free 
+level 9
+
+selectritual "Kobold Stronghold" 4 
+free 
+level 9
 
 newritual     "Calm Dragon"                                       
 ritpow                52 # Kobold, Red
-level                  3
+level                  2
 cost              7  3  # 3 Rubies
 cost             16   10 # 10 Kobolds
+rarestart
 nexttoo
 promotion 1
 addstring "Fire Dragon"
@@ -24125,7 +24323,7 @@ descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmu
 
 newritual     "Rouse Dragon"                                       
 ritpow                52 # Kobold, Red
-level                  3
+level                  2
 cost              7  5  # 5 Rubies
 cost             16  5 # 5 Kobolds
 nostart
@@ -24174,10 +24372,11 @@ descr "The prophet engages in a ritual of fire, drumming, and much shouting, all
 
 newritual     "Calm Dragon"                                       
 ritpow                55 # Kobold, Green
-level                  3
+level                  2
 cost             10   3 # 3 Emeralds
 cost             16  10 # 10 Kobolds
 nexttoo
+rarestart
 promotion 1
 addstring "Fire Dragon"
 addstring "Dormant Fire Dragon"
@@ -24223,7 +24422,7 @@ descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmu
 
 newritual     "Rouse Dragon"                                       
 ritpow                55 # Kobold, Green
-level                  3
+level                  2
 cost             10   5 # 5 Emeralds
 cost             16   5 # 5 Kobolds
 promotion 1
@@ -24272,10 +24471,11 @@ descr "The prophet engages in a ritual of fire, drumming, and much shouting, all
 
 newritual     "Calm Dragon"                                       
 ritpow                53 # Kobold, Blue
-level                  3
+level                  2
 cost              8   3 # 3 Sapphires
 cost             16  10 # 10 Kobolds
 nexttoo
+rarestart
 promotion 1
 addstring "Fire Dragon"
 addstring "Dormant Fire Dragon"
@@ -24321,7 +24521,7 @@ descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmu
 
 newritual     "Rouse Dragon"                                       
 ritpow                53 # Kobold, Blue
-level                  3
+level                  2
 cost              8   5 # 5 Sapphires
 cost             16   5 # 5 Kobolds
 promotion 1
@@ -24370,10 +24570,11 @@ descr "The prophet engages in a ritual of fire, drumming, and much shouting, all
 
 newritual     "Calm Dragon"                                       
 ritpow                54 # Kobold, White
-level                  3
+level                  2
 cost              9   3 # 3 Diamonds
 cost             16  10 # 10 Kobolds
 nexttoo
+rarestart
 promotion 1
 addstring "Fire Dragon"
 addstring "Dormant Fire Dragon"
@@ -24419,7 +24620,7 @@ descr "The Kobold Prophet performs a ritual involving high-pitched melodic murmu
 
 newritual     "Rouse Dragon"                                       
 ritpow                54 # Kobold, White
-level                  3
+level                  2
 cost              9   5 # 5 Diamonds
 cost             16   5 # 5 Kobolds
 nostart
@@ -24648,6 +24849,23 @@ growoffs -2
 
 selectclass 27
 mercboost -100
+
+addcomrec "Red Kobold Shaman" 7 40 20 0					# double chance of first shaman offer. Much easier to get secondary colors online
+	recterr -81
+	reclimiter "-Red Kobold Shaman"
+	reclimiter "-Red Kobold Prophet"
+addcomrec "White Kobold Shaman" 7 40 20 0
+	recterr -83
+	reclimiter "-White Kobold Shaman"
+	reclimiter "-White Kobold Prophet"
+addcomrec "Green Kobold Shaman" 7 40 20 0
+	recterr -84
+	reclimiter "-Green Kobold Shaman"
+	reclimiter "-Green Kobold Prophet"
+addcomrec "Blue Kobold Shaman" 7 40 20 0
+	recterr -82
+	reclimiter "-Blue Kobold Shaman"
+	reclimiter "-Blue Kobold Prophet"
 addcomrec   "Red Dragon Spawn Chief"           		5 15 20 5 # only where Ruby income.
 	recxcost     7 10   
 	recterr -81
@@ -24671,7 +24889,7 @@ addcomrec   "Blue Dragon Spawn Chief"          		5 15 20 5 # only where Sapphire
 addmercrec  "Fire Drake"                       					5 1 20 0 0 # only where Ruby income.
 recxcost    16 10 
 recterr -81
-addmercrec  "Wyvern Knight"                 				5 1 20 0 0 # only where Emerald income.
+addmercrec  "Tatzelwurm"                 				       15 1 20 0 0 # only where Emerald income. 		#	Green now gets a tankier and non-iron costing drake option. 
 recxcost    16   5  
 recterr -84
 addmercrec  "Frost Drake"                      				5 1 20 0 0 # only where Sapphire income.
@@ -24690,18 +24908,10 @@ addmercrec "Black Kobold Spider Rider"         	15 2 30 0 0 #
 	reclimiter "+Black Kobold Slayer Prophet"
 addcomrec   "Black Kobold Slayer Shaman"        	2 40 20 0 # 
 
-
 ################################## Monkey Maharaja ########################################### 
 
 # -------------------- Monkey Maharaja + Raksharaja Terrain ------------
 
-selectterrgroup -1116
-addterr 349
-invert
-
-selectterrgroup -1117
-addterr 295
-invert
 
 selectterrgroup -1118
 setname "Tribal Villages"
@@ -26841,7 +27051,8 @@ rank                           1 # Front rank.
 rangedweaponbonus          0   7 # Bow: d3 Pierce damage.
 rangedweaponbonus          0   7 # Bow: d3 Pierce damage.
 meleeweapon                7  37 # Gore: d7 Slash damage.
-battlefast                       # Can move 2 squares per turn in combat.
+snow
+mountain
 animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
 trample                        4 # Can trample smaller units for this amount of damage.
 coldres 50
@@ -26908,14 +27119,14 @@ copystats "Roc"
 stupid
 wander 9
 wanderrest 80
-wandermaxdist 7
+wandermaxdist 3
 
 newmonster " Great Gryphon"
 copystats "Great Gryphon"
 stupid
 wander 9
 wanderrest 80
-wandermaxdist 7
+wandermaxdist 3
 
 newmonster "Giant Wizard"
 copystats "Hill Giant"
@@ -27289,22 +27500,6 @@ endevent
 
 			# ------------------Sea Monsters ---------------
 
-newmonster "Soulless Pirate"
-copystats "Armored Soulless"
-spr1 "Sprites/Soullesspirate1.tga"
-spr2 "Sprites/Soullesspirate2.tga"
-armor 0
-descr "The appearance of Soulless among shipwrecks and tidal graves has raised certain questions within the academic faculties. While spontaneous undead are well documented near graveyards or battlefields, the occurrence of sea-borne Soulless in the absence of an animating will remains less understood. One prevailing theory holds that seawater, having passed through innumerable corpses, may retain some faint property of death. In sufficient concentration -such as within the hull of a sunken ship- this might permit the reanimation of drowned bodies, provided the flesh remains suitably intact. The theory further posits that the water acts not as a necromantic agent itself, but as a medium through which residual necromantic essence may propagate. Alternative explanations involve the hypothetical presence of an underwater necromancer, a figure the Academy remains eager to engage in scientific dialogue. To encourage such an encounter, several waterproof placards have been affixed to coastal stones and driftwood, each bearing particularly stimulating hypotheses in magical theory. These efforts are supplemented by a long-running bottle campaign, in which carefully penned theses and polite invitations are set adrift under the Academy seal. Thus far, no response has been recorded, but it is hoped that intellectual curiosity will eventually outweigh whatever instinct for secrecy such a practitioner may possess."
-
-newmonster "Soulless Captain"
-copystats "Armored Soulless"
-spr1 "Sprites/Soullesscaptain1.tga"
-spr2 "Sprites/Soullesscaptain2.tga"
-hp 18
-armor 1
-meleeweapon                1   2 # Broadsword: d7 Slash damage.
-descr "The appearance of Soulless among shipwrecks and tidal graves has raised certain questions within the academic faculties. While spontaneous undead are well documented near graveyards or battlefields, the occurrence of sea-borne Soulless in the absence of an animating will remains less understood. One prevailing theory holds that seawater, having passed through innumerable corpses, may retain some faint property of death. In sufficient concentration -such as within the hull of a sunken ship- this might permit the reanimation of drowned bodies, provided the flesh remains suitably intact. The theory further posits that the water acts not as a necromantic agent itself, but as a medium through which residual necromantic essence may propagate. Alternative explanations involve the hypothetical presence of an underwater necromancer, a figure the Academy remains eager to engage in scientific dialogue. To encourage such an encounter, several waterproof placards have been affixed to coastal stones and driftwood, each bearing particularly stimulating hypotheses in magical theory. These efforts are supplemented by a long-running bottle campaign, in which carefully penned theses and polite invitations are set adrift under the Academy seal. Thus far, no response has been recorded, but it is hoped that intellectual curiosity will eventually outweigh whatever instinct for secrecy such a practitioner may possess."
-
 newmonster "Hermit Crab"
 spr1 "Sprites/Hermitcrab1.tga"
 spr2 "Sprites/Hermitcrab2.tga"
@@ -27392,14 +27587,13 @@ poisonres                     75 # 75 Poison Resistance.
 water 
 randommisc                    15 # 15% chance to spawn with a random misc magic item.
 nametype 44
-spawn1d6mon 7
 descr "Drowning was once the standard procedure for managing meddlesome crones. This had unintended consequences as some, it turns out, thrived underwater. In hindsight this should have been expected.  By the time the modern concept of witch burning was introduced, it was already too late. Slimy and soaked in saltwater, Sea Witches are notoriously difficult to set alight."
 
-newmonster "Sea Dragon"
-copystats "Sea Dragon"
+selectmonster "Sea Dragon"
+mr 7
 wander 9
-wandermaxdist 6
-wanderrest 70
+wandermaxdist 5
+wanderrest 80
 
 newmonster "Void Larva"
 spr1 "Sprites/Voidlarva1.tga"
@@ -27695,7 +27889,7 @@ playerevent #Reef
 +chance 6
 randloc 0 68
 +terrain 68
-newunits 24 "c* Sea Dragon & 1*Treasure"
+newunits 24 "c*Sea Dragon & 1*Treasure"
 alterterrain 855
 endevent
 
@@ -30167,7 +30361,7 @@ addcomrec   "Barbarian Champion"                   10 1 0 0 	# Will recruit Cham
 addmercrec  " Barbarian Werebear"           		100 1 25 0 0 	#Irminsul late game garrison
 	recterr 834
 	reclimiter "+Late AI"
-addmercrec  " Aptrganger"           						100 1 35 0 0 	#Irminsul late game garrison
+addmercrec  " Aptrganger"           						100 1 25 0 0 	#Irminsul late game garrison
 	recterr 834
 	reclimiter "+Late AI"
 addmercrec  " Blackroot Eater"           				100 4 45 0 0 	#Irminsul late game garrison
@@ -30198,7 +30392,7 @@ addcomrec "Spirit Guide"										25  1   75   0    0	# A gentle nudge to get th
 	reclimiter "-Elder Enarie"
 addcomrec "Barbarian Thane"							30 1 25 0 0 			# Class has a high commander attrition rate if one is not careful about picking fights. The AI is not careful, and is pretty inconsistent about buying the ones available. So gets more offers in early game to avoid fizzling out. 
 	reclimiter "+AI"
-addunitrec "Battering Ram"								10 4 100 0 25 		# AI can still buy battering rams, just much less inclined to do so, buys meaningful batches if they do and is less punished for wasting their iron  
+addunitrec "Battering Ram"								10 4 50 0 20 		# AI can still buy battering rams, just much less inclined to do so, buys meaningful batches if they do and is less punished for wasting their iron  
 	reclimiter "+AI"
 	reclimiter "+Late AI"
 
@@ -32057,3 +32251,5 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+
+
